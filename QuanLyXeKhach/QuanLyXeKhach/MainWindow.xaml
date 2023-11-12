@@ -1,0 +1,606 @@
+﻿<Window x:Class="QuanLyXeKhach.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyXeKhach"
+        
+        xmlns:uccb="clr-namespace:QuanLyXeKhach.UserControlFolder"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        DataContext="{StaticResource MainVM}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Name="MainWd"
+ 
+        Title="Quản Lý Xe Khách" Height="720" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="5.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uccb:ControlBarUC Tag="{Binding Title, ElementName=MainWd}"></uccb:ControlBarUC>
+        </Grid>
+        <!--Search,Acount Container-->
+        <Border Grid.Row="1" BorderBrush="#eeeeee" BorderThickness="0 0.5 0 0.5">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <!--Account-->
+                <Grid Background="#25b24a" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <materialDesign:PackIcon Kind="Account"  VerticalAlignment="center" 
+                       HorizontalAlignment="Center" Width="50" Height="50" Foreground="White"/>
+                    </Grid>
+                    <Grid Grid.Column="1" >
+                        <StackPanel VerticalAlignment="Center" >
+                            <TextBlock Text="Tên" HorizontalAlignment="Center" FontSize="16" Foreground="white"></TextBlock>
+                            <TextBlock Text="chức vụ" HorizontalAlignment="Center" FontSize="16" Margin="0 10" Foreground="White"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <!--Search-->
+                <Grid Grid.Column="1" Background="#eeeeee">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                VerticalAlignment="Bottom"  >
+                        <TextBox  Width="600" Height="25" Background="White" 
+                    materialDesign:TextFieldAssist.UnderlineBrush="Gray"
+                    BorderThickness="0 0 0.5 0.5" Margin="10">
+                            <TextBox.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                            </TextBox.Effect>
+
+                        </TextBox>
+                        <Button BorderBrush="#44b0f1"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Width="25" Height="25" Background="#44b0f1"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                            ToolTip="MaterialDesignFloatingActionMiniDarkButton">
+                            <materialDesign:PackIcon Width="20" Height="20"
+                            Kind="ArrowRightThick" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+        <!--Tab Control-->
+        <Grid Grid.Row="2" >
+            <TabControl
+            materialDesign:ColorZoneAssist.Background="#25b24a"
+                    materialDesign:ColorZoneAssist.Foreground="White"
+                    materialDesign:ColorZoneAssist.Mode="Custom"
+                    Style="{StaticResource MaterialDesignFilledTabControl}"
+                    TabStripPlacement="Left" Background="#25b24a">
+                <!--Home-->
+                <TabItem  Width="200" Height="65">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal" Width="100">
+                            <materialDesign:PackIcon Kind="Home" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Trang Chủ" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <TextBlock Text="Home item" Foreground="Black"></TextBlock>
+                </TabItem>
+                <!--Clients-->
+                <TabItem Height="65">
+                    <TabItem.Header >
+                        <StackPanel Orientation="Horizontal" Width="100" >
+                            <materialDesign:PackIcon Kind="AccountMultiple" Height="20" 
+                                 Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Khách hàng" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="295*"></RowDefinition>
+                            <RowDefinition Height="253*"/>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--List-->
+                        <Border Grid.Row="0" Margin="20,20,20,20" CornerRadius="10" 
+                            BorderBrush="#eee" BorderThickness="1" Background="White" Grid.RowSpan="2">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Title-->
+                                <TextBlock Grid.Row="0" Text="Danh sách khách hàng" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                <!--ListView-->
+                                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                                    <ListView Margin="10 5" ItemsSource="{Binding }" SelectedItem="{Binding SelectedItemClient,Mode=OneWayToSource}">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="Mã khách hàng" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Họ tên"  DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="CCCD" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding }"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                        <!--Buttons-->
+                        <Grid Grid.Row="2" Margin="0,0,0,20">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <!--Add-->
+                                <Button Width="100" Margin="20 0" Command="{Binding AddClientCommand}"
+                                    Content="Thêm" Foreground="White"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                    ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Edit-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Sửa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Delete-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Xóa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem >
+                <!--Staff-->
+                <TabItem Height="65">
+                    <TabItem.Header >
+                        <StackPanel Orientation="Horizontal" Width="100" >
+                            <materialDesign:PackIcon Kind="ClipboardAccount" Height="20" 
+                                                 Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Nhân Viên" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--List-->
+                        <Border Grid.Row="0" Margin="20" CornerRadius="10" 
+                            BorderBrush="#eee" BorderThickness="1" Background="White">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Title-->
+                                <TextBlock Grid.Row="0" Text="Danh sách nhân viên" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                <!--ListView-->
+                                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                                    <ListView Margin="10 5" ItemsSource="{Binding }" SelectedItem="{Binding SelectedItemStaff,Mode=OneWayToSource}">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="Mã nhân viên" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Họ tên"  DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="CCCD" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Mã xe" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Bằng lái" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Điểm bán vé" DisplayMemberBinding="{Binding }"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                        <!--Buttons-->
+                        <Grid Grid.Row="1" Margin="0 0 0 20">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <!--Add-->
+                                <Button Width="100" Margin="20 0" Command="{Binding AddStaffCommand}"
+                                    Content="Thêm" Foreground="White"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                    ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Edit-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Sửa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Delete-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Xóa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem >
+                <!--Bus-->
+                <TabItem Height="65">
+                    <TabItem.Header >
+                        <StackPanel Orientation="Horizontal" Width="100" >
+                            <materialDesign:PackIcon Kind="Bus" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Xe Khách" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--List-->
+                        <Border Grid.Row="0" Margin="20" CornerRadius="10" 
+                             BorderBrush="#eee" BorderThickness="1" Background="White">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Title-->
+                                <TextBlock Grid.Row="0" Text="Danh sách xe khách" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                <!--ListView-->
+                                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                                    <ListView Margin="10 5" ItemsSource="{Binding }" SelectedItem="{Binding SelectedItemBus,Mode=OneWayToSource}">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="Mã xe" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Biển số"  DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Số lượng ghế" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Hãng sản xuất" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Năm sản xuất" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Mã tuyến" DisplayMemberBinding="{Binding }"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                        <!--Buttons-->
+                        <Grid Grid.Row="1" Margin="0 0 0 20">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <!--Add-->
+                                <Button Width="100" Margin="20 0" Command="{Binding AddBusCommand}"
+                                    Content="Thêm" Foreground="White"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                    ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Edit-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Sửa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Delete-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Xóa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <!--vehicle route-->
+                <TabItem Height="65">
+                    <TabItem.Header >
+                        <StackPanel Orientation="Horizontal" Width="100" >
+                            <materialDesign:PackIcon Kind="NavigationVariant" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Tuyến Xe" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--List-->
+                        <Border Grid.Row="0" Margin="20" CornerRadius="10" 
+                            BorderBrush="#eee" BorderThickness="1" Background="White">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Title-->
+                                <TextBlock Grid.Row="0" Text="Danh sách tuyến xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                <!--ListView-->
+                                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                                    <ListView Margin="10 5" ItemsSource="{Binding }" SelectedItem="{Binding SelectedItemRoute,Mode=OneWayToSource}">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="Mã tuyến" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Bến đầu"  DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Bến cuối" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Số lượng xe" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Thời gian dự kiến" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Chi tiết trạm" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Ngày xuất bến" DisplayMemberBinding="{Binding }"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                        <!--Buttons-->
+                        <Grid Grid.Row="1" Margin="0 0 0 20">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <!--Add-->
+                                <Button Width="100" Margin="20 0" Command="{Binding AddRouteCommand}"
+                                    Content="Thêm" Foreground="White"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                    ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Edit-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Sửa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Delete-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Xóa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <!--circulating-->
+                <TabItem Height="65">
+                    <TabItem.Header >
+                        <StackPanel Orientation="Horizontal" Width="100" >
+                            <materialDesign:PackIcon Kind="RoadVariant" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Lưu Thông" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--List-->
+                        <Border Grid.Row="0" Margin="20" CornerRadius="10" 
+                            BorderBrush="#eee" BorderThickness="1" Background="White">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Title-->
+                                <TextBlock Grid.Row="0" Text="Danh sách lưu thông trên các tuyến đường" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                <!--ListView-->
+                                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                                    <ListView Margin="10 5" ItemsSource="{Binding }" SelectedItem="{Binding SelectedItemCirculate,Mode=OneWayToSource}">
+                                        <ListView.View>
+                                            <GridView>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                        <!--Buttons-->
+                        <Grid Grid.Row="1" Margin="0 0 0 20">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <!--Add-->
+                                <Button Width="100" Margin="20 0"
+                                    Content="Thêm" Foreground="White"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                    ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Edit-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Sửa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Delete-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Xóa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <!--Ticket-->
+                <TabItem Height="65">
+                    <TabItem.Header >
+                        <StackPanel Orientation="Horizontal" Width="100" >
+                            <materialDesign:PackIcon Kind="CardBulleted" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Vé Xe" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--List-->
+                        <Border Grid.Row="0" Margin="20" CornerRadius="10" 
+                            BorderBrush="#eee" BorderThickness="1" Background="White">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Title-->
+                                <TextBlock Grid.Row="0" Text="Danh sách vé xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                <!--ListView-->
+                                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                                    <ListView Margin="10 5" ItemsSource="{Binding }" SelectedItem="{Binding SelectedItemTicket,Mode=OneWayToSource}">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="Mã vé" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Mã xe"  DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Mã tuyến" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Mã khách hàng" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Ngày mua" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Chỗ ngồi" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Giá" DisplayMemberBinding="{Binding }"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                        <!--Buttons-->
+                        <Grid Grid.Row="1" Margin="0 0 0 20">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <!--Add-->
+                                <Button Width="100" Margin="20 0" Command="{Binding AddTicketCommand}"
+                                    Content="Thêm" Foreground="White"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                    ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Edit-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Sửa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Delete-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Xóa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <!--Proplem-->
+                <TabItem Height="65">
+                    <TabItem.Header >
+                        <StackPanel Orientation="Horizontal" Width="100" >
+                            <materialDesign:PackIcon Kind="BusAlert" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Sự cố" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--List-->
+                        <Border Grid.Row="0" Margin="20" CornerRadius="10" 
+                            BorderBrush="#eee" BorderThickness="1" Background="White">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Title-->
+                                <TextBlock Grid.Row="0" Text="Danh sách sự cố" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                <!--ListView-->
+                                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                                    <ListView Margin="10 5" ItemsSource="{Binding }" SelectedItem="{Binding SelectedItemProblem,Mode=OneWayToSource}">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="Mã sự cố" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Mã xe"  DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Thông tin" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Chi phí" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Ngày xảy ra" DisplayMemberBinding="{Binding }"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                        <!--Buttons-->
+                        <Grid Grid.Row="1" Margin="0 0 0 20">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <!--Add-->
+                                <Button Width="100" Margin="20 0"
+                                    Content="Thêm" Foreground="White"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                    ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Edit-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Sửa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Delete-->
+                                <Button Width="100" Margin="20 0"
+                                     Content="Xóa" Foreground="White"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <!--Chart-->
+                <TabItem Height="65">
+                    <TabItem.Header >
+                        <StackPanel Orientation="Horizontal" Width="100" >
+                            <materialDesign:PackIcon Kind="ChartBarStacked" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Thống kê" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <TextBlock Foreground="Black">....</TextBlock>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>
