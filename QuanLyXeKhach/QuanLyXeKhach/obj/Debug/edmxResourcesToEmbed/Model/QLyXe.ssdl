@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLXeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="HOTEN" Type="varchar" MaxLength="40" />
+    <Property Name="DCHI" Type="varchar" MaxLength="50" />
+    <Property Name="SODT" Type="varchar" MaxLength="20" />
+    <Property Name="NGSINH" Type="smalldatetime" />
+    <Property Name="GT" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="HOTEN" Type="varchar" MaxLength="40" />
+    <Property Name="GT" Type="varchar" MaxLength="20" />
+    <Property Name="SODT" Type="varchar" MaxLength="20" />
+    <Property Name="NGSINH" Type="smalldatetime" />
+    <Property Name="NGVL" Type="smalldatetime" />
+    <Property Name="DCHI" Type="varchar" MaxLength="50" />
+    <Property Name="BANGLAI" Type="varchar" MaxLength="10" />
+    <Property Name="MAXE" Type="char" MaxLength="6" />
+    <Property Name="DIEMBANVE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SUCO">
+    <Key>
+      <PropertyRef Name="MASC" />
+    </Key>
+    <Property Name="MASC" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="MAXE" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="TTSUCO" Type="varchar" MaxLength="50" />
+    <Property Name="NGAYXR" Type="smalldatetime" />
+    <Property Name="CHIPHI" Type="float" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TUYENXE">
+    <Key>
+      <PropertyRef Name="MATUYEN" />
+    </Key>
+    <Property Name="MATUYEN" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="BENDAU" Type="varchar" MaxLength="20" />
+    <Property Name="BENCUOI" Type="varchar" MaxLength="20" />
+    <Property Name="SLXE" Type="int" />
+    <Property Name="TGDK" Type="int" />
+    <Property Name="CTTRAM" Type="varchar" MaxLength="50" />
+    <Property Name="NGAYXB" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="VEXE">
+    <Key>
+      <PropertyRef Name="MAVE" />
+    </Key>
+    <Property Name="MAVE" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="MAXE" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="MATUYEN" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="MAKH" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="CHONGOI" Type="int" />
+    <Property Name="GIAVE" Type="money" />
+    <Property Name="NGAYBAN" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="XEBUYT">
+    <Key>
+      <PropertyRef Name="MAXE" />
+    </Key>
+    <Property Name="MAXE" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="BIENSO" Type="varchar" MaxLength="20" />
+    <Property Name="SOGHE" Type="tinyint" />
+    <Property Name="HANGSX" Type="varchar" MaxLength="40" />
+    <Property Name="NAMSX" Type="smallint" />
+    <Property Name="MATUYEN" Type="char" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <Association Name="fknv01_MX">
+    <End Role="XEBUYT" Type="Self.XEBUYT" Multiplicity="0..1" />
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XEBUYT">
+        <PropertyRef Name="MAXE" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MAXE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fksc01_MX">
+    <End Role="XEBUYT" Type="Self.XEBUYT" Multiplicity="1" />
+    <End Role="SUCO" Type="Self.SUCO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XEBUYT">
+        <PropertyRef Name="MAXE" />
+      </Principal>
+      <Dependent Role="SUCO">
+        <PropertyRef Name="MAXE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkvx01_MX">
+    <End Role="XEBUYT" Type="Self.XEBUYT" Multiplicity="1" />
+    <End Role="VEXE" Type="Self.VEXE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XEBUYT">
+        <PropertyRef Name="MAXE" />
+      </Principal>
+      <Dependent Role="VEXE">
+        <PropertyRef Name="MAXE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkvx02_MT">
+    <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="1" />
+    <End Role="VEXE" Type="Self.VEXE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TUYENXE">
+        <PropertyRef Name="MATUYEN" />
+      </Principal>
+      <Dependent Role="VEXE">
+        <PropertyRef Name="MATUYEN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkvx03_KH">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
+    <End Role="VEXE" Type="Self.VEXE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="VEXE">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkxb01_MT">
+    <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="1" />
+    <End Role="XEBUYT" Type="Self.XEBUYT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TUYENXE">
+        <PropertyRef Name="MATUYEN" />
+      </Principal>
+      <Dependent Role="XEBUYT">
+        <PropertyRef Name="MATUYEN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLXeModelStoreContainer">
+    <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SUCO" EntityType="Self.SUCO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TUYENXE" EntityType="Self.TUYENXE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VEXE" EntityType="Self.VEXE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="XEBUYT" EntityType="Self.XEBUYT" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fknv01_MX" Association="Self.fknv01_MX">
+      <End Role="XEBUYT" EntitySet="XEBUYT" />
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="fksc01_MX" Association="Self.fksc01_MX">
+      <End Role="XEBUYT" EntitySet="XEBUYT" />
+      <End Role="SUCO" EntitySet="SUCO" />
+    </AssociationSet>
+    <AssociationSet Name="fkvx01_MX" Association="Self.fkvx01_MX">
+      <End Role="XEBUYT" EntitySet="XEBUYT" />
+      <End Role="VEXE" EntitySet="VEXE" />
+    </AssociationSet>
+    <AssociationSet Name="fkvx02_MT" Association="Self.fkvx02_MT">
+      <End Role="TUYENXE" EntitySet="TUYENXE" />
+      <End Role="VEXE" EntitySet="VEXE" />
+    </AssociationSet>
+    <AssociationSet Name="fkvx03_KH" Association="Self.fkvx03_KH">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="VEXE" EntitySet="VEXE" />
+    </AssociationSet>
+    <AssociationSet Name="fkxb01_MT" Association="Self.fkxb01_MT">
+      <End Role="TUYENXE" EntitySet="TUYENXE" />
+      <End Role="XEBUYT" EntitySet="XEBUYT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

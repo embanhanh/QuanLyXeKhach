@@ -1,15 +1,19 @@
-﻿using System;
+﻿using QuanLyXeKhach.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace QuanLyXeKhach.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        private bool isShow = false;
+        private bool isloaded = false;
+        
+        public ICommand LoadedWindowCommand { get; set; }
         public ICommand AddClientCommand { get; set; }
         public ICommand AddStaffCommand { get; set; }
         public ICommand AddBusCommand { get; set; }
@@ -17,18 +21,34 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand AddTicketCommand { get; set; }
         public MainViewModel()
         {
-            if (!isShow)
+            LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => 
             {
-                LoginWindow loginWindow = new LoginWindow();
-                loginWindow.ShowDialog();
-                isShow = true;
-            }
+                if(p == null)
+                    return;
+                isloaded = true;
+                p.Hide();
+                LoginWindow lg = new LoginWindow();
+                lg.ShowDialog();
+                var lgVM = lg.DataContext as LoginViewModel;
+                if (lgVM == null)
+                    return;
+                if (lgVM.isLogin)
+                {
+                    p.Show();
+
+                }
+                else
+                    p.Close();
+            });
 
             AddClientCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { AddClientWd wd = new AddClientWd(); wd.ShowDialog(); });
             AddStaffCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { AddStaffWd wd = new AddStaffWd(); wd.ShowDialog(); });
             AddBusCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { AddBusWd wd = new AddBusWd(); wd.ShowDialog(); });
             AddRouteCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { AddRouteWd wd = new AddRouteWd(); wd.ShowDialog(); });
             AddTicketCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { AddTicketWd wd = new AddTicketWd(); wd.ShowDialog(); });
+
+           
+
         }
     }
 }

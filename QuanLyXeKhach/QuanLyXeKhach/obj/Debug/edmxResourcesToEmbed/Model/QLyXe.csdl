@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLXeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="DCHI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SODT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NGSINH" Type="DateTime" Precision="0" />
+    <Property Name="GT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="VEXEs" Relationship="Self.fkvx03_KH" FromRole="KHACHHANG" ToRole="VEXE" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="GT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SODT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NGSINH" Type="DateTime" Precision="0" />
+    <Property Name="NGVL" Type="DateTime" Precision="0" />
+    <Property Name="DCHI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BANGLAI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MAXE" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="DIEMBANVE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="XEBUYT" Relationship="Self.fknv01_MX" FromRole="NHANVIEN" ToRole="XEBUYT" />
+  </EntityType>
+  <EntityType Name="SUCO">
+    <Key>
+      <PropertyRef Name="MASC" />
+    </Key>
+    <Property Name="MASC" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MAXE" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TTSUCO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NGAYXR" Type="DateTime" Precision="0" />
+    <Property Name="CHIPHI" Type="Double" />
+    <NavigationProperty Name="XEBUYT" Relationship="Self.fksc01_MX" FromRole="SUCO" ToRole="XEBUYT" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TUYENXE">
+    <Key>
+      <PropertyRef Name="MATUYEN" />
+    </Key>
+    <Property Name="MATUYEN" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="BENDAU" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BENCUOI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SLXE" Type="Int32" />
+    <Property Name="TGDK" Type="Int32" />
+    <Property Name="CTTRAM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NGAYXB" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="VEXEs" Relationship="Self.fkvx02_MT" FromRole="TUYENXE" ToRole="VEXE" />
+    <NavigationProperty Name="XEBUYTs" Relationship="Self.fkxb01_MT" FromRole="TUYENXE" ToRole="XEBUYT" />
+  </EntityType>
+  <EntityType Name="VEXE">
+    <Key>
+      <PropertyRef Name="MAVE" />
+    </Key>
+    <Property Name="MAVE" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MAXE" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MATUYEN" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MAKH" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CHONGOI" Type="Int32" />
+    <Property Name="GIAVE" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="NGAYBAN" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.fkvx03_KH" FromRole="VEXE" ToRole="KHACHHANG" />
+    <NavigationProperty Name="TUYENXE" Relationship="Self.fkvx02_MT" FromRole="VEXE" ToRole="TUYENXE" />
+    <NavigationProperty Name="XEBUYT" Relationship="Self.fkvx01_MX" FromRole="VEXE" ToRole="XEBUYT" />
+  </EntityType>
+  <EntityType Name="XEBUYT">
+    <Key>
+      <PropertyRef Name="MAXE" />
+    </Key>
+    <Property Name="MAXE" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="BIENSO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SOGHE" Type="Byte" />
+    <Property Name="HANGSX" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="NAMSX" Type="Int16" />
+    <Property Name="MATUYEN" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="NHANVIENs" Relationship="Self.fknv01_MX" FromRole="XEBUYT" ToRole="NHANVIEN" />
+    <NavigationProperty Name="SUCOes" Relationship="Self.fksc01_MX" FromRole="XEBUYT" ToRole="SUCO" />
+    <NavigationProperty Name="TUYENXE" Relationship="Self.fkxb01_MT" FromRole="XEBUYT" ToRole="TUYENXE" />
+    <NavigationProperty Name="VEXEs" Relationship="Self.fkvx01_MX" FromRole="XEBUYT" ToRole="VEXE" />
+  </EntityType>
+  <Association Name="fkvx03_KH">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
+    <End Role="VEXE" Type="Self.VEXE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="VEXE">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fknv01_MX">
+    <End Role="XEBUYT" Type="Self.XEBUYT" Multiplicity="0..1" />
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XEBUYT">
+        <PropertyRef Name="MAXE" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MAXE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fksc01_MX">
+    <End Role="XEBUYT" Type="Self.XEBUYT" Multiplicity="1" />
+    <End Role="SUCO" Type="Self.SUCO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XEBUYT">
+        <PropertyRef Name="MAXE" />
+      </Principal>
+      <Dependent Role="SUCO">
+        <PropertyRef Name="MAXE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkvx02_MT">
+    <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="1" />
+    <End Role="VEXE" Type="Self.VEXE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TUYENXE">
+        <PropertyRef Name="MATUYEN" />
+      </Principal>
+      <Dependent Role="VEXE">
+        <PropertyRef Name="MATUYEN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkxb01_MT">
+    <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="1" />
+    <End Role="XEBUYT" Type="Self.XEBUYT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TUYENXE">
+        <PropertyRef Name="MATUYEN" />
+      </Principal>
+      <Dependent Role="XEBUYT">
+        <PropertyRef Name="MATUYEN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkvx01_MX">
+    <End Role="XEBUYT" Type="Self.XEBUYT" Multiplicity="1" />
+    <End Role="VEXE" Type="Self.VEXE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XEBUYT">
+        <PropertyRef Name="MAXE" />
+      </Principal>
+      <Dependent Role="VEXE">
+        <PropertyRef Name="MAXE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLXeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="SUCOes" EntityType="Self.SUCO" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TUYENXEs" EntityType="Self.TUYENXE" />
+    <EntitySet Name="VEXEs" EntityType="Self.VEXE" />
+    <EntitySet Name="XEBUYTs" EntityType="Self.XEBUYT" />
+    <AssociationSet Name="fkvx03_KH" Association="Self.fkvx03_KH">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="VEXE" EntitySet="VEXEs" />
+    </AssociationSet>
+    <AssociationSet Name="fknv01_MX" Association="Self.fknv01_MX">
+      <End Role="XEBUYT" EntitySet="XEBUYTs" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="fksc01_MX" Association="Self.fksc01_MX">
+      <End Role="XEBUYT" EntitySet="XEBUYTs" />
+      <End Role="SUCO" EntitySet="SUCOes" />
+    </AssociationSet>
+    <AssociationSet Name="fkvx02_MT" Association="Self.fkvx02_MT">
+      <End Role="TUYENXE" EntitySet="TUYENXEs" />
+      <End Role="VEXE" EntitySet="VEXEs" />
+    </AssociationSet>
+    <AssociationSet Name="fkxb01_MT" Association="Self.fkxb01_MT">
+      <End Role="TUYENXE" EntitySet="TUYENXEs" />
+      <End Role="XEBUYT" EntitySet="XEBUYTs" />
+    </AssociationSet>
+    <AssociationSet Name="fkvx01_MX" Association="Self.fkvx01_MX">
+      <End Role="XEBUYT" EntitySet="XEBUYTs" />
+      <End Role="VEXE" EntitySet="VEXEs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

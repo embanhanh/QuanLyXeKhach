@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLXeModelStoreContainer" CdmEntityContainer="QLXeEntities">
+    <EntitySetMapping Name="KHACHHANGs">
+      <EntityTypeMapping TypeName="QLXeModel.KHACHHANG">
+        <MappingFragment StoreEntitySet="KHACHHANG">
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+          <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+          <ScalarProperty Name="DCHI" ColumnName="DCHI" />
+          <ScalarProperty Name="SODT" ColumnName="SODT" />
+          <ScalarProperty Name="NGSINH" ColumnName="NGSINH" />
+          <ScalarProperty Name="GT" ColumnName="GT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHANVIENs">
+      <EntityTypeMapping TypeName="QLXeModel.NHANVIEN">
+        <MappingFragment StoreEntitySet="NHANVIEN">
+          <ScalarProperty Name="MANV" ColumnName="MANV" />
+          <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+          <ScalarProperty Name="GT" ColumnName="GT" />
+          <ScalarProperty Name="SODT" ColumnName="SODT" />
+          <ScalarProperty Name="NGSINH" ColumnName="NGSINH" />
+          <ScalarProperty Name="NGVL" ColumnName="NGVL" />
+          <ScalarProperty Name="DCHI" ColumnName="DCHI" />
+          <ScalarProperty Name="BANGLAI" ColumnName="BANGLAI" />
+          <ScalarProperty Name="MAXE" ColumnName="MAXE" />
+          <ScalarProperty Name="DIEMBANVE" ColumnName="DIEMBANVE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUCOes">
+      <EntityTypeMapping TypeName="QLXeModel.SUCO">
+        <MappingFragment StoreEntitySet="SUCO">
+          <ScalarProperty Name="MASC" ColumnName="MASC" />
+          <ScalarProperty Name="MAXE" ColumnName="MAXE" />
+          <ScalarProperty Name="TTSUCO" ColumnName="TTSUCO" />
+          <ScalarProperty Name="NGAYXR" ColumnName="NGAYXR" />
+          <ScalarProperty Name="CHIPHI" ColumnName="CHIPHI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QLXeModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TUYENXEs">
+      <EntityTypeMapping TypeName="QLXeModel.TUYENXE">
+        <MappingFragment StoreEntitySet="TUYENXE">
+          <ScalarProperty Name="MATUYEN" ColumnName="MATUYEN" />
+          <ScalarProperty Name="BENDAU" ColumnName="BENDAU" />
+          <ScalarProperty Name="BENCUOI" ColumnName="BENCUOI" />
+          <ScalarProperty Name="SLXE" ColumnName="SLXE" />
+          <ScalarProperty Name="TGDK" ColumnName="TGDK" />
+          <ScalarProperty Name="CTTRAM" ColumnName="CTTRAM" />
+          <ScalarProperty Name="NGAYXB" ColumnName="NGAYXB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VEXEs">
+      <EntityTypeMapping TypeName="QLXeModel.VEXE">
+        <MappingFragment StoreEntitySet="VEXE">
+          <ScalarProperty Name="MAVE" ColumnName="MAVE" />
+          <ScalarProperty Name="MAXE" ColumnName="MAXE" />
+          <ScalarProperty Name="MATUYEN" ColumnName="MATUYEN" />
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+          <ScalarProperty Name="CHONGOI" ColumnName="CHONGOI" />
+          <ScalarProperty Name="GIAVE" ColumnName="GIAVE" />
+          <ScalarProperty Name="NGAYBAN" ColumnName="NGAYBAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XEBUYTs">
+      <EntityTypeMapping TypeName="QLXeModel.XEBUYT">
+        <MappingFragment StoreEntitySet="XEBUYT">
+          <ScalarProperty Name="MAXE" ColumnName="MAXE" />
+          <ScalarProperty Name="BIENSO" ColumnName="BIENSO" />
+          <ScalarProperty Name="SOGHE" ColumnName="SOGHE" />
+          <ScalarProperty Name="HANGSX" ColumnName="HANGSX" />
+          <ScalarProperty Name="NAMSX" ColumnName="NAMSX" />
+          <ScalarProperty Name="MATUYEN" ColumnName="MATUYEN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

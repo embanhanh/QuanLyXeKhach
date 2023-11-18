@@ -43,3 +43,7 @@ C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\bin\Debug\M
 C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\bin\Debug\Microsoft.Expression.Interactions.xml
 C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\bin\Debug\System.Windows.Interactivity.xml
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\bin\Debug\EntityFramework.dll
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\bin\Debug\EntityFramework.xml
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\bin\Debug\EntityFramework.SqlServer.xml

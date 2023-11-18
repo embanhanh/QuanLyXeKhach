@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyXeKhach"
         
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:uccb="clr-namespace:QuanLyXeKhach.UserControlFolder"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -22,6 +23,11 @@
         Name="MainWd"
  
         Title="Quản Lý Xe Khách" Height="720" Width="1000">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction CommandParameter="{Binding ElementName=MainWd}" Command="{Binding LoadedWindowCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -150,19 +156,19 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
                                 <Button Width="100" Margin="20 0" Command="{Binding AddClientCommand}"
-                                    Content="Thêm" Foreground="White"
+                                    Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Edit-->
                                 <Button Width="100" Margin="20 0"
-                                     Content="Sửa" Foreground="White"
+                                     Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Delete-->
                                 <Button Width="100" Margin="20 0"
-                                     Content="Xóa" Foreground="White"
+                                     Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
@@ -225,19 +231,19 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
                                 <Button Width="100" Margin="20 0" Command="{Binding AddStaffCommand}"
-                                    Content="Thêm" Foreground="White"
+                                    Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Edit-->
                                 <Button Width="100" Margin="20 0"
-                                     Content="Sửa" Foreground="White"
+                                     Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Delete-->
                                 <Button Width="100" Margin="20 0"
-                                     Content="Xóa" Foreground="White"
+                                     Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
@@ -295,19 +301,19 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
                                 <Button Width="100" Margin="20 0" Command="{Binding AddBusCommand}"
-                                    Content="Thêm" Foreground="White"
+                                    Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Edit-->
                                 <Button Width="100" Margin="20 0"
-                                     Content="Sửa" Foreground="White"
+                                     Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Delete-->
                                 <Button Width="100" Margin="20 0"
-                                     Content="Xóa" Foreground="White"
+                                     Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
@@ -366,19 +372,19 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
                                 <Button Width="100" Margin="20 0" Command="{Binding AddRouteCommand}"
-                                    Content="Thêm" Foreground="White"
+                                    Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Edit-->
                                 <Button Width="100" Margin="20 0"
-                                     Content="Sửa" Foreground="White"
+                                     Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Delete-->
                                 <Button Width="100" Margin="20 0"
-                                     Content="Xóa" Foreground="White"
+                                     Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
@@ -501,19 +507,19 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
                                 <Button Width="100" Margin="20 0" Command="{Binding AddTicketCommand}"
-                                    Content="Thêm" Foreground="White"
+                                    Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Edit-->
                                 <Button Width="100" Margin="20 0"
-                                     Content="Sửa" Foreground="White"
+                                     Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Delete-->
                                 <Button Width="100" Margin="20 0"
-                                     Content="Xóa" Foreground="White"
+                                     Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
@@ -570,19 +576,19 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
                                 <Button Width="100" Margin="20 0"
-                                    Content="Thêm" Foreground="White"
+                                    Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Edit-->
                                 <Button Width="100" Margin="20 0"
-                                     Content="Sửa" Foreground="White"
+                                     Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Delete-->
                                 <Button Width="100" Margin="20 0"
-                                     Content="Xóa" Foreground="White"
+                                     Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
