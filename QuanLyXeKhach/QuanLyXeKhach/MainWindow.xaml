@@ -96,7 +96,7 @@
                 <!--Home-->
                 <TabItem  Width="200" Height="65">
                     <TabItem.Header>
-                        <StackPanel Orientation="Horizontal" Width="100">
+                        <StackPanel Orientation="Horizontal" Width="120">
                             <materialDesign:PackIcon Kind="Home" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Trang Chủ" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
@@ -106,7 +106,7 @@
                 <!--Clients-->
                 <TabItem Height="65">
                     <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="100" >
+                        <StackPanel Orientation="Horizontal" Width="120" >
                             <materialDesign:PackIcon Kind="AccountMultiple" Height="25" 
                                  Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Khách hàng" VerticalAlignment="Bottom"></TextBlock>
@@ -114,13 +114,12 @@
                     </TabItem.Header>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="295*"></RowDefinition>
-                            <RowDefinition Height="253*"/>
+                            <RowDefinition></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <!--List-->
                         <Border Grid.Row="0" Margin="20,20,20,20" CornerRadius="10" 
-                            BorderBrush="#eee" BorderThickness="1" Background="White" Grid.RowSpan="2">
+                            BorderBrush="#eee" BorderThickness="1" Background="White" >
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
                             </Border.Effect>
@@ -179,7 +178,7 @@
                 <!--Staff-->
                 <TabItem Height="65">
                     <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="100" >
+                        <StackPanel Orientation="Horizontal" Width="120" >
                             <materialDesign:PackIcon Kind="ClipboardAccount" Height="25" 
                                 Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Nhân Viên" VerticalAlignment="Bottom"></TextBlock>
@@ -254,7 +253,7 @@
                 <!--Bus-->
                 <TabItem Height="65">
                     <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="100" >
+                        <StackPanel Orientation="Horizontal" Width="120" >
                             <materialDesign:PackIcon Kind="Bus" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Xe Khách" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
@@ -324,7 +323,7 @@
                 <!--vehicle route-->
                 <TabItem Height="65">
                     <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="100" >
+                        <StackPanel Orientation="Horizontal" Width="120" >
                             <materialDesign:PackIcon Kind="NavigationVariant" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Tuyến Xe" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
@@ -395,7 +394,7 @@
                 <!--circulating-->
                 <TabItem Height="65">
                     <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="100" >
+                        <StackPanel Orientation="Horizontal" Width="120" >
                             <materialDesign:PackIcon Kind="RoadVariant" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Lưu Thông" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
@@ -459,7 +458,7 @@
                 <!--Ticket-->
                 <TabItem Height="65">
                     <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="100" >
+                        <StackPanel Orientation="Horizontal" Width="120" >
                             <materialDesign:PackIcon Kind="CardBulleted" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Vé Xe" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
@@ -530,7 +529,7 @@
                 <!--Proplem-->
                 <TabItem Height="65">
                     <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="100" >
+                        <StackPanel Orientation="Horizontal" Width="120" >
                             <materialDesign:PackIcon Kind="BusAlert" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Sự cố" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
@@ -599,7 +598,7 @@
                 <!--Chart-->
                 <TabItem Height="65">
                     <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="100" >
+                        <StackPanel Orientation="Horizontal" Width="120" >
                             <materialDesign:PackIcon Kind="ChartBarStacked" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Thống kê" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
