@@ -28,16 +28,16 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid Grid.Row="0">
             <uccb:ControlBarUC Tag="{Binding Title, ElementName=LoginWd}"></uccb:ControlBarUC>
         </Grid>
-        <materialDesign:Card Margin="100 30" Grid.Row="1">
+        <materialDesign:Card Margin="100 30" Grid.Row="1" MaxHeight="400" MaxWidth="400">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition MaxHeight="100"></RowDefinition>
+                    <RowDefinition MaxHeight="100"></RowDefinition>
+                    <RowDefinition MaxHeight="100"></RowDefinition>
+                    <RowDefinition MaxHeight="100"></RowDefinition>
                 </Grid.RowDefinitions>
                 <!--Title-->
                 <Border BorderBrush="Green" BorderThickness="0 0 0 1" Grid.Row="0">

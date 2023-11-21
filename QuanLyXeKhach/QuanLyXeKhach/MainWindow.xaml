@@ -97,7 +97,7 @@
                 <TabItem  Width="200" Height="65">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal" Width="100">
-                            <materialDesign:PackIcon Kind="Home" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <materialDesign:PackIcon Kind="Home" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Trang Chủ" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>
@@ -107,8 +107,8 @@
                 <TabItem Height="65">
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="100" >
-                            <materialDesign:PackIcon Kind="AccountMultiple" Height="20" 
-                                 Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <materialDesign:PackIcon Kind="AccountMultiple" Height="25" 
+                                 Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Khách hàng" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>
@@ -180,8 +180,8 @@
                 <TabItem Height="65">
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="100" >
-                            <materialDesign:PackIcon Kind="ClipboardAccount" Height="20" 
-                                                 Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <materialDesign:PackIcon Kind="ClipboardAccount" Height="25" 
+                                Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Nhân Viên" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>
@@ -255,7 +255,7 @@
                 <TabItem Height="65">
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="100" >
-                            <materialDesign:PackIcon Kind="Bus" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <materialDesign:PackIcon Kind="Bus" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Xe Khách" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>
@@ -325,7 +325,7 @@
                 <TabItem Height="65">
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="100" >
-                            <materialDesign:PackIcon Kind="NavigationVariant" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <materialDesign:PackIcon Kind="NavigationVariant" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Tuyến Xe" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>
@@ -396,7 +396,7 @@
                 <TabItem Height="65">
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="100" >
-                            <materialDesign:PackIcon Kind="RoadVariant" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <materialDesign:PackIcon Kind="RoadVariant" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Lưu Thông" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>
@@ -460,7 +460,7 @@
                 <TabItem Height="65">
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="100" >
-                            <materialDesign:PackIcon Kind="CardBulleted" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <materialDesign:PackIcon Kind="CardBulleted" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Vé Xe" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>
@@ -531,7 +531,7 @@
                 <TabItem Height="65">
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="100" >
-                            <materialDesign:PackIcon Kind="BusAlert" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <materialDesign:PackIcon Kind="BusAlert" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Sự cố" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>
@@ -600,7 +600,7 @@
                 <TabItem Height="65">
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="100" >
-                            <materialDesign:PackIcon Kind="ChartBarStacked" Height="20" Width="20" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <materialDesign:PackIcon Kind="ChartBarStacked" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
                             <TextBlock Foreground="White" Text="Thống kê" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>

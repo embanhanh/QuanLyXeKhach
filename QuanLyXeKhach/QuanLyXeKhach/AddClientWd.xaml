@@ -5,10 +5,97 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyXeKhach"
         
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="AddClientWd" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <materialDesign:Card Margin="20">
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center" FontSize="18"
+            Text="Thông tin khách hàng" Foreground="Gray" Margin="0 20 0 0">
+            </TextBlock>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="20">
+                        <TextBox BorderBrush="Green"
+                        materialDesign:HintAssist.Foreground="Green"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Mã khách hàng"
+                        MaxLength="6"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="20">
+                        <TextBox BorderBrush="Green"
+                        materialDesign:HintAssist.Foreground="Green"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Họ tên"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Margin="20">
+                        <ComboBox BorderBrush="Green"
+                        materialDesign:HintAssist.Foreground="Green"
+                        materialDesign:HintAssist.Hint="Giới tính"
+                       
+                        Style="{StaticResource MaterialDesignOutlinedComboBox}" />
+                    </Grid>
+                    <!--Button Add-->
+                    <Grid Grid.Row="3">
+                        <Button Width="120" Margin="20 0" 
+                            Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                            ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="20">
+                        <TextBox BorderBrush="Green"
+                        materialDesign:HintAssist.Foreground="Green"
+                        VerticalAlignment="Center" MaxLength="10"
+                        materialDesign:HintAssist.Hint="Số điện thoại"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="20">
+                        <TextBox BorderBrush="Green"
+                        materialDesign:HintAssist.Foreground="Green"
+                        VerticalAlignment="Center" MaxLength="12"
+                        materialDesign:HintAssist.Hint="CCCD/CMND"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Margin="20">
+                        <TextBox BorderBrush="Green"
+                        materialDesign:HintAssist.Foreground="Green"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Địa chỉ"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    </Grid>
+                    <!--Button Exit-->
+                    <Grid Grid.Row="3">
+                        <Button Width="120" Margin="20 0" 
+                             Content="Thoát" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
+                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                             Style="{StaticResource MaterialDesignRaisedLightButton}"
+                             ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                    </Grid>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </materialDesign:Card>
 </Window>
