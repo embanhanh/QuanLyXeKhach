@@ -17,10 +17,12 @@ namespace QuanLyXeKhach.ViewModel
         private string _password;
         private string _errorMessage1;
         private string _errorMessage2;
-        private string _colorHint;
+        private string _colorHint1;
+        private string _colorHint2;
         public string ErrorMessage1 { get { return _errorMessage1; } set { _errorMessage1 = value; OnPropertyChanged("ErrorMessage1"); } }
         public string ErrorMessage2 { get { return _errorMessage2; } set { _errorMessage2 = value; OnPropertyChanged("ErrorMessage2"); } }
-        public string ColorHint { get { return _colorHint; } set { _colorHint = value; OnPropertyChanged("ColorHint"); } }
+        public string ColorHint1 { get { return _colorHint1; } set { _colorHint1 = value; OnPropertyChanged("ColorHint1"); } }
+        public string ColorHint2 { get { return _colorHint2; } set { _colorHint2 = value; OnPropertyChanged("ColorHint2"); } }
         public string Username { get { return _username; } set { _username = value; } }
         public string Password { get { return _password; } set { _password = value; } }
         
@@ -37,7 +39,8 @@ namespace QuanLyXeKhach.ViewModel
 
         public LoginViewModel() 
         {
-            ColorHint = "Green";
+            ColorHint1 = "Green";
+            ColorHint2 = "Green";
             isLogin = false;
             LoginWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -49,12 +52,12 @@ namespace QuanLyXeKhach.ViewModel
                     if (Username == null || Username == "")
                     {
                         ErrorMessage1 = "Vui lòng nhập trường này";
-                        ColorHint = "Red";
+                        ColorHint1 = "Red";
                     }
                     if (Password == null || Password == "")
                     {
                         ErrorMessage2 = "Vui lòng nhập trường này";
-                        ColorHint = "Red";
+                        ColorHint2 = "Red";
                     }
                 }
                 else
@@ -67,7 +70,7 @@ namespace QuanLyXeKhach.ViewModel
                     else
                     {
                         isLogin = false;
-                        MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!", "", MessageBoxButton.OK);
                     }
                 }
             });
@@ -82,12 +85,12 @@ namespace QuanLyXeKhach.ViewModel
             UsernameEmpty = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
                 ErrorMessage1 = "";
-                ColorHint = "Green";
+                ColorHint1 = "Green";
             }); 
             PasswordEmpty = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
                 ErrorMessage2 = "";
-                ColorHint = "Green";
+                ColorHint2 = "Green";
             });
         } 
     }

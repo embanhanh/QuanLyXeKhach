@@ -4,5 +4,5 @@
                     <!--xmlns:local="clr-namespace:QuanLyXeKhach.ResourceXAML"-->
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
-
+    <viewmodel:AddClientVM x:Key="addClientVM"></viewmodel:AddClientVM>
 </ResourceDictionary>

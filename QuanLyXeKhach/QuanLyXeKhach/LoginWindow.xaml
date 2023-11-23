@@ -58,7 +58,7 @@
                         VerticalAlignment="Center" Text="{Binding Username}"
                         materialDesign:HintAssist.Hint="Tên đăng nhập"
                         materialDesign:HintAssist.Foreground="Green"
-                        materialDesign:TextFieldAssist.UnderlineBrush="{Binding ColorHint}"
+                        materialDesign:TextFieldAssist.UnderlineBrush="{Binding ColorHint1}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="GotFocus">
@@ -75,7 +75,7 @@
                         x:Name="FloatingPasswordBox"
                         materialDesign:HintAssist.Foreground="Green"
                         materialDesign:HintAssist.Hint="Mật khẩu"
-                        materialDesign:TextFieldAssist.UnderlineBrush="{Binding ColorHint}"
+                        materialDesign:TextFieldAssist.UnderlineBrush="{Binding ColorHint2}"
                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="PasswordChanged">

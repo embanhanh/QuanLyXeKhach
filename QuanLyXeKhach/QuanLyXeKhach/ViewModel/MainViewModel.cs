@@ -35,7 +35,6 @@ namespace QuanLyXeKhach.ViewModel
                 if (lgVM.isLogin)
                 {
                     p.Show();
-
                 }
                 else
                     p.Close();
