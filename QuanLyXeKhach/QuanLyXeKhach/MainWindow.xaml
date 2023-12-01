@@ -138,12 +138,12 @@
                                               x:Name="listClient" SelectedItem="{Binding SelectedItemClient,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding MAKH,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                                                <GridViewColumn Header="Họ tên"  DisplayMemberBinding="{Binding HOTEN,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                                                <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding GT,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                                                <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding NGSINH,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding DCHI,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                                                <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding SODT,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding CCCD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                                <GridViewColumn Header="Họ tên"  DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding }"/>
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
@@ -277,19 +277,16 @@
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
                                 <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
-                                    <ListView Margin="10 5" ItemsSource="{Binding }" SelectedItem="{Binding SelectedItemStaff,Mode=OneWayToSource}">
+                                    <ListView Margin="10 5" ItemsSource="{Binding ListStaff,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                              SelectedItem="{Binding SelectedItemStaff,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="Mã nhân viên" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Họ tên"  DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="CCCD" DisplayMemberBinding="{Binding CCCDNV}"/>
+                                                <GridViewColumn Header="Họ tên"  DisplayMemberBinding="{Binding HoTenNhanVien}"/>
                                                 <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="CCCD" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Mã xe" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Bằng lái" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Điểm bán vé" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding NgaySinh}"/>
+                                                <GridViewColumn Header="SDT" DisplayMemberBinding="{Binding SoDienThoai}"/>
+                                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding DiaChi}"/>
                                             </GridView>
                                         </ListView.View>
                                     </ListView>

@@ -8,4 +8,5 @@
     <viewmodel:EditClientVM x:Key="editClientVM"></viewmodel:EditClientVM>
     <viewmodel:AddDriverVM x:Key="addDriverVM"></viewmodel:AddDriverVM>
     <viewmodel:EditDriverVM x:Key="editDriverVM"></viewmodel:EditDriverVM>
+    <viewmodel:AddStaffVM x:Key="addStaffVM"></viewmodel:AddStaffVM>
 </ResourceDictionary>

@@ -17,8 +17,10 @@ namespace QuanLyXeKhach.ViewModel
         //List
         private ObservableCollection<HANHKHACH> _ListClient;
         private ObservableCollection<TAIXE> _ListDriver;
+        private ObservableCollection<NHANVIEN> _ListStaff;
         public ObservableCollection<HANHKHACH> ListClient { get =>_ListClient;set { _ListClient = value; OnPropertyChanged(); } }
         public ObservableCollection<TAIXE> ListDriver { get => _ListDriver; set { _ListDriver = value; OnPropertyChanged(); } }
+        public ObservableCollection<NHANVIEN> ListStaff { get => _ListStaff; set { _ListStaff = value; OnPropertyChanged(); } }
         //SelectedItem
         private HANHKHACH _SelectedItemClient;
         public HANHKHACH SelectedItemClient { get => _SelectedItemClient; set { _SelectedItemClient = value; OnPropertyChanged(); } }
@@ -68,8 +70,9 @@ namespace QuanLyXeKhach.ViewModel
                     p.Close();
             });
             //Load Data
-            //ListClient = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
-            ListDriver = new ObservableCollection<TAIXE>();
+            ListClient = new ObservableCollection<HANHKHACH>();
+            ListDriver = new ObservableCollection<TAIXE>(DataProvider.Ins.db.TAIXEs);
+            ListStaff = new ObservableCollection<NHANVIEN>(DataProvider.Ins.db.NHANVIENs);
             //Command Button Add, Edit, Delete
             //Client
             AddClientCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { 
@@ -77,7 +80,7 @@ namespace QuanLyXeKhach.ViewModel
                 wd.ShowDialog();
                 var clientVM = wd.DataContext as AddClientVM;
                 if (clientVM.isAdd)
-                    ListClient.Add(clientVM.New);
+                    ListClient.Add(clientVM.ListNew[clientVM.index-1]);
             });
             EditClientCommand = new RelayCommand<ListView>((p) => {
                 if (SelectedItemClient == null)
@@ -104,7 +107,13 @@ namespace QuanLyXeKhach.ViewModel
                 ListClient.Remove(SelectedItemClient);
             });
             //Staff
-            AddStaffCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { AddStaffWd wd = new AddStaffWd(); wd.ShowDialog(); });
+            AddStaffCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { 
+                AddStaffWd wd = new AddStaffWd(); 
+                wd.ShowDialog();
+                var staffVM = wd.DataContext as AddStaffVM;
+                if(staffVM.isAdd)
+                    ListStaff.Add(staffVM.New);
+            });
             EditStaffCommand = new RelayCommand<Object>((p) => {
                 if (SelectedItemStaff == null)
                     return false;
@@ -145,7 +154,7 @@ namespace QuanLyXeKhach.ViewModel
                 wd.ShowDialog();
                 var driverVM = wd.DataContext as AddDriverVM;
                 if (driverVM.isAdd)
-                    ListDriver.Add(driverVM.New);
+                    ListDriver.Add(driverVM.ListNew[driverVM.index - 1]);
             });
             EditDriverCommand = new RelayCommand<Object>((p) => {
                 if (SelectedItemDriver == null)
