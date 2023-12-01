@@ -25,7 +25,6 @@ namespace QuanLyXeKhach.ViewModel
         public string ColorHint2 { get { return _colorHint2; } set { _colorHint2 = value; OnPropertyChanged("ColorHint2"); } }
         public string Username { get { return _username; } set { _username = value; } }
         public string Password { get { return _password; } set { _password = value; } }
-        
         public ICommand LoginWindowCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
         public ICommand CloseLgWdCommand { get; set; }
@@ -36,7 +35,6 @@ namespace QuanLyXeKhach.ViewModel
         {
             if(PropertyChanged != null) PropertyChanged(this,new PropertyChangingEventArgs(Name));
         }
-
         public LoginViewModel() 
         {
             ColorHint1 = "Green";
