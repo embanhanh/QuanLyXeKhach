@@ -81,50 +81,112 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddBusWd.xaml.cs">
+    <Compile Include="AddWindow\AddBusWd.xaml.cs">
       <DependentUpon>AddBusWd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddClientWd.xaml.cs">
+    <Compile Include="AddWindow\AddClientWd.xaml.cs">
       <DependentUpon>AddClientWd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddRouteWd.xaml.cs">
+    <Compile Include="AddWindow\AddRouteWd.xaml.cs">
       <DependentUpon>AddRouteWd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddStaffWd.xaml.cs">
+    <Compile Include="AddWindow\AddStaffWd.xaml.cs">
       <DependentUpon>AddStaffWd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddTicketWd.xaml.cs">
-      <DependentUpon>AddTicketWd.xaml</DependentUpon>
+    <Compile Include="AddWindow\AddDriverWd.xaml.cs">
+      <DependentUpon>AddDriverWd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditWindow\EditClientWd.xaml.cs">
+      <DependentUpon>EditClientWd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditWindow\EditDriverWd.xaml.cs">
+      <DependentUpon>EditDriverWd.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\BENXE.cs">
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BIENLAI.cs">
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataProvider.cs" />
+    <Compile Include="Model\GHE.cs">
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GIAVE.cs">
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HANHKHACH.cs">
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NHANVIEN.cs">
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\QlyXeKhach.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QlyXeKhach.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\QlyXeKhach.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\QlyXeKhach.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QlyXeKhach.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagram.cs">
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TAIXE.cs">
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TUYENXE.cs">
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\XEKHACH.cs">
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserControlFolder\ControlBarUC.xaml.cs">
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddClientVM.cs" />
+    <Compile Include="ViewModel\AddDriverVM.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
+    <Compile Include="ViewModel\EditClientVM.cs" />
+    <Compile Include="ViewModel\EditDriverVM.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Page Include="AddBusWd.xaml">
+    <Page Include="AddWindow\AddBusWd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddClientWd.xaml">
+    <Page Include="AddWindow\AddClientWd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddRouteWd.xaml">
+    <Page Include="AddWindow\AddRouteWd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddStaffWd.xaml">
+    <Page Include="AddWindow\AddStaffWd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddTicketWd.xaml">
+    <Page Include="AddWindow\AddDriverWd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditWindow\EditClientWd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditWindow\EditDriverWd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,6 +233,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\QlyXeKhach.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QlyXeKhach.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\QlyXeKhach.edmx.diagram">
+      <DependentUpon>QlyXeKhach.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -180,7 +249,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Model\QlyXeKhach.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QlyXeKhach.edmx</DependentUpon>
+      <LastGenOutput>QlyXeKhach.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\QlyXeKhach.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QlyXeKhach.edmx</DependentUpon>
+      <LastGenOutput>QlyXeKhach.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

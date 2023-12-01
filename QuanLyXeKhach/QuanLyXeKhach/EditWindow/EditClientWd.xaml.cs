@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace QuanLyXeKhach
+namespace QuanLyXeKhach.EditWindow
 {
     /// <summary>
-    /// Interaction logic for AddTicketWd.xaml
+    /// Interaction logic for EditClientWd.xaml
     /// </summary>
-    public partial class AddTicketWd : Window
+    public partial class EditClientWd : Window
     {
-        public AddTicketWd()
+        public EditClientWd()
         {
             InitializeComponent();
         }

@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace QuanLyXeKhach.ViewModel
 {
-    public class LoginViewModel : BaseViewModel, INotifyPropertyChanged
+    public class LoginViewModel : BaseViewModel
     {
         public bool isLogin { get; set; }
         private string _username;
@@ -19,10 +19,10 @@ namespace QuanLyXeKhach.ViewModel
         private string _errorMessage2;
         private string _colorHint1;
         private string _colorHint2;
-        public string ErrorMessage1 { get { return _errorMessage1; } set { _errorMessage1 = value; OnPropertyChanged("ErrorMessage1"); } }
-        public string ErrorMessage2 { get { return _errorMessage2; } set { _errorMessage2 = value; OnPropertyChanged("ErrorMessage2"); } }
-        public string ColorHint1 { get { return _colorHint1; } set { _colorHint1 = value; OnPropertyChanged("ColorHint1"); } }
-        public string ColorHint2 { get { return _colorHint2; } set { _colorHint2 = value; OnPropertyChanged("ColorHint2"); } }
+        public string ErrorMessage1 { get { return _errorMessage1; } set { _errorMessage1 = value; OnPropertyChanged(); } }
+        public string ErrorMessage2 { get { return _errorMessage2; } set { _errorMessage2 = value; OnPropertyChanged(); } }
+        public string ColorHint1 { get { return _colorHint1; } set { _colorHint1 = value; OnPropertyChanged(); } }
+        public string ColorHint2 { get { return _colorHint2; } set { _colorHint2 = value; OnPropertyChanged(); } }
         public string Username { get { return _username; } set { _username = value; } }
         public string Password { get { return _password; } set { _password = value; } }
         public ICommand LoginWindowCommand { get; set; }
@@ -30,11 +30,6 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand CloseLgWdCommand { get; set; }
         public ICommand UsernameEmpty { get; set; }
         public ICommand PasswordEmpty { get; set; }
-        public event PropertyChangingEventHandler PropertyChanged;
-        protected virtual void OnPropertychanged(string Name)
-        {
-            if(PropertyChanged != null) PropertyChanged(this,new PropertyChangingEventArgs(Name));
-        }
         public LoginViewModel() 
         {
             ColorHint1 = "Green";
@@ -68,6 +63,8 @@ namespace QuanLyXeKhach.ViewModel
                     else
                     {
                         isLogin = false;
+                        ColorHint1 = "Red";
+                        ColorHint2 = "Red";
                         MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!", "", MessageBoxButton.OK);
                     }
                 }

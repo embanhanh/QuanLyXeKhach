@@ -165,7 +165,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QLXeEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="QLyXeEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
     <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
     <EntitySet Name="SUCOes" EntityType="Self.SUCO" />
