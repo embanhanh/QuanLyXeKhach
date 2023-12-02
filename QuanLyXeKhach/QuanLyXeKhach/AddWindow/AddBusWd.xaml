@@ -57,7 +57,7 @@
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>        
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding BenXeXuatPhat}"  
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding TenBenXe}"  
                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXeXuatPhat}"
                                 materialDesign:HintAssist.Hint="Bến Xe Xuất Phát"
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}">

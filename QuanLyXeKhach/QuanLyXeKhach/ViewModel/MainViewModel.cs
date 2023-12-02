@@ -167,6 +167,7 @@ namespace QuanLyXeKhach.ViewModel
                     int index = ListBus.IndexOf(SelectedItemBus);
                     ListBus.RemoveAt(index);
                     ListBus.Insert(index, editVM.New);
+                    Bus_BenXe.RemoveAt(index);
                     SelectedItemBus = editVM.New;
                 }
             });

@@ -17,6 +17,9 @@ namespace QuanLyXeKhach.ViewModel
     {
         public int index = 0;
         public bool isAdd = false;
+        public List<string> TBX;
+        private string _TenBenXe;
+        public string TenBenXe { get => _TenBenXe; set { _TenBenXe = value; OnPropertyChanged(); } }
         private ObservableCollection<XEKHACH> _listnew;
         public ObservableCollection<XEKHACH> ListNew { get => _listnew; set { _listnew = value; OnPropertyChanged(); } }
         private XEKHACH _new;
@@ -39,8 +42,24 @@ namespace QuanLyXeKhach.ViewModel
             }
             */
             New = new XEKHACH();
+            var _BX = DataProvider.Ins.db.BENXEs.ToList();
+            var _TX = DataProvider.Ins.db.TUYENXEs.ToList();
             addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
+                bool isOk = false;
+                foreach (BENXE bx in _BX)
+                {
+                    foreach(TUYENXE tx in _TX)
+                    {
+                        if(TenBenXe == bx.TenBenXe && bx.IDBenXe == tx.IDBenXeXuatPhat)
+                        {
+                            New.IDTuyenXe = tx.IDTuyenXe;
+                            isOk = true;
+                            break;
+                        }
+                    }
+                    if (isOk) break;
+                }
                 ListNew.Add(New);
                 New = new XEKHACH();
                 index++;

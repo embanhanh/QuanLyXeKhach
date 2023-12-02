@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\QuanLyXeKhach",
+    "\\QuanLyXeKhach\\QuanLyXeKhach"
   ],
-  "SelectedNode": "\\QuanLyXeKhach.sln",
+  "SelectedNode": "\\QuanLyXeKhach\\QuanLyXeKhach\\MainWindow.xaml.cs",
   "PreviewInSolutionExplorer": false
 }
