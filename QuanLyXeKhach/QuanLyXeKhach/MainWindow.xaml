@@ -348,15 +348,16 @@
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
                                 <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
-                                    <ListView Margin="10 5" ItemsSource="{Binding }" SelectedItem="{Binding SelectedItemBus,Mode=OneWayToSource}">
+                                    <ListView Margin="10 5" ItemsSource="{Binding ListBus, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                              SelectedItem="{Binding SelectedItemBus, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="Mã xe" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Biển số"  DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Số lượng ghế" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Hãng sản xuất" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Năm sản xuất" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Mã tuyến" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Biển số xe" DisplayMemberBinding="{Binding BienSoXe}"/>
+                                                <GridViewColumn Header="CCCD Tài xế"  DisplayMemberBinding="{Binding CCCDTX}"/>
+                                                <GridViewColumn Header="Tên bến xe" DisplayMemberBinding="{Binding Bus_BenXe}"/>
+                                                <GridViewColumn Header="Loại xe" DisplayMemberBinding="{Binding LoaiXe}"/>
+                                                <GridViewColumn Header="Số ghế" DisplayMemberBinding="{Binding SoGhe}"/>
+                                                <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding TinhTrang}"/>
                                             </GridView>
                                         </ListView.View>
                                     </ListView>

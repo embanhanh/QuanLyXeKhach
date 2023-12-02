@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                      xmlns:viewmodel="clr-namespace:QuanLyXeKhach.ViewModel"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-                    <!--xmlns:local="clr-namespace:QuanLyXeKhach.ResourceXAML"-->
+    <!--xmlns:local="clr-namespace:QuanLyXeKhach.ResourceXAML"-->
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
     <viewmodel:AddClientVM x:Key="addClientVM"></viewmodel:AddClientVM>
@@ -9,4 +9,6 @@
     <viewmodel:AddDriverVM x:Key="addDriverVM"></viewmodel:AddDriverVM>
     <viewmodel:EditDriverVM x:Key="editDriverVM"></viewmodel:EditDriverVM>
     <viewmodel:AddStaffVM x:Key="addStaffVM"></viewmodel:AddStaffVM>
+    <viewmodel:AddBusVM x:Key="addBusVM"></viewmodel:AddBusVM>
+    <viewmodel:EditBusVM x:Key="editBusVM"></viewmodel:EditBusVM>
 </ResourceDictionary>
