@@ -19,7 +19,7 @@ namespace QuanLyXeKhach.ViewModel
         public XEKHACH New { get => _new; set { _new = value; OnPropertyChanged(); } }
         private List<string> _BenXeXuatPhat;
         public List<string> BenXeXuatPhat { get => _BenXeXuatPhat; set { _BenXeXuatPhat = value; OnPropertyChanged(); } }
-        public ICommand addCommand { get; set; }
+        public ICommand editCommand { get; set; }
         public ICommand closeCommand { get; set; }
 
         public EditBusVM()
@@ -35,7 +35,7 @@ namespace QuanLyXeKhach.ViewModel
             }
             */
             New = new XEKHACH();
-            addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            editCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 isEdit = true;
                 p.Close();

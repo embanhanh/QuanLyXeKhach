@@ -1,4 +1,5 @@
-﻿using QuanLyXeKhach.EditWindow;
+﻿using QuanLyXeKhach.AddWindow;
+using QuanLyXeKhach.EditWindow;
 using QuanLyXeKhach.Model;
 using System;
 using System.Collections.Generic;
@@ -22,10 +23,12 @@ namespace QuanLyXeKhach.ViewModel
         private ObservableCollection<TAIXE> _ListDriver;
         private ObservableCollection<NHANVIEN> _ListStaff;
         private ObservableCollection<XEKHACH> _ListBus;
+        private ObservableCollection<BENXE> _ListBusStation;
         public ObservableCollection<HANHKHACH> ListClient { get =>_ListClient;set { _ListClient = value; OnPropertyChanged(); } }
         public ObservableCollection<TAIXE> ListDriver { get => _ListDriver; set { _ListDriver = value; OnPropertyChanged(); } }
         public ObservableCollection<NHANVIEN> ListStaff { get => _ListStaff; set { _ListStaff = value; OnPropertyChanged(); } }
         public ObservableCollection<XEKHACH> ListBus { get => _ListBus; set { _ListBus = value; OnPropertyChanged(); } }
+        public ObservableCollection<BENXE> ListBusStation { get => _ListBusStation; set { _ListBusStation = value; OnPropertyChanged(); } }
         //SelectedItem
         private HANHKHACH _SelectedItemClient;
         public HANHKHACH SelectedItemClient { get => _SelectedItemClient; set { _SelectedItemClient = value; OnPropertyChanged(); } }
@@ -36,7 +39,9 @@ namespace QuanLyXeKhach.ViewModel
         private TUYENXE _SelectedItemRoute;
         public TUYENXE SelectedItemRoute { get => _SelectedItemRoute; set { _SelectedItemRoute = value; OnPropertyChanged(); } }
         private TAIXE _SelectedItemDriver;
-        public TAIXE SelectedItemDriver { get => _SelectedItemDriver; set { _SelectedItemDriver = value; OnPropertyChanged(); } }
+        public TAIXE SelectedItemDriver { get => _SelectedItemDriver; set { _SelectedItemDriver = value; /*OnPropertyChanged();*/ } }
+        private BENXE _SelectedItemBusStation;
+        public BENXE SelectedItemBusStation { get => _SelectedItemBusStation; set { _SelectedItemBusStation = value; OnPropertyChanged(); } }
         //Command
         public ICommand LoadedWindowCommand { get; set; }
         public ICommand AddClientCommand { get; set; }
@@ -54,6 +59,9 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand AddDriverCommand { get; set; }
         public ICommand EditDriverCommand { get; set; }
         public ICommand DeleteDriverCommand { get; set; }
+        public ICommand AddBusStationCommand { get; set; }
+        public ICommand EditBusStationCommand { get; set; }
+        public ICommand DeleteBusStationCommand { get; set; }
         public MainViewModel()
         {
             //Load MainWindow
@@ -75,9 +83,11 @@ namespace QuanLyXeKhach.ViewModel
                     p.Close(); 
             });
             //Load Data
-            ListClient = new ObservableCollection<HANHKHACH>();
-            ListDriver = new ObservableCollection<TAIXE>();
-            ListStaff = new ObservableCollection<NHANVIEN>();
+            ListClient = new ObservableCollection<HANHKHACH>(DataProvider.Ins.db.HANHKHACHes);
+            ListDriver = new ObservableCollection<TAIXE>(DataProvider.Ins.db.TAIXEs);
+            ListStaff = new ObservableCollection<NHANVIEN>(DataProvider.Ins.db.NHANVIENs);
+            ListBusStation = new ObservableCollection<BENXE>(DataProvider.Ins.db.BENXEs);
+            ListBus = new ObservableCollection<XEKHACH>(DataProvider.Ins.db.XEKHACHes);
             //Command Button Add, Edit, Delete
             //Client
             AddClientCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { 
@@ -112,23 +122,37 @@ namespace QuanLyXeKhach.ViewModel
                 ListClient.Remove(SelectedItemClient);
             });
             //Staff
-            AddStaffCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { 
-                AddStaffWd wd = new AddStaffWd(); 
+            AddStaffCommand = new RelayCommand<Object>((p) => { return true; }, (p) => {
+                AddStaffWd wd = new AddStaffWd();
                 wd.ShowDialog();
                 var staffVM = wd.DataContext as AddStaffVM;
-                if(staffVM.isAdd)
-                    ListStaff.Add(staffVM.New);
+                if (staffVM.isAdd)
+                    ListStaff.Add(staffVM.ListNew[staffVM.index - 1]);
             });
             EditStaffCommand = new RelayCommand<Object>((p) => {
                 if (SelectedItemStaff == null)
                     return false;
                 return true;
-            }, (p) => { });
+            }, (p) => {
+                EditStaffWd wd = new EditStaffWd();
+                var editVM = wd.DataContext as EditStaffVM;
+                editVM.New = SelectedItemStaff;
+                wd.ShowDialog();
+                if (editVM.isEdit)
+                {
+                    int index = ListStaff.IndexOf(SelectedItemStaff);
+                    ListStaff.RemoveAt(index);
+                    ListStaff.Insert(index, editVM.New);
+                    SelectedItemStaff = editVM.New;
+                }
+            });
             DeleteStaffCommand = new RelayCommand<Object>((p) => {
                 if (SelectedItemStaff == null)
                     return false;
                 return true;
-            }, (p) => { });
+            }, (p) => {
+                ListStaff.Remove(SelectedItemStaff);
+            });
             //Bus
             AddBusCommand = new RelayCommand<Object>((p) => { return true; }, (p) => {
                 AddBusWd wd = new AddBusWd();
@@ -167,7 +191,7 @@ namespace QuanLyXeKhach.ViewModel
                     int index = ListBus.IndexOf(SelectedItemBus);
                     ListBus.RemoveAt(index);
                     ListBus.Insert(index, editVM.New);
-                    Bus_BenXe.RemoveAt(index);
+                    //Bus_BenXe.RemoveAt(index);
                     SelectedItemBus = editVM.New;
                 }
             });
@@ -175,7 +199,9 @@ namespace QuanLyXeKhach.ViewModel
                 if (SelectedItemBus == null)
                     return false;
                 return true;
-            }, (p) => { });
+            }, (p) => {
+                ListBus.Remove(SelectedItemBus);
+            });
             //Route
             AddRouteCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { AddRouteWd wd = new AddRouteWd(); wd.ShowDialog(); });
             EditRouteCommand = new RelayCommand<Object>((p) => {
@@ -210,6 +236,7 @@ namespace QuanLyXeKhach.ViewModel
                     int index = ListDriver.IndexOf(SelectedItemDriver);
                     ListDriver.RemoveAt(index);
                     ListDriver.Insert(index, editVM.New);
+                    MessageBox.Show(SelectedItemDriver.SoDienThoai);
                     SelectedItemDriver = editVM.New;
                 }
             });
@@ -219,6 +246,38 @@ namespace QuanLyXeKhach.ViewModel
                 return true;
             }, (p) => { 
                 ListDriver.Remove(SelectedItemDriver);
+            });
+            //Bus Station
+            AddBusStationCommand = new RelayCommand<Object>((p) => { return true; }, (p) => {
+                AddBusStationWd wd = new AddBusStationWd();
+                wd.ShowDialog();
+                var busstationVM = wd.DataContext as AddBusStationVM;
+                if (busstationVM.isAdd)
+                    ListBusStation.Add(busstationVM.ListNew[busstationVM.index - 1]);
+            });
+            EditBusStationCommand = new RelayCommand<Object>((p) => {
+                if (SelectedItemBusStation == null)
+                    return false;
+                return true;
+            }, (p) => {
+                EditBusStationWd wd = new EditBusStationWd();
+                var editVM = wd.DataContext as EditBusStationVM;
+                editVM.New = SelectedItemBusStation;
+                wd.ShowDialog();
+                if (editVM.isEdit)
+                {
+                    int index = ListBusStation.IndexOf(SelectedItemBusStation);
+                    ListBusStation.RemoveAt(index);
+                    ListBusStation.Insert(index, editVM.New);
+                    SelectedItemBusStation = editVM.New;
+                }
+            });
+            DeleteBusStationCommand = new RelayCommand<Object>((p) => {
+                if (SelectedItemBusStation == null)
+                    return false;
+                return true;
+            }, (p) => {
+                ListBusStation.Remove(SelectedItemBusStation);
             });
         }
     }

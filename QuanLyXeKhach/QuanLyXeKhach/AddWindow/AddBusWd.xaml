@@ -109,12 +109,12 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Width="120" Margin="20 0" Command="{Binding addCommand}" CommandParameter="{Binding addBusWd}"
+                        <Button Grid.Column="0" Width="120" Margin="20 0" Command="{Binding addCommand}" CommandParameter="{Binding ElementName=addBusWd}"
                             Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                             ToolTip="Resource name: MaterialDesignRaisedLightButton">
                             
                         </Button>
-                        <Button Grid.Column="1" Width="120" Margin="20 0" Command="{Binding closeCommand}" CommandParameter="{Binding addBusWd}"
+                        <Button Grid.Column="1" Width="120" Margin="20 0" Command="{Binding closeCommand}" CommandParameter="{Binding ElementName=addBusWd}"
                             Content="Thoát" Foreground="White" Background="OrangeRed" BorderBrush="#08c424"
                             ToolTip="Resource name: MaterialDesignRaisedLightButton">   
 

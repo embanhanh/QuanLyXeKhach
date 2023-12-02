@@ -9,20 +9,15 @@ using System.Windows;
 
 namespace QuanLyXeKhach.ViewModel
 {
-    public class EditDriverVM:BaseViewModel
+    public class EditBusStationVM : BaseViewModel
     {
         public bool isEdit;
-        private TAIXE _new;
-        private List<string> _BangLai;
-        public List<string> BangLai { get => _BangLai; set { _BangLai = value; OnPropertyChanged(); } }
-        public TAIXE New { get => _new; set { _new = value; OnPropertyChanged(); } }
+        private BENXE _new;
+        public BENXE New { get => _new; set { _new = value; OnPropertyChanged(); } }
         public ICommand closeCommand { get; set; }
         public ICommand editCommand { get; set; }
-        public EditDriverVM()
+        public EditBusStationVM()
         {
-            
-            BangLai = new List<string>() { "C", "D", "E" };
-            New = new TAIXE();
             isEdit = false;
             closeCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -34,7 +29,6 @@ namespace QuanLyXeKhach.ViewModel
                 isEdit = true;
                 p.Close();
             });
-
         }
     }
 }

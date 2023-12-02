@@ -39,11 +39,9 @@ C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\bin\Debug\E
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\QuanLyXeKhach_Content.g.cs
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddBusWd.g.cs
-C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddClientWd.g.cs
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddRouteWd.g.cs
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddStaffWd.g.cs
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddBusWd.baml
-C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddClientWd.baml
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddRouteWd.baml
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddStaffWd.baml
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditClientWd.g.cs
@@ -108,3 +106,13 @@ C:\Users\phamngocthinh\Source\Repos\QuanLyXeKhach_ver2\QuanLyXeKhach\QuanLyXeKha
 C:\Users\phamngocthinh\Source\Repos\QuanLyXeKhach_ver2\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\Model\AddClientWd.baml
 C:\Users\phamngocthinh\source\repos\QuanLyXeKhach_ver2\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditBusWd.g.cs
 C:\Users\phamngocthinh\source\repos\QuanLyXeKhach_ver2\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditBusWd.baml
+C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditBusWd.g.cs
+C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditBusWd.baml
+C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditStaffWd.g.cs
+C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditStaffWd.baml
+C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddBusStationWd.g.cs
+C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditBusStationWd.g.cs
+C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddBusStationWd.baml
+C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditBusStationWd.baml
+C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddClientWd.g.cs
+C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddClientWd.baml

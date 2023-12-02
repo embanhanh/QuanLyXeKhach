@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace QuanLyXeKhach.EditWindow
 {
     /// <summary>
-    /// Interaction logic for EditBusWd.xaml
+    /// Interaction logic for EditBusStationWd.xaml
     /// </summary>
-    public partial class EditBusWd : Window
+    public partial class EditBusStationWd : Window
     {
-        public EditBusWd()
+        public EditBusStationWd()
         {
             InitializeComponent();
         }

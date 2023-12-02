@@ -31,8 +31,8 @@ namespace QuanLyXeKhach.ViewModel
 
         public AddBusVM()
         {
+            ListNew= new ObservableCollection<XEKHACH>();
             BenXeXuatPhat = new List<string>() { "Ben Xe Mien Dong", "Ben Xe Mien Tay", "Ben Xe Chin Nghia" };
-            /* Dùng  database để lấy tên các bến xe
             var BXXP = DataProvider.Ins.db.BENXEs.ToList();
             BenXeXuatPhat = new List<string>();
             while (BXXP.Count > 0)
@@ -40,7 +40,6 @@ namespace QuanLyXeKhach.ViewModel
                 BenXeXuatPhat.Add(BXXP.First().TenBenXe);
                 BXXP.RemoveAt(0);
             }
-            */
             New = new XEKHACH();
             var _BX = DataProvider.Ins.db.BENXEs.ToList();
             var _TX = DataProvider.Ins.db.TUYENXEs.ToList();

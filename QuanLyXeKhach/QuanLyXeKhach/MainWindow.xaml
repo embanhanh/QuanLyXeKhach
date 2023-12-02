@@ -524,7 +524,7 @@
                         </Grid>
                     </Grid>
                 </TabItem>
-                <!--Proplem-->
+                <!--Bus Station-->
                 <TabItem Height="65">
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="120" >
@@ -554,14 +554,14 @@
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
                                 <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
-                                    <ListView Margin="10 5" ItemsSource="{Binding }" SelectedItem="{Binding SelectedItemProblem,Mode=OneWayToSource}">
+                                    <ListView Margin="10 5" ItemsSource="{Binding ListBusStation,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                        SelectedItem="{Binding SelectedItemBusStation,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="Mã sự cố" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Mã xe"  DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Thông tin" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Chi phí" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Ngày xảy ra" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IDBenXe}"/>
+                                                <GridViewColumn Header="Tên Bến Xe"  DisplayMemberBinding="{Binding TenBenXe}"/>
+                                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding DiaChi}"/>
+                                                <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding SoDienThoaiBen}"/>
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
@@ -572,19 +572,19 @@
                         <Grid Grid.Row="1" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
-                                <Button Width="100" Margin="20 0"
+                                <Button Width="100" Margin="20 0" Command="{Binding AddBusStationCommand}"
                                     Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                    Style="{StaticResource MaterialDesignRaisedLightButton}" 
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Edit-->
-                                <Button Width="100" Margin="20 0"
+                                <Button Width="100" Margin="20 0" Command="{Binding EditBusStationCommand}"
                                      Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Delete-->
-                                <Button Width="100" Margin="20 0"
+                                <Button Width="100" Margin="20 0" Command="{Binding DeleteBusStationCommand}"
                                      Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
