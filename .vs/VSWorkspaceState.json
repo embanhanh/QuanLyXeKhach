@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\QuanLyXeKhach",
-    "\\QuanLyXeKhach\\QuanLyXeKhach"
+    "\\QuanLyXeKhach\\QuanLyXeKhach",
+    "\\QuanLyXeKhach\\QuanLyXeKhach\\ViewModel"
   ],
-  "SelectedNode": "\\QuanLyXeKhach\\QuanLyXeKhach\\MainWindow.xaml.cs",
+  "SelectedNode": "\\QuanLyXeKhach\\QuanLyXeKhach\\ViewModel\\MainViewModel.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,29 +1,28 @@
-﻿<Window x:Class="QuanLyXeKhach.AddRouteWd"
+﻿<Window x:Class="QuanLyXeKhach.EditWindow.EditRouteWd"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QuanLyXeKhach"
+        xmlns:local="clr-namespace:QuanLyXeKhach.EditWindow"
         
-        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Name="addRouteWd"
-        DataContext="{StaticResource addRouteVM}"
+        DataContext="{StaticResource editRouteVM}"
+        Name="editRouteWd"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="AddRouteWd" Height="550" Width="800" Background="{x:Null}" AllowsTransparency="True">
-    <Border Background="#08c424" CornerRadius="40" BorderThickness="1" BorderBrush="Gray">
+        Title="EditRouteWd" Height="550" Width="800" Background="{x:Null}" AllowsTransparency="True">
+    <Border Background="#44b0f1" CornerRadius="35" BorderThickness="1" BorderBrush="Gray">
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Border BorderBrush="ForestGreen" CornerRadius="10"  BorderThickness="2" Grid.Row="0"
-                VerticalAlignment="Center" Background="#25b24a" HorizontalAlignment="Center">
+            <Border BorderBrush="#0883ff" CornerRadius="10"  BorderThickness="1" Grid.Row="0"
+            VerticalAlignment="Center" Background="#08a2e1" HorizontalAlignment="Center">
                 <Grid>
-                    <TextBlock Text="THÊM MỚI" Foreground="White" VerticalAlignment="Center" Padding="20 10"
+                    <TextBlock Text="SỬA ĐỔI" Foreground="White" VerticalAlignment="Center" Padding="20 10"
             HorizontalAlignment="Center" FontSize="18"></TextBlock>
                 </Grid>
             </Border>
@@ -36,7 +35,7 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <TextBlock HorizontalAlignment="Center" FontSize="18"
-                Text="Thông tin tuyến xe" Foreground="Gray" Margin="0 20 0 0">
+        Text="Thông tin tuyến xe" Foreground="Gray" Margin="0 20 0 0">
                         </TextBlock>
                     </Grid>
                     <Grid Grid.Row="1">
@@ -47,13 +46,13 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" Margin="20">
-                            <TextBox BorderBrush="Green" Text="{Binding New.IDTuyenXe,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                                materialDesign:HintAssist.Foreground="Green"
-                                Width="300"
-                                VerticalAlignment="Center"
-                                materialDesign:HintAssist.Hint="Mã Tuyến Xe"
-                                MaxLength="12"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>    
+                            <TextBox BorderBrush="#44b0f1" Text="{Binding New.IDTuyenXe,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                        materialDesign:HintAssist.Foreground="#44b0f1"
+                        Width="300"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Mã Tuyến Xe"
+                        MaxLength="12"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -61,17 +60,17 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding BenXeXP}"  
-                                materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXe}"
-                                materialDesign:HintAssist.Hint="Bến Xe Xuất Phát"
-                                Style="{StaticResource MaterialDesignOutlinedComboBox}">    
+                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding BenXeXP}"  
+                        materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding BenXe}"
+                        materialDesign:HintAssist.Hint="Bến Xe Xuất Phát"
+                        Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding BenXeDD}"  
-                                materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXe}"
-                                materialDesign:HintAssist.Hint="Bến Xe Đích Đến"
-                                Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding BenXeDD}"  
+                        materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding BenXe}"
+                        materialDesign:HintAssist.Hint="Bến Xe Đích Đến"
+                        Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>
                             </Grid>
                         </Grid>
@@ -81,19 +80,19 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="20">
-                                <DatePicker  SelectedDate="{Binding NgayXP}" BorderBrush="Green"
-                                materialDesign:HintAssist.Foreground="Green" 
-                                materialDesign:HintAssist.Hint="Ngày Xuất Phát" 
-                                Style="{StaticResource MaterialDesignOutlinedDatePicker}">
+                                <DatePicker  SelectedDate="{Binding NgayXP}" BorderBrush="#44b0f1"
+                        materialDesign:HintAssist.Foreground="#44b0f1" 
+                        materialDesign:HintAssist.Hint="Ngày Xuất Phát" 
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}">
                                 </DatePicker>
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">
                                 <materialDesign:TimePicker
-                                  SelectedTime="{Binding GioXP}"
-                                  BorderBrush="Green"
-                                  materialDesign:HintAssist.Hint="Giờ Xuất Phát"
-                                  Is24Hours="True"
-                                  Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
+                          SelectedTime="{Binding GioXP}"
+                          BorderBrush="#44b0f1"
+                          materialDesign:HintAssist.Hint="Giờ Xuất Phát"
+                          Is24Hours="True"
+                          Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="3">
@@ -102,19 +101,19 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="20">
-                                <DatePicker  SelectedDate="{Binding NgayDD}" BorderBrush="Green"
-                                    materialDesign:HintAssist.Foreground="Green" 
-                                    materialDesign:HintAssist.Hint="Ngày Đến Đích" 
-                                    Style="{StaticResource MaterialDesignOutlinedDatePicker}">
+                                <DatePicker  SelectedDate="{Binding NgayDD}" BorderBrush="#44b0f1"
+                            materialDesign:HintAssist.Foreground="#44b0f1" 
+                            materialDesign:HintAssist.Hint="Ngày Đến Đích" 
+                            Style="{StaticResource MaterialDesignOutlinedDatePicker}">
                                 </DatePicker>
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">
-                            <materialDesign:TimePicker
-                              SelectedTime="{Binding GioDD}"
-                              BorderBrush="Green"
-                              materialDesign:HintAssist.Hint="Giờ Đến ĐÍch"
-                              Is24Hours="True"
-                              Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
+                                <materialDesign:TimePicker
+                      SelectedTime="{Binding GioDD}"
+                      BorderBrush="#44b0f1"
+                      materialDesign:HintAssist.Hint="Giờ Đến ĐÍch"
+                      Is24Hours="True"
+                      Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
                             </Grid>
                         </Grid>
                     </Grid>
@@ -123,14 +122,14 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Width="120" Margin="20 0" Command="{Binding addCommand}" CommandParameter="{Binding ElementName=addRouteWd}"
-        Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
-        ToolTip="Resource name: MaterialDesignRaisedLightButton">
+                        <Button Grid.Column="0" Width="120" Margin="20 0" Command="{Binding addCommand}" CommandParameter="{Binding ElementName=editRouteWd}"
+                        Content="Thêm" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
+                        ToolTip="Resource name: MaterialDesignRaisedLightButton">
 
                         </Button>
-                        <Button Grid.Column="1" Width="120" Margin="20 0" Command="{Binding closeCommand}" CommandParameter="{Binding ElementName=addRouteWd}"
-        Content="Thoát" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
-        ToolTip="Resource name: MaterialDesignRaisedLightButton">
+                        <Button Grid.Column="1" Width="120" Margin="20 0" Command="{Binding closeCommand}" CommandParameter="{Binding ElementName=editRouteWd}"
+                        Content="Thoát" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
+                        ToolTip="Resource name: MaterialDesignRaisedLightButton">
 
                         </Button>
                     </Grid>

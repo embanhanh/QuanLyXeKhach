@@ -17,18 +17,22 @@ namespace QuanLyXeKhach.ViewModel
     public class MainViewModel : BaseViewModel
     {
         //List join
-        private List<string> Bus_BenXe = new List<string>();
+        public List<string> Bus_BenXe = new List<string>();
+        public List<string> Route_BXXP = new List<string>();
+        public List<string> Route_BXDD = new List<string>();
         //List
         private ObservableCollection<HANHKHACH> _ListClient;
         private ObservableCollection<TAIXE> _ListDriver;
         private ObservableCollection<NHANVIEN> _ListStaff;
         private ObservableCollection<XEKHACH> _ListBus;
         private ObservableCollection<BENXE> _ListBusStation;
+        private ObservableCollection<TUYENXE> _ListRoute;
         public ObservableCollection<HANHKHACH> ListClient { get =>_ListClient;set { _ListClient = value; OnPropertyChanged(); } }
         public ObservableCollection<TAIXE> ListDriver { get => _ListDriver; set { _ListDriver = value; OnPropertyChanged(); } }
         public ObservableCollection<NHANVIEN> ListStaff { get => _ListStaff; set { _ListStaff = value; OnPropertyChanged(); } }
         public ObservableCollection<XEKHACH> ListBus { get => _ListBus; set { _ListBus = value; OnPropertyChanged(); } }
         public ObservableCollection<BENXE> ListBusStation { get => _ListBusStation; set { _ListBusStation = value; OnPropertyChanged(); } }
+        public ObservableCollection<TUYENXE> ListRoute { get => _ListRoute; set { _ListRoute = value; OnPropertyChanged(); } }
         //SelectedItem
         private HANHKHACH _SelectedItemClient;
         public HANHKHACH SelectedItemClient { get => _SelectedItemClient; set { _SelectedItemClient = value; OnPropertyChanged(); } }
@@ -88,6 +92,7 @@ namespace QuanLyXeKhach.ViewModel
             ListStaff = new ObservableCollection<NHANVIEN>(DataProvider.Ins.db.NHANVIENs);
             ListBusStation = new ObservableCollection<BENXE>(DataProvider.Ins.db.BENXEs);
             ListBus = new ObservableCollection<XEKHACH>(DataProvider.Ins.db.XEKHACHes);
+            ListRoute = new ObservableCollection<TUYENXE>(DataProvider.Ins.db.TUYENXEs);
             //Command Button Add, Edit, Delete
             //Client
             AddClientCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { 
@@ -191,7 +196,7 @@ namespace QuanLyXeKhach.ViewModel
                     int index = ListBus.IndexOf(SelectedItemBus);
                     ListBus.RemoveAt(index);
                     ListBus.Insert(index, editVM.New);
-                    //Bus_BenXe.RemoveAt(index);
+                    Bus_BenXe.RemoveAt(index);
                     SelectedItemBus = editVM.New;
                 }
             });
@@ -203,12 +208,50 @@ namespace QuanLyXeKhach.ViewModel
                 ListBus.Remove(SelectedItemBus);
             });
             //Route
-            AddRouteCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { AddRouteWd wd = new AddRouteWd(); wd.ShowDialog(); });
+            AddRouteCommand = new RelayCommand<Object>((p) => { return true; }, (p) => 
+            { 
+                AddRouteWd wd = new AddRouteWd(); 
+                wd.ShowDialog();
+                var RouteVM = wd.DataContext as AddRouteVM;
+                if (RouteVM.isAdd)
+                    ListRoute.Add(RouteVM.ListNew[RouteVM.index - 1]);
+                var _BX = DataProvider.Ins.db.BENXEs.ToList();
+                foreach (BENXE bx in _BX)
+                {
+                    if(ListRoute.Last().IDBenXeXuatPhat == bx.IDBenXe)
+                    {
+                        Route_BXXP.Add(bx.TenBenXe);
+                        break;
+                    }
+                }
+                foreach (BENXE bx in _BX)
+                {
+                    if (ListRoute.Last().IDBenKetThuc == bx.IDBenXe)
+                    {
+                        Route_BXDD.Add(bx.TenBenXe);
+                        break;
+                    }
+                }
+            });
             EditRouteCommand = new RelayCommand<Object>((p) => {
                 if (SelectedItemRoute == null)
                     return false;
                 return true;
-            }, (p) => { });
+            }, (p) => {
+                EditRouteWd wd = new EditRouteWd();
+                var editVM = wd.DataContext as EditRouteVM;
+                editVM.New = SelectedItemRoute;
+                wd.ShowDialog();
+                if (editVM.isEdit)
+                {
+                    int index = ListBus.IndexOf(SelectedItemBus);
+                    ListRoute.RemoveAt(index);
+                    ListRoute.Insert(index, editVM.New);
+                    Route_BXXP.RemoveAt(index);
+                    Route_BXDD.RemoveAt(index);
+                    SelectedItemRoute = editVM.New;
+                }
+            });
             DeleteRouteCommand = new RelayCommand<Object>((p) => {
                 if (SelectedItemRoute == null)
                     return false;

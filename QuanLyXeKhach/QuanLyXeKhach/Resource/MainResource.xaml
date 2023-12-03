@@ -14,4 +14,6 @@
     <viewmodel:EditBusVM x:Key="editBusVM"></viewmodel:EditBusVM>
     <viewmodel:AddBusStationVM x:Key="addBusStationVM"></viewmodel:AddBusStationVM>
     <viewmodel:EditBusStationVM x:Key="editBusStationVM"></viewmodel:EditBusStationVM>
+    <viewmodel:AddRouteVM x:Key="addRouteVM"></viewmodel:AddRouteVM>
+    <viewmodel:EditRouteVM x:Key="editRouteVM"></viewmodel:EditRouteVM>
 </ResourceDictionary>

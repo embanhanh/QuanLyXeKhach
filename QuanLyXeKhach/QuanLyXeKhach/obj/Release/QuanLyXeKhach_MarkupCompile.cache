@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\phamngocthinh\source\repos\QuanLyXeKhach_ver2\QuanLyXeKhach\QuanLyXeKhach\obj\Release\
+C:\Users\phamngocthinh\source\repos\QuanLyXeKhach_ver3\QuanLyXeKhach\QuanLyXeKhach\obj\Release\
 QuanLyXeKhach
 none
 false
 TRACE
-C:\Users\phamngocthinh\source\repos\QuanLyXeKhach_ver2\QuanLyXeKhach\QuanLyXeKhach\App.xaml
-12-1716247092
+C:\Users\phamngocthinh\source\repos\QuanLyXeKhach_ver3\QuanLyXeKhach\QuanLyXeKhach\App.xaml
+162089926339
 2-134735901
-40140190964
-23107576408
-AddWindow\AddBusWd.xaml;EditWindow\EditBusWd.xaml;Model\AddClientWd.xaml;AddWindow\AddRouteWd.xaml;AddWindow\AddStaffWd.xaml;AddWindow\AddDriverWd.xaml;EditWindow\EditClientWd.xaml;EditWindow\EditDriverWd.xaml;LoginWindow.xaml;MainWindow.xaml;Resource\MainResource.xaml;UserControlFolder\ControlBarUC.xaml;
+49409752478
+231536935315
+AddWindow\AddBusStationWd.xaml;AddWindow\AddBusWd.xaml;EditWindow\EditBusStationWd.xaml;EditWindow\EditBusWd.xaml;EditWindow\EditRouteWd.xaml;EditWindow\EditStaffWd.xaml;AddWindow\AddClientWd.xaml;AddWindow\AddRouteWd.xaml;AddWindow\AddStaffWd.xaml;AddWindow\AddDriverWd.xaml;EditWindow\EditClientWd.xaml;EditWindow\EditDriverWd.xaml;LoginWindow.xaml;MainWindow.xaml;Resource\MainResource.xaml;UserControlFolder\ControlBarUC.xaml;
 
 True
 

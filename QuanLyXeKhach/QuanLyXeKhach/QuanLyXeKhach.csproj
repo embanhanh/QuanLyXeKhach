@@ -93,6 +93,9 @@
     <Compile Include="EditWindow\EditBusWd.xaml.cs">
       <DependentUpon>EditBusWd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditWindow\EditRouteWd.xaml.cs">
+      <DependentUpon>EditRouteWd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditWindow\EditStaffWd.xaml.cs">
       <DependentUpon>EditStaffWd.xaml</DependentUpon>
     </Compile>
@@ -170,6 +173,7 @@
     <Compile Include="ViewModel\AddBusVM.cs" />
     <Compile Include="ViewModel\AddClientVM.cs" />
     <Compile Include="ViewModel\AddDriverVM.cs" />
+    <Compile Include="ViewModel\AddRouteVM.cs" />
     <Compile Include="ViewModel\AddStaffVM.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
@@ -177,6 +181,7 @@
     <Compile Include="ViewModel\EditBusVM.cs" />
     <Compile Include="ViewModel\EditClientVM.cs" />
     <Compile Include="ViewModel\EditDriverVM.cs" />
+    <Compile Include="ViewModel\EditRouteVM.cs" />
     <Compile Include="ViewModel\EditStaffVM.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -193,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditWindow\EditBusWd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditWindow\EditRouteWd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

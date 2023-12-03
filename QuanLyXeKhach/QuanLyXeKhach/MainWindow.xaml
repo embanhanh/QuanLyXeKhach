@@ -419,16 +419,15 @@
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
                                 <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
-                                    <ListView Margin="10 5" ItemsSource="{Binding }" SelectedItem="{Binding SelectedItemRoute,Mode=OneWayToSource}">
+                                    <ListView Margin="10 5" ItemsSource="{Binding ListRoute, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                              SelectedItem="{Binding SelectedItemRoute, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="Mã tuyến" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Bến đầu"  DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Bến cuối" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Số lượng xe" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Thời gian dự kiến" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Chi tiết trạm" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Ngày xuất bến" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Mã tuyến" DisplayMemberBinding="{Binding IDTuyenXe}"/>
+                                                <GridViewColumn Header="Bến đầu"  DisplayMemberBinding="{Binding Route_BXXP}"/>
+                                                <GridViewColumn Header="Bến cuối" DisplayMemberBinding="{Binding Route_BXDD}"/>
+                                                <GridViewColumn Header="Thời Gian Xuất Phát" DisplayMemberBinding="{Binding ThoiGianXuatPhat}"/>
+                                                <GridViewColumn Header="Thời Gian Đến Đích" DisplayMemberBinding="{Binding ThoiGianKetThuc}"/>
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
