@@ -12,23 +12,18 @@ namespace QuanLyXeKhach.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class TUYENXE
+    public partial class LUUTHONG
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TUYENXE()
-        {
-            this.LUUTHONGs = new HashSet<LUUTHONG>();
-        }
-    
         public string IDTuyenXe { get; set; }
-        public string IDBenXeXuatPhat { get; set; }
-        public string IDBenKetThuc { get; set; }
+        public string BienSoXe { get; set; }
+        public Nullable<byte> TongKhach { get; set; }
+        public string IDBenDau { get; set; }
+        public string IDBenCuoi { get; set; }
         public Nullable<System.DateTime> ThoiGianXuatPhat { get; set; }
         public Nullable<System.DateTime> ThoiGianKetThuc { get; set; }
+        public string ChiTietTram { get; set; }
     
-        public virtual BENXE BENXE { get; set; }
-        public virtual BENXE BENXE1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LUUTHONG> LUUTHONGs { get; set; }
+        public virtual XEKHACH XEKHACH { get; set; }
+        public virtual TUYENXE TUYENXE { get; set; }
     }
 }

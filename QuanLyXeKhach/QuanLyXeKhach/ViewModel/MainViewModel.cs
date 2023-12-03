@@ -17,7 +17,6 @@ namespace QuanLyXeKhach.ViewModel
     public class MainViewModel : BaseViewModel
     {
         //List join
-        public List<string> Bus_BenXe = new List<string>();
         public List<string> Route_BXXP = new List<string>();
         public List<string> Route_BXDD = new List<string>();
         //List
@@ -43,7 +42,7 @@ namespace QuanLyXeKhach.ViewModel
         private TUYENXE _SelectedItemRoute;
         public TUYENXE SelectedItemRoute { get => _SelectedItemRoute; set { _SelectedItemRoute = value; OnPropertyChanged(); } }
         private TAIXE _SelectedItemDriver;
-        public TAIXE SelectedItemDriver { get => _SelectedItemDriver; set { _SelectedItemDriver = value; /*OnPropertyChanged();*/ } }
+        public TAIXE SelectedItemDriver { get => _SelectedItemDriver; set { _SelectedItemDriver = value; OnPropertyChanged(); } }
         private BENXE _SelectedItemBusStation;
         public BENXE SelectedItemBusStation { get => _SelectedItemBusStation; set { _SelectedItemBusStation = value; OnPropertyChanged(); } }
         //Command
@@ -97,8 +96,9 @@ namespace QuanLyXeKhach.ViewModel
             //Client
             AddClientCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { 
                 AddClientWd wd = new AddClientWd(); 
-                wd.ShowDialog();
                 var clientVM = wd.DataContext as AddClientVM;
+                
+                wd.ShowDialog();
                 if (clientVM.isAdd)
                     ListClient.Add(clientVM.ListNew[clientVM.index-1]);
             });
@@ -109,14 +109,30 @@ namespace QuanLyXeKhach.ViewModel
             }, (p) => { 
                 EditClientWd wd = new EditClientWd();
                 var editVM = wd.DataContext as EditClientVM;
-                editVM.New = SelectedItemClient;
+                editVM.New2.SoHieuGhe = SelectedItemClient.SoHieuGhe;
+                editVM.New2.Tuoi= SelectedItemClient.Tuoi;
+                editVM.New2.IDHanhKhach = SelectedItemClient.IDHanhKhach;
+                editVM.New2.CCCD = SelectedItemClient.CCCD;
+                editVM.New2.TenHanhKhach= SelectedItemClient.TenHanhKhach;
+                editVM.New2.DiaChiHK = SelectedItemClient.DiaChiHK;
+                editVM.New2.GioiTinh = SelectedItemClient.GioiTinh;
+                editVM.New2.SDTHK = SelectedItemClient.SDTHK;
+                editVM.New = editVM.New2;
                 wd.ShowDialog();
                 if(editVM.isEdit)
                 {
                     int index = ListClient.IndexOf(SelectedItemClient);
                     ListClient.RemoveAt(index);
-                    ListClient.Insert(index, editVM.New);
-                    SelectedItemClient = editVM.New;
+                    SelectedItemClient = new HANHKHACH();
+                    SelectedItemClient.SDTHK = editVM.New.SDTHK;
+                    SelectedItemClient.DiaChiHK = editVM.New.DiaChiHK;
+                    SelectedItemClient.CCCD = editVM.New.CCCD;
+                    SelectedItemClient.IDHanhKhach = editVM.New.IDHanhKhach;
+                    SelectedItemClient.TenHanhKhach = editVM.New.TenHanhKhach;
+                    SelectedItemClient.GioiTinh = editVM.New.GioiTinh;
+                    SelectedItemClient.Tuoi = editVM.New.Tuoi;
+                    SelectedItemClient.SoHieuGhe = editVM.New.SoHieuGhe; 
+                    ListClient.Insert(index, SelectedItemClient);
                 }
             });
             DeleteClientCommand = new RelayCommand<Object>((p) => {
@@ -141,14 +157,26 @@ namespace QuanLyXeKhach.ViewModel
             }, (p) => {
                 EditStaffWd wd = new EditStaffWd();
                 var editVM = wd.DataContext as EditStaffVM;
-                editVM.New = SelectedItemStaff;
+                editVM.New2.CCCDNV = SelectedItemStaff.CCCDNV;
+                editVM.New2.HoTenNhanVien = SelectedItemStaff.HoTenNhanVien;
+                editVM.New2.SoDienThoai = SelectedItemStaff.SoDienThoai;
+                editVM.New2.NgaySinh = SelectedItemStaff.NgaySinh;
+                editVM.New2.DiaChi = SelectedItemStaff.DiaChi;
+                editVM.New2.GioiTinh = SelectedItemStaff.GioiTinh;
+                editVM.New = editVM.New2;
                 wd.ShowDialog();
                 if (editVM.isEdit)
                 {
                     int index = ListStaff.IndexOf(SelectedItemStaff);
                     ListStaff.RemoveAt(index);
-                    ListStaff.Insert(index, editVM.New);
-                    SelectedItemStaff = editVM.New;
+                    SelectedItemStaff = new NHANVIEN();
+                    SelectedItemStaff.CCCDNV = editVM.New.CCCDNV;
+                    SelectedItemStaff.HoTenNhanVien = editVM.New.HoTenNhanVien;
+                    SelectedItemStaff.SoDienThoai= editVM.New.SoDienThoai;
+                    SelectedItemStaff.NgaySinh= editVM.New.NgaySinh;
+                    SelectedItemStaff.DiaChi= editVM.New.DiaChi;
+                    SelectedItemStaff.GioiTinh= editVM.New.GioiTinh;
+                    ListStaff.Insert(index, SelectedItemStaff);
                 }
             });
             DeleteStaffCommand = new RelayCommand<Object>((p) => {
@@ -165,22 +193,6 @@ namespace QuanLyXeKhach.ViewModel
                 var BusVM = wd.DataContext as AddBusVM;
                 if (BusVM.isAdd)
                     ListBus.Add(BusVM.ListNew[BusVM.index - 1]);
-                var _BX = DataProvider.Ins.db.BENXEs.ToList();
-                var _TX = DataProvider.Ins.db.TUYENXEs.ToList();
-                bool isOk = false;
-                foreach(BENXE bx in _BX)
-                {
-                    foreach(TUYENXE tx in _TX)
-                    {
-                        if (BusVM.ListNew[BusVM.index - 1].IDTuyenXe == tx.IDTuyenXe && tx.IDBenXeXuatPhat == bx.IDBenXe)
-                        {
-                            Bus_BenXe.Add(bx.TenBenXe);
-                            isOk = true;
-                            break;
-                        }
-                    }
-                    if (isOk) break;
-                }
             });
             EditBusCommand = new RelayCommand<Object>((p) => {
                 if (SelectedItemBus == null)
@@ -189,15 +201,26 @@ namespace QuanLyXeKhach.ViewModel
             }, (p) => {
                 EditBusWd wd = new EditBusWd();
                 var editVM = wd.DataContext as EditBusVM;
-                editVM.New = SelectedItemBus;
+                editVM.New2.SoGhe = SelectedItemBus.SoGhe;
+                editVM.New2.CCCDNV = SelectedItemBus.CCCDNV;
+                editVM.New2.CCCDTX = SelectedItemBus.CCCDTX;
+                editVM.New2.BienSoXe = SelectedItemBus.BienSoXe;
+                editVM.New2.LoaiXe = SelectedItemBus.LoaiXe;
+                editVM.New2.TinhTrang = SelectedItemBus.TinhTrang;
+                editVM.New = editVM.New2;
                 wd.ShowDialog();
                 if (editVM.isEdit)
                 {
                     int index = ListBus.IndexOf(SelectedItemBus);
                     ListBus.RemoveAt(index);
-                    ListBus.Insert(index, editVM.New);
-                    Bus_BenXe.RemoveAt(index);
-                    SelectedItemBus = editVM.New;
+                    SelectedItemBus = new XEKHACH();
+                    SelectedItemBus.SoGhe = editVM.New.SoGhe;
+                    SelectedItemBus.CCCDTX = editVM.New.CCCDTX;
+                    SelectedItemBus.CCCDNV = editVM.New.CCCDNV;
+                    SelectedItemBus.BienSoXe = editVM.New.BienSoXe;
+                    SelectedItemBus.LoaiXe = editVM.New.LoaiXe;
+                    SelectedItemBus.TinhTrang = editVM.New.TinhTrang;
+                    ListBus.Insert(index, SelectedItemBus);
                 }
             });
             DeleteBusCommand = new RelayCommand<Object>((p) => {
@@ -218,7 +241,7 @@ namespace QuanLyXeKhach.ViewModel
                 var _BX = DataProvider.Ins.db.BENXEs.ToList();
                 foreach (BENXE bx in _BX)
                 {
-                    if(ListRoute.Last().IDBenXeXuatPhat == bx.IDBenXe)
+                    if (ListRoute.Last().IDBenXeXuatPhat == bx.IDBenXe)
                     {
                         Route_BXXP.Add(bx.TenBenXe);
                         break;
@@ -240,16 +263,30 @@ namespace QuanLyXeKhach.ViewModel
             }, (p) => {
                 EditRouteWd wd = new EditRouteWd();
                 var editVM = wd.DataContext as EditRouteVM;
-                editVM.New = SelectedItemRoute;
+                editVM.New2.IDTuyenXe = SelectedItemRoute.IDTuyenXe;
+                editVM.BenXeXP = SelectedItemRoute.BENXE1.TenBenXe;
+                editVM.BenXeDD = SelectedItemRoute.BENXE.TenBenXe;
+                editVM.NgayXP = (DateTime)SelectedItemRoute.ThoiGianXuatPhat;
+                editVM.NgayDD = (DateTime)SelectedItemRoute.ThoiGianKetThuc;
+                editVM.GioXP = (DateTime)SelectedItemRoute.ThoiGianXuatPhat;
+                editVM.GioDD = (DateTime)SelectedItemRoute?.ThoiGianKetThuc;
+                editVM.New = editVM.New2;
                 wd.ShowDialog();
                 if (editVM.isEdit)
                 {
-                    int index = ListBus.IndexOf(SelectedItemBus);
+                    int index = ListRoute.IndexOf(SelectedItemRoute);
                     ListRoute.RemoveAt(index);
-                    ListRoute.Insert(index, editVM.New);
+                    SelectedItemRoute = new TUYENXE();
+                    SelectedItemRoute.IDTuyenXe = editVM.New.IDTuyenXe;
+                    SelectedItemRoute.ThoiGianXuatPhat = editVM.New.ThoiGianXuatPhat;
+                    SelectedItemRoute.ThoiGianKetThuc = editVM.New.ThoiGianKetThuc;
+                    SelectedItemRoute.IDBenXeXuatPhat = editVM.New.IDBenXeXuatPhat;
+                    SelectedItemRoute.IDBenKetThuc = editVM.New.IDBenKetThuc;
+                    SelectedItemRoute.BENXE1 = editVM.New.BENXE1;
+                    SelectedItemRoute.BENXE = editVM.New.BENXE;  
+                    ListRoute.Insert(index, SelectedItemRoute);
                     Route_BXXP.RemoveAt(index);
                     Route_BXDD.RemoveAt(index);
-                    SelectedItemRoute = editVM.New;
                 }
             });
             DeleteRouteCommand = new RelayCommand<Object>((p) => {
@@ -272,15 +309,26 @@ namespace QuanLyXeKhach.ViewModel
             }, (p) => {
                 EditDriverWd wd = new EditDriverWd();
                 var editVM = wd.DataContext as EditDriverVM;
-                editVM.New = SelectedItemDriver;
+                editVM.New2.CCCDTX = SelectedItemDriver.CCCDTX;
+                editVM.New2.TenTaiXe = SelectedItemDriver.TenTaiXe;
+                editVM.New2.DiaChi = SelectedItemDriver.DiaChi;
+                editVM.New2.SoDienThoai = SelectedItemDriver.SoDienThoai;
+                editVM.New2.NgaySinh = SelectedItemDriver.NgaySinh;
+                editVM.New2.BangLai = SelectedItemDriver.BangLai;
+                editVM.New = editVM.New2;
                 wd.ShowDialog();
                 if (editVM.isEdit)
                 {
                     int index = ListDriver.IndexOf(SelectedItemDriver);
                     ListDriver.RemoveAt(index);
-                    ListDriver.Insert(index, editVM.New);
-                    MessageBox.Show(SelectedItemDriver.SoDienThoai);
-                    SelectedItemDriver = editVM.New;
+                    SelectedItemDriver = new TAIXE();
+                    SelectedItemDriver.CCCDTX = editVM.New.CCCDTX;
+                    SelectedItemDriver.TenTaiXe = editVM.New.TenTaiXe;
+                    SelectedItemDriver.DiaChi = editVM.New.DiaChi;
+                    SelectedItemDriver.SoDienThoai = editVM.New.SoDienThoai;
+                    SelectedItemDriver.NgaySinh = editVM.New.NgaySinh;
+                    SelectedItemDriver.BangLai = editVM.New.BangLai;
+                    ListDriver.Insert(index, SelectedItemDriver);
                 }
             });
             DeleteDriverCommand = new RelayCommand<Object>((p) => {
@@ -305,14 +353,22 @@ namespace QuanLyXeKhach.ViewModel
             }, (p) => {
                 EditBusStationWd wd = new EditBusStationWd();
                 var editVM = wd.DataContext as EditBusStationVM;
-                editVM.New = SelectedItemBusStation;
+                editVM.New2.TenBenXe = SelectedItemBusStation.TenBenXe;
+                editVM.New2.SoDienThoaiBen = SelectedItemBusStation.SoDienThoaiBen;
+                editVM.New2.IDBenXe = SelectedItemBusStation.IDBenXe;
+                editVM.New2.DiaChi = SelectedItemBusStation.DiaChi;
+                editVM.New = editVM.New2;
                 wd.ShowDialog();
                 if (editVM.isEdit)
                 {
                     int index = ListBusStation.IndexOf(SelectedItemBusStation);
                     ListBusStation.RemoveAt(index);
-                    ListBusStation.Insert(index, editVM.New);
-                    SelectedItemBusStation = editVM.New;
+                    SelectedItemBusStation = new BENXE();
+                    SelectedItemBusStation.TenBenXe = editVM.New.TenBenXe;
+                    SelectedItemBusStation.SoDienThoaiBen = editVM.New.SoDienThoaiBen;
+                    SelectedItemBusStation.DiaChi = editVM.New.DiaChi;
+                    SelectedItemBusStation.IDBenXe = editVM.New.IDBenXe;
+                    ListBusStation.Insert(index, SelectedItemBusStation);
                 }
             });
             DeleteBusStationCommand = new RelayCommand<Object>((p) => {

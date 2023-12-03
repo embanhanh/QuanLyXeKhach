@@ -14,7 +14,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="AddClientWd" Height="470" Width="800" Background="{x:Null}" AllowsTransparency="True">
+        Title="AddClientWd" Height="550" Width="800" Background="{x:Null}" AllowsTransparency="True">
     <Border Background="#08c424" CornerRadius="40" BorderThickness="1" BorderBrush="Gray">
         <Grid >
             <Grid.RowDefinitions>
@@ -50,26 +50,34 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.CCCD}"
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDHanhKhach}"
                                     materialDesign:HintAssist.Foreground="Green"
                                     VerticalAlignment="Center"
-                                    materialDesign:HintAssist.Hint="Mã khách hàng"
+                                    materialDesign:HintAssist.Hint="ID"
                                     MaxLength="6"
                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.CCCD}"
+                                <TextBox BorderBrush="Green" Text="{Binding New.TenHanhKhach}"
                                     materialDesign:HintAssist.Foreground="Green"
                                     VerticalAlignment="Center" 
                                     materialDesign:HintAssist.Hint="Họ tên"
                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="2" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.CCCD}"  
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.GioiTinh}"  
                                     materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding Gtinh}"
                                     materialDesign:HintAssist.Hint="Giới tính"
+                                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                </ComboBox>
+                            </Grid>
+                            <Grid Grid.Row="3" Margin="20">
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.SoHieuGhe}"  
+                                    materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding SohG}"
+                                    materialDesign:HintAssist.Hint="Số Hiệu ghế"
                                     Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>
                             </Grid>
@@ -79,23 +87,31 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition ></RowDefinition>
                                 <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
                                 <TextBox BorderBrush="Green" Text="{Binding New.CCCD}"
+                                    materialDesign:HintAssist.Foreground="Green"
+                                    VerticalAlignment="Center" MaxLength="12"
+                                    materialDesign:HintAssist.Hint="CCCD"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="20">
+                                <TextBox BorderBrush="Green" Text="{Binding New.SDTHK}"
                                     materialDesign:HintAssist.Foreground="Green"
                                     VerticalAlignment="Center" MaxLength="10"
                                     materialDesign:HintAssist.Hint="Số điện thoại"
                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
-                            <Grid Grid.Row="1" Margin="20">
-                                <DatePicker  SelectedDate="{Binding New}" BorderBrush="Green"
-                                    materialDesign:HintAssist.Foreground="Green" 
-                                    materialDesign:HintAssist.Hint="Ngày sinh" Name="ngsinh"
-                                    Style="{StaticResource MaterialDesignOutlinedDatePicker}">
-                                </DatePicker>
-                            </Grid>
                             <Grid Grid.Row="2" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.CCCD}"
+                                <TextBox BorderBrush="Green" Text="{Binding New.Tuoi}"
+                                    materialDesign:HintAssist.Foreground="Green"
+                                    VerticalAlignment="Center" MaxLength="2"
+                                    materialDesign:HintAssist.Hint="Tuổi"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            </Grid>
+                            <Grid Grid.Row="3" Margin="20">
+                                <TextBox BorderBrush="Green" Text="{Binding New.DiaChiHK}"
                                     materialDesign:HintAssist.Foreground="Green"
                                     VerticalAlignment="Center"
                                     materialDesign:HintAssist.Hint="Địa chỉ"

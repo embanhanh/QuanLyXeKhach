@@ -47,12 +47,12 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" Margin="20">
                             <TextBox BorderBrush="#44b0f1" Text="{Binding New.IDTuyenXe,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                        materialDesign:HintAssist.Foreground="#44b0f1"
-                        Width="300"
-                        VerticalAlignment="Center"
-                        materialDesign:HintAssist.Hint="Mã Tuyến Xe"
-                        MaxLength="12"
-                        Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            materialDesign:HintAssist.Foreground="#44b0f1"
+                            Width="300"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.Hint="Mã Tuyến Xe"
+                            MaxLength="12"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -61,16 +61,16 @@
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="20">
                                 <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding BenXeXP}"  
-                        materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding BenXe}"
-                        materialDesign:HintAssist.Hint="Bến Xe Xuất Phát"
-                        Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                            materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding BenXe}"
+                            materialDesign:HintAssist.Hint="Bến Xe Xuất Phát"
+                            Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">
                                 <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding BenXeDD}"  
-                        materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding BenXe}"
-                        materialDesign:HintAssist.Hint="Bến Xe Đích Đến"
-                        Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                            materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding BenXe}"
+                            materialDesign:HintAssist.Hint="Bến Xe Đích Đến"
+                            Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>
                             </Grid>
                         </Grid>
@@ -81,18 +81,18 @@
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="20">
                                 <DatePicker  SelectedDate="{Binding NgayXP}" BorderBrush="#44b0f1"
-                        materialDesign:HintAssist.Foreground="#44b0f1" 
-                        materialDesign:HintAssist.Hint="Ngày Xuất Phát" 
-                        Style="{StaticResource MaterialDesignOutlinedDatePicker}">
+                            materialDesign:HintAssist.Foreground="#44b0f1" 
+                            materialDesign:HintAssist.Hint="Ngày Xuất Phát" 
+                            Style="{StaticResource MaterialDesignOutlinedDatePicker}">
                                 </DatePicker>
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">
                                 <materialDesign:TimePicker
-                          SelectedTime="{Binding GioXP}"
-                          BorderBrush="#44b0f1"
-                          materialDesign:HintAssist.Hint="Giờ Xuất Phát"
-                          Is24Hours="True"
-                          Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
+                              SelectedTime="{Binding GioXP}"
+                              BorderBrush="#44b0f1"
+                              materialDesign:HintAssist.Hint="Giờ Xuất Phát"
+                              Is24Hours="True"
+                              Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="3">
@@ -109,11 +109,11 @@
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">
                                 <materialDesign:TimePicker
-                      SelectedTime="{Binding GioDD}"
-                      BorderBrush="#44b0f1"
-                      materialDesign:HintAssist.Hint="Giờ Đến ĐÍch"
-                      Is24Hours="True"
-                      Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
+                                  SelectedTime="{Binding GioDD}"
+                                  BorderBrush="#44b0f1"
+                                  materialDesign:HintAssist.Hint="Giờ Đến ĐÍch"
+                                  Is24Hours="True"
+                                  Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
                             </Grid>
                         </Grid>
                     </Grid>
@@ -122,8 +122,8 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Width="120" Margin="20 0" Command="{Binding addCommand}" CommandParameter="{Binding ElementName=editRouteWd}"
-                        Content="Thêm" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
+                        <Button Grid.Column="0" Width="120" Margin="20 0" Command="{Binding editCommand}" CommandParameter="{Binding ElementName=editRouteWd}"
+                        Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                         ToolTip="Resource name: MaterialDesignRaisedLightButton">
 
                         </Button>

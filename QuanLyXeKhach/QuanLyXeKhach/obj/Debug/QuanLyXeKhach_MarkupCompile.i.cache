@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\phamngocthinh\source\repos\QuanLyXeKhach_ver3\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\
+C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\
 QuanLyXeKhach
 none
 false
 DEBUG;TRACE
-C:\Users\phamngocthinh\source\repos\QuanLyXeKhach_ver3\QuanLyXeKhach\QuanLyXeKhach\App.xaml
+C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\App.xaml
 162089926339
-2-134735901
-50-1963436697
-231536935315
+2-1051215389
+511466905318
+23912689509
 AddWindow\AddBusStationWd.xaml;AddWindow\AddBusWd.xaml;EditWindow\EditBusStationWd.xaml;EditWindow\EditBusWd.xaml;EditWindow\EditRouteWd.xaml;EditWindow\EditStaffWd.xaml;AddWindow\AddClientWd.xaml;AddWindow\AddRouteWd.xaml;AddWindow\AddStaffWd.xaml;AddWindow\AddDriverWd.xaml;EditWindow\EditClientWd.xaml;EditWindow\EditDriverWd.xaml;LoginWindow.xaml;MainWindow.xaml;Resource\MainResource.xaml;UserControlFolder\ControlBarUC.xaml;
 
 False

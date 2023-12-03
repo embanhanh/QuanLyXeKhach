@@ -17,10 +17,11 @@ namespace QuanLyXeKhach.ViewModel
     {
         public int index = 0;
         public bool isAdd = false;
-        public List<string> TBX;
-        private string _TenBenXe;
-        public string TenBenXe { get => _TenBenXe; set { _TenBenXe = value; OnPropertyChanged(); } }
         private ObservableCollection<XEKHACH> _listnew;
+        private List<string> _ListTaiXe;
+        private List<string> _ListPhuXe;
+        public List<string> ListTaiXe { get=> _ListTaiXe; set { _ListTaiXe = value;OnPropertyChanged(); } }
+        public List<string> ListPhuXe { get=> _ListPhuXe; set { _ListPhuXe = value;OnPropertyChanged(); } }
         public ObservableCollection<XEKHACH> ListNew { get => _listnew; set { _listnew = value; OnPropertyChanged(); } }
         private XEKHACH _new;
         public XEKHACH New { get => _new; set { _new = value; OnPropertyChanged(); } }
@@ -31,34 +32,18 @@ namespace QuanLyXeKhach.ViewModel
 
         public AddBusVM()
         {
-            ListNew= new ObservableCollection<XEKHACH>();
-            BenXeXuatPhat = new List<string>() { "Ben Xe Mien Dong", "Ben Xe Mien Tay", "Ben Xe Chin Nghia" };
-            var BXXP = DataProvider.Ins.db.BENXEs.ToList();
-            BenXeXuatPhat = new List<string>();
-            while (BXXP.Count > 0)
-            {
-                BenXeXuatPhat.Add(BXXP.First().TenBenXe);
-                BXXP.RemoveAt(0);
-            }
             New = new XEKHACH();
-            var _BX = DataProvider.Ins.db.BENXEs.ToList();
-            var _TX = DataProvider.Ins.db.TUYENXEs.ToList();
+            ListPhuXe = new List<string>();
+            ListTaiXe = new List<string>();
+            var listTX = DataProvider.Ins.db.TAIXEs.ToList();
+            var listPX = DataProvider.Ins.db.NHANVIENs.ToList();
+            foreach (var tx in listTX)
+                ListTaiXe.Add(tx.CCCDTX);
+            foreach (var px in listPX)
+                ListPhuXe.Add(px.CCCDNV);
+            ListNew= new ObservableCollection<XEKHACH>();
             addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                bool isOk = false;
-                foreach (BENXE bx in _BX)
-                {
-                    foreach(TUYENXE tx in _TX)
-                    {
-                        if(TenBenXe == bx.TenBenXe && bx.IDBenXe == tx.IDBenXeXuatPhat)
-                        {
-                            New.IDTuyenXe = tx.IDTuyenXe;
-                            isOk = true;
-                            break;
-                        }
-                    }
-                    if (isOk) break;
-                }
                 ListNew.Add(New);
                 New = new XEKHACH();
                 index++;

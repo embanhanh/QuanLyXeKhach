@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEKHACHEntities">
+  <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEEntities">
     <EntitySetMapping Name="BENXEs">
       <EntityTypeMapping TypeName="QLXEKHACHModel.BENXE">
         <MappingFragment StoreEntitySet="BENXE">
@@ -59,6 +59,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="LUUTHONGs">
+      <EntityTypeMapping TypeName="QLXEKHACHModel.LUUTHONG">
+        <MappingFragment StoreEntitySet="LUUTHONG">
+          <ScalarProperty Name="IDTuyenXe" ColumnName="IDTuyenXe" />
+          <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
+          <ScalarProperty Name="TongKhach" ColumnName="TongKhach" />
+          <ScalarProperty Name="IDBenDau" ColumnName="IDBenDau" />
+          <ScalarProperty Name="IDBenCuoi" ColumnName="IDBenCuoi" />
+          <ScalarProperty Name="ThoiGianXuatPhat" ColumnName="ThoiGianXuatPhat" />
+          <ScalarProperty Name="ThoiGianKetThuc" ColumnName="ThoiGianKetThuc" />
+          <ScalarProperty Name="ChiTietTram" ColumnName="ChiTietTram" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="NHANVIENs">
       <EntityTypeMapping TypeName="QLXEKHACHModel.NHANVIEN">
         <MappingFragment StoreEntitySet="NHANVIEN">
@@ -67,6 +81,7 @@
           <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
           <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -110,7 +125,6 @@
           <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
           <ScalarProperty Name="CCCDTX" ColumnName="CCCDTX" />
           <ScalarProperty Name="CCCDNV" ColumnName="CCCDNV" />
-          <ScalarProperty Name="IDTuyenXe" ColumnName="IDTuyenXe" />
           <ScalarProperty Name="LoaiXe" ColumnName="LoaiXe" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
           <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />

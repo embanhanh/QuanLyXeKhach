@@ -25,6 +25,7 @@ namespace QuanLyXeKhach.Model
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public string SoDienThoai { get; set; }
         public string DiaChi { get; set; }
+        public string GioiTinh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<XEKHACH> XEKHACHes { get; set; }

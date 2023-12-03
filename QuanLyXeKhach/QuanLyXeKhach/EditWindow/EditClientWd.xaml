@@ -13,7 +13,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
-        Title="EditClientWd" Height="470" Width="800" Background="{x:Null}" AllowsTransparency="True">
+        Title="EditClientWd" Height="550" Width="800" Background="{x:Null}" AllowsTransparency="True">
     <Border Background="#44b0f1" CornerRadius="35" BorderThickness="1" BorderBrush="Gray">
         <Grid>
             <Grid.RowDefinitions>
@@ -49,27 +49,35 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="#44b0f1" Text="{Binding New.MAKH,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                                materialDesign:HintAssist.Foreground="#44b0f1"
-                                VerticalAlignment="Center"
-                                materialDesign:HintAssist.Hint="Mã khách hàng"
-                                MaxLength="6" IsReadOnly="True"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                                <TextBox BorderBrush="#0883ff" Text="{Binding New.IDHanhKhach}"
+                                    materialDesign:HintAssist.Foreground="#0883ff"
+                                    VerticalAlignment="Center"
+                                    materialDesign:HintAssist.Hint="ID"
+                                    MaxLength="6"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
-                                <TextBox BorderBrush="#44b0f1" Text="{Binding New.HOTEN, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                materialDesign:HintAssist.Foreground="#44b0f1"
-                                VerticalAlignment="Center" 
-                                materialDesign:HintAssist.Hint="Họ tên"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                                <TextBox BorderBrush="#0883ff" Text="{Binding New.TenHanhKhach}"
+                                    materialDesign:HintAssist.Foreground="#0883ff"
+                                    VerticalAlignment="Center" 
+                                    materialDesign:HintAssist.Hint="Họ tên"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="2" Margin="20">
-                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding New.GT}"  
-                                materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding Gtinh}"
-                                materialDesign:HintAssist.Hint="Giới tính"
-                                Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                <ComboBox BorderBrush="#0883ff" SelectedValue="{Binding New.GioiTinh}"  
+                                    materialDesign:HintAssist.Foreground="#0883ff" ItemsSource="{Binding Gtinh}"
+                                    materialDesign:HintAssist.Hint="Giới tính"
+                                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                </ComboBox>
+                            </Grid>
+                            <Grid Grid.Row="3" Margin="20">
+                                <ComboBox BorderBrush="#0883ff" SelectedValue="{Binding New.SoHieuGhe}"  
+                                    materialDesign:HintAssist.Foreground="#0883ff" ItemsSource="{Binding SohG}"
+                                    materialDesign:HintAssist.Hint="Số Hiệu ghế"
+                                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>
                             </Grid>
                         </Grid>
@@ -78,26 +86,35 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition ></RowDefinition>
                                 <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="#44b0f1" Text="{Binding New.SODT}"
-                                materialDesign:HintAssist.Foreground="#44b0f1"
-                                VerticalAlignment="Center" MaxLength="10"
-                                materialDesign:HintAssist.Hint="Số điện thoại"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                                <TextBox BorderBrush="#0883ff" Text="{Binding New.CCCD}"
+                                    materialDesign:HintAssist.Foreground="#0883ff"
+                                    VerticalAlignment="Center" MaxLength="12"
+                                    materialDesign:HintAssist.Hint="CCCD"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
-                                <DatePicker BorderBrush="#44b0f1" SelectedDate="{Binding New.NGSINH}"
-                                materialDesign:HintAssist.Foreground="#44b0f1" 
-                                materialDesign:HintAssist.Hint="Ngày sinh"
-                                Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                                <TextBox BorderBrush="#0883ff" Text="{Binding New.SDTHK}"
+                                    materialDesign:HintAssist.Foreground="#0883ff"
+                                    VerticalAlignment="Center" MaxLength="10"
+                                    materialDesign:HintAssist.Hint="Số điện thoại"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="2" Margin="20">
-                                <TextBox BorderBrush="#44b0f1" Text="{Binding New.DCHI}"
-                                materialDesign:HintAssist.Foreground="#44b0f1"
-                                VerticalAlignment="Center"
-                                materialDesign:HintAssist.Hint="Địa chỉ"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                                <TextBox BorderBrush="#0883ff" Text="{Binding New.Tuoi}"
+                                    materialDesign:HintAssist.Foreground="#0883ff"
+                                    VerticalAlignment="Center" MaxLength="2"
+                                    materialDesign:HintAssist.Hint="Tuổi"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            </Grid>
+                            <Grid Grid.Row="3" Margin="20">
+                                <TextBox BorderBrush="#0883ff" Text="{Binding New.DiaChiHK}"
+                                    materialDesign:HintAssist.Foreground="#0883ff"
+                                    VerticalAlignment="Center"
+                                    materialDesign:HintAssist.Hint="Địa chỉ"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                         </Grid>
                     </Grid>

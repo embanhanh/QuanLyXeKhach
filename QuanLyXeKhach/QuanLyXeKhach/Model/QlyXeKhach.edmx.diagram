@@ -4,27 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c33f390e796140bca9087ba1fb14c97c" Name="Diagram1">
-        <EntityTypeShape EntityType="QLXEKHACHModel.BENXE" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLXEKHACHModel.BIENLAI" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLXEKHACHModel.GHE" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLXEKHACHModel.GIAVE" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLXEKHACHModel.HANHKHACH" Width="1.5" PointX="9.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLXEKHACHModel.NHANVIEN" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLXEKHACHModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLXEKHACHModel.TAIXE" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLXEKHACHModel.TUYENXE" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLXEKHACHModel.XEKHACH" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <AssociationConnector Association="QLXEKHACHModel.FK__GIAVE__IDBenXe__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="QLXEKHACHModel.FK__TUYENXE__IDBenKe__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="QLXEKHACHModel.FK__TUYENXE__IDBenXe__3C69FB99" ManuallyRouted="false" />
-        <AssociationConnector Association="QLXEKHACHModel.FK__BIENLAI__IDGiaVe__4E88ABD4" ManuallyRouted="false" />
-        <AssociationConnector Association="QLXEKHACHModel.FK__BIENLAI__IDHanhK__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="QLXEKHACHModel.FK__GHE__BienSoXe__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="QLXEKHACHModel.FK__HANHKHACH__SoHie__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="QLXEKHACHModel.FK__XEKHACH__CCCDNV__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="QLXEKHACHModel.FK__XEKHACH__CCCDTX__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="QLXEKHACHModel.FK__XEKHACH__IDTuyen__4222D4EF" ManuallyRouted="false" />
+      <Diagram DiagramId="4b83c3a47dac4658ab922ea7a877cdb1" Name="Diagram1">
+        <EntityTypeShape EntityType="QLXEKHACHModel.BENXE" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLXEKHACHModel.BIENLAI" Width="1.5" PointX="9.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLXEKHACHModel.GHE" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLXEKHACHModel.GIAVE" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLXEKHACHModel.HANHKHACH" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLXEKHACHModel.LUUTHONG" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLXEKHACHModel.NHANVIEN" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLXEKHACHModel.sysdiagram" Width="1.5" PointX="5.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLXEKHACHModel.TAIXE" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLXEKHACHModel.TUYENXE" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLXEKHACHModel.XEKHACH" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__GIAVE__IDBenXe__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__TUYENXE__IDBenKe__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__TUYENXE__IDBenXe__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__BIENLAI__IDGiaVe__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__BIENLAI__IDHanhK__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__GHE__BienSoXe__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__HANHKHACH__SoHie__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__LUUTHONG__BienSo__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__LUUTHONG__IDTuye__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__XEKHACH__CCCDNV__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__XEKHACH__CCCDTX__2E1BDC42" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

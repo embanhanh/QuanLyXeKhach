@@ -18,20 +18,21 @@ namespace QuanLyXeKhach.Model
         public XEKHACH()
         {
             this.GHEs = new HashSet<GHE>();
+            this.LUUTHONGs = new HashSet<LUUTHONG>();
         }
     
         public string BienSoXe { get; set; }
         public string CCCDTX { get; set; }
         public string CCCDNV { get; set; }
-        public string IDTuyenXe { get; set; }
         public string LoaiXe { get; set; }
         public string TinhTrang { get; set; }
         public Nullable<byte> SoGhe { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GHE> GHEs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LUUTHONG> LUUTHONGs { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }
         public virtual TAIXE TAIXE { get; set; }
-        public virtual TUYENXE TUYENXE { get; set; }
     }
 }

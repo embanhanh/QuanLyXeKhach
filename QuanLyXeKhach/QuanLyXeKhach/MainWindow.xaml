@@ -130,7 +130,7 @@
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách khách hàng" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <TextBlock Grid.Row="0" Text="Danh sách hành khách" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
                                 <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
@@ -138,12 +138,14 @@
                                               x:Name="listClient" SelectedItem="{Binding SelectedItemClient,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding CCCD,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                                                <GridViewColumn Header="Họ tên"  DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding }"/>
-                                                <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IDHanhKhach}"/>
+                                                <GridViewColumn Header="Họ tên"  DisplayMemberBinding="{Binding TenHanhKhach}"/>
+                                                <GridViewColumn Header="CCCD"  DisplayMemberBinding="{Binding CCCD}"/>
+                                                <GridViewColumn Header="Số hiệu ghế"  DisplayMemberBinding="{Binding SoHieuGhe}"/>
+                                                <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding GioiTinh}"/>
+                                                <GridViewColumn Header="Tuổi" DisplayMemberBinding="{Binding Tuoi}"/>
+                                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding DiaChiHK}"/>
+                                                <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding SDTHK}"/>
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
@@ -201,7 +203,7 @@
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách vé xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <TextBlock Grid.Row="0" Text="Danh sách tài xế" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
                                 <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
@@ -283,7 +285,7 @@
                                             <GridView>
                                                 <GridViewColumn Header="CCCD" DisplayMemberBinding="{Binding CCCDNV}"/>
                                                 <GridViewColumn Header="Họ tên"  DisplayMemberBinding="{Binding HoTenNhanVien}"/>
-                                                <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding }"/>
+                                                <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding GioiTinh}"/>
                                                 <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding NgaySinh}"/>
                                                 <GridViewColumn Header="SDT" DisplayMemberBinding="{Binding SoDienThoai}"/>
                                                 <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding DiaChi}"/>
@@ -354,7 +356,7 @@
                                             <GridView>
                                                 <GridViewColumn Header="Biển số xe" DisplayMemberBinding="{Binding BienSoXe}"/>
                                                 <GridViewColumn Header="CCCD Tài xế"  DisplayMemberBinding="{Binding CCCDTX}"/>
-                                                <GridViewColumn Header="Tên bến xe" DisplayMemberBinding="{Binding Bus_BenXe}"/>
+                                                <GridViewColumn Header="CCCD Phụ xe"  DisplayMemberBinding="{Binding CCCDNV}"/>
                                                 <GridViewColumn Header="Loại xe" DisplayMemberBinding="{Binding LoaiXe}"/>
                                                 <GridViewColumn Header="Số ghế" DisplayMemberBinding="{Binding SoGhe}"/>
                                                 <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding TinhTrang}"/>
@@ -424,8 +426,8 @@
                                         <ListView.View>
                                             <GridView>
                                                 <GridViewColumn Header="Mã tuyến" DisplayMemberBinding="{Binding IDTuyenXe}"/>
-                                                <GridViewColumn Header="Bến đầu"  DisplayMemberBinding="{Binding Route_BXXP}"/>
-                                                <GridViewColumn Header="Bến cuối" DisplayMemberBinding="{Binding Route_BXDD}"/>
+                                                <GridViewColumn Header="Bến đầu"  DisplayMemberBinding="{Binding BENXE1.TenBenXe}"/>
+                                                <GridViewColumn Header="Bến cuối" DisplayMemberBinding="{Binding BENXE.TenBenXe}"/>
                                                 <GridViewColumn Header="Thời Gian Xuất Phát" DisplayMemberBinding="{Binding ThoiGianXuatPhat}"/>
                                                 <GridViewColumn Header="Thời Gian Đến Đích" DisplayMemberBinding="{Binding ThoiGianKetThuc}"/>
                                             </GridView>
@@ -502,20 +504,20 @@
                         <Grid Grid.Row="1" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
-                                <Button Width="100" Margin="20 0"
-                                    Content="Thêm" Foreground="White"
+                                <Button Width="100" Margin="20 0" Command="{Binding AddRouteCommand}"
+                                    Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                    Style="{StaticResource MaterialDesignRaisedLightButton}" 
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Edit-->
-                                <Button Width="100" Margin="20 0"
-                                     Content="Sửa" Foreground="White"
+                                <Button Width="100" Margin="20 0" Command="{Binding EditRouteCommand}"
+                                     Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Delete-->
-                                <Button Width="100" Margin="20 0"
-                                     Content="Xóa" Foreground="White"
+                                <Button Width="100" Margin="20 0" Command="{Binding DeleteRouteCommand}"
+                                     Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
@@ -549,7 +551,7 @@
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách sự cố" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <TextBlock Grid.Row="0" Text="Danh sách bến xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
                                 <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">

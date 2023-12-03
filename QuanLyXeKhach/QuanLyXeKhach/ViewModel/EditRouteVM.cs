@@ -28,10 +28,12 @@ namespace QuanLyXeKhach.ViewModel
         private ObservableCollection<TUYENXE> _listnew;
         public ObservableCollection<TUYENXE> ListNew { get => _listnew; set { _listnew = value; OnPropertyChanged(); } }
         private TUYENXE _new;
+        private TUYENXE _new2;
         public TUYENXE New { get => _new; set { _new = value; OnPropertyChanged(); } }
+        public TUYENXE New2 { get => _new2; set { _new2 = value; OnPropertyChanged(); } }
         private List<string> _BenXe;
         public List<string> BenXe { get => _BenXe; set { _BenXe = value; OnPropertyChanged(); } }
-        public ICommand addCommand { get; set; }
+        public ICommand editCommand { get; set; }
         public ICommand closeCommand { get; set; }
 
         public EditRouteVM()
@@ -44,10 +46,30 @@ namespace QuanLyXeKhach.ViewModel
                 BenXe.Add(BXXP.First().TenBenXe);
                 BXXP.RemoveAt(0);
             }
-            New = new TUYENXE();
+            New2 = new TUYENXE();
             var _BX = DataProvider.Ins.db.BENXEs.ToList();
-            addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            editCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
+                foreach (BENXE bx in _BX)
+                {
+                    if (BenXeXP == bx.TenBenXe)
+                    {
+                        New.IDBenXeXuatPhat = bx.IDBenXe;
+                        New.BENXE1 = bx;
+                        break;
+                    }
+                }
+                foreach (BENXE bx in _BX)
+                {
+                    if (BenXeDD == bx.TenBenXe)
+                    {
+                        New.IDBenKetThuc = bx.IDBenXe;
+                        New.BENXE = bx;
+                        break;
+                    }
+                }
+                New.ThoiGianXuatPhat = new DateTime(NgayXP.Year, NgayXP.Month, NgayXP.Day, GioXP.Hour, GioXP.Minute, GioXP.Second);
+                New.ThoiGianKetThuc = new DateTime(NgayDD.Year, NgayDD.Month, NgayDD.Day, GioDD.Hour, GioDD.Minute, GioDD.Second);
                 isEdit = true;
                 p.Close();
             });

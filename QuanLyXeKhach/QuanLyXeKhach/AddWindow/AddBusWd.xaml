@@ -57,9 +57,9 @@
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>        
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding TenBenXe}"  
-                                materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXeXuatPhat}"
-                                materialDesign:HintAssist.Hint="Bến Xe Xuất Phát"
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.CCCDTX}"  
+                                materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding ListTaiXe}"
+                                materialDesign:HintAssist.Hint="CCCD Tài xế"
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>
                             </Grid>
@@ -79,12 +79,11 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.CCCDTX,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                                materialDesign:HintAssist.Foreground="Green"
-                                VerticalAlignment="Center"
-                                materialDesign:HintAssist.Hint="CCCDTX"
-                                MaxLength="12"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>    
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.CCCDNV}"  
+                                materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding ListPhuXe}"
+                                materialDesign:HintAssist.Hint="CCCD Phụ xe" 
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                </ComboBox>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
                                 <TextBox BorderBrush="Green" Text="{Binding New.SoGhe,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
@@ -115,7 +114,7 @@
                             
                         </Button>
                         <Button Grid.Column="1" Width="120" Margin="20 0" Command="{Binding closeCommand}" CommandParameter="{Binding ElementName=addBusWd}"
-                            Content="Thoát" Foreground="White" Background="OrangeRed" BorderBrush="#08c424"
+                            Content="Thoát" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                             ToolTip="Resource name: MaterialDesignRaisedLightButton">   
 
                         </Button>

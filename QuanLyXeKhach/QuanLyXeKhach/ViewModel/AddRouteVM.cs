@@ -54,6 +54,7 @@ namespace QuanLyXeKhach.ViewModel
                     if(BenXeXP == bx.TenBenXe)
                     {
                         New.IDBenXeXuatPhat = bx.IDBenXe;
+                        New.BENXE1 = bx;
                         break;
                     }
                 }
@@ -62,12 +63,19 @@ namespace QuanLyXeKhach.ViewModel
                     if (BenXeDD == bx.TenBenXe)
                     {
                         New.IDBenKetThuc = bx.IDBenXe;
+                        New.BENXE = bx;
                         break;
                     }
                 }
                 New.ThoiGianXuatPhat = new DateTime(NgayXP.Year, NgayXP.Month, NgayXP.Day, GioXP.Hour, GioXP.Minute, GioXP.Second);
-                New.ThoiGianKetThuc = new DateTime(NgayDD.Year, NgayDD.Month, NgayDD.Day, NgayDD.Hour, NgayDD.Minute, NgayDD.Second);
+                New.ThoiGianKetThuc = new DateTime(NgayDD.Year, NgayDD.Month, NgayDD.Day, GioDD.Hour, GioDD.Minute, GioDD.Second);
                 ListNew.Add(New);
+                BenXeXP = "";
+                BenXeDD = "";
+                NgayXP = DateTime.Today; 
+                NgayDD = DateTime.Today;
+                GioXP = DateTime.Today;
+                GioDD = DateTime.Today;
                 New = new TUYENXE();
                 index++;
                 isAdd = true;

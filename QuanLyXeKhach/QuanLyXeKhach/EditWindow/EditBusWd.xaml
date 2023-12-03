@@ -57,9 +57,9 @@
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
-                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding BenXeXuatPhat}" 
-                                materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding BenXeXuatPhat}"
-                                materialDesign:HintAssist.Hint="Bến Xe Xuất Phát"
+                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding New.CCCDTX}" 
+                                materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding ListTaiXe}"
+                                materialDesign:HintAssist.Hint="CCCD Tài xế"
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>
                             </Grid>
@@ -79,12 +79,11 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="#44b0f1" Text="{Binding New.CCCDTX,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                                materialDesign:HintAssist.Foreground="#44b0f1"
-                                VerticalAlignment="Center"
-                                materialDesign:HintAssist.Hint="CCCDTX"
-                                MaxLength="12"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding New.CCCDNV}" 
+                                materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding ListPhuXe}"
+                                materialDesign:HintAssist.Hint="CCCD Phụ xe"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                </ComboBox>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
                                 <TextBox BorderBrush="#44b0f1" Text="{Binding New.SoGhe,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"

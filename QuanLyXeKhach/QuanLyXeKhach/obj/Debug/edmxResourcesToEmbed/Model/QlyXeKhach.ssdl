@@ -7,7 +7,7 @@
     <Property Name="IDBenXe" Type="char" MaxLength="6" Nullable="false" />
     <Property Name="TenBenXe" Type="varchar" MaxLength="40" Nullable="false" />
     <Property Name="DiaChi" Type="varchar" MaxLength="40" />
-    <Property Name="SoDienThoaiBen" Type="char" MaxLength="8" />
+    <Property Name="SoDienThoaiBen" Type="char" MaxLength="10" />
   </EntityType>
   <EntityType Name="BIENLAI">
     <Key>
@@ -26,7 +26,7 @@
       <PropertyRef Name="IDGhe" />
     </Key>
     <Property Name="IDGhe" Type="char" MaxLength="8" Nullable="false" />
-    <Property Name="BienSoXe" Type="varchar" MaxLength="8" />
+    <Property Name="BienSoXe" Type="varchar" MaxLength="9" />
     <Property Name="TINHTRANG" Type="bit" />
   </EntityType>
   <EntityType Name="GIAVE">
@@ -53,6 +53,20 @@
     <Property Name="SDTHK" Type="char" MaxLength="10" />
     <Property Name="DiaChiHK" Type="varchar" MaxLength="40" />
   </EntityType>
+  <EntityType Name="LUUTHONG">
+    <Key>
+      <PropertyRef Name="IDTuyenXe" />
+      <PropertyRef Name="BienSoXe" />
+    </Key>
+    <Property Name="IDTuyenXe" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="BienSoXe" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="TongKhach" Type="tinyint" />
+    <Property Name="IDBenDau" Type="char" MaxLength="6" />
+    <Property Name="IDBenCuoi" Type="char" MaxLength="6" />
+    <Property Name="ThoiGianXuatPhat" Type="smalldatetime" />
+    <Property Name="ThoiGianKetThuc" Type="smalldatetime" />
+    <Property Name="ChiTietTram" Type="varchar" MaxLength="150" />
+  </EntityType>
   <EntityType Name="NHANVIEN">
     <Key>
       <PropertyRef Name="CCCDNV" />
@@ -62,6 +76,7 @@
     <Property Name="NgaySinh" Type="smalldatetime" />
     <Property Name="SoDienThoai" Type="char" MaxLength="10" />
     <Property Name="DiaChi" Type="varchar" MaxLength="40" />
+    <Property Name="GioiTinh" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -98,15 +113,14 @@
     <Key>
       <PropertyRef Name="BienSoXe" />
     </Key>
-    <Property Name="BienSoXe" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="BienSoXe" Type="varchar" MaxLength="9" Nullable="false" />
     <Property Name="CCCDTX" Type="char" MaxLength="12" />
     <Property Name="CCCDNV" Type="char" MaxLength="12" />
-    <Property Name="IDTuyenXe" Type="char" MaxLength="6" />
     <Property Name="LoaiXe" Type="varchar" MaxLength="40" />
     <Property Name="TinhTrang" Type="varchar" MaxLength="40" />
     <Property Name="SoGhe" Type="tinyint" />
   </EntityType>
-  <Association Name="FK__BIENLAI__IDGiaVe__4E88ABD4">
+  <Association Name="FK__BIENLAI__IDGiaVe__3F466844">
     <End Role="GIAVE" Type="Self.GIAVE" Multiplicity="0..1" />
     <End Role="BIENLAI" Type="Self.BIENLAI" Multiplicity="*" />
     <ReferentialConstraint>
@@ -118,7 +132,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BIENLAI__IDHanhK__4D94879B">
+  <Association Name="FK__BIENLAI__IDHanhK__3E52440B">
     <End Role="HANHKHACH" Type="Self.HANHKHACH" Multiplicity="0..1" />
     <End Role="BIENLAI" Type="Self.BIENLAI" Multiplicity="*" />
     <ReferentialConstraint>
@@ -130,7 +144,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__GHE__BienSoXe__44FF419A">
+  <Association Name="FK__GHE__BienSoXe__35BCFE0A">
     <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="0..1" />
     <End Role="GHE" Type="Self.GHE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -142,7 +156,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__GIAVE__IDBenXe__47DBAE45">
+  <Association Name="FK__GIAVE__IDBenXe__38996AB5">
     <End Role="BENXE" Type="Self.BENXE" Multiplicity="0..1" />
     <End Role="GIAVE" Type="Self.GIAVE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -154,7 +168,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HANHKHACH__SoHie__4AB81AF0">
+  <Association Name="FK__HANHKHACH__SoHie__3B75D760">
     <End Role="GHE" Type="Self.GHE" Multiplicity="0..1" />
     <End Role="HANHKHACH" Type="Self.HANHKHACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -166,7 +180,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TUYENXE__IDBenKe__3D5E1FD2">
+  <Association Name="FK__LUUTHONG__BienSo__32E0915F">
+    <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="1" />
+    <End Role="LUUTHONG" Type="Self.LUUTHONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XEKHACH">
+        <PropertyRef Name="BienSoXe" />
+      </Principal>
+      <Dependent Role="LUUTHONG">
+        <PropertyRef Name="BienSoXe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LUUTHONG__IDTuye__31EC6D26">
+    <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="1" />
+    <End Role="LUUTHONG" Type="Self.LUUTHONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TUYENXE">
+        <PropertyRef Name="IDTuyenXe" />
+      </Principal>
+      <Dependent Role="LUUTHONG">
+        <PropertyRef Name="IDTuyenXe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TUYENXE__IDBenKe__2B3F6F97">
     <End Role="BENXE" Type="Self.BENXE" Multiplicity="0..1" />
     <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -178,7 +216,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TUYENXE__IDBenXe__3C69FB99">
+  <Association Name="FK__TUYENXE__IDBenXe__2A4B4B5E">
     <End Role="BENXE" Type="Self.BENXE" Multiplicity="0..1" />
     <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -190,7 +228,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__XEKHACH__CCCDNV__412EB0B6">
+  <Association Name="FK__XEKHACH__CCCDNV__2F10007B">
     <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
     <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -202,7 +240,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__XEKHACH__CCCDTX__403A8C7D">
+  <Association Name="FK__XEKHACH__CCCDTX__2E1BDC42">
     <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="0..1" />
     <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -214,67 +252,60 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__XEKHACH__IDTuyen__4222D4EF">
-    <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="0..1" />
-    <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TUYENXE">
-        <PropertyRef Name="IDTuyenXe" />
-      </Principal>
-      <Dependent Role="XEKHACH">
-        <PropertyRef Name="IDTuyenXe" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="QLXEKHACHModelStoreContainer">
     <EntitySet Name="BENXE" EntityType="Self.BENXE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BIENLAI" EntityType="Self.BIENLAI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GHE" EntityType="Self.GHE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GIAVE" EntityType="Self.GIAVE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HANHKHACH" EntityType="Self.HANHKHACH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LUUTHONG" EntityType="Self.LUUTHONG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TAIXE" EntityType="Self.TAIXE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TUYENXE" EntityType="Self.TUYENXE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="XEKHACH" EntityType="Self.XEKHACH" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__BIENLAI__IDGiaVe__4E88ABD4" Association="Self.FK__BIENLAI__IDGiaVe__4E88ABD4">
+    <AssociationSet Name="FK__BIENLAI__IDGiaVe__3F466844" Association="Self.FK__BIENLAI__IDGiaVe__3F466844">
       <End Role="GIAVE" EntitySet="GIAVE" />
       <End Role="BIENLAI" EntitySet="BIENLAI" />
     </AssociationSet>
-    <AssociationSet Name="FK__BIENLAI__IDHanhK__4D94879B" Association="Self.FK__BIENLAI__IDHanhK__4D94879B">
+    <AssociationSet Name="FK__BIENLAI__IDHanhK__3E52440B" Association="Self.FK__BIENLAI__IDHanhK__3E52440B">
       <End Role="HANHKHACH" EntitySet="HANHKHACH" />
       <End Role="BIENLAI" EntitySet="BIENLAI" />
     </AssociationSet>
-    <AssociationSet Name="FK__GHE__BienSoXe__44FF419A" Association="Self.FK__GHE__BienSoXe__44FF419A">
+    <AssociationSet Name="FK__GHE__BienSoXe__35BCFE0A" Association="Self.FK__GHE__BienSoXe__35BCFE0A">
       <End Role="XEKHACH" EntitySet="XEKHACH" />
       <End Role="GHE" EntitySet="GHE" />
     </AssociationSet>
-    <AssociationSet Name="FK__GIAVE__IDBenXe__47DBAE45" Association="Self.FK__GIAVE__IDBenXe__47DBAE45">
+    <AssociationSet Name="FK__GIAVE__IDBenXe__38996AB5" Association="Self.FK__GIAVE__IDBenXe__38996AB5">
       <End Role="BENXE" EntitySet="BENXE" />
       <End Role="GIAVE" EntitySet="GIAVE" />
     </AssociationSet>
-    <AssociationSet Name="FK__HANHKHACH__SoHie__4AB81AF0" Association="Self.FK__HANHKHACH__SoHie__4AB81AF0">
+    <AssociationSet Name="FK__HANHKHACH__SoHie__3B75D760" Association="Self.FK__HANHKHACH__SoHie__3B75D760">
       <End Role="GHE" EntitySet="GHE" />
       <End Role="HANHKHACH" EntitySet="HANHKHACH" />
     </AssociationSet>
-    <AssociationSet Name="FK__TUYENXE__IDBenKe__3D5E1FD2" Association="Self.FK__TUYENXE__IDBenKe__3D5E1FD2">
+    <AssociationSet Name="FK__LUUTHONG__BienSo__32E0915F" Association="Self.FK__LUUTHONG__BienSo__32E0915F">
+      <End Role="XEKHACH" EntitySet="XEKHACH" />
+      <End Role="LUUTHONG" EntitySet="LUUTHONG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LUUTHONG__IDTuye__31EC6D26" Association="Self.FK__LUUTHONG__IDTuye__31EC6D26">
+      <End Role="TUYENXE" EntitySet="TUYENXE" />
+      <End Role="LUUTHONG" EntitySet="LUUTHONG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TUYENXE__IDBenKe__2B3F6F97" Association="Self.FK__TUYENXE__IDBenKe__2B3F6F97">
       <End Role="BENXE" EntitySet="BENXE" />
       <End Role="TUYENXE" EntitySet="TUYENXE" />
     </AssociationSet>
-    <AssociationSet Name="FK__TUYENXE__IDBenXe__3C69FB99" Association="Self.FK__TUYENXE__IDBenXe__3C69FB99">
+    <AssociationSet Name="FK__TUYENXE__IDBenXe__2A4B4B5E" Association="Self.FK__TUYENXE__IDBenXe__2A4B4B5E">
       <End Role="BENXE" EntitySet="BENXE" />
       <End Role="TUYENXE" EntitySet="TUYENXE" />
     </AssociationSet>
-    <AssociationSet Name="FK__XEKHACH__CCCDNV__412EB0B6" Association="Self.FK__XEKHACH__CCCDNV__412EB0B6">
+    <AssociationSet Name="FK__XEKHACH__CCCDNV__2F10007B" Association="Self.FK__XEKHACH__CCCDNV__2F10007B">
       <End Role="NHANVIEN" EntitySet="NHANVIEN" />
       <End Role="XEKHACH" EntitySet="XEKHACH" />
     </AssociationSet>
-    <AssociationSet Name="FK__XEKHACH__CCCDTX__403A8C7D" Association="Self.FK__XEKHACH__CCCDTX__403A8C7D">
+    <AssociationSet Name="FK__XEKHACH__CCCDTX__2E1BDC42" Association="Self.FK__XEKHACH__CCCDTX__2E1BDC42">
       <End Role="TAIXE" EntitySet="TAIXE" />
-      <End Role="XEKHACH" EntitySet="XEKHACH" />
-    </AssociationSet>
-    <AssociationSet Name="FK__XEKHACH__IDTuyen__4222D4EF" Association="Self.FK__XEKHACH__IDTuyen__4222D4EF">
-      <End Role="TUYENXE" EntitySet="TUYENXE" />
       <End Role="XEKHACH" EntitySet="XEKHACH" />
     </AssociationSet>
   </EntityContainer>

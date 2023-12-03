@@ -17,17 +17,25 @@ namespace QuanLyXeKhach.ViewModel
         public int index;
         public bool isAdd;
         private HANHKHACH _new;
-        public HANHKHACH New { get => _new; set { _new = value;OnPropertyChanged(); } }
         private List<string> _Gtinh;
-        public List<string> Gtinh{ get { return _Gtinh;} set { _Gtinh = value; OnPropertyChanged(); } }
+        private List<string> _SohG;
         private ObservableCollection<HANHKHACH> _listnew;
+        public HANHKHACH New { get => _new; set { _new = value;OnPropertyChanged(); } }
+        public List<string> Gtinh{ get { return _Gtinh;} set { _Gtinh = value; OnPropertyChanged(); } }
+        public List<string> SohG { get { return _SohG; } set { _SohG = value; OnPropertyChanged(); } }
         public ObservableCollection<HANHKHACH> ListNew { get => _listnew; set { _listnew = value; OnPropertyChanged(); } }
         public ICommand closeCommand { get; set; }
         public ICommand addCommand { get; set; }
         public AddClientVM() 
         {
+            SohG = new List<string>();
+            var gheTrong = DataProvider.Ins.db.GHEs.Where(g => g.TINHTRANG == false).ToList();
+            for(int i = 0;i< gheTrong.Count; i++)
+            {
+                SohG.Add(gheTrong[i].IDGhe);
+            }
             index = 0;
-            Gtinh = new List<string>() {"Nam","Nữ","Khác" };
+            Gtinh = new List<string>() {"Nam","Nu","Khac" };
             New = new HANHKHACH();
             ListNew = new ObservableCollection<HANHKHACH>();
             isAdd= false;
