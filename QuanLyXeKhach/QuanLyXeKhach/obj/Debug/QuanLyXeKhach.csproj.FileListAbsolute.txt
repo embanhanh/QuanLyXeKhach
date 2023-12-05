@@ -182,3 +182,5 @@ C:\Users\phamngocthinh\source\repos\QuanLyXeKhach_ver3\QuanLyXeKhach\QuanLyXeKha
 C:\Users\phamngocthinh\source\repos\QuanLyXeKhach_ver3\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditRouteWd.baml
 C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditRouteWd.g.cs
 C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditRouteWd.baml
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagClientUC.g.cs
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagClientUC.baml

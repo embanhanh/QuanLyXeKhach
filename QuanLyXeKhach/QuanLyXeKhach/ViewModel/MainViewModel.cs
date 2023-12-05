@@ -1,6 +1,7 @@
 ﻿using QuanLyXeKhach.AddWindow;
 using QuanLyXeKhach.EditWindow;
 using QuanLyXeKhach.Model;
+using QuanLyXeKhach.UserControlFolder;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +17,8 @@ namespace QuanLyXeKhach.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+        //UserControl
+        private UserControl SelectedTagClient = null;
         //List join
         public List<string> Route_BXXP = new List<string>();
         public List<string> Route_BXDD = new List<string>();
@@ -65,6 +68,8 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand AddBusStationCommand { get; set; }
         public ICommand EditBusStationCommand { get; set; }
         public ICommand DeleteBusStationCommand { get; set; }
+        //UserControlCommand
+        public ICommand SelectTagClient { get; set; }
         public MainViewModel()
         {
             //Load MainWindow
@@ -72,18 +77,18 @@ namespace QuanLyXeKhach.ViewModel
             {
                 if(p == null)
                     return;
-                p.Hide();
-                LoginWindow lg = new LoginWindow();
-                lg.ShowDialog();
-                var lgVM = lg.DataContext as LoginViewModel;
-                if (lgVM == null)
-                    return;
-                if (lgVM.isLogin)
-                {
-                    p.Show();
-                }
-                else
-                    p.Close(); 
+                //p.Hide();
+                //LoginWindow lg = new LoginWindow();
+                //lg.ShowDialog();
+                //var lgVM = lg.DataContext as LoginViewModel;
+                //if (lgVM == null)
+                //    return;
+                //if (lgVM.isLogin)
+                //{
+                //    p.Show();
+                //}
+                //else
+                //    p.Close(); 
             });
             //Load Data
             ListClient = new ObservableCollection<HANHKHACH>(DataProvider.Ins.db.HANHKHACHes);
@@ -94,16 +99,29 @@ namespace QuanLyXeKhach.ViewModel
             ListRoute = new ObservableCollection<TUYENXE>(DataProvider.Ins.db.TUYENXEs);
             //Command Button Add, Edit, Delete
             //Client
-            AddClientCommand = new RelayCommand<Object>((p) => { return true; }, (p) => { 
+            SelectedItemClient = new HANHKHACH();
+            AddClientCommand = new RelayCommand<StackPanel>((p) => { return true; }, (p) => { 
                 AddClientWd wd = new AddClientWd(); 
                 var clientVM = wd.DataContext as AddClientVM;
                 
                 wd.ShowDialog();
                 if (clientVM.isAdd)
+                {
                     ListClient.Add(clientVM.ListNew[clientVM.index-1]);
+                    var uc = new TagClientUC();
+                    uc.TenHanhKhach.Text = ListClient.Last().TenHanhKhach;
+                    uc.IDHanhKhach.Text = ListClient.Last().IDHanhKhach;
+                    uc.GioiTinh.Text = ListClient.Last().GioiTinh;
+                    uc.Tuoi.Text = ListClient.Last().Tuoi;
+                    uc.SDT.Text = ListClient.Last().SDTHK;
+                    uc.DiaChi.Text = ListClient.Last().DiaChiHK;
+                    uc.SoHieuGhe.Text = ListClient.Last().SoHieuGhe;
+                    uc.CCCD.Text = ListClient.Last().CCCD;
+                    p.Children.Add(uc);
+                }
             });
             EditClientCommand = new RelayCommand<ListView>((p) => {
-                if (SelectedItemClient == null)
+                if (SelectedTagClient == null)
                     return false;
                 return true;
             }, (p) => { 
@@ -121,22 +139,30 @@ namespace QuanLyXeKhach.ViewModel
                 wd.ShowDialog();
                 if(editVM.isEdit)
                 {
-                    int index = ListClient.IndexOf(SelectedItemClient);
-                    ListClient.RemoveAt(index);
-                    SelectedItemClient = new HANHKHACH();
-                    SelectedItemClient.SDTHK = editVM.New.SDTHK;
-                    SelectedItemClient.DiaChiHK = editVM.New.DiaChiHK;
-                    SelectedItemClient.CCCD = editVM.New.CCCD;
-                    SelectedItemClient.IDHanhKhach = editVM.New.IDHanhKhach;
-                    SelectedItemClient.TenHanhKhach = editVM.New.TenHanhKhach;
-                    SelectedItemClient.GioiTinh = editVM.New.GioiTinh;
-                    SelectedItemClient.Tuoi = editVM.New.Tuoi;
-                    SelectedItemClient.SoHieuGhe = editVM.New.SoHieuGhe; 
-                    ListClient.Insert(index, SelectedItemClient);
+                    for (int i = 0; i < ListClient.Count; i++)
+                    {
+                        if (ListClient[i].IDHanhKhach == SelectedItemClient.IDHanhKhach)
+                        {
+                            ListClient[i] = editVM.New;
+                            break;
+                        }
+                    }
+                    var uc = SelectedTagClient as TagClientUC;
+                    uc.TenHanhKhach.Text = editVM.New.TenHanhKhach;
+                    uc.IDHanhKhach.Text = editVM.New.IDHanhKhach;
+                    uc.Tuoi.Text = editVM.New.Tuoi;
+                    uc.CCCD.Text = editVM.New.CCCD;
+                    uc.SDT.Text = editVM.New.SDTHK;
+                    uc.SoHieuGhe.Text = editVM.New.SoHieuGhe;
+                    uc.DiaChi.Text = editVM.New.DiaChiHK;
+                    uc.GioiTinh.Text = editVM.New.GioiTinh;
+                    SelectedTagClient = uc as UserControl;
+                    SelectedItemClient = editVM.New;
+
                 }
             });
             DeleteClientCommand = new RelayCommand<Object>((p) => {
-                if (SelectedItemClient == null)
+                if (SelectedTagClient == null)
                     return false;
                 return true;
             }, (p) => { 
@@ -177,6 +203,7 @@ namespace QuanLyXeKhach.ViewModel
                     SelectedItemStaff.DiaChi= editVM.New.DiaChi;
                     SelectedItemStaff.GioiTinh= editVM.New.GioiTinh;
                     ListStaff.Insert(index, SelectedItemStaff);
+                    
                 }
             });
             DeleteStaffCommand = new RelayCommand<Object>((p) => {
@@ -285,6 +312,7 @@ namespace QuanLyXeKhach.ViewModel
                     SelectedItemRoute.BENXE1 = editVM.New.BENXE1;
                     SelectedItemRoute.BENXE = editVM.New.BENXE;  
                     ListRoute.Insert(index, SelectedItemRoute);
+                    DataProvider.Ins.db.SaveChanges();
                     Route_BXXP.RemoveAt(index);
                     Route_BXDD.RemoveAt(index);
                 }
@@ -329,6 +357,7 @@ namespace QuanLyXeKhach.ViewModel
                     SelectedItemDriver.NgaySinh = editVM.New.NgaySinh;
                     SelectedItemDriver.BangLai = editVM.New.BangLai;
                     ListDriver.Insert(index, SelectedItemDriver);
+                    DataProvider.Ins.db.SaveChanges();
                 }
             });
             DeleteDriverCommand = new RelayCommand<Object>((p) => {
@@ -377,6 +406,25 @@ namespace QuanLyXeKhach.ViewModel
                 return true;
             }, (p) => {
                 ListBusStation.Remove(SelectedItemBusStation);
+            });
+            //UserControlCommand
+            SelectTagClient = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
+            {
+                if (SelectedTagClient != null)
+                {
+                    SelectedTagClient.Opacity = 0.7;
+                }
+                var uc = p as TagClientUC;
+                SelectedItemClient.TenHanhKhach = uc.TenHanhKhach.Text;
+                SelectedItemClient.IDHanhKhach = uc.IDHanhKhach.Text;
+                SelectedItemClient.SoHieuGhe = uc.SoHieuGhe.Text;
+                SelectedItemClient.Tuoi = uc.Tuoi.Text;
+                SelectedItemClient.DiaChiHK = uc.DiaChi.Text;
+                SelectedItemClient.CCCD = uc.CCCD.Text;
+                SelectedItemClient.GioiTinh = uc.GioiTinh.Text;
+                SelectedItemClient.SDTHK = uc.SDT.Text;
+                p.Opacity = 1;
+                SelectedTagClient = p;
             });
         }
     }

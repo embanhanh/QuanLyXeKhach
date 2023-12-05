@@ -172,6 +172,9 @@
     <Compile Include="UserControlFolder\ControlBarUC.xaml.cs">
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlFolder\TagClientUC.xaml.cs">
+      <DependentUpon>TagClientUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AddBusStationVM.cs" />
     <Compile Include="ViewModel\AddBusVM.cs" />
     <Compile Include="ViewModel\AddClientVM.cs" />
@@ -257,6 +260,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlFolder\ControlBarUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlFolder\TagClientUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

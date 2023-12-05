@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="QuanLyXeKhach.UserControlFolder.TagClientUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyXeKhach.UserControlFolder"
+                          Name="ucTag"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" Margin="5" DataContext="{StaticResource MainVM}"
+             d:DesignHeight="80" d:DesignWidth="700" Opacity="0.7">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDown">
+            <i:InvokeCommandAction CommandParameter="{Binding ElementName=ucTag}" Command="{Binding SelectTagClient}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="GotFocus">
+            <i:InvokeCommandAction CommandParameter="{Binding ElementName=ucTag}" Command="{Binding SelectTagClient}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Border  Background="GreenYellow"  CornerRadius="15" BorderThickness="1" BorderBrush="Gray">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <materialDesign:PackIcon Kind="AccountCircle" Height="80" Width="80"/>
+            </Grid>
+            <Grid Grid.Column="1" Width="200">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBox Margin="2" BorderBrush="Black" 
+                                 BorderThickness="0.5"
+                                 x:Name="TenHanhKhach"
+                        materialDesign:HintAssist.Foreground="#eeeeee"
+                                 IsReadOnly="true"
+                                 materialDesign:HintAssist.Hint="Họ và tên"
+                                  materialDesign:HintAssist.Background="#eeeeee"
+                        VerticalAlignment="Center" 
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        Padding="8" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBox Margin="2" BorderBrush="Black" Text="CCCD"
+                    materialDesign:HintAssist.Foreground="#eeeeee"
+                    VerticalAlignment="Center"  x:Name="CCCD"
+                             materialDesign:HintAssist.Background="#eeeeee"
+                             materialDesign:HintAssist.Hint="CCCD"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Padding="8" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2" Width="80">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBox Margin="2" BorderBrush="Black" Text=""
+                         BorderThickness="0.5" x:Name="Tuoi"
+                materialDesign:HintAssist.Foreground="#eeeeee"
+                             materialDesign:HintAssist.Hint="Tuoi"
+                             materialDesign:HintAssist.Background="#eeeeee"
+                VerticalAlignment="Center" 
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Padding="8" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBox Margin="2" BorderBrush="Black" Text="CCCD"
+                    materialDesign:HintAssist.Foreground="#eeeeee"
+                    VerticalAlignment="Center"  x:Name="GioiTinh"
+                             materialDesign:HintAssist.Background="#eeeeee"
+                             materialDesign:HintAssist.Hint="Gioi Tinh"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Padding="8" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="3" Width="250">
+                <Grid.RowDefinitions>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <TextBox Margin="2" BorderBrush="Black" Text="CCCD"
+                        materialDesign:HintAssist.Foreground="#eeeeee"
+                        VerticalAlignment="Center"  x:Name="SoHieuGhe"
+                                 materialDesign:HintAssist.Background="#eeeeee"
+                                 materialDesign:HintAssist.Hint="Ghe"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        Padding="8" />
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <TextBox Margin="2" BorderBrush="Black" Text="CCCD"
+                        materialDesign:HintAssist.Foreground="#eeeeee"
+                        VerticalAlignment="Center" x:Name="SDT"
+                                 materialDesign:HintAssist.Hint="SDT"
+                                                     materialDesign:HintAssist.Background="#eeeeee"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        Padding="8" />
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBox Margin="2" BorderBrush="Black" Text="CCCD"
+materialDesign:HintAssist.Foreground="#eeeeee"
+VerticalAlignment="Center" x:Name="DiaChi"
+         materialDesign:HintAssist.Hint="Dia chi"
+                             materialDesign:HintAssist.Background="#eeeeee"
+Style="{StaticResource MaterialDesignOutlinedTextBox}"
+Padding="8" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="4" >
+                <TextBox BorderBrush="Black" Text="CCCD"
+materialDesign:HintAssist.Foreground="#eeeeee" x:Name="IDHanhKhach"
+VerticalAlignment="Center" 
+                         materialDesign:HintAssist.Background="#eeeeee"
+         materialDesign:HintAssist.Hint=""
+Style="{StaticResource MaterialDesignOutlinedTextBox}"
+             Margin="20"            
+Padding="8" />
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>
