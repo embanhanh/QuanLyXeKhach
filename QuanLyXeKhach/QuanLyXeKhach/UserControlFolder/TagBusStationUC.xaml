@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="QuanLyXeKhach.UserControlFolder.TagBusStationUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyXeKhach.UserControlFolder"
+                                           Name="ucTag"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" Margin="5" DataContext="{StaticResource MainVM}"
+             d:DesignHeight="80" d:DesignWidth="700" Opacity="0.8">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDown">
+            <i:InvokeCommandAction CommandParameter="{Binding ElementName=ucTag}" Command="{Binding SelectTagBusStation}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="GotFocus">
+            <i:InvokeCommandAction CommandParameter="{Binding ElementName=ucTag}" Command="{Binding SelectTagBusStation}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Border  Background="CadetBlue"  CornerRadius="15" BorderThickness="1" BorderBrush="Gray">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                <ColumnDefinition Width="1.25*"></ColumnDefinition>
+                <ColumnDefinition Width="1.25*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <materialDesign:PackIcon HorizontalAlignment="Center"
+                Kind="BusMarker" Height="80" Width="80"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid>
+                    <TextBox Margin="2" BorderBrush="Black" BorderThickness="1.5"
+                    VerticalAlignment="Center" x:Name="TenBenXe" TextAlignment="Center"
+                    materialDesign:HintAssist.Hint="Tên bến xe" IsReadOnly="true" 
+                    materialDesign:HintAssist.Background="#eeeeee"  FontSize="14"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Padding="8"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2" >
+                <Grid>
+                    <TextBox Margin="2" BorderBrush="Black" BorderThickness="1.5"
+                        VerticalAlignment="Center" x:Name="SDT" TextAlignment="Center"
+                        materialDesign:HintAssist.Hint="Số điện thoại" IsReadOnly="true" 
+                        materialDesign:HintAssist.Background="#eeeeee"  FontSize="14"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        Padding="8"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="3" >
+                <Grid>
+                    <TextBox Margin="2" BorderBrush="Black" BorderThickness="1.5"
+                        VerticalAlignment="Center" x:Name="DiaChi" TextAlignment="Center"
+                        materialDesign:HintAssist.Hint="Địa chỉ" IsReadOnly="true" 
+                        materialDesign:HintAssist.Background="#eeeeee" FontSize="14"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        Padding="8"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="4" >
+                <TextBox BorderBrush="Black" BorderThickness="1.5"
+                x:Name="ID" IsReadOnly="true"
+                VerticalAlignment="Center" HorizontalAlignment="Center"
+                materialDesign:HintAssist.Background="#eeeeee"
+                materialDesign:HintAssist.Hint="ID" TextAlignment="Center"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 Padding="10"/>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

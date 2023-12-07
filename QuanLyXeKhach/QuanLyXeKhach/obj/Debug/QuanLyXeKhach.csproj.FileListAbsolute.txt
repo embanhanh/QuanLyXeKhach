@@ -184,3 +184,13 @@ C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\E
 C:\Users\user\Source\Repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditRouteWd.baml
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagClientUC.g.cs
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagClientUC.baml
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagDriverUC.g.cs
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagDriverUC.baml
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagBusStationUC.g.cs
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagBusStationUC.baml
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagBusUC.g.cs
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagRouteUC.g.cs
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagBusUC.baml
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagRouteUC.baml
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagStaffUC.g.cs
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagStaffUC.baml

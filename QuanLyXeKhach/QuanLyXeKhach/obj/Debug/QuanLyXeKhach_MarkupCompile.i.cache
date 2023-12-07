@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\App.xaml
-17-1060863590
+22-86180707
 2-1051215389
-521209613599
+57-2020949288
 2353038885
-AddWindow\AddBusStationWd.xaml;AddWindow\AddBusWd.xaml;EditWindow\EditBusStationWd.xaml;EditWindow\EditBusWd.xaml;EditWindow\EditRouteWd.xaml;EditWindow\EditStaffWd.xaml;AddWindow\AddClientWd.xaml;AddWindow\AddRouteWd.xaml;AddWindow\AddStaffWd.xaml;AddWindow\AddDriverWd.xaml;EditWindow\EditClientWd.xaml;EditWindow\EditDriverWd.xaml;LoginWindow.xaml;MainWindow.xaml;Resource\MainResource.xaml;UserControlFolder\ControlBarUC.xaml;UserControlFolder\TagClientUC.xaml;
+AddWindow\AddBusStationWd.xaml;AddWindow\AddBusWd.xaml;EditWindow\EditBusStationWd.xaml;EditWindow\EditBusWd.xaml;EditWindow\EditRouteWd.xaml;EditWindow\EditStaffWd.xaml;AddWindow\AddClientWd.xaml;AddWindow\AddRouteWd.xaml;AddWindow\AddStaffWd.xaml;AddWindow\AddDriverWd.xaml;EditWindow\EditClientWd.xaml;EditWindow\EditDriverWd.xaml;LoginWindow.xaml;MainWindow.xaml;Resource\MainResource.xaml;UserControlFolder\ControlBarUC.xaml;UserControlFolder\TagBusStationUC.xaml;UserControlFolder\TagBusUC.xaml;UserControlFolder\TagClientUC.xaml;UserControlFolder\TagDriverUC.xaml;UserControlFolder\TagRouteUC.xaml;UserControlFolder\TagStaffUC.xaml;
 
 True
 

@@ -1,20 +1,7 @@
-﻿C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\GeneratedInternalTypeHelper.g.i.cs
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\App.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\AddBusStationWd.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\AddBusWd.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\EditWindow\EditBusStationWd.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\EditWindow\EditBusWd.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\EditWindow\EditRouteWd.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\EditWindow\EditStaffWd.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\AddClientWd.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\AddRouteWd.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\AddStaffWd.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\AddDriverWd.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\EditWindow\EditClientWd.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\EditWindow\EditDriverWd.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\LoginWindow.xaml;;
+﻿
+
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\MainWindow.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\Resource\MainResource.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\UserControlFolder\ControlBarUC.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\UserControlFolder\TagClientUC.xaml;;
+FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\UserControlFolder\TagBusUC.xaml;;
+FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\UserControlFolder\TagRouteUC.xaml;;
+FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\UserControlFolder\TagStaffUC.xaml;;
 

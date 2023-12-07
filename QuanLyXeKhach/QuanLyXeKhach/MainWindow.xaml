@@ -151,7 +151,7 @@
                                     </ListView>
                                 </ScrollViewer>-->
                                 <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-                                    <StackPanel x:Name="ucContainer">
+                                    <StackPanel x:Name="ucContainerClient">
 
                                     </StackPanel>
                                 </ScrollViewer>
@@ -161,7 +161,7 @@
                         <Grid Grid.Row="2" Margin="0,0,0,20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddClientCommand}" CommandParameter="{Binding ElementName=ucContainer}"
+                                <Button Width="100" Margin="20 0" Command="{Binding AddClientCommand}" CommandParameter="{Binding ElementName=ucContainerClient}"
                                     Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
@@ -210,7 +210,7 @@
                                 <!--Title-->
                                 <TextBlock Grid.Row="0" Text="Danh sách tài xế" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
-                                <!--ListView-->
+                                <!--ListView--><!--
                                 <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
                                     <ListView Margin="10 5" ItemsSource="{Binding ListDriver,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
                                               SelectedItem="{Binding SelectedItemDriver,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
@@ -225,6 +225,11 @@
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
+                                </ScrollViewer>-->
+                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel x:Name="ucContainerDriver">
+
+                                    </StackPanel>
                                 </ScrollViewer>
                             </Grid>
                         </Border>
@@ -233,7 +238,7 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
                                 <Button Width="100" Margin="20 0" Command="{Binding AddDriverCommand}"
-                    Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
+                    Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424" CommandParameter="{Binding ElementName=ucContainerDriver}"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
@@ -283,7 +288,7 @@
                                 <TextBlock Grid.Row="0" Text="Danh sách nhân viên" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
-                                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                                <!--<ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
                                     <ListView Margin="10 5" ItemsSource="{Binding ListStaff,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                                               SelectedItem="{Binding SelectedItemStaff,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
                                         <ListView.View>
@@ -297,6 +302,11 @@
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
+                                </ScrollViewer>-->
+                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel x:Name="ucContainerStaff">
+
+                                    </StackPanel>
                                 </ScrollViewer>
                             </Grid>
                         </Border>
@@ -304,7 +314,7 @@
                         <Grid Grid.Row="1" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddStaffCommand}"
+                                <Button Width="100" Margin="20 0" Command="{Binding AddStaffCommand}" CommandParameter="{Binding ElementName=ucContainerStaff}"
                                     Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
@@ -354,7 +364,7 @@
                                 <TextBlock Grid.Row="0" Text="Danh sách xe khách" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
-                                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                                <!--<ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
                                     <ListView Margin="10 5" ItemsSource="{Binding ListBus, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                                               SelectedItem="{Binding SelectedItemBus, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
                                         <ListView.View>
@@ -368,6 +378,11 @@
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
+                                </ScrollViewer>-->
+                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel x:Name="ucContainerBus">
+
+                                    </StackPanel>
                                 </ScrollViewer>
                             </Grid>
                         </Border>
@@ -375,7 +390,7 @@
                         <Grid Grid.Row="1" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddBusCommand}"
+                                <Button Width="100" Margin="20 0" Command="{Binding AddBusCommand}" CommandParameter="{Binding ElementName=ucContainerBus}"
                                     Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
@@ -425,7 +440,7 @@
                                 <TextBlock Grid.Row="0" Text="Danh sách tuyến xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
-                                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                                <!--<ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
                                     <ListView Margin="10 5" ItemsSource="{Binding ListRoute, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                                               SelectedItem="{Binding SelectedItemRoute, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
                                         <ListView.View>
@@ -438,6 +453,11 @@
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
+                                </ScrollViewer>-->
+                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel x:Name="ucContainerRoute">
+
+                                    </StackPanel>
                                 </ScrollViewer>
                             </Grid>
                         </Border>
@@ -445,7 +465,7 @@
                         <Grid Grid.Row="1" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddRouteCommand}"
+                                <Button Width="100" Margin="20 0" Command="{Binding AddRouteCommand}" CommandParameter="{Binding ElementName=ucContainerRoute}"
                                     Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
@@ -559,7 +579,7 @@
                                 <TextBlock Grid.Row="0" Text="Danh sách bến xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
-                                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                                <!--<ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
                                     <ListView Margin="10 5" ItemsSource="{Binding ListBusStation,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
                                         SelectedItem="{Binding SelectedItemBusStation,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
                                         <ListView.View>
@@ -571,6 +591,11 @@
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
+                                </ScrollViewer>-->
+                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel x:Name="ucContainerBusStation">
+
+                                    </StackPanel>
                                 </ScrollViewer>
                             </Grid>
                         </Border>
@@ -578,7 +603,7 @@
                         <Grid Grid.Row="1" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddBusStationCommand}"
+                                <Button Width="100" Margin="20 0" Command="{Binding AddBusStationCommand}" CommandParameter="{Binding ElementName=ucContainerBusStation}"
                                     Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}" 

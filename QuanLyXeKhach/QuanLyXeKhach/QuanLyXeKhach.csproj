@@ -172,8 +172,23 @@
     <Compile Include="UserControlFolder\ControlBarUC.xaml.cs">
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlFolder\TagBusStationUC.xaml.cs">
+      <DependentUpon>TagBusStationUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlFolder\TagBusUC.xaml.cs">
+      <DependentUpon>TagBusUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlFolder\TagClientUC.xaml.cs">
       <DependentUpon>TagClientUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlFolder\TagDriverUC.xaml.cs">
+      <DependentUpon>TagDriverUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlFolder\TagRouteUC.xaml.cs">
+      <DependentUpon>TagRouteUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlFolder\TagStaffUC.xaml.cs">
+      <DependentUpon>TagStaffUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddBusStationVM.cs" />
     <Compile Include="ViewModel\AddBusVM.cs" />
@@ -263,7 +278,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControlFolder\TagBusStationUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlFolder\TagBusUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControlFolder\TagClientUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlFolder\TagDriverUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlFolder\TagRouteUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlFolder\TagStaffUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
