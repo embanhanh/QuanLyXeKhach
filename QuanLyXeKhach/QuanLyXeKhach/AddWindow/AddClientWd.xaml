@@ -37,7 +37,7 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <TextBlock HorizontalAlignment="Center" FontSize="18"
-                            Text="Thông tin khách hàng" Foreground="Gray" Margin="0 20 0 0">
+                            Text="Thông tin hành khách" Foreground="Gray" Margin="0 20 0 0">
                         </TextBlock>
                     </Grid>
                     <Grid Grid.Row="1">

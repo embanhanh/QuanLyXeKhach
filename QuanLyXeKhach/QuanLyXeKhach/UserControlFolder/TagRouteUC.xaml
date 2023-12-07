@@ -22,115 +22,114 @@
         <Grid>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <materialDesign:PackIcon Kind="BusSide" Height="100" Width="100"/>
+                <materialDesign:PackIcon Kind="BusSide" Height="100" Width="100" HorizontalAlignment="Center"/>
             </Grid>
-            <Grid Grid.Column="1" Width="150" Margin="5, 0, 2, 0">
+            <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <TextBox Margin="2" BorderBrush="Black" Text="Bến Xe Xuất Phát"
+                    <TextBox Margin="2" BorderBrush="Black" TextAlignment="Center"
                     materialDesign:HintAssist.Foreground="GreenYellow"
                     VerticalAlignment="Center"  x:Name="BenXeXP"
                      materialDesign:HintAssist.Background="GreenYellow"
                      materialDesign:HintAssist.Hint="Bến Xe Xuất Phát"
-                     IsReadOnly="True"
+                     IsReadOnly="True" BorderThickness="1.5" 
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Padding="8" />
                 </Grid>
                 <Grid Grid.Row="1">
-                    <TextBox Margin="2" BorderBrush="Black" Text="Bến Xe Đích Đến"
+                    <TextBox Margin="2" BorderBrush="Black" 
                     materialDesign:HintAssist.Foreground="GreenYellow"
                     VerticalAlignment="Center"  
-                     IsReadOnly="True"
+                     IsReadOnly="True" BorderThickness="1.5"
                      materialDesign:HintAssist.Background="GreenYellow"
                      materialDesign:HintAssist.Hint="Bến Xe Đích Đến"
-                     x:Name="BenXeDD"
+                     x:Name="BenXeDD" TextAlignment="Center"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Padding="8" />
                 </Grid>
             </Grid>
-            <Grid Grid.Column="3" Width="130" Margin="2, 0">
+            <Grid Grid.Column="3" >
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <TextBox Margin="2" BorderBrush="Black" Text="Giờ Xuất Phát"
-                     BorderThickness="0.5" 
+                    <TextBox Margin="2" BorderBrush="Black" 
+                     BorderThickness="1.5"
                      materialDesign:HintAssist.Foreground="GreenYellow"
                      materialDesign:HintAssist.Hint="Giờ Xuất Phát"
                      materialDesign:HintAssist.Background="GreenYellow"
-                     x:Name="GioXP"
+                     x:Name="GioXP" TextAlignment="Center"
                      IsReadOnly="True"
                     VerticalAlignment="Center" 
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Padding="8" />
                 </Grid>
                 <Grid Grid.Row="1">
-                    <TextBox Margin="2" BorderBrush="Black" Text="Giờ Đến Đích"
+                    <TextBox Margin="2" BorderBrush="Black"
                     materialDesign:HintAssist.Foreground="GreenYellow"
                     VerticalAlignment="Center"  
                      materialDesign:HintAssist.Background="GreenYellow"
                      materialDesign:HintAssist.Hint="Giờ Đến ĐÍch"
-                     x:Name="GioDD"
-                     IsReadOnly="True"
+                     x:Name="GioDD" BorderThickness="1.5"
+                     IsReadOnly="True" TextAlignment="Center"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Padding="8" />
                 </Grid>
             </Grid>
-            <Grid Grid.Column="2" Width="180" Margin="2, 0">
+            <Grid Grid.Column="2" >
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <TextBox Margin="2" BorderBrush="Black" Text="Ngày Xuất Phát"
-                     BorderThickness="0.5" 
+                    <TextBox Margin="2" BorderBrush="Black" 
+                     BorderThickness="1.5"  
                      materialDesign:HintAssist.Foreground="GreenYellow"
                      materialDesign:HintAssist.Hint="Ngày Xuất Phát"
                      materialDesign:HintAssist.Background="GreenYellow"
-                     x:Name="NgayXP"
+                     x:Name="NgayXP" TextAlignment="Center"
                      IsReadOnly="True"
                     VerticalAlignment="Center" 
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Padding="8" />
                 </Grid>
                 <Grid Grid.Row="1">
-                    <TextBox Margin="2" BorderBrush="Black" Text="Ngày Đến Đích"
+                    <TextBox Margin="2" BorderBrush="Black"
                     materialDesign:HintAssist.Foreground="GreenYellow"
                     VerticalAlignment="Center"  
-                     IsReadOnly="True"
-                    x:Name="NgayDD"
+                     IsReadOnly="True" TextAlignment="Center"
+                    x:Name="NgayDD" BorderThickness="1.5"
                     materialDesign:HintAssist.Background="GreenYellow"
                     materialDesign:HintAssist.Hint="Ngày Đến Đích"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Padding="8" />  
                 </Grid>
             </Grid>
-            <Grid Grid.Column="4" Width="90" Margin="5, 0">
+            <Grid Grid.Column="4" >
 
                 <Grid>
-                    <TextBox Margin="2" BorderBrush="Black" Text="Mã Tuyến Xe"
-                     BorderThickness="0.5" 
+                    <TextBox Margin="10" BorderBrush="Black" 
+                     BorderThickness="1.5" 
                      materialDesign:HintAssist.Foreground="GreenYellow"
-                     materialDesign:HintAssist.Hint="Mã Tuyến Xe"
+                     materialDesign:HintAssist.Hint="ID"
                      materialDesign:HintAssist.Background="GreenYellow"
-                     x:Name="IDTuyenXe"
-                    IsReadOnly="True"
+                     x:Name="IDTuyenXe" TextAlignment="Center"
+                    IsReadOnly="True" MaxWidth="80"
                     VerticalAlignment="Center" 
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Padding="8" />
                 </Grid>
-
             </Grid>
         </Grid>
     </Border>

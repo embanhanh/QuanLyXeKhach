@@ -31,70 +31,45 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="5.5*"></RowDefinition>
+            <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <uccb:ControlBarUC Tag="{Binding Title, ElementName=MainWd}"></uccb:ControlBarUC>
         </Grid>
-        <!--Search,Acount Container-->
-        <Border Grid.Row="1" BorderBrush="#eeeeee" BorderThickness="0 0.5 0 0.5">
-            <Grid >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <!--Account-->
-                <Grid Background="#25b24a" Grid.Column="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <materialDesign:PackIcon Kind="Account"  VerticalAlignment="center" 
-                       HorizontalAlignment="Center" Width="50" Height="50" Foreground="White"/>
-                    </Grid>
-                    <Grid Grid.Column="1" >
-                        <StackPanel VerticalAlignment="Center" >
-                            <TextBlock Text="Tên" HorizontalAlignment="Center" FontSize="16" Foreground="white"></TextBlock>
-                            <TextBlock Text="chức vụ" HorizontalAlignment="Center" FontSize="16" Margin="0 10" Foreground="White"></TextBlock>
-                        </StackPanel>
-                    </Grid>
-                </Grid>
-                <!--Search-->
-                <Grid Grid.Column="1" Background="#eeeeee">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
-                VerticalAlignment="Bottom"  >
-                        <TextBox  Width="600" Height="25" Background="White" 
-                            materialDesign:TextFieldAssist.UnderlineBrush="Gray"
-                            BorderThickness="0 0 0.5 0.5" Margin="10" >
-                            <TextBox.Effect>
-                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
-                            </TextBox.Effect>
-
-                        </TextBox>
-                        <Button BorderBrush="#44b0f1"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                            Width="25" Height="25" Background="#44b0f1"
-                            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                            ToolTip="MaterialDesignFloatingActionMiniDarkButton">
-                            <materialDesign:PackIcon Width="20" Height="20"
-                            Kind="ArrowRightThick" />
-                        </Button>
-                    </StackPanel>
-                </Grid>
-            </Grid>
-        </Border>
         <!--Tab Control-->
-        <Grid Grid.Row="2" >
+        <Grid Grid.Row="1" >
             <TabControl
                     materialDesign:ColorZoneAssist.Background="#25b24a"
                     materialDesign:ColorZoneAssist.Foreground="White"
                     materialDesign:ColorZoneAssist.Mode="Custom"
                     Style="{StaticResource MaterialDesignFilledTabControl}"
                     TabStripPlacement="Left" Background="#25b24a">
+                <!--Account-->
+                <TabItem Width="200" MinHeight="70">
+                    <TabItem.Header>
+                        <Border>
+                            <Grid Width="180" Height="60">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <materialDesign:PackIcon Kind="Account" Width="50" Height="50" VerticalAlignment="center" 
+                                        HorizontalAlignment="Left" Foreground="White"/>
+                                </Grid>
+                                <Grid Grid.Column="1" >
+                                    <StackPanel VerticalAlignment="Center" >
+                                        <TextBlock Text="Tên" HorizontalAlignment="Center" FontSize="15" Foreground="white"></TextBlock>
+                                        <TextBlock Text="chức vụ" HorizontalAlignment="Center" FontSize="15" Margin="0 10" Foreground="White"></TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </TabItem.Header>
+                    <TextBlock Text="Home item" Foreground="Black"></TextBlock>
+                </TabItem>
                 <!--Home-->
-                <TabItem  Width="200" Height="65">
+                <TabItem Height="65" Width="200" IsSelected="True">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal" Width="120">
                             <materialDesign:PackIcon Kind="Home" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
@@ -114,11 +89,31 @@
                     </TabItem.Header>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.8*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="0.6*"></RowDefinition>
                         </Grid.RowDefinitions>
+                        <!--Search-->
+                        <Grid Grid.Column="0" Background="#eeeeee">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                                VerticalAlignment="Bottom"  >
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                    materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                    VerticalAlignment="Center" Width="600" Background="White"
+                                    materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <Button BorderBrush="#44b0f1"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Width="25" Height="25" Background="#44b0f1"
+                                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                                    ToolTip="MaterialDesignFloatingActionMiniDarkButton">
+                                    <materialDesign:PackIcon Width="20" Height="20"
+                                        Kind="ArrowRightThick" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
                         <!--List-->
-                        <Border Grid.Row="0" Margin="20,20,20,20" CornerRadius="10" 
+                        <Border Grid.Row="1" Margin="20,20,20,20" CornerRadius="10" 
                             BorderBrush="#eee" BorderThickness="1" Background="White" >
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
@@ -192,11 +187,31 @@
                     </TabItem.Header>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.8*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="0.6*"></RowDefinition>
                         </Grid.RowDefinitions>
+                        <!--Search-->
+                        <Grid Grid.Column="0" Background="#eeeeee">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                                VerticalAlignment="Bottom"  >
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                    materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                    VerticalAlignment="Center" Width="600" Background="White"
+                                    materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <Button BorderBrush="#44b0f1"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Width="25" Height="25" Background="#44b0f1"
+                                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                                    ToolTip="MaterialDesignFloatingActionMiniDarkButton">
+                                    <materialDesign:PackIcon Width="20" Height="20"
+                                            Kind="ArrowRightThick" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
                         <!--List-->
-                        <Border Grid.Row="0" Margin="20" CornerRadius="10" 
+                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
                             BorderBrush="#eee" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
@@ -234,26 +249,26 @@
                             </Grid>
                         </Border>
                         <!--Buttons-->
-                        <Grid Grid.Row="1" Margin="0 0 0 20">
+                        <Grid Grid.Row="2" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
                                 <Button Width="100" Margin="20 0" Command="{Binding AddDriverCommand}"
-                    Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424" CommandParameter="{Binding ElementName=ucContainerDriver}"
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                    Style="{StaticResource MaterialDesignRaisedLightButton}"
-                    ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424" CommandParameter="{Binding ElementName=ucContainerDriver}"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Edit-->
                                 <Button Width="100" Margin="20 0" Command="{Binding EditDriverCommand}"
-                     Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
-                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                     Style="{StaticResource MaterialDesignRaisedLightButton}"
-                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                 Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
+                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Delete-->
                                 <Button Width="100" Margin="20 0" Command="{Binding DeleteDriverCommand}"
-                     Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
-                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                     Style="{StaticResource MaterialDesignRaisedLightButton}"
-                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                 Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
+                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                             </StackPanel>
                         </Grid>
                     </Grid>
@@ -269,11 +284,31 @@
                     </TabItem.Header>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.8*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="0.6*"></RowDefinition>
                         </Grid.RowDefinitions>
+                        <!--Search-->
+                        <Grid Grid.Column="0" Background="#eeeeee">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                                VerticalAlignment="Bottom"  >
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                VerticalAlignment="Center" Width="600" Background="White"
+                                materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <Button BorderBrush="#44b0f1"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Width="25" Height="25" Background="#44b0f1"
+                                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                                    ToolTip="MaterialDesignFloatingActionMiniDarkButton">
+                                    <materialDesign:PackIcon Width="20" Height="20"
+                                        Kind="ArrowRightThick" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
                         <!--List-->
-                        <Border Grid.Row="0" Margin="20" CornerRadius="10" 
+                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
                             BorderBrush="#eee" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
@@ -311,7 +346,7 @@
                             </Grid>
                         </Border>
                         <!--Buttons-->
-                        <Grid Grid.Row="1" Margin="0 0 0 20">
+                        <Grid Grid.Row="2" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
                                 <Button Width="100" Margin="20 0" Command="{Binding AddStaffCommand}" CommandParameter="{Binding ElementName=ucContainerStaff}"
@@ -345,11 +380,31 @@
                     </TabItem.Header>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.8*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="0.6*"></RowDefinition>
                         </Grid.RowDefinitions>
+                        <!--Search-->
+                        <Grid Grid.Column="0" Background="#eeeeee">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                                VerticalAlignment="Bottom"  >
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                VerticalAlignment="Center" Width="600" Background="White"
+                                materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <Button BorderBrush="#44b0f1"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                Width="25" Height="25" Background="#44b0f1"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                                ToolTip="MaterialDesignFloatingActionMiniDarkButton">
+                                    <materialDesign:PackIcon Width="20" Height="20"
+                                    Kind="ArrowRightThick" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
                         <!--List-->
-                        <Border Grid.Row="0" Margin="20" CornerRadius="10" 
+                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
                              BorderBrush="#eee" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
@@ -387,7 +442,7 @@
                             </Grid>
                         </Border>
                         <!--Buttons-->
-                        <Grid Grid.Row="1" Margin="0 0 0 20">
+                        <Grid Grid.Row="2" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
                                 <Button Width="100" Margin="20 0" Command="{Binding AddBusCommand}" CommandParameter="{Binding ElementName=ucContainerBus}"
@@ -421,11 +476,31 @@
                     </TabItem.Header>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.8*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="0.6*"></RowDefinition>
                         </Grid.RowDefinitions>
+                        <!--Search-->
+                        <Grid Grid.Column="0" Background="#eeeeee">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                            VerticalAlignment="Bottom"  >
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                VerticalAlignment="Center" Width="600" Background="White"
+                                materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <Button BorderBrush="#44b0f1"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                Width="25" Height="25" Background="#44b0f1"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                                ToolTip="MaterialDesignFloatingActionMiniDarkButton">
+                                    <materialDesign:PackIcon Width="20" Height="20"
+                                    Kind="ArrowRightThick" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
                         <!--List-->
-                        <Border Grid.Row="0" Margin="20" CornerRadius="10" 
+                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
                             BorderBrush="#eee" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
@@ -462,7 +537,7 @@
                             </Grid>
                         </Border>
                         <!--Buttons-->
-                        <Grid Grid.Row="1" Margin="0 0 0 20">
+                        <Grid Grid.Row="2" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
                                 <Button Width="100" Margin="20 0" Command="{Binding AddRouteCommand}" CommandParameter="{Binding ElementName=ucContainerRoute}"
@@ -496,11 +571,31 @@
                     </TabItem.Header>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.8*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="0.6*"></RowDefinition>
                         </Grid.RowDefinitions>
+                        <!--Search-->
+                        <Grid Grid.Column="0" Background="#eeeeee">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                            VerticalAlignment="Bottom"  >
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                VerticalAlignment="Center" Width="600" Background="White"
+                                materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <Button BorderBrush="#44b0f1"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                Width="25" Height="25" Background="#44b0f1"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                                ToolTip="MaterialDesignFloatingActionMiniDarkButton">
+                                    <materialDesign:PackIcon Width="20" Height="20"
+                                    Kind="ArrowRightThick" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
                         <!--List-->
-                        <Border Grid.Row="0" Margin="20" CornerRadius="10" 
+                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
                             BorderBrush="#eee" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
@@ -526,7 +621,7 @@
                             </Grid>
                         </Border>
                         <!--Buttons-->
-                        <Grid Grid.Row="1" Margin="0 0 0 20">
+                        <Grid Grid.Row="2" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
                                 <Button Width="100" Margin="20 0" Command="{Binding AddRouteCommand}"
@@ -560,11 +655,31 @@
                     </TabItem.Header>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.8*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="0.6*"></RowDefinition>
                         </Grid.RowDefinitions>
+                        <!--Search-->
+                        <Grid Grid.Column="0" Background="#eeeeee">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                            VerticalAlignment="Bottom"  >
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                VerticalAlignment="Center" Width="600" Background="White"
+                                materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <Button BorderBrush="#44b0f1"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                Width="25" Height="25" Background="#44b0f1"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                                ToolTip="MaterialDesignFloatingActionMiniDarkButton">
+                                    <materialDesign:PackIcon Width="20" Height="20"
+                                    Kind="ArrowRightThick" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
                         <!--List-->
-                        <Border Grid.Row="0" Margin="20" CornerRadius="10" 
+                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
                             BorderBrush="#eee" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
@@ -600,7 +715,7 @@
                             </Grid>
                         </Border>
                         <!--Buttons-->
-                        <Grid Grid.Row="1" Margin="0 0 0 20">
+                        <Grid Grid.Row="2" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
                                 <Button Width="100" Margin="20 0" Command="{Binding AddBusStationCommand}" CommandParameter="{Binding ElementName=ucContainerBusStation}"
