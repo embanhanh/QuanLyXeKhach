@@ -12,16 +12,16 @@ namespace QuanLyXeKhach.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class NHANVIEN
+    public partial class THUNGAN
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NHANVIEN()
+        public THUNGAN()
         {
-            this.XEKHACHes = new HashSet<XEKHACH>();
+            this.BIENLAIs = new HashSet<BIENLAI>();
         }
     
-        public string CCCDNV { get; set; }
-        public string HoTenNhanVien { get; set; }
+        public string CCCDTN { get; set; }
+        public string HoTen { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public string SoDienThoai { get; set; }
         public string DiaChi { get; set; }
@@ -29,6 +29,6 @@ namespace QuanLyXeKhach.Model
         public Nullable<decimal> Luong { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<XEKHACH> XEKHACHes { get; set; }
+        public virtual ICollection<BIENLAI> BIENLAIs { get; set; }
     }
 }

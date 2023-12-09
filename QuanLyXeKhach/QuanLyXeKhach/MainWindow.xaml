@@ -681,14 +681,13 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                 x:Name="STenBX"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
                                 <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
-materialDesign:HintAssist.Foreground="Green" Padding="12"
-VerticalAlignment="Center" Width="300" Background="White"
-materialDesign:HintAssist.Hint="Địa Chỉ" Height="40"
-                                         x:Name="SDiaChi"
-Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                VerticalAlignment="Center" Width="300" Background="White"
+                                materialDesign:HintAssist.Hint="Địa Chỉ" Height="40"
+                                                                         x:Name="SDiaChi"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
                                 <Button Content="Tìm Kiếm" Margin="0 0 15 0"
-         Command="{Binding SearchBusStation}" CommandParameter="{Binding ElementName=MainWd}">
-
+                                Command="{Binding SearchBusStation}" CommandParameter="{Binding ElementName=MainWd}">
                                 </Button>
                             </StackPanel>
                         </Grid>

@@ -13,10 +13,10 @@ namespace QuanLyXeKhach.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QLXEEntities : DbContext
+    public partial class QLXEKHACHEntities : DbContext
     {
-        public QLXEEntities()
-            : base("name=QLXEEntities")
+        public QLXEKHACHEntities()
+            : base("name=QLXEKHACHEntities")
         {
         }
     
@@ -30,10 +30,11 @@ namespace QuanLyXeKhach.Model
         public virtual DbSet<GHE> GHEs { get; set; }
         public virtual DbSet<GIAVE> GIAVEs { get; set; }
         public virtual DbSet<HANHKHACH> HANHKHACHes { get; set; }
-        public virtual DbSet<LUUTHONG> LUUTHONGs { get; set; }
+        public virtual DbSet<LICHTRINH> LICHTRINHs { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TAIXE> TAIXEs { get; set; }
+        public virtual DbSet<THUNGAN> THUNGANs { get; set; }
         public virtual DbSet<TUYENXE> TUYENXEs { get; set; }
         public virtual DbSet<XEKHACH> XEKHACHes { get; set; }
     }

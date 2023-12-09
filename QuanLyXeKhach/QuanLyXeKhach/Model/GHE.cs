@@ -21,10 +21,10 @@ namespace QuanLyXeKhach.Model
         }
     
         public string IDGhe { get; set; }
-        public string BienSoXe { get; set; }
+        public string IDLICHTRINH { get; set; }
         public Nullable<bool> TINHTRANG { get; set; }
     
-        public virtual XEKHACH XEKHACH { get; set; }
+        public virtual LICHTRINH LICHTRINH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HANHKHACH> HANHKHACHes { get; set; }
     }

@@ -17,18 +17,18 @@ namespace QuanLyXeKhach.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TUYENXE()
         {
-            this.LUUTHONGs = new HashSet<LUUTHONG>();
+            this.LICHTRINHs = new HashSet<LICHTRINH>();
         }
     
         public string IDTuyenXe { get; set; }
         public string IDBenXeXuatPhat { get; set; }
         public string IDBenKetThuc { get; set; }
-        public Nullable<System.DateTime> ThoiGianXuatPhat { get; set; }
-        public Nullable<System.DateTime> ThoiGianKetThuc { get; set; }
+        public Nullable<System.TimeSpan> GioXuatPhat { get; set; }
+        public Nullable<System.TimeSpan> GioKetThuc { get; set; }
     
         public virtual BENXE BENXE { get; set; }
         public virtual BENXE BENXE1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LUUTHONG> LUUTHONGs { get; set; }
+        public virtual ICollection<LICHTRINH> LICHTRINHs { get; set; }
     }
 }

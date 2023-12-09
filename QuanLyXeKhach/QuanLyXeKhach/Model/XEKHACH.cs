@@ -17,8 +17,7 @@ namespace QuanLyXeKhach.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public XEKHACH()
         {
-            this.GHEs = new HashSet<GHE>();
-            this.LUUTHONGs = new HashSet<LUUTHONG>();
+            this.LICHTRINHs = new HashSet<LICHTRINH>();
         }
     
         public string BienSoXe { get; set; }
@@ -29,9 +28,7 @@ namespace QuanLyXeKhach.Model
         public Nullable<byte> SoGhe { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GHE> GHEs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LUUTHONG> LUUTHONGs { get; set; }
+        public virtual ICollection<LICHTRINH> LICHTRINHs { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }
         public virtual TAIXE TAIXE { get; set; }
     }

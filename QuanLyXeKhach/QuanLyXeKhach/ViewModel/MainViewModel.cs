@@ -303,13 +303,17 @@ namespace QuanLyXeKhach.ViewModel
             }, (p) => {
                 EditRouteWd wd = new EditRouteWd();
                 var editVM = wd.DataContext as EditRouteVM;
+                editVM.New2.BENXE1 = SelectedItemRoute.BENXE1;
+                editVM.New2.BENXE = SelectedItemRoute.BENXE;
                 editVM.New2.IDTuyenXe = SelectedItemRoute.IDTuyenXe;
+                editVM.New2.IDBenXeXuatPhat = SelectedItemRoute.IDBenXeXuatPhat;
+                editVM.New2.IDBenKetThuc = SelectedItemRoute.IDBenKetThuc;
                 editVM.BenXeXP = SelectedItemRoute.BENXE1.TenBenXe;
                 editVM.BenXeDD = SelectedItemRoute.BENXE.TenBenXe;
-                editVM.NgayXP = (DateTime)SelectedItemRoute.ThoiGianXuatPhat;
-                editVM.NgayDD = (DateTime)SelectedItemRoute.ThoiGianKetThuc;
-                editVM.GioXP = (DateTime)SelectedItemRoute.ThoiGianXuatPhat;
-                editVM.GioDD = (DateTime)SelectedItemRoute.ThoiGianKetThuc;
+                editVM.New2.GioXuatPhat = SelectedItemRoute.GioXuatPhat;
+                editVM.New2.GioKetThuc = SelectedItemRoute.GioKetThuc;
+                editVM.GioDD = Convert.ToDateTime(SelectedItemRoute.GioKetThuc.ToString());
+                editVM.GioXP = Convert.ToDateTime(SelectedItemRoute.GioXuatPhat.ToString());
                 editVM.New = editVM.New2;
                 wd.ShowDialog();
                 if (editVM.isEdit)
@@ -318,14 +322,15 @@ namespace QuanLyXeKhach.ViewModel
                     SelectedItemRoute.IDTuyenXe = uc.IDTuyenXe.Text = editVM.New.IDTuyenXe;
                     uc.BenXeXP.Text = editVM.New.BENXE1.TenBenXe;
                     uc.BenXeDD.Text = editVM.New.BENXE.TenBenXe;
-                    uc.NgayXP.Text = editVM.New.ThoiGianXuatPhat.Value.ToString("dd/MM/yyyy");
-                    uc.NgayDD.Text = editVM.New.ThoiGianKetThuc.Value.ToString("dd/MM/yyyy");
-                    uc.GioXP.Text = editVM.New.ThoiGianXuatPhat.Value.ToString("T");
-                    uc.GioDD.Text = editVM.New.ThoiGianKetThuc.Value.ToString("T");
+                    uc.GioXP.Text = editVM.New.GioXuatPhat.ToString();
+                    uc.GioDD.Text = editVM.New.GioKetThuc.ToString();
                     SelectedItemRoute.BENXE1 = editVM.New.BENXE1;
                     SelectedItemRoute.BENXE = editVM.New.BENXE;
-                    SelectedItemRoute.ThoiGianXuatPhat = editVM.New.ThoiGianXuatPhat;
-                    SelectedItemRoute.ThoiGianKetThuc = editVM.New.ThoiGianKetThuc;
+                    SelectedItemRoute.IDBenXeXuatPhat = editVM.New.IDBenXeXuatPhat;
+                    SelectedItemRoute.IDBenKetThuc = editVM.New.IDBenKetThuc;
+                    SelectedItemRoute.GioXuatPhat = editVM.New.GioXuatPhat;
+                    SelectedItemRoute.GioKetThuc = editVM.New.GioKetThuc;
+
                 }
             });
             DeleteRouteCommand = new RelayCommand<Object>((p) => {
@@ -638,41 +643,41 @@ namespace QuanLyXeKhach.ViewModel
                 }
                 SelectedTagBusStation = null;
             });
-            SearchRoute = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            {
-                MainWindow mw = p as MainWindow;
-                mw.ucContainerRoute.Children.Clear();
-                string bxxp = mw.SBenXP.SelectedItem?.ToString();
-                string bxdd = mw.SBenDD.SelectedValue?.ToString();
-                DateTime? ngXP = mw.SNgayXP.SelectedDate;
-                DateTime? ngDD = mw.SNgayDD.SelectedDate;
-                foreach (TUYENXE tx in ListRoute)
-                {
-                    int null1 = 0, null2 = 0, null3 = 0, null4 = 0;
-                    if (bxxp == null || bxxp == "") null1 = 1; if (bxxp == tx.BENXE1.TenBenXe) null1 = 2;
-                    if (bxdd == null || bxdd == "") null2 = 1; if (bxdd == tx.BENXE.TenBenXe) null2 = 2;
-                    if(ngXP == null) null3 = 1;else if (ngXP.Value.ToShortDateString() == tx.ThoiGianXuatPhat.Value.ToShortDateString()) null3 = 2;
-                    if(ngDD == null) null4 = 1;else if (ngDD.Value.ToShortDateString() == tx.ThoiGianKetThuc.Value.ToShortDateString()) null4 = 2;
-                    if((null1 == 1 && null2 == 1 && null3 == 1 && null4 == 1) || (null1 == 2 && null2 == 1 && null3 == 1 && null4 == 1) || (null1 == 1 && null2 == 2 && null3 == 1 && null4 == 1)
-                    || (null1 == 1 && null2 == 1 && null3 == 2 && null4 == 1) || (null1 == 1 && null2 == 1 && null3 == 1 && null4 == 2) || (null1 == 2 && null2 == 2 && null3 == 1 && null4 == 1) 
-                    || (null1 == 2 && null2 == 1 && null3 == 2 && null4 == 1) || (null1 == 2 && null2 == 1 && null3 == 1 && null4 == 2) || (null1 == 1 && null2 == 2 && null3 == 2 && null4 == 1)
-                    || (null1 == 1 && null2 == 2 && null3 == 1 && null4 == 2) || (null1 == 1 && null2 == 1 && null3 == 2 && null4 == 2) || (null1 == 2 && null2 == 2 && null3 == 2 && null4 == 1)
-                    || (null1 == 2 && null2 == 2 && null3 == 1 && null4 == 2) || (null1 == 2 && null2 == 1 && null3 == 2 && null4 == 2) || (null1 == 1 && null2 == 2 && null3 == 2 && null4 == 2)
-                    || (null1 == 2 && null2 == 2 && null3 == 2 && null4 == 2))
-                    {
-                        var uc = new TagRouteUC();
-                        uc.IDTuyenXe.Text = tx.IDTuyenXe;
-                        uc.BenXeXP.Text = tx.BENXE1.TenBenXe;
-                        uc.BenXeDD.Text = tx.BENXE.TenBenXe;
-                        uc.NgayXP.Text = tx.ThoiGianXuatPhat.Value.ToString("dd/MM/yyyy");
-                        uc.NgayDD.Text = tx.ThoiGianKetThuc.Value.ToString("dd/MM/yyyy");
-                        uc.GioXP.Text = tx.ThoiGianXuatPhat.Value.ToString("T");
-                        uc.GioDD.Text = tx.ThoiGianKetThuc.Value.ToString("T");
-                        mw.ucContainerRoute.Children.Add(uc);
-                    }
-                }
-                SelectedTagRoute = null;
-            });
+            //SearchRoute = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            //{
+            //    MainWindow mw = p as MainWindow;
+            //    mw.ucContainerRoute.Children.Clear();
+            //    string bxxp = mw.SBenXP.SelectedItem?.ToString();
+            //    string bxdd = mw.SBenDD.SelectedValue?.ToString();
+            //    DateTime? ngXP = mw.SNgayXP.SelectedDate;
+            //    DateTime? ngDD = mw.SNgayDD.SelectedDate;
+            //    foreach (TUYENXE tx in ListRoute)
+            //    {
+            //        int null1 = 0, null2 = 0, null3 = 0, null4 = 0;
+            //        if (bxxp == null || bxxp == "") null1 = 1; if (bxxp == tx.BENXE1.TenBenXe) null1 = 2;
+            //        if (bxdd == null || bxdd == "") null2 = 1; if (bxdd == tx.BENXE.TenBenXe) null2 = 2;
+            //        if(ngXP == null) null3 = 1;else if (ngXP.Value.ToShortDateString() == tx.ThoiGianXuatPhat.Value.ToShortDateString()) null3 = 2;
+            //        if(ngDD == null) null4 = 1;else if (ngDD.Value.ToShortDateString() == tx.ThoiGianKetThuc.Value.ToShortDateString()) null4 = 2;
+            //        if((null1 == 1 && null2 == 1 && null3 == 1 && null4 == 1) || (null1 == 2 && null2 == 1 && null3 == 1 && null4 == 1) || (null1 == 1 && null2 == 2 && null3 == 1 && null4 == 1)
+            //        || (null1 == 1 && null2 == 1 && null3 == 2 && null4 == 1) || (null1 == 1 && null2 == 1 && null3 == 1 && null4 == 2) || (null1 == 2 && null2 == 2 && null3 == 1 && null4 == 1) 
+            //        || (null1 == 2 && null2 == 1 && null3 == 2 && null4 == 1) || (null1 == 2 && null2 == 1 && null3 == 1 && null4 == 2) || (null1 == 1 && null2 == 2 && null3 == 2 && null4 == 1)
+            //        || (null1 == 1 && null2 == 2 && null3 == 1 && null4 == 2) || (null1 == 1 && null2 == 1 && null3 == 2 && null4 == 2) || (null1 == 2 && null2 == 2 && null3 == 2 && null4 == 1)
+            //        || (null1 == 2 && null2 == 2 && null3 == 1 && null4 == 2) || (null1 == 2 && null2 == 1 && null3 == 2 && null4 == 2) || (null1 == 1 && null2 == 2 && null3 == 2 && null4 == 2)
+            //        || (null1 == 2 && null2 == 2 && null3 == 2 && null4 == 2))
+            //        {
+            //            var uc = new TagRouteUC();
+            //            uc.IDTuyenXe.Text = tx.IDTuyenXe;
+            //            uc.BenXeXP.Text = tx.BENXE1.TenBenXe;
+            //            uc.BenXeDD.Text = tx.BENXE.TenBenXe;
+            //            uc.NgayXP.Text = tx.ThoiGianXuatPhat.Value.ToString("dd/MM/yyyy");
+            //            uc.NgayDD.Text = tx.ThoiGianKetThuc.Value.ToString("dd/MM/yyyy");
+            //            uc.GioXP.Text = tx.ThoiGianXuatPhat.Value.ToString("T");
+            //            uc.GioDD.Text = tx.ThoiGianKetThuc.Value.ToString("T");
+            //            mw.ucContainerRoute.Children.Add(uc);
+            //        }
+            //    }
+            //    SelectedTagRoute = null;
+            //});
         }
         private void LoadDataClient(StackPanel sp)
         {
@@ -759,10 +764,8 @@ namespace QuanLyXeKhach.ViewModel
                 uc.IDTuyenXe.Text = tx.IDTuyenXe;
                 uc.BenXeXP.Text = tx.BENXE1.TenBenXe;
                 uc.BenXeDD.Text = tx.BENXE.TenBenXe;
-                uc.NgayXP.Text = tx.ThoiGianXuatPhat.Value.ToString("dd/MM/yyyy");
-                uc.NgayDD.Text = tx.ThoiGianKetThuc.Value.ToString("dd/MM/yyyy");
-                uc.GioXP.Text = tx.ThoiGianXuatPhat.Value.ToString("T");
-                uc.GioDD.Text = tx.ThoiGianKetThuc.Value.ToString("T");
+                uc.GioXP.Text = tx.GioXuatPhat.ToString();
+                uc.GioDD.Text = tx.GioKetThuc.ToString();
                 sp.Children.Add(uc);
             }
         }

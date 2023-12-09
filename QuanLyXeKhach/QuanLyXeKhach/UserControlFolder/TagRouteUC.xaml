@@ -8,7 +8,7 @@
             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
             mc:Ignorable="d" Margin="5" DataContext="{StaticResource MainVM}"
-            d:DesignHeight="100" d:DesignWidth="700" Opacity="0.7">
+            d:DesignHeight="80" d:DesignWidth="700" Opacity="0.7">
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseDown">
@@ -26,99 +26,58 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="0.5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <materialDesign:PackIcon Kind="BusSide" Height="100" Width="100" HorizontalAlignment="Center"/>
+                <materialDesign:PackIcon Kind="BusSide" Height="80" Width="80" HorizontalAlignment="Center"/>
             </Grid>
             <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <TextBox Margin="2" BorderBrush="Black" TextAlignment="Center"
-                    materialDesign:HintAssist.Foreground="GreenYellow"
-                    VerticalAlignment="Center"  x:Name="BenXeXP"
-                     materialDesign:HintAssist.Background="GreenYellow"
-                     materialDesign:HintAssist.Hint="Bến Xe Xuất Phát"
-                     IsReadOnly="True" BorderThickness="1.5" 
-                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                    Padding="8" />
-                </Grid>
-                <Grid Grid.Row="1">
-                    <TextBox Margin="2" BorderBrush="Black" 
-                    materialDesign:HintAssist.Foreground="GreenYellow"
-                    VerticalAlignment="Center"  
-                     IsReadOnly="True" BorderThickness="1.5"
-                     materialDesign:HintAssist.Background="GreenYellow"
-                     materialDesign:HintAssist.Hint="Bến Xe Đích Đến"
-                     x:Name="BenXeDD" TextAlignment="Center"
-                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                    Padding="8" />
-                </Grid>
+                <TextBox Margin="2" BorderBrush="Black" TextAlignment="Center"
+                materialDesign:HintAssist.Foreground="GreenYellow"
+                VerticalAlignment="Center"  x:Name="BenXeXP"
+                    materialDesign:HintAssist.Background="GreenYellow"
+                    materialDesign:HintAssist.Hint="Bến Xe Xuất Phát"
+                    IsReadOnly="True" BorderThickness="1.5" 
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Padding="8" />
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox Margin="2" BorderBrush="Black" 
+                materialDesign:HintAssist.Foreground="GreenYellow"
+                VerticalAlignment="Center"  
+                 IsReadOnly="True" BorderThickness="1.5"
+                 materialDesign:HintAssist.Background="GreenYellow"
+                 materialDesign:HintAssist.Hint="Bến Xe Đích Đến"
+                 x:Name="BenXeDD" TextAlignment="Center"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Padding="8" />
             </Grid>
             <Grid Grid.Column="3" >
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <TextBox Margin="2" BorderBrush="Black" 
-                     BorderThickness="1.5"
-                     materialDesign:HintAssist.Foreground="GreenYellow"
-                     materialDesign:HintAssist.Hint="Giờ Xuất Phát"
-                     materialDesign:HintAssist.Background="GreenYellow"
-                     x:Name="GioXP" TextAlignment="Center"
-                     IsReadOnly="True"
-                    VerticalAlignment="Center" 
-                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                    Padding="8" />
-                </Grid>
-                <Grid Grid.Row="1">
-                    <TextBox Margin="2" BorderBrush="Black"
-                    materialDesign:HintAssist.Foreground="GreenYellow"
-                    VerticalAlignment="Center"  
-                     materialDesign:HintAssist.Background="GreenYellow"
-                     materialDesign:HintAssist.Hint="Giờ Đến ĐÍch"
-                     x:Name="GioDD" BorderThickness="1.5"
-                     IsReadOnly="True" TextAlignment="Center"
-                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                    Padding="8" />
-                </Grid>
+                <TextBox Margin="2" BorderBrush="Black" 
+                BorderThickness="1.5"
+                materialDesign:HintAssist.Foreground="GreenYellow"
+                materialDesign:HintAssist.Hint="Giờ Xuất Phát"
+                materialDesign:HintAssist.Background="GreenYellow"
+                x:Name="GioXP" TextAlignment="Center"
+                IsReadOnly="True"
+                VerticalAlignment="Center" 
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Padding="8" />
+                
             </Grid>
-            <Grid Grid.Column="2" >
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <TextBox Margin="2" BorderBrush="Black" 
-                     BorderThickness="1.5"  
-                     materialDesign:HintAssist.Foreground="GreenYellow"
-                     materialDesign:HintAssist.Hint="Ngày Xuất Phát"
-                     materialDesign:HintAssist.Background="GreenYellow"
-                     x:Name="NgayXP" TextAlignment="Center"
-                     IsReadOnly="True"
-                    VerticalAlignment="Center" 
-                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                    Padding="8" />
-                </Grid>
-                <Grid Grid.Row="1">
-                    <TextBox Margin="2" BorderBrush="Black"
-                    materialDesign:HintAssist.Foreground="GreenYellow"
-                    VerticalAlignment="Center"  
-                     IsReadOnly="True" TextAlignment="Center"
-                    x:Name="NgayDD" BorderThickness="1.5"
-                    materialDesign:HintAssist.Background="GreenYellow"
-                    materialDesign:HintAssist.Hint="Ngày Đến Đích"
-                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                    Padding="8" />  
-                </Grid>
+            <Grid Grid.Column="4">
+                <TextBox Margin="2" BorderBrush="Black"
+                materialDesign:HintAssist.Foreground="GreenYellow"
+                VerticalAlignment="Center"  
+                 materialDesign:HintAssist.Background="GreenYellow"
+                 materialDesign:HintAssist.Hint="Giờ Đến ĐÍch"
+                 x:Name="GioDD" BorderThickness="1.5"
+                 IsReadOnly="True" TextAlignment="Center"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Padding="8" />  
             </Grid>
-            <Grid Grid.Column="4" >
-
-                <Grid>
+            <Grid Grid.Column="5" >
                     <TextBox Margin="10" BorderBrush="Black" 
                      BorderThickness="1.5" 
                      materialDesign:HintAssist.Foreground="GreenYellow"
@@ -129,7 +88,6 @@
                     VerticalAlignment="Center" 
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Padding="8" />
-                </Grid>
             </Grid>
         </Grid>
     </Border>

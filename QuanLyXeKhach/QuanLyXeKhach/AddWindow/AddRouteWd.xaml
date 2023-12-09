@@ -13,7 +13,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="AddRouteWd" Height="550" Width="800" Background="{x:Null}" AllowsTransparency="True">
+        Title="AddRouteWd" Height="470" Width="800" Background="{x:Null}" AllowsTransparency="True">
     <Border Background="#08c424" CornerRadius="40" BorderThickness="1" BorderBrush="Gray">
         <Grid >
             <Grid.RowDefinitions>
@@ -41,7 +41,6 @@
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
@@ -80,41 +79,21 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0" Margin="20">
-                                <DatePicker  SelectedDate="{Binding NgayXP}" BorderBrush="Green"
-                                materialDesign:HintAssist.Foreground="Green" 
-                                materialDesign:HintAssist.Hint="Ngày Xuất Phát" 
-                                Style="{StaticResource MaterialDesignOutlinedDatePicker}">
-                                </DatePicker>
-                            </Grid>
                             <Grid Grid.Column="1" Margin="20">
+                                <materialDesign:TimePicker
+                                  SelectedTime="{Binding GioDD}"
+                                  BorderBrush="Green"
+                                  materialDesign:HintAssist.Hint="Giờ Đến ĐÍch"
+                                  Is24Hours="True"
+                                  Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
+                            </Grid>
+                            <Grid Grid.Column="0" Margin="20">
                                 <materialDesign:TimePicker
                                   SelectedTime="{Binding GioXP}"
                                   BorderBrush="Green"
                                   materialDesign:HintAssist.Hint="Giờ Xuất Phát"
                                   Is24Hours="True"
                                   Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
-                            </Grid>
-                        </Grid>
-                        <Grid Grid.Row="3">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0" Margin="20">
-                                <DatePicker  SelectedDate="{Binding NgayDD}" BorderBrush="Green"
-                                    materialDesign:HintAssist.Foreground="Green" 
-                                    materialDesign:HintAssist.Hint="Ngày Đến Đích" 
-                                    Style="{StaticResource MaterialDesignOutlinedDatePicker}">
-                                </DatePicker>
-                            </Grid>
-                            <Grid Grid.Column="1" Margin="20">
-                            <materialDesign:TimePicker
-                              SelectedTime="{Binding GioDD}"
-                              BorderBrush="Green"
-                              materialDesign:HintAssist.Hint="Giờ Đến ĐÍch"
-                              Is24Hours="True"
-                              Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
                             </Grid>
                         </Grid>
                     </Grid>

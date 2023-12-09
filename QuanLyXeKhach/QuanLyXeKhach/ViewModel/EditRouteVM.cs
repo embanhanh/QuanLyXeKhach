@@ -17,10 +17,6 @@ namespace QuanLyXeKhach.ViewModel
         public string BenXeXP { get => _BenXeXP; set { _BenXeXP = value; OnPropertyChanged(); } }
         private string _BenXeDD;
         public string BenXeDD { get => _BenXeDD; set { _BenXeDD = value; OnPropertyChanged(); } }
-        private DateTime _NgayXP;
-        public DateTime NgayXP { get => _NgayXP; set { _NgayXP = value; OnPropertyChanged(); } }
-        private DateTime _NgayDD;
-        public DateTime NgayDD { get => _NgayDD; set { _NgayDD = value; OnPropertyChanged(); } }
         private DateTime _GioXP;
         public DateTime GioXP { get => _GioXP; set { _GioXP = value; OnPropertyChanged(); } }
         private DateTime _GioDD;
@@ -68,8 +64,8 @@ namespace QuanLyXeKhach.ViewModel
                         break;
                     }
                 }
-                New.ThoiGianXuatPhat = new DateTime(NgayXP.Year, NgayXP.Month, NgayXP.Day, GioXP.Hour, GioXP.Minute, GioXP.Second);
-                New.ThoiGianKetThuc = new DateTime(NgayDD.Year, NgayDD.Month, NgayDD.Day, GioDD.Hour, GioDD.Minute, GioDD.Second);
+                New.GioXuatPhat = GioXP.TimeOfDay;
+                New.GioKetThuc = GioDD.TimeOfDay;
                 isEdit = true;
                 p.Close();
             });

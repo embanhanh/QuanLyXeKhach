@@ -21,14 +21,11 @@ namespace QuanLyXeKhach.Model
         }
     
         public string IDLichSu { get; set; }
-        public string IDBenXe { get; set; }
+        public string IDLICHTRINH { get; set; }
         public decimal GiaVe1 { get; set; }
-        public string BienDong { get; set; }
-        public Nullable<System.DateTime> NgayCapNhat { get; set; }
-        public string LiDoBienDong { get; set; }
     
-        public virtual BENXE BENXE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BIENLAI> BIENLAIs { get; set; }
+        public virtual LICHTRINH LICHTRINH { get; set; }
     }
 }

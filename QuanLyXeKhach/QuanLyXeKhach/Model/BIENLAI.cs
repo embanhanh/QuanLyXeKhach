@@ -15,6 +15,7 @@ namespace QuanLyXeKhach.Model
     public partial class BIENLAI
     {
         public string IDBienLai { get; set; }
+        public string IDLICHTRINH { get; set; }
         public string IDHanhKhach { get; set; }
         public string IDGiaVe { get; set; }
         public Nullable<System.DateTime> NgayMua { get; set; }
@@ -24,5 +25,7 @@ namespace QuanLyXeKhach.Model
     
         public virtual GIAVE GIAVE { get; set; }
         public virtual HANHKHACH HANHKHACH { get; set; }
+        public virtual LICHTRINH LICHTRINH { get; set; }
+        public virtual THUNGAN THUNGAN1 { get; set; }
     }
 }
