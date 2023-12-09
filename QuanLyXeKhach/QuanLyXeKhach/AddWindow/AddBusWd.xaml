@@ -57,9 +57,9 @@
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>        
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.CCCDTX}"  
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding TaiXe}"  
                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding ListTaiXe}"
-                                materialDesign:HintAssist.Hint="CCCD Tài xế"
+                                materialDesign:HintAssist.Hint="Tài xế"
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>
                             </Grid>
@@ -79,9 +79,9 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.CCCDNV}"  
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding PhuXe}"  
                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding ListPhuXe}"
-                                materialDesign:HintAssist.Hint="CCCD Phụ xe" 
+                                materialDesign:HintAssist.Hint="Phụ xe" 
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>
                             </Grid>

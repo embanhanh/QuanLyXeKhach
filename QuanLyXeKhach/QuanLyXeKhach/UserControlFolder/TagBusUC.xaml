@@ -36,7 +36,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <TextBox Margin="2" BorderBrush="Black" Text="Biển Số Xe"
+                    <TextBox Margin="2" BorderBrush="Black" 
                     materialDesign:HintAssist.Foreground="GreenYellow"
                     VerticalAlignment="Center"  x:Name="BienSoXe"
                      materialDesign:HintAssist.Background="GreenYellow"
@@ -46,7 +46,7 @@
                     Padding="8" />
                 </Grid>
                 <Grid Grid.Row="1">
-                    <TextBox Margin="2" BorderBrush="Black" Text="Loại Xe"
+                    <TextBox Margin="2" BorderBrush="Black" 
                     materialDesign:HintAssist.Foreground="GreenYellow"
                     VerticalAlignment="Center"  MaxWidth="300"
                      IsReadOnly="True"  BorderThickness="1.5"
@@ -63,7 +63,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <TextBox Margin="2" BorderBrush="Black" Text="Số Ghế"
+                    <TextBox Margin="2" BorderBrush="Black" 
                      materialDesign:HintAssist.Foreground="GreenYellow"
                      materialDesign:HintAssist.Hint="Số Ghế" MaxWidth="150"
                      materialDesign:HintAssist.Background="GreenYellow"
@@ -74,7 +74,7 @@
                     Padding="8" />
                 </Grid>
                 <Grid Grid.Row="1">
-                    <TextBox Margin="2" BorderBrush="Black" Text="Tình Trạng"
+                    <TextBox Margin="2" BorderBrush="Black" 
                     materialDesign:HintAssist.Foreground="GreenYellow"
                     VerticalAlignment="Center"  MaxWidth="300"
                      materialDesign:HintAssist.Background="GreenYellow"
@@ -91,24 +91,24 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <TextBox Margin="2" BorderBrush="Black" Text="CCCD Tài Xế" 
+                    <TextBox Margin="2" BorderBrush="Black" 
                      materialDesign:HintAssist.Foreground="GreenYellow"
-                     materialDesign:HintAssist.Hint="CCCD Tài Xế"
+                     materialDesign:HintAssist.Hint="Tài Xế"
                      materialDesign:HintAssist.Background="GreenYellow"
-                     x:Name="CCCDTX"  BorderThickness="1.5"
+                     x:Name="TX"  BorderThickness="1.5"
                      IsReadOnly="True" TextAlignment="Center"
                     VerticalAlignment="Center" MaxWidth="300"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Padding="8" />
                 </Grid>
                 <Grid Grid.Row="1">
-                    <TextBox Margin="2" BorderBrush="Black" Text="CCCD Phụ Xe"
+                    <TextBox Margin="2" BorderBrush="Black" 
                     materialDesign:HintAssist.Foreground="GreenYellow"
                     VerticalAlignment="Center"  MaxWidth="300"
                      IsReadOnly="True"  BorderThickness="1.5"
-                      x:Name="CCCDPX" TextAlignment="Center"
+                      x:Name="PX" TextAlignment="Center"
                      materialDesign:HintAssist.Background="GreenYellow"
-                     materialDesign:HintAssist.Hint="CCCD Phụ Xe"
+                     materialDesign:HintAssist.Hint="Phụ Xe"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Padding="8" />      
                 </Grid>

@@ -99,16 +99,19 @@
                                 VerticalAlignment="Bottom"  >
                                 <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
                                     materialDesign:HintAssist.Foreground="Green" Padding="12"
-                                    VerticalAlignment="Center" Width="600" Background="White"
-                                    materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
+                                    VerticalAlignment="Center" Width="300" Background="White"
+                                    materialDesign:HintAssist.Hint="Tên Hành Khách" Height="40"
+                                    x:Name="STenHK"
                                     Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <Button BorderBrush="#44b0f1"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Width="25" Height="25" Background="#44b0f1"
-                                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                    ToolTip="MaterialDesignFloatingActionMiniDarkButton">
-                                    <materialDesign:PackIcon Width="20" Height="20"
-                                        Kind="ArrowRightThick" />
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                    materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                    VerticalAlignment="Center" Width="300" Background="White"
+                                    materialDesign:HintAssist.Hint="Mã Hành Khách" Height="40"
+                                    x:Name="SMaHK"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                        Command="{Binding SearchClient}" CommandParameter="{Binding ElementName=MainWd}">
+                                    
                                 </Button>
                             </StackPanel>
                         </Grid>
@@ -198,15 +201,12 @@
                                 <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
                                     materialDesign:HintAssist.Foreground="Green" Padding="12"
                                     VerticalAlignment="Center" Width="600" Background="White"
-                                    materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
+                                    materialDesign:HintAssist.Hint="Tên Tài Xế" Height="40"
+                                    x:Name="STenTX"
                                     Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <Button BorderBrush="#44b0f1"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Width="25" Height="25" Background="#44b0f1"
-                                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                    ToolTip="MaterialDesignFloatingActionMiniDarkButton">
-                                    <materialDesign:PackIcon Width="20" Height="20"
-                                            Kind="ArrowRightThick" />
+                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                Command="{Binding SearchDriver}" CommandParameter="{Binding ElementName=MainWd}">
+
                                 </Button>
                             </StackPanel>
                         </Grid>
@@ -295,15 +295,12 @@
                                 <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
                                 VerticalAlignment="Center" Width="600" Background="White"
-                                materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
+                                materialDesign:HintAssist.Hint="Tên Phụ Xe" Height="40" 
+                                x:Name="STenPX"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <Button BorderBrush="#44b0f1"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Width="25" Height="25" Background="#44b0f1"
-                                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                    ToolTip="MaterialDesignFloatingActionMiniDarkButton">
-                                    <materialDesign:PackIcon Width="20" Height="20"
-                                        Kind="ArrowRightThick" />
+                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
+
                                 </Button>
                             </StackPanel>
                         </Grid>
@@ -388,18 +385,21 @@
                         <Grid Grid.Column="0" Background="#eeeeee">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
                                 VerticalAlignment="Bottom"  >
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                <TextBox BorderBrush="Green" 
                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
-                                VerticalAlignment="Center" Width="600" Background="White"
-                                materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
+                                VerticalAlignment="Center" Width="300" Background="White"
+                                materialDesign:HintAssist.Hint="Biển Số Xe" Height="40"
+                                         x:Name="SBienSX"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <Button BorderBrush="#44b0f1"
-                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                Width="25" Height="25" Background="#44b0f1"
-                                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                ToolTip="MaterialDesignFloatingActionMiniDarkButton">
-                                    <materialDesign:PackIcon Width="20" Height="20"
-                                    Kind="ArrowRightThick" />
+                                <TextBox BorderBrush="Green" 
+                                materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                VerticalAlignment="Center" Width="300" Background="White"
+                                materialDesign:HintAssist.Hint="Tên Tài Xế" Height="40"
+                                x:Name="STenTX_Bus"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                Command="{Binding SearchBus}" CommandParameter="{Binding ElementName=MainWd}">
+
                                 </Button>
                             </StackPanel>
                         </Grid>
@@ -484,18 +484,29 @@
                         <Grid Grid.Column="0" Background="#eeeeee">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
                             VerticalAlignment="Bottom"  >
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
-                                materialDesign:HintAssist.Foreground="Green" Padding="12"
-                                VerticalAlignment="Center" Width="600" Background="White"
-                                materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <Button BorderBrush="#44b0f1"
-                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                Width="25" Height="25" Background="#44b0f1"
-                                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                ToolTip="MaterialDesignFloatingActionMiniDarkButton">
-                                    <materialDesign:PackIcon Width="20" Height="20"
-                                    Kind="ArrowRightThick" />
+                                <ComboBox BorderBrush="Green" Padding="12" x:Name="SBenXP" IsEditable="True"
+                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXe}"
+                                 materialDesign:HintAssist.Hint="Bến Xe Xuất Phát" Background="White" Margin="15"
+                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" Height="40">
+                                </ComboBox>
+                                <ComboBox BorderBrush="Green" Padding="12" x:Name="SBenDD" IsEditable="True"
+                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXe}"
+                                 materialDesign:HintAssist.Hint="Bến Xe Đích Đến" Background="White" Margin="15"
+                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" Height="40">
+                                </ComboBox>
+                                <DatePicker BorderBrush="Green" x:Name="SNgayXP"
+                                materialDesign:HintAssist.Foreground="Green" Margin="15" Padding="12"
+                                materialDesign:HintAssist.Hint="Ngày Xuất Phát" Background="White"
+                                Style="{StaticResource MaterialDesignOutlinedDatePicker}">
+                                </DatePicker>
+                                <DatePicker  BorderBrush="Green" x:Name="SNgayDD"
+                                materialDesign:HintAssist.Foreground="Green" Margin="15" Padding="12"
+                                materialDesign:HintAssist.Hint="Ngày Đến Đích" Background="White"
+                                Style="{StaticResource MaterialDesignOutlinedDatePicker}">
+                                </DatePicker>
+                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                Command="{Binding SearchRoute}" CommandParameter="{Binding ElementName=MainWd}">
+
                                 </Button>
                             </StackPanel>
                         </Grid>
@@ -665,16 +676,19 @@
                             VerticalAlignment="Bottom"  >
                                 <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
-                                VerticalAlignment="Center" Width="600" Background="White"
-                                materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
+                                VerticalAlignment="Center" Width="300" Background="White"
+                                materialDesign:HintAssist.Hint="Tên Bến Xe" Height="40"
+                                x:Name="STenBX"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <Button BorderBrush="#44b0f1"
-                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                Width="25" Height="25" Background="#44b0f1"
-                                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                ToolTip="MaterialDesignFloatingActionMiniDarkButton">
-                                    <materialDesign:PackIcon Width="20" Height="20"
-                                    Kind="ArrowRightThick" />
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+materialDesign:HintAssist.Foreground="Green" Padding="12"
+VerticalAlignment="Center" Width="300" Background="White"
+materialDesign:HintAssist.Hint="Địa Chỉ" Height="40"
+                                         x:Name="SDiaChi"
+Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+         Command="{Binding SearchBusStation}" CommandParameter="{Binding ElementName=MainWd}">
+
                                 </Button>
                             </StackPanel>
                         </Grid>

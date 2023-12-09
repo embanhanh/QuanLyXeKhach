@@ -16,6 +16,10 @@ namespace QuanLyXeKhach.ViewModel
         private ObservableCollection<XEKHACH> _listnew;
         private List<string> _ListTaiXe;
         private List<string> _ListPhuXe;
+        private string _TaiXe;
+        private string _PhuXe;
+        public string TaiXe { get => _TaiXe; set { _TaiXe = value; OnPropertyChanged(); } }
+        public string PhuXe { get => _PhuXe; set { _PhuXe = value; OnPropertyChanged(); } }
         public List<string> ListTaiXe { get => _ListTaiXe; set { _ListTaiXe = value; OnPropertyChanged(); } }
         public List<string> ListPhuXe { get => _ListPhuXe; set { _ListPhuXe = value; OnPropertyChanged(); } }
         public ObservableCollection<XEKHACH> ListNew { get => _listnew; set { _listnew = value;  OnPropertyChanged(); } }
@@ -36,12 +40,26 @@ namespace QuanLyXeKhach.ViewModel
             var listTX = DataProvider.Ins.db.TAIXEs.ToList();
             var listPX = DataProvider.Ins.db.NHANVIENs.ToList();
             foreach (var tx in listTX)
-                ListTaiXe.Add(tx.CCCDTX);
+                ListTaiXe.Add(tx.TenTaiXe);
             foreach (var px in listPX)
-                ListPhuXe.Add(px.CCCDNV);
+                ListPhuXe.Add(px.HoTenNhanVien);
             New2 = new XEKHACH();
             editCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
+                foreach (var tx in listTX)
+                    if (tx.TenTaiXe == TaiXe)
+                    {
+                        New.CCCDTX = tx.CCCDTX;
+                        New.TAIXE = tx;
+                        break;
+                    }
+                foreach (var px in listPX)
+                    if (px.HoTenNhanVien == PhuXe)
+                    {
+                        New.CCCDNV = px.CCCDNV;
+                        New.NHANVIEN = px;
+                        break;
+                    }
                 isEdit = true;
                 p.Close();
             });

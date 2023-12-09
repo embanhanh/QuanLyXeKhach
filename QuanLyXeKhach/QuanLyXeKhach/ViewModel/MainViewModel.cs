@@ -17,6 +17,8 @@ namespace QuanLyXeKhach.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+        private List<string> _BenXe;
+        public List<string> BenXe { get => _BenXe; set { _BenXe = value; OnPropertyChanged(); } }
         //UserControl
         private UserControl SelectedTagClient = null;
         private UserControl SelectedTagStaff = null;
@@ -80,8 +82,17 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand SelectTagBusStation { get; set; }
         public ICommand SelectTagBus { get; set; }
         public ICommand SelectTagRoute { get; set; }
+        //Search Command
+        public ICommand SearchClient { get; set; }
+        public ICommand SearchDriver { get; set; }
+        public ICommand SearchStaff { get; set; }
+        public ICommand SearchBus { get; set; }
+        public ICommand SearchBusStation { get; set; }
+        public ICommand SearchRoute { get; set; }
+
         public MainViewModel()
         {
+            BenXe = new List<string>();
             //Load MainWindow
             LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => 
             {
@@ -102,83 +113,22 @@ namespace QuanLyXeKhach.ViewModel
                 
                 //Load Tag 
                 var mainWd = p as MainWindow;
-                foreach ( var client in ListClient)
-                {
-                    var uc = new TagClientUC();
-                    uc.TenHanhKhach.Text = client.TenHanhKhach;
-                    uc.IDHanhKhach.Text = client.IDHanhKhach;
-                    uc.GioiTinh.Text = client.GioiTinh;
-                    uc.Tuoi.Text = client.Tuoi;
-                    uc.SDT.Text = client.SDTHK;
-                    uc.DiaChi.Text = client.DiaChiHK;
-                    uc.SoHieuGhe.Text = client.SoHieuGhe;
-                    uc.CCCD.Text = client.CCCD;
-                    mainWd.ucContainerClient.Children.Add(uc);
-                }
-                foreach(var staff in ListStaff)
-                {
-                    var uc = new TagStaffUC();
-                    uc.HoTen.Text = staff.HoTenNhanVien;
-                    uc.CCCD.Text = staff.CCCDNV;
-                    uc.GioiTinh.Text = staff.GioiTinh;
-                    uc.SDT.Text = staff.SoDienThoai;
-                    uc.DiaChi.Text = staff.DiaChi;
-                    uc.NgaySinh.Text = staff.NgaySinh.Value.ToString("dd/MM/yyyy");
-                    mainWd.ucContainerStaff.Children.Add(uc);
-                }
-                foreach (var driver in ListDriver)
-                {
-                    var uc = new TagDriverUC();
-                    uc.HoTen.Text = driver.TenTaiXe;
-                    uc.CCCD.Text = driver.CCCDTX;
-                    uc.NgaySinh.Text = driver.NgaySinh.Value.ToString("dd/MM/yyyy");
-                    uc.BangLai.Text = driver.BangLai;
-                    uc.DiaChi.Text = driver.DiaChi;
-                    uc.SDT.Text = driver.SoDienThoai;
-                    mainWd.ucContainerDriver.Children.Add(uc);
-                }
-                foreach (var busstation in ListBusStation)
-                {
-                    var uc = new TagBusStationUC();
-                    uc.TenBenXe.Text = busstation.TenBenXe;
-                    uc.ID.Text = busstation.IDBenXe;
-                    uc.SDT.Text = busstation.SoDienThoaiBen;
-                    uc.DiaChi.Text = busstation.DiaChi;
-                    mainWd.ucContainerBusStation.Children.Add(uc);
-                }
-                foreach(var bus in ListBus)
-                {
-                    var uc = new TagBusUC();
-                    uc.BienSoXe.Text = bus.BienSoXe;
-                    uc.LoaiXe.Text = bus.LoaiXe;
-                    uc.CCCDTX.Text = bus.CCCDTX;
-                    uc.CCCDPX.Text = bus.CCCDNV;
-                    uc.SoGhe.Text = bus.SoGhe.ToString();
-                    uc.TinhTrang.Text = bus.TinhTrang;
-                    mainWd.ucContainerBus.Children.Add(uc);
-                }
-                foreach(var route in ListRoute)
-                {
-                    var uc = new TagRouteUC();
-                    uc.IDTuyenXe.Text = route.IDTuyenXe;
-                    uc.BenXeXP.Text = route.BENXE1.TenBenXe;
-                    uc.BenXeDD.Text = route.BENXE.TenBenXe;
-                    uc.NgayXP.Text = route.ThoiGianXuatPhat.Value.ToString("dd/MM/yyyy");
-                    uc.NgayDD.Text = route.ThoiGianKetThuc.Value.ToString("dd/MM/yyyy");
-                    uc.GioXP.Text = route.ThoiGianXuatPhat.Value.ToString("T");
-                    uc.GioDD.Text = route.ThoiGianKetThuc.Value.ToString("T");
-                    mainWd.ucContainerRoute.Children.Add(uc);
-                }
+                LoadDataClient(mainWd.ucContainerClient);
+                LoadDataStaff(mainWd.ucContainerStaff);
+                LoadDataDriver(mainWd.ucContainerDriver);
+                LoadDataBusStation(mainWd.ucContainerBusStation);
+                LoadDataBus(mainWd.ucContainerBus);
+                LoadDataRoute(mainWd.ucContainerRoute);
             });
             //Load Data
             ListClient = new ObservableCollection<HANHKHACH>(DataProvider.Ins.db.HANHKHACHes);
-            for(int i = 0;i< ListClient.Count; i++)
-            {
-
-            }
             ListDriver = new ObservableCollection<TAIXE>(DataProvider.Ins.db.TAIXEs);
             ListStaff = new ObservableCollection<NHANVIEN>(DataProvider.Ins.db.NHANVIENs);
             ListBusStation = new ObservableCollection<BENXE>(DataProvider.Ins.db.BENXEs);
+            foreach (var bx in ListBusStation)
+            {
+                BenXe.Add(bx.TenBenXe);
+            }
             ListBus = new ObservableCollection<XEKHACH>(DataProvider.Ins.db.XEKHACHes);
             ListRoute = new ObservableCollection<TUYENXE>(DataProvider.Ins.db.TUYENXEs);
             //Command Button Add, Edit, Delete
@@ -192,16 +142,7 @@ namespace QuanLyXeKhach.ViewModel
                 if (clientVM.isAdd)
                 {
                     ListClient.Add(clientVM.ListNew[clientVM.index-1]);
-                    var uc = new TagClientUC();
-                    uc.TenHanhKhach.Text = ListClient.Last().TenHanhKhach;
-                    uc.IDHanhKhach.Text = ListClient.Last().IDHanhKhach;
-                    uc.GioiTinh.Text = ListClient.Last().GioiTinh;
-                    uc.Tuoi.Text = ListClient.Last().Tuoi;
-                    uc.SDT.Text = ListClient.Last().SDTHK;
-                    uc.DiaChi.Text = ListClient.Last().DiaChiHK;
-                    uc.SoHieuGhe.Text = ListClient.Last().SoHieuGhe;
-                    uc.CCCD.Text = ListClient.Last().CCCD;
-                    p.Children.Add(uc);
+                    LoadDataClient(p);
                 }
             });
             EditClientCommand = new RelayCommand<ListView>((p) => {
@@ -250,14 +191,7 @@ namespace QuanLyXeKhach.ViewModel
                 if (staffVM.isAdd)
                 {
                     ListStaff.Add(staffVM.ListNew[staffVM.index - 1]);
-                    var uc = new TagStaffUC();
-                    uc.HoTen.Text = ListStaff.Last().HoTenNhanVien;
-                    uc.CCCD.Text = ListStaff.Last().CCCDNV;
-                    uc.GioiTinh.Text = ListStaff.Last().GioiTinh;
-                    uc.SDT.Text = ListStaff.Last().SoDienThoai;
-                    uc.DiaChi.Text = ListStaff.Last().DiaChi;
-                    uc.NgaySinh.Text = ListStaff.Last().NgaySinh.Value.ToString("dd/MM/yyyy");
-                    p.Children.Add(uc);
+                    LoadDataStaff(p);
                 }
             });
             EditStaffCommand = new RelayCommand<Object>((p) => {
@@ -304,14 +238,7 @@ namespace QuanLyXeKhach.ViewModel
                 if (BusVM.isAdd)
                 {
                     ListBus.Add(BusVM.ListNew[BusVM.index - 1]);
-                    var uc = new TagBusUC();
-                    uc.BienSoXe.Text = ListBus.Last().BienSoXe;
-                    uc.LoaiXe.Text = ListBus.Last().LoaiXe;
-                    uc.CCCDTX.Text = ListBus.Last().CCCDTX;
-                    uc.CCCDPX.Text = ListBus.Last().CCCDNV;
-                    uc.SoGhe.Text = ListBus.Last().SoGhe.ToString();
-                    uc.TinhTrang.Text = ListBus.Last().TinhTrang;
-                    p.Children.Add(uc);
+                    LoadDataBus(p);
                 }
             });
             EditBusCommand = new RelayCommand<Object>((p) => {
@@ -321,12 +248,16 @@ namespace QuanLyXeKhach.ViewModel
             }, (p) => {
                 EditBusWd wd = new EditBusWd();
                 var editVM = wd.DataContext as EditBusVM;
+                editVM.New2.NHANVIEN = SelectedItemBus.NHANVIEN;
+                editVM.New2.TAIXE = SelectedItemBus.TAIXE;
                 editVM.New2.SoGhe = SelectedItemBus.SoGhe;
                 editVM.New2.CCCDNV = SelectedItemBus.CCCDNV;
                 editVM.New2.CCCDTX = SelectedItemBus.CCCDTX;
                 editVM.New2.BienSoXe = SelectedItemBus.BienSoXe;
                 editVM.New2.LoaiXe = SelectedItemBus.LoaiXe;
                 editVM.New2.TinhTrang = SelectedItemBus.TinhTrang;
+                editVM.TaiXe = SelectedItemBus.TAIXE.TenTaiXe;
+                editVM.PhuXe = SelectedItemBus.NHANVIEN.HoTenNhanVien;
                 editVM.New = editVM.New2;
                 wd.ShowDialog();
                 if (editVM.isEdit)
@@ -334,11 +265,15 @@ namespace QuanLyXeKhach.ViewModel
                     var uc = SelectedTagBus as TagBusUC;
                     SelectedItemBus.BienSoXe = uc.BienSoXe.Text = editVM.New.BienSoXe;
                     SelectedItemBus.LoaiXe = uc.LoaiXe.Text = editVM.New.LoaiXe;
-                    SelectedItemBus.CCCDTX = uc.CCCDTX.Text = editVM.New.CCCDTX;
-                    SelectedItemBus.CCCDNV = uc.CCCDPX.Text = editVM.New.CCCDNV;
+                    SelectedItemBus.CCCDTX = editVM.New.CCCDTX;
+                    SelectedItemBus.CCCDNV = editVM.New.CCCDNV;
                     uc.SoGhe.Text = editVM.New.SoGhe.ToString();
                     SelectedItemBus.TinhTrang = uc.TinhTrang.Text = editVM.New.TinhTrang;
                     SelectedItemBus.SoGhe = editVM.New.SoGhe;
+                    uc.TX.Text = editVM.New.TAIXE.TenTaiXe;
+                    uc.PX.Text = editVM.New.NHANVIEN.HoTenNhanVien;
+                    SelectedItemBus.NHANVIEN = editVM.New.NHANVIEN;
+                    SelectedItemBus.TAIXE = editVM.New.TAIXE;
                 }
             });
             DeleteBusCommand = new RelayCommand<Object>((p) => {
@@ -358,15 +293,7 @@ namespace QuanLyXeKhach.ViewModel
                 if (RouteVM.isAdd)
                 {
                     ListRoute.Add(RouteVM.ListNew[RouteVM.index - 1]);
-                    var uc = new TagRouteUC();
-                    uc.IDTuyenXe.Text = ListRoute.Last().IDTuyenXe;
-                    uc.BenXeXP.Text = ListRoute.Last().BENXE1.TenBenXe;
-                    uc.BenXeDD.Text = ListRoute.Last().BENXE.TenBenXe;
-                    uc.NgayXP.Text = ListRoute.Last().ThoiGianXuatPhat.Value.ToString("dd/MM/yyyy");
-                    uc.NgayDD.Text = ListRoute.Last().ThoiGianKetThuc.Value.ToString("dd/MM/yyyy");
-                    uc.GioXP.Text = ListRoute.Last().ThoiGianXuatPhat.Value.ToString("T");
-                    uc.GioDD.Text = ListRoute.Last().ThoiGianKetThuc.Value.ToString("T");
-                    p.Children.Add(uc);
+                    LoadDataRoute(p);
                 }
             });
             EditRouteCommand = new RelayCommand<Object>((p) => {
@@ -415,14 +342,7 @@ namespace QuanLyXeKhach.ViewModel
                 if (driverVM.isAdd)
                 {
                     ListDriver.Add(driverVM.ListNew[driverVM.index - 1]);
-                    var uc = new TagDriverUC();
-                    uc.HoTen.Text = ListDriver.Last().TenTaiXe;
-                    uc.CCCD.Text = ListDriver.Last().CCCDTX;
-                    uc.NgaySinh.Text = ListDriver.Last().NgaySinh.Value.ToString("dd/MM/yyyy");
-                    uc.BangLai.Text = ListDriver.Last().BangLai;
-                    uc.DiaChi.Text = ListDriver.Last().DiaChi;
-                    uc.SDT.Text = ListDriver.Last().SoDienThoai;
-                    p.Children.Add(uc);
+                    LoadDataDriver(p);
                 }
             });
             EditDriverCommand = new RelayCommand<Object>((p) => {
@@ -468,16 +388,12 @@ namespace QuanLyXeKhach.ViewModel
                 if (busstationVM.isAdd)
                 {
                     ListBusStation.Add(busstationVM.ListNew[busstationVM.index - 1]);
-                    var uc = new TagBusStationUC();
-                    uc.TenBenXe.Text = ListBusStation.Last().TenBenXe;
-                    uc.ID.Text = ListBusStation.Last().IDBenXe;
-                    uc.DiaChi.Text = ListBusStation.Last().DiaChi;
-                    uc.SDT.Text = ListBusStation.Last().SoDienThoaiBen;
-                    p.Children.Add(uc);
+                    BenXe.Add(ListBusStation.Last().TenBenXe);
+                    LoadDataBusStation(p);
                 }
             });
             EditBusStationCommand = new RelayCommand<Object>((p) => {
-                if (SelectedItemBusStation == null)
+                if (SelectedTagBusStation == null)
                     return false;
                 return true;
             }, (p) => {
@@ -499,7 +415,7 @@ namespace QuanLyXeKhach.ViewModel
                 }
             });
             DeleteBusStationCommand = new RelayCommand<Object>((p) => {
-                if (SelectedItemBusStation == null)
+                if (SelectedTagBusStation == null)
                     return false;
                 return true;
             }, (p) => {
@@ -588,6 +504,267 @@ namespace QuanLyXeKhach.ViewModel
                 p.Opacity = 1;
                 SelectedTagRoute = p;
             });
+            //Search Command
+            SearchClient = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                MainWindow mw = p as MainWindow;
+                mw.ucContainerClient.Children.Clear();
+                string TenHK = mw.STenHK.Text;
+                string MaHK = mw.SMaHK.Text;
+                foreach (HANHKHACH hk in ListClient)
+                {
+                    int ok1 = 0, ok2 = 0, ok3 = 0;
+                    if ((TenHK == null || TenHK == "") && (MaHK == null && MaHK == "")) ok1 = 1;
+                    if ((TenHK == null || TenHK == null)) ok2 = -1;
+                    else if (hk.TenHanhKhach.Contains(TenHK)) ok2 = 1;
+                    if ((MaHK == null && MaHK == "")) ok3 = -1;
+                    else if (hk.IDHanhKhach.Contains(MaHK)) ok3 = 1;
+                    if (ok1 == 1 || (ok2 == 1 && ok3 == 1) || (ok2 == 1 && ok3 == -1) || (ok2 == -1 && ok3 == 1))
+                    {
+                        var uc = new TagClientUC();
+                        uc.TenHanhKhach.Text = hk.TenHanhKhach;
+                        uc.IDHanhKhach.Text = hk.IDHanhKhach;
+                        uc.GioiTinh.Text = hk.GioiTinh;
+                        uc.Tuoi.Text = hk.Tuoi;
+                        uc.SDT.Text = hk.SDTHK;
+                        uc.DiaChi.Text = hk.DiaChiHK;
+                        uc.SoHieuGhe.Text = hk.SoHieuGhe;
+                        uc.CCCD.Text = hk.CCCD;
+                        mw.ucContainerClient.Children.Add(uc);
+                    }
+                }
+                SelectedTagClient = null;
+            });
+            SearchDriver = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                MainWindow mw = p as MainWindow;
+                mw.ucContainerDriver.Children.Clear();
+                string TenTX = mw.STenTX.Text;
+                foreach (TAIXE tx in ListDriver)
+                {
+                    if (TenTX == null || TenTX == "" || (tx.TenTaiXe.Contains(TenTX)))
+                    {
+                        var uc = new TagDriverUC();
+                        uc.HoTen.Text = tx.TenTaiXe;
+                        uc.CCCD.Text = tx.CCCDTX;
+                        uc.NgaySinh.Text = tx.NgaySinh.Value.ToString("dd/MM/yyyy");
+                        uc.BangLai.Text = tx.BangLai;
+                        uc.DiaChi.Text = tx.DiaChi;
+                        uc.SDT.Text = tx.SoDienThoai;
+                        mw.ucContainerDriver.Children.Add(uc);
+                    }
+                }
+                SelectedTagDriver = null;
+            });
+            SearchStaff = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                MainWindow mw = p as MainWindow;
+                mw.ucContainerStaff.Children.Clear();
+                string TenPX = mw.STenPX.Text;
+                foreach (NHANVIEN nv in ListStaff)
+                {
+
+                    if ((TenPX == null || TenPX == "") || (nv.HoTenNhanVien.Contains(TenPX)))
+                    {
+                        var uc = new TagStaffUC();
+                        uc.HoTen.Text = nv.HoTenNhanVien;
+                        uc.CCCD.Text = nv.CCCDNV;
+                        uc.GioiTinh.Text = nv.GioiTinh;
+                        uc.SDT.Text = nv.SoDienThoai;
+                        uc.DiaChi.Text = nv.DiaChi;
+                        uc.NgaySinh.Text = nv.NgaySinh.Value.ToString("dd/MM/yyyy");
+                        mw.ucContainerStaff.Children.Add(uc);
+                    }
+                }
+                SelectedTagStaff = null;
+            });
+            SearchBus = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                MainWindow mw = p as MainWindow;
+                mw.ucContainerBus.Children.Clear();
+                string BienSX = mw.SBienSX.Text;
+                string TenTX = mw.STenTX_Bus.Text;
+                string TTX = "";
+                foreach (XEKHACH xk in ListBus)
+                {
+                    foreach (TAIXE tx in ListDriver)
+                    {
+                        if (xk.CCCDTX == tx.CCCDTX)
+                            TTX = tx.TenTaiXe;
+                    }
+                    int ok1 = 0, ok2 = 0, ok3 = 0;
+                    if ((BienSX == null || BienSX == "") && (TenTX == null && TenTX == "")) ok1 = 1;
+                    if ((BienSX == null || BienSX == null)) ok2 = -1;
+                    else if (xk.BienSoXe.Contains(BienSX)) ok2 = 1;
+                    if ((TenTX == null && TenTX == "")) ok3 = -1;
+                    else if (TTX.Contains(TenTX)) ok3 = 1;
+                    if (ok1 == 1 || (ok2 == 1 && ok3 == 1) || (ok2 == 1 && ok3 == -1) || (ok2 == -1 && ok3 == 1))
+                    {
+                        var uc = new TagBusUC();
+                        uc.BienSoXe.Text = xk.BienSoXe;
+                        uc.LoaiXe.Text = xk.LoaiXe;
+                        uc.TX.Text = xk.TAIXE.TenTaiXe;
+                        uc.PX.Text = xk.NHANVIEN.HoTenNhanVien;
+                        uc.SoGhe.Text = xk.SoGhe.ToString();
+                        uc.TinhTrang.Text = xk.TinhTrang;
+                        mw.ucContainerBus.Children.Add(uc);
+                    }
+                }
+                SelectedTagBus = null;
+            });
+            SearchBusStation = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                MainWindow mw = p as MainWindow;
+                mw.ucContainerBusStation.Children.Clear();
+                string TenBX = mw.STenBX.Text;
+                string DiaCHi = mw.SDiaChi.Text;
+                foreach (BENXE bx in ListBusStation)
+                {
+                    int ok1 = 0, ok2 = 0, ok3 = 0;
+                    if ((TenBX == null || TenBX == "") && (DiaCHi == null && DiaCHi == "")) ok1 = 1;
+                    if ((TenBX == null || TenBX == null)) ok2 = -1;
+                    else if (bx.TenBenXe.Contains(TenBX)) ok2 = 1;
+                    if ((DiaCHi == null && DiaCHi == "")) ok3 = -1;
+                    else if (bx.DiaChi.Contains(DiaCHi)) ok3 = 1;
+                    if (ok1 == 1 || (ok2 == 1 && ok3 == 1) || (ok2 == 1 && ok3 == -1) || (ok2 == -1 && ok3 == 1))
+                    {
+                        var uc = new TagBusStationUC();
+                        uc.TenBenXe.Text = bx.TenBenXe;
+                        uc.ID.Text = bx.IDBenXe;
+                        uc.DiaChi.Text = bx.DiaChi;
+                        uc.SDT.Text = bx.SoDienThoaiBen;
+                        mw.ucContainerBusStation.Children.Add(uc);
+                    }
+                }
+                SelectedTagBusStation = null;
+            });
+            SearchRoute = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                MainWindow mw = p as MainWindow;
+                mw.ucContainerRoute.Children.Clear();
+                string bxxp = mw.SBenXP.SelectedItem?.ToString();
+                string bxdd = mw.SBenDD.SelectedValue?.ToString();
+                DateTime? ngXP = mw.SNgayXP.SelectedDate;
+                DateTime? ngDD = mw.SNgayDD.SelectedDate;
+                foreach (TUYENXE tx in ListRoute)
+                {
+                    int null1 = 0, null2 = 0, null3 = 0, null4 = 0;
+                    if (bxxp == null || bxxp == "") null1 = 1; if (bxxp == tx.BENXE1.TenBenXe) null1 = 2;
+                    if (bxdd == null || bxdd == "") null2 = 1; if (bxdd == tx.BENXE.TenBenXe) null2 = 2;
+                    if(ngXP == null) null3 = 1;else if (ngXP.Value.ToShortDateString() == tx.ThoiGianXuatPhat.Value.ToShortDateString()) null3 = 2;
+                    if(ngDD == null) null4 = 1;else if (ngDD.Value.ToShortDateString() == tx.ThoiGianKetThuc.Value.ToShortDateString()) null4 = 2;
+                    if((null1 == 1 && null2 == 1 && null3 == 1 && null4 == 1) || (null1 == 2 && null2 == 1 && null3 == 1 && null4 == 1) || (null1 == 1 && null2 == 2 && null3 == 1 && null4 == 1)
+                    || (null1 == 1 && null2 == 1 && null3 == 2 && null4 == 1) || (null1 == 1 && null2 == 1 && null3 == 1 && null4 == 2) || (null1 == 2 && null2 == 2 && null3 == 1 && null4 == 1) 
+                    || (null1 == 2 && null2 == 1 && null3 == 2 && null4 == 1) || (null1 == 2 && null2 == 1 && null3 == 1 && null4 == 2) || (null1 == 1 && null2 == 2 && null3 == 2 && null4 == 1)
+                    || (null1 == 1 && null2 == 2 && null3 == 1 && null4 == 2) || (null1 == 1 && null2 == 1 && null3 == 2 && null4 == 2) || (null1 == 2 && null2 == 2 && null3 == 2 && null4 == 1)
+                    || (null1 == 2 && null2 == 2 && null3 == 1 && null4 == 2) || (null1 == 2 && null2 == 1 && null3 == 2 && null4 == 2) || (null1 == 1 && null2 == 2 && null3 == 2 && null4 == 2)
+                    || (null1 == 2 && null2 == 2 && null3 == 2 && null4 == 2))
+                    {
+                        var uc = new TagRouteUC();
+                        uc.IDTuyenXe.Text = tx.IDTuyenXe;
+                        uc.BenXeXP.Text = tx.BENXE1.TenBenXe;
+                        uc.BenXeDD.Text = tx.BENXE.TenBenXe;
+                        uc.NgayXP.Text = tx.ThoiGianXuatPhat.Value.ToString("dd/MM/yyyy");
+                        uc.NgayDD.Text = tx.ThoiGianKetThuc.Value.ToString("dd/MM/yyyy");
+                        uc.GioXP.Text = tx.ThoiGianXuatPhat.Value.ToString("T");
+                        uc.GioDD.Text = tx.ThoiGianKetThuc.Value.ToString("T");
+                        mw.ucContainerRoute.Children.Add(uc);
+                    }
+                }
+                SelectedTagRoute = null;
+            });
+        }
+        private void LoadDataClient(StackPanel sp)
+        {
+            sp.Children.Clear();
+            foreach (HANHKHACH hk in ListClient)
+            {
+                var uc = new TagClientUC();
+                uc.TenHanhKhach.Text = hk.TenHanhKhach;
+                uc.IDHanhKhach.Text = hk.IDHanhKhach;
+                uc.GioiTinh.Text = hk.GioiTinh;
+                uc.Tuoi.Text = hk.Tuoi;
+                uc.SDT.Text = hk.SDTHK;
+                uc.DiaChi.Text = hk.DiaChiHK;
+                uc.SoHieuGhe.Text = hk.SoHieuGhe;
+                uc.CCCD.Text = hk.CCCD;
+                sp.Children.Add(uc);
+            }
+        }
+        private void LoadDataStaff(StackPanel sp)
+        {
+            sp.Children.Clear();
+            foreach (NHANVIEN nv in ListStaff)
+            {
+                var uc = new TagStaffUC();
+                uc.HoTen.Text = nv.HoTenNhanVien;
+                uc.CCCD.Text = nv.CCCDNV;
+                uc.GioiTinh.Text = nv.GioiTinh;
+                uc.SDT.Text = nv.SoDienThoai;
+                uc.DiaChi.Text = nv.DiaChi;
+                uc.NgaySinh.Text = nv.NgaySinh.Value.ToString("dd/MM/yyyy");
+                sp.Children.Add(uc);
+            }
+
+        }
+        private void LoadDataDriver(StackPanel sp)
+        {
+            sp.Children.Clear();
+            foreach (TAIXE tx in ListDriver)
+            {
+                var uc = new TagDriverUC();
+                uc.HoTen.Text = tx.TenTaiXe;
+                uc.CCCD.Text = tx.CCCDTX;
+                uc.NgaySinh.Text = tx.NgaySinh.Value.ToString("dd/MM/yyyy");
+                uc.BangLai.Text = tx.BangLai;
+                uc.DiaChi.Text = tx.DiaChi;
+                uc.SDT.Text = tx.SoDienThoai;
+                sp.Children.Add(uc);
+            }
+        }
+        private void LoadDataBus(StackPanel sp)
+        {
+            sp.Children.Clear();
+            foreach (XEKHACH xk in ListBus)
+            {
+                var uc = new TagBusUC();
+                uc.BienSoXe.Text = xk.BienSoXe;
+                uc.LoaiXe.Text = xk.LoaiXe;
+                uc.TX.Text = xk.TAIXE.TenTaiXe;
+                uc.PX.Text = xk.NHANVIEN.HoTenNhanVien;
+                uc.SoGhe.Text = xk.SoGhe.ToString();
+                uc.TinhTrang.Text = xk.TinhTrang;
+                sp.Children.Add(uc);
+            }
+        }
+        private void LoadDataBusStation(StackPanel sp)
+        {
+            sp.Children.Clear();
+            foreach (BENXE bx in ListBusStation)
+            {
+                var uc = new TagBusStationUC();
+                uc.TenBenXe.Text = bx.TenBenXe;
+                uc.ID.Text =bx.IDBenXe;
+                uc.DiaChi.Text = bx.DiaChi;
+                uc.SDT.Text = bx.SoDienThoaiBen;
+                sp.Children.Add(uc);
+            }
+        }
+        private void LoadDataRoute(StackPanel sp)
+        {
+            sp.Children.Clear();
+            foreach (TUYENXE tx in ListRoute)
+            {
+                var uc = new TagRouteUC();
+                uc.IDTuyenXe.Text = tx.IDTuyenXe;
+                uc.BenXeXP.Text = tx.BENXE1.TenBenXe;
+                uc.BenXeDD.Text = tx.BENXE.TenBenXe;
+                uc.NgayXP.Text = tx.ThoiGianXuatPhat.Value.ToString("dd/MM/yyyy");
+                uc.NgayDD.Text = tx.ThoiGianKetThuc.Value.ToString("dd/MM/yyyy");
+                uc.GioXP.Text = tx.ThoiGianXuatPhat.Value.ToString("T");
+                uc.GioDD.Text = tx.ThoiGianKetThuc.Value.ToString("T");
+                sp.Children.Add(uc);
+            }
         }
     }
 }
