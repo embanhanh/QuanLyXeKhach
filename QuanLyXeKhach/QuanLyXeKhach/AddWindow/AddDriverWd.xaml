@@ -13,7 +13,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="AddDriverWd" Height="470" Width="800" Background="{x:Null}" AllowsTransparency="True">
+        Title="AddDriverWd" Height="550" Width="800" Background="{x:Null}" AllowsTransparency="True">
     <Border Background="#08c424" CornerRadius="40" BorderThickness="1" BorderBrush="Gray">
         <Grid >
             <Grid.RowDefinitions>
@@ -30,6 +30,7 @@
             <Border Margin="30 10 30 30" CornerRadius="40" Grid.Row="1" Background="White" BorderBrush="Gray" BorderThickness="1" >
                 <Grid >
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
@@ -94,15 +95,22 @@
                                 </DatePicker>
                             </Grid>
                             <Grid Grid.Row="2" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.DiaChi}"
+                                <TextBox BorderBrush="Green" Text="{Binding Luong}"
                                 materialDesign:HintAssist.Foreground="Green"
                                 VerticalAlignment="Center"
-                                materialDesign:HintAssist.Hint="Địa chỉ"
+                                materialDesign:HintAssist.Hint="Lương"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Row="2">
+                    <Grid Grid.Row="2" Margin="20">
+                        <TextBox BorderBrush="Green" Text="{Binding New.DiaChi}"
+                        materialDesign:HintAssist.Foreground="Green"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Địa chỉ"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>

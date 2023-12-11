@@ -18,6 +18,10 @@ namespace QuanLyXeKhach.ViewModel
         private List<string> _ListPhuXe;
         private string _TaiXe;
         private string _PhuXe;
+        private ObservableCollection<TAIXE> _listTX;
+        private ObservableCollection<NHANVIEN> _listPX;
+        public ObservableCollection<TAIXE> listTX { get => _listTX; set { _listTX = value; OnPropertyChanged(); } }
+        public ObservableCollection<NHANVIEN> listPX { get => _listPX; set { _listPX = value; OnPropertyChanged(); } }
         public string TaiXe { get => _TaiXe; set { _TaiXe = value; OnPropertyChanged(); } }
         public string PhuXe { get => _PhuXe; set { _PhuXe = value; OnPropertyChanged(); } }
         public List<string> ListTaiXe { get => _ListTaiXe; set { _ListTaiXe = value; OnPropertyChanged(); } }
@@ -34,15 +38,6 @@ namespace QuanLyXeKhach.ViewModel
 
         public EditBusVM()
         {
-            New = new XEKHACH();
-            ListPhuXe = new List<string>();
-            ListTaiXe = new List<string>();
-            var listTX = DataProvider.Ins.db.TAIXEs.ToList();
-            var listPX = DataProvider.Ins.db.NHANVIENs.ToList();
-            foreach (var tx in listTX)
-                ListTaiXe.Add(tx.TenTaiXe);
-            foreach (var px in listPX)
-                ListPhuXe.Add(px.HoTenNhanVien);
             New2 = new XEKHACH();
             editCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {

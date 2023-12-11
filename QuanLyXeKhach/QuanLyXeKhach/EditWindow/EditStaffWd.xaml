@@ -13,7 +13,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="EditDriverWd" Height="470" Width="800" Background="{x:Null}" AllowsTransparency="True">
+        Title="EditDriverWd" Height="550" Width="800" Background="{x:Null}" AllowsTransparency="True">
     <Border Background="#44b0f1" CornerRadius="35" BorderThickness="1" BorderBrush="Gray">
         <Grid>
             <Grid.RowDefinitions>
@@ -30,6 +30,7 @@
             <Border Background="White" Margin="30 10 30 30" CornerRadius="35" Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
@@ -55,7 +56,7 @@
                     materialDesign:HintAssist.Foreground="#44b0f1"
                     VerticalAlignment="Center"
                     materialDesign:HintAssist.Hint="CCCD"
-                    MaxLength="6" IsReadOnly="True"
+                    MaxLength="12" 
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
@@ -66,7 +67,7 @@
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="2" Margin="20">
-                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding New}"  
+                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding New.GioiTinh}"  
                     materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding GioiTinh}"
                     materialDesign:HintAssist.Hint="Giới tính"
                     Style="{StaticResource MaterialDesignOutlinedComboBox}">
@@ -93,15 +94,22 @@
                     Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
                             </Grid>
                             <Grid Grid.Row="2" Margin="20">
-                                <TextBox BorderBrush="#44b0f1" Text="{Binding New.DiaChi}"
-                    materialDesign:HintAssist.Foreground="#44b0f1"
-                    VerticalAlignment="Center"
-                    materialDesign:HintAssist.Hint="Địa chỉ"
-                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                                <TextBox BorderBrush="#44b0f1" Text="{Binding Luong}"
+                                materialDesign:HintAssist.Foreground="#44b0f1"
+                                VerticalAlignment="Center"
+                                materialDesign:HintAssist.Hint="Lương"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Row="2">
+                    <Grid Grid.Row="2" Margin="20">
+                        <TextBox BorderBrush="#44b0f1" Text="{Binding New.DiaChi}"
+                        materialDesign:HintAssist.Foreground="#44b0f1"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Địa chỉ"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition ></ColumnDefinition>
                             <ColumnDefinition ></ColumnDefinition>

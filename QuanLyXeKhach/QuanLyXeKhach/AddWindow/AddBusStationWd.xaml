@@ -52,7 +52,7 @@
                             <Grid Grid.Row="0" Margin="20">
                                 <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
                         materialDesign:HintAssist.Foreground="Green"
-                        VerticalAlignment="Center" 
+                        VerticalAlignment="Center" MaxLength="6"
                         materialDesign:HintAssist.Hint="ID"
                         Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>

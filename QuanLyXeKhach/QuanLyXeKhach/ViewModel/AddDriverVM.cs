@@ -16,6 +16,8 @@ namespace QuanLyXeKhach.ViewModel
         public bool isAdd;
         private TAIXE _new;
         private List<string> _BangLai;
+        private string _Luong;
+        public string Luong { get => _Luong; set { _Luong = value; OnPropertyChanged(); } }
         public List<string> BangLai { get => _BangLai; set { _BangLai = value; OnPropertyChanged(); } }
         public TAIXE New { get => _new; set { _new = value; OnPropertyChanged(); } }
         private ObservableCollection<TAIXE> _listnew;
@@ -36,7 +38,9 @@ namespace QuanLyXeKhach.ViewModel
             });
             addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
+                New.Luong = Decimal.Parse(Luong);
                 ListNew.Add(New);
+                Luong = "";
                 New = new TAIXE();
                 index++;
                 isAdd = true;

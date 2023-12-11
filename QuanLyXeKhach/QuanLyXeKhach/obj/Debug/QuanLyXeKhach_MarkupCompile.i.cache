@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\App.xaml
-22-86180707
+311349485825
 2-474757761
-58-1703788904
+721085266890
 2353038885
-AddWindow\AddBusStationWd.xaml;AddWindow\AddBusWd.xaml;EditWindow\EditBusStationWd.xaml;EditWindow\EditBusWd.xaml;EditWindow\EditRouteWd.xaml;EditWindow\EditStaffWd.xaml;AddWindow\AddClientWd.xaml;AddWindow\AddRouteWd.xaml;AddWindow\AddStaffWd.xaml;AddWindow\AddDriverWd.xaml;EditWindow\EditClientWd.xaml;EditWindow\EditDriverWd.xaml;LoginWindow.xaml;MainWindow.xaml;Resource\MainResource.xaml;UserControlFolder\ControlBarUC.xaml;UserControlFolder\TagBusStationUC.xaml;UserControlFolder\TagBusUC.xaml;UserControlFolder\TagClientUC.xaml;UserControlFolder\TagDriverUC.xaml;UserControlFolder\TagRouteUC.xaml;UserControlFolder\TagStaffUC.xaml;
+AddWindow\AddBusStationWd.xaml;AddWindow\AddBusWd.xaml;AddWindow\AddCashierWd.xaml;AddWindow\AddReceiptWd.xaml;AddWindow\AddScheduleWd.xaml;EditWindow\EditBusStationWd.xaml;EditWindow\EditBusWd.xaml;EditWindow\EditCashierWd.xaml;EditWindow\EditReceiptWd.xaml;EditWindow\EditRouteWd.xaml;EditWindow\EditScheduleWd.xaml;EditWindow\EditStaffWd.xaml;AddWindow\AddClientWd.xaml;AddWindow\AddRouteWd.xaml;AddWindow\AddStaffWd.xaml;AddWindow\AddDriverWd.xaml;EditWindow\EditClientWd.xaml;EditWindow\EditDriverWd.xaml;LoginWindow.xaml;MainWindow.xaml;Resource\MainResource.xaml;UserControlFolder\ControlBarUC.xaml;UserControlFolder\TagBusStationUC.xaml;UserControlFolder\TagBusUC.xaml;UserControlFolder\TagCashierUC.xaml;UserControlFolder\TagClientUC.xaml;UserControlFolder\TagDriverUC.xaml;UserControlFolder\TagReceiptUC.xaml;UserControlFolder\TagRouteUC.xaml;UserControlFolder\TagScheduleUC.xaml;UserControlFolder\TagStaffUC.xaml;
 
 False
 

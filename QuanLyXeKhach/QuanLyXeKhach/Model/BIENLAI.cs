@@ -15,17 +15,14 @@ namespace QuanLyXeKhach.Model
     public partial class BIENLAI
     {
         public string IDBienLai { get; set; }
-        public string IDLICHTRINH { get; set; }
+        public string IDGhe { get; set; }
         public string IDHanhKhach { get; set; }
-        public string IDGiaVe { get; set; }
         public Nullable<System.DateTime> NgayMua { get; set; }
-        public Nullable<bool> DATHANHTOAN { get; set; }
-        public string HinhThucThanhToan { get; set; }
+        public Nullable<byte> GiamGia { get; set; }
         public string ThuNgan { get; set; }
     
-        public virtual GIAVE GIAVE { get; set; }
+        public virtual GHE GHE { get; set; }
         public virtual HANHKHACH HANHKHACH { get; set; }
-        public virtual LICHTRINH LICHTRINH { get; set; }
         public virtual THUNGAN THUNGAN1 { get; set; }
     }
 }

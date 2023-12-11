@@ -68,7 +68,6 @@
                                 materialDesign:HintAssist.Foreground="Green"
                                 VerticalAlignment="Center"
                                 materialDesign:HintAssist.Hint="Loại xe"
-                                MaxLength="12"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>            
                             </Grid>
                         </Grid>
@@ -81,7 +80,7 @@
                             <Grid Grid.Row="0" Margin="20">
                                 <ComboBox BorderBrush="Green" SelectedValue="{Binding PhuXe}"  
                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding ListPhuXe}"
-                                materialDesign:HintAssist.Hint="Phụ xe" 
+                                materialDesign:HintAssist.Hint="Phụ Xe"
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>
                             </Grid>

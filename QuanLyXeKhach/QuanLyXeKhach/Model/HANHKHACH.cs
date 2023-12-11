@@ -21,7 +21,6 @@ namespace QuanLyXeKhach.Model
         }
     
         public string IDHanhKhach { get; set; }
-        public string SoHieuGhe { get; set; }
         public string TenHanhKhach { get; set; }
         public string GioiTinh { get; set; }
         public string Tuoi { get; set; }
@@ -31,6 +30,5 @@ namespace QuanLyXeKhach.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BIENLAI> BIENLAIs { get; set; }
-        public virtual GHE GHE { get; set; }
     }
 }

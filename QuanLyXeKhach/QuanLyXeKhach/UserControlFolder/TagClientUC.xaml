@@ -85,19 +85,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <TextBox Margin="2" BorderBrush="Black"  TextAlignment="Center"
-                            VerticalAlignment="Center"  x:Name="SoHieuGhe" BorderThickness="1.5"
-                            materialDesign:HintAssist.Background="#eeeeee" 
-                            materialDesign:HintAssist.Hint="Ghe" IsReadOnly="true"
-                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                            Padding="8" />
-                    </Grid>
-                    <Grid Grid.Column="1">
+                    <Grid>
                         <TextBox Margin="2" BorderBrush="Black" BorderThickness="1.5"
                             VerticalAlignment="Center" x:Name="SDT" TextAlignment="Center"
                             materialDesign:HintAssist.Hint="SDT" IsReadOnly="true"

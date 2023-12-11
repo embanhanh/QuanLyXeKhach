@@ -21,8 +21,8 @@ namespace QuanLyXeKhach.ViewModel
         public DateTime GioXP { get => _GioXP; set { _GioXP = value; OnPropertyChanged(); } }
         private DateTime _GioDD;
         public DateTime GioDD { get => _GioDD; set { _GioDD = value; OnPropertyChanged(); } }
-        private ObservableCollection<TUYENXE> _listnew;
-        public ObservableCollection<TUYENXE> ListNew { get => _listnew; set { _listnew = value; OnPropertyChanged(); } }
+        private ObservableCollection<BENXE> _listBX;
+        public ObservableCollection<BENXE> listBX { get => _listBX; set { _listBX = value; OnPropertyChanged(); } }
         private TUYENXE _new;
         private TUYENXE _new2;
         public TUYENXE New { get => _new; set { _new = value; OnPropertyChanged(); } }
@@ -34,19 +34,11 @@ namespace QuanLyXeKhach.ViewModel
 
         public EditRouteVM()
         {
-            ListNew= new ObservableCollection<TUYENXE>();
             var BXXP = DataProvider.Ins.db.BENXEs.ToList();
-            BenXe = new List<string>();
-            while (BXXP.Count > 0)
-            {
-                BenXe.Add(BXXP.First().TenBenXe);
-                BXXP.RemoveAt(0);
-            }
             New2 = new TUYENXE();
-            var _BX = DataProvider.Ins.db.BENXEs.ToList();
             editCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                foreach (BENXE bx in _BX)
+                foreach (BENXE bx in listBX)
                 {
                     if (BenXeXP == bx.TenBenXe)
                     {
@@ -55,7 +47,7 @@ namespace QuanLyXeKhach.ViewModel
                         break;
                     }
                 }
-                foreach (BENXE bx in _BX)
+                foreach (BENXE bx in listBX)
                 {
                     if (BenXeDD == bx.TenBenXe)
                     {
@@ -65,7 +57,7 @@ namespace QuanLyXeKhach.ViewModel
                     }
                 }
                 New.GioXuatPhat = GioXP.TimeOfDay;
-                New.GioKetThuc = GioDD.TimeOfDay;
+                New.ThoiGianDuKien = GioDD.TimeOfDay;
                 isEdit = true;
                 p.Close();
             });

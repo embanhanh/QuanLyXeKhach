@@ -17,6 +17,8 @@ namespace QuanLyXeKhach.ViewModel
         private NHANVIEN _new;
         private List<string> _GioiTinh;
         private ObservableCollection<NHANVIEN> _ListNew;
+        private string _Luong;
+        public string Luong { get => _Luong; set { _Luong = value; OnPropertyChanged(); } }
         public ObservableCollection<NHANVIEN> ListNew { get => _ListNew; set { _ListNew = value; OnPropertyChanged(); } }
         public List<string> GioiTinh { get => _GioiTinh; set { _GioiTinh = value; OnPropertyChanged(); } }
         public NHANVIEN New { get => _new; set { _new = value; OnPropertyChanged(); } }
@@ -37,8 +39,10 @@ namespace QuanLyXeKhach.ViewModel
             });
             addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
+                New.Luong = Decimal.Parse(Luong);
                 ListNew.Add(New);
                 index++;
+                Luong = "";
                 New = new NHANVIEN();
                 isAdd = true;
                 p.Close();

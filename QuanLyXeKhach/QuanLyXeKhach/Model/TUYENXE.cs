@@ -24,7 +24,7 @@ namespace QuanLyXeKhach.Model
         public string IDBenXeXuatPhat { get; set; }
         public string IDBenKetThuc { get; set; }
         public Nullable<System.TimeSpan> GioXuatPhat { get; set; }
-        public Nullable<System.TimeSpan> GioKetThuc { get; set; }
+        public Nullable<System.TimeSpan> ThoiGianDuKien { get; set; }
     
         public virtual BENXE BENXE { get; set; }
         public virtual BENXE BENXE1 { get; set; }

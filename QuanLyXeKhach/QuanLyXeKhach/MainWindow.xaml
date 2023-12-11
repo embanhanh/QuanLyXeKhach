@@ -317,7 +317,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách nhân viên" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <TextBlock Grid.Row="0" Text="Danh sách phụ xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
                                 <!--<ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
@@ -359,6 +359,83 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Delete-->
                                 <Button Width="100" Margin="20 0" Command="{Binding DeleteStaffCommand}"
+                                     Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem >
+                <!--Cashier-->
+                <TabItem Height="65">
+                    <TabItem.Header >
+                        <StackPanel Orientation="Horizontal" Width="120" >
+                            <materialDesign:PackIcon Kind="AccountTieWoman" Height="25" 
+                                Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Thu ngân" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.8*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="0.6*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--Search-->
+                        <Grid Grid.Column="0" Background="#eeeeee">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                                VerticalAlignment="Bottom"  >
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                VerticalAlignment="Center" Width="600" Background="White"
+                                materialDesign:HintAssist.Hint="Tên Thu Ngân" Height="40" 
+                                x:Name="STenTN"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                Command="{Binding SearchCashier}" CommandParameter="{Binding ElementName=MainWd}">
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                        <!--List-->
+                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
+                            BorderBrush="#eee" BorderThickness="1" Background="White">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Title-->
+                                <TextBlock Grid.Row="0" Text="Danh sách thu ngân" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                <!--ListView-->
+                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel x:Name="ucContainerCashier">
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                        <!--Buttons-->
+                        <Grid Grid.Row="2" Margin="0 0 0 20">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <!--Add-->
+                                <Button Width="100" Margin="20 0" Command="{Binding AddCashierCommand}" CommandParameter="{Binding ElementName=ucContainerCashier}"
+                                    Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                    ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Edit-->
+                                <Button Width="100" Margin="20 0" Command="{Binding EditCashierCommand}"
+                                     Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
+                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Delete-->
+                                <Button Width="100" Margin="20 0" Command="{Binding DeleteCashierCommand}"
                                      Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
@@ -466,6 +543,88 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         </Grid>
                     </Grid>
                 </TabItem>
+                <!--Bus Station-->
+                <TabItem Height="65">
+                    <TabItem.Header >
+                        <StackPanel Orientation="Horizontal" Width="120" >
+                            <materialDesign:PackIcon Kind="BusMarker" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Bến xe" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.8*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="0.6*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--Search-->
+                        <Grid Grid.Column="0" Background="#eeeeee">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                            VerticalAlignment="Bottom"  >
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                VerticalAlignment="Center" Width="300" Background="White"
+                                materialDesign:HintAssist.Hint="Tên Bến Xe" Height="40"
+                                x:Name="STenBX"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                VerticalAlignment="Center" Width="300" Background="White"
+                                materialDesign:HintAssist.Hint="Địa Chỉ" Height="40"
+                                                         x:Name="SDiaChi"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                Command="{Binding SearchBusStation}" CommandParameter="{Binding ElementName=MainWd}">
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                        <!--List-->
+                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
+                        BorderBrush="#eee" BorderThickness="1" Background="White">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Title-->
+                                <TextBlock Grid.Row="0" Text="Danh sách bến xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel x:Name="ucContainerBusStation">
+
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                        <!--Buttons-->
+                        <Grid Grid.Row="2" Margin="0 0 0 20">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <!--Add-->
+                                <Button Width="100" Margin="20 0" Command="{Binding AddBusStationCommand}" CommandParameter="{Binding ElementName=ucContainerBusStation}"
+                                Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                Style="{StaticResource MaterialDesignRaisedLightButton}" 
+                                ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Edit-->
+                                <Button Width="100" Margin="20 0" Command="{Binding EditBusStationCommand}"
+                                 Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
+                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Delete-->
+                                <Button Width="100" Margin="20 0" Command="{Binding DeleteBusStationCommand}"
+                                 Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
+                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem>
                 <!--vehicle route-->
                 <TabItem Height="65">
                     <TabItem.Header >
@@ -494,19 +653,8 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                  materialDesign:HintAssist.Hint="Bến Xe Đích Đến" Background="White" Margin="15"
                                  Style="{StaticResource MaterialDesignOutlinedComboBox}" Height="40">
                                 </ComboBox>
-                                <DatePicker BorderBrush="Green" x:Name="SNgayXP"
-                                materialDesign:HintAssist.Foreground="Green" Margin="15" Padding="12"
-                                materialDesign:HintAssist.Hint="Ngày Xuất Phát" Background="White"
-                                Style="{StaticResource MaterialDesignOutlinedDatePicker}">
-                                </DatePicker>
-                                <DatePicker  BorderBrush="Green" x:Name="SNgayDD"
-                                materialDesign:HintAssist.Foreground="Green" Margin="15" Padding="12"
-                                materialDesign:HintAssist.Hint="Ngày Đến Đích" Background="White"
-                                Style="{StaticResource MaterialDesignOutlinedDatePicker}">
-                                </DatePicker>
                                 <Button Content="Tìm Kiếm" Margin="0 0 15 0"
                                 Command="{Binding SearchRoute}" CommandParameter="{Binding ElementName=MainWd}">
-
                                 </Button>
                             </StackPanel>
                         </Grid>
@@ -525,21 +673,6 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                 <!--Title-->
                                 <TextBlock Grid.Row="0" Text="Danh sách tuyến xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
-                                <!--ListView-->
-                                <!--<ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
-                                    <ListView Margin="10 5" ItemsSource="{Binding ListRoute, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                                              SelectedItem="{Binding SelectedItemRoute, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
-                                        <ListView.View>
-                                            <GridView>
-                                                <GridViewColumn Header="Mã tuyến" DisplayMemberBinding="{Binding IDTuyenXe}"/>
-                                                <GridViewColumn Header="Bến đầu"  DisplayMemberBinding="{Binding BENXE1.TenBenXe}"/>
-                                                <GridViewColumn Header="Bến cuối" DisplayMemberBinding="{Binding BENXE.TenBenXe}"/>
-                                                <GridViewColumn Header="Thời Gian Xuất Phát" DisplayMemberBinding="{Binding ThoiGianXuatPhat}"/>
-                                                <GridViewColumn Header="Thời Gian Đến Đích" DisplayMemberBinding="{Binding ThoiGianKetThuc}"/>
-                                            </GridView>
-                                        </ListView.View>
-                                    </ListView>
-                                </ScrollViewer>-->
                                 <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
                                     <StackPanel x:Name="ucContainerRoute">
 
@@ -572,7 +705,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         </Grid>
                     </Grid>
                 </TabItem>
-                <!--circulating-->
+                <!--Schedule-->
                 <TabItem Height="65">
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="120" >
@@ -590,18 +723,23 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         <Grid Grid.Column="0" Background="#eeeeee">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
                             VerticalAlignment="Bottom"  >
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
-                                materialDesign:HintAssist.Foreground="Green" Padding="12"
-                                VerticalAlignment="Center" Width="600" Background="White"
-                                materialDesign:HintAssist.Hint="Tìm kiếm" Height="40"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <Button BorderBrush="#44b0f1"
-                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                Width="25" Height="25" Background="#44b0f1"
-                                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                                ToolTip="MaterialDesignFloatingActionMiniDarkButton">
-                                    <materialDesign:PackIcon Width="20" Height="20"
-                                    Kind="ArrowRightThick" />
+                                <ComboBox BorderBrush="Green" Padding="12" x:Name="SBenXp" IsEditable="True"
+                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXe}"
+                                 materialDesign:HintAssist.Hint="Bến Xe Xuất Phát" Background="White" Margin="15"
+                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" Height="40">
+                                </ComboBox>
+                                <ComboBox BorderBrush="Green" Padding="12" x:Name="SBenKt" IsEditable="True"
+                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXe}"
+                                 materialDesign:HintAssist.Hint="Bến Xe Đích Đến" Background="White" Margin="15"
+                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" Height="40">
+                                </ComboBox>
+                                <DatePicker  BorderBrush="Green" Background="White"
+                                materialDesign:HintAssist.Foreground="Green" Padding="12" Margin="15"
+                                materialDesign:HintAssist.Hint="Ngày Xuất Phát" Height="40" x:Name="NgayXP"
+                                Style="{StaticResource MaterialDesignOutlinedDatePicker}">
+                                </DatePicker>
+                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                Command="{Binding SearchSchedule}" CommandParameter="{Binding ElementName=MainWd}">
                                 </Button>
                             </StackPanel>
                         </Grid>
@@ -621,13 +759,18 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                 <TextBlock Grid.Row="0" Text="Danh sách lưu thông trên các tuyến đường" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
-                                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                                <!--<ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
                                     <ListView Margin="10 5" ItemsSource="{Binding }" SelectedItem="{Binding SelectedItemCirculate,Mode=OneWayToSource}">
                                         <ListView.View>
                                             <GridView>
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
+                                </ScrollViewer>-->
+                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel x:Name="ucContainerSchedule">
+
+                                    </StackPanel>
                                 </ScrollViewer>
                             </Grid>
                         </Border>
@@ -635,19 +778,19 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         <Grid Grid.Row="2" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddRouteCommand}"
+                                <Button Width="100" Margin="20 0" Command="{Binding AddScheduleCommand}" CommandParameter="{Binding ElementName=ucContainerSchedule}"
                                     Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}" 
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Edit-->
-                                <Button Width="100" Margin="20 0" Command="{Binding EditRouteCommand}"
+                                <Button Width="100" Margin="20 0" Command="{Binding EditScheduleCommand}"
                                      Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Delete-->
-                                <Button Width="100" Margin="20 0" Command="{Binding DeleteRouteCommand}"
+                                <Button Width="100" Margin="20 0" Command="{Binding DeleteScheduleCommand}"
                                      Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
@@ -656,12 +799,12 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         </Grid>
                     </Grid>
                 </TabItem>
-                <!--Bus Station-->
+                <!--Receipt-->
                 <TabItem Height="65">
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="120" >
-                            <materialDesign:PackIcon Kind="BusMarker" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
-                            <TextBlock Foreground="White" Text="Bến xe" VerticalAlignment="Bottom"></TextBlock>
+                            <materialDesign:PackIcon Kind="ReceiptTextEdit" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Biên Lai" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>
                     <Grid>
@@ -674,26 +817,26 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         <Grid Grid.Column="0" Background="#eeeeee">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
                             VerticalAlignment="Bottom"  >
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                <TextBox BorderBrush="Green"
                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
                                 VerticalAlignment="Center" Width="300" Background="White"
-                                materialDesign:HintAssist.Hint="Tên Bến Xe" Height="40"
-                                x:Name="STenBX"
+                                materialDesign:HintAssist.Hint="Tên Hành Khách" Height="40"
+                                x:Name="STenHK_BL"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
-                                materialDesign:HintAssist.Foreground="Green" Padding="12"
-                                VerticalAlignment="Center" Width="300" Background="White"
-                                materialDesign:HintAssist.Hint="Địa Chỉ" Height="40"
-                                                                         x:Name="SDiaChi"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
+                                <ComboBox BorderBrush="Green" Padding="12" x:Name="SMaLT" IsEditable="True"
+                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding IDLichTrinh}"
+                                 materialDesign:HintAssist.Hint="ID Lịch Trình" Background="White" Margin="15"
+                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" Height="40">
+                                </ComboBox>
                                 <Button Content="Tìm Kiếm" Margin="0 0 15 0"
-                                Command="{Binding SearchBusStation}" CommandParameter="{Binding ElementName=MainWd}">
+                                Command="{Binding SearchReceipt}" CommandParameter="{Binding ElementName=MainWd}">
+
                                 </Button>
                             </StackPanel>
                         </Grid>
                         <!--List-->
                         <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                            BorderBrush="#eee" BorderThickness="1" Background="White">
+                        BorderBrush="#eee" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
                             </Border.Effect>
@@ -704,24 +847,10 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách bến xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <TextBlock Grid.Row="0" Text="Danh sách biên lai" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
-                                <!--ListView-->
-                                <!--<ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
-                                    <ListView Margin="10 5" ItemsSource="{Binding ListBusStation,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
-                                        SelectedItem="{Binding SelectedItemBusStation,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
-                                        <ListView.View>
-                                            <GridView>
-                                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IDBenXe}"/>
-                                                <GridViewColumn Header="Tên Bến Xe"  DisplayMemberBinding="{Binding TenBenXe}"/>
-                                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding DiaChi}"/>
-                                                <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding SoDienThoaiBen}"/>
-                                            </GridView>
-                                        </ListView.View>
-                                    </ListView>
-                                </ScrollViewer>-->
                                 <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-                                    <StackPanel x:Name="ucContainerBusStation">
+                                    <StackPanel x:Name="ucContainerReceipt">
 
                                     </StackPanel>
                                 </ScrollViewer>
@@ -731,27 +860,28 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         <Grid Grid.Row="2" Margin="0 0 0 20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddBusStationCommand}" CommandParameter="{Binding ElementName=ucContainerBusStation}"
-                                    Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}" 
-                                    ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <Button Width="100" Margin="20 0" Command="{Binding AddReceiptCommand}" CommandParameter="{Binding ElementName=ucContainerReceipt}"
+                                Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Edit-->
-                                <Button Width="100" Margin="20 0" Command="{Binding EditBusStationCommand}"
-                                     Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
-                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <Button Width="100" Margin="20 0" Command="{Binding EditReceiptCommand}"
+                                 Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
+                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Delete-->
-                                <Button Width="100" Margin="20 0" Command="{Binding DeleteBusStationCommand}"
-                                     Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
-                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <Button Width="100" Margin="20 0" Command="{Binding DeleteReceiptCommand}"
+                                 Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
+                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                             </StackPanel>
                         </Grid>
                     </Grid>
                 </TabItem>
+                
                 <!--Chart-->
                 <TabItem Height="65">
                     <TabItem.Header >

@@ -87,14 +87,32 @@
     <Compile Include="AddWindow\AddBusWd.xaml.cs">
       <DependentUpon>AddBusWd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddWindow\AddCashierWd.xaml.cs">
+      <DependentUpon>AddCashierWd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddWindow\AddReceiptWd.xaml.cs">
+      <DependentUpon>AddReceiptWd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddWindow\AddScheduleWd.xaml.cs">
+      <DependentUpon>AddScheduleWd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditWindow\EditBusStationWd.xaml.cs">
       <DependentUpon>EditBusStationWd.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditWindow\EditBusWd.xaml.cs">
       <DependentUpon>EditBusWd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditWindow\EditCashierWd.xaml.cs">
+      <DependentUpon>EditCashierWd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditWindow\EditReceiptWd.xaml.cs">
+      <DependentUpon>EditReceiptWd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditWindow\EditRouteWd.xaml.cs">
       <DependentUpon>EditRouteWd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditWindow\EditScheduleWd.xaml.cs">
+      <DependentUpon>EditScheduleWd.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditWindow\EditStaffWd.xaml.cs">
       <DependentUpon>EditStaffWd.xaml</DependentUpon>
@@ -128,9 +146,6 @@
     </Compile>
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\GHE.cs">
-      <DependentUpon>QlyXe.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\GIAVE.cs">
       <DependentUpon>QlyXe.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\HANHKHACH.cs">
@@ -181,31 +196,46 @@
     <Compile Include="UserControlFolder\TagBusUC.xaml.cs">
       <DependentUpon>TagBusUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlFolder\TagCashierUC.xaml.cs">
+      <DependentUpon>TagCashierUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlFolder\TagClientUC.xaml.cs">
       <DependentUpon>TagClientUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlFolder\TagDriverUC.xaml.cs">
       <DependentUpon>TagDriverUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlFolder\TagReceiptUC.xaml.cs">
+      <DependentUpon>TagReceiptUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlFolder\TagRouteUC.xaml.cs">
       <DependentUpon>TagRouteUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlFolder\TagScheduleUC.xaml.cs">
+      <DependentUpon>TagScheduleUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlFolder\TagStaffUC.xaml.cs">
       <DependentUpon>TagStaffUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddBusStationVM.cs" />
     <Compile Include="ViewModel\AddBusVM.cs" />
+    <Compile Include="ViewModel\AddCashierVM.cs" />
     <Compile Include="ViewModel\AddClientVM.cs" />
     <Compile Include="ViewModel\AddDriverVM.cs" />
+    <Compile Include="ViewModel\AddReceiptVM.cs" />
     <Compile Include="ViewModel\AddRouteVM.cs" />
+    <Compile Include="ViewModel\AddScheduleVM.cs" />
     <Compile Include="ViewModel\AddStaffVM.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
     <Compile Include="ViewModel\EditBusStationVM.cs" />
     <Compile Include="ViewModel\EditBusVM.cs" />
+    <Compile Include="ViewModel\EditCashierVM.cs" />
     <Compile Include="ViewModel\EditClientVM.cs" />
     <Compile Include="ViewModel\EditDriverVM.cs" />
+    <Compile Include="ViewModel\EditReceiptVM.cs" />
     <Compile Include="ViewModel\EditRouteVM.cs" />
+    <Compile Include="ViewModel\EditScheduleVM.cs" />
     <Compile Include="ViewModel\EditStaffVM.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -217,6 +247,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddWindow\AddCashierWd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddWindow\AddReceiptWd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddWindow\AddScheduleWd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditWindow\EditBusStationWd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -225,7 +267,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EditWindow\EditCashierWd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditWindow\EditReceiptWd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditWindow\EditRouteWd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditWindow\EditScheduleWd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -289,6 +343,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControlFolder\TagCashierUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControlFolder\TagClientUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -297,7 +355,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControlFolder\TagReceiptUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControlFolder\TagRouteUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlFolder\TagScheduleUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

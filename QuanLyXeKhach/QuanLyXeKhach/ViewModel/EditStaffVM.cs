@@ -15,6 +15,8 @@ namespace QuanLyXeKhach.ViewModel
         private NHANVIEN _new;
         private NHANVIEN _new2;
         private List<string> _GioiTinh;
+        private string _Luong;
+        public string Luong { get => _Luong; set { _Luong = value; OnPropertyChanged(); } }
         public List<string> GioiTinh { get => _GioiTinh; set { _GioiTinh = value; OnPropertyChanged(); } }
         public NHANVIEN New { get => _new; set { _new = value; OnPropertyChanged(); } }
         public NHANVIEN New2 { get => _new2; set { _new2 = value; OnPropertyChanged(); } }
@@ -22,7 +24,7 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand editCommand { get; set; }
         public EditStaffVM()
         {
-            GioiTinh = new List<string>() { "Nam", "Nu", "Khac" };
+            GioiTinh = new List<string>() { "Nam", "Nữ", "Khác" };
             New2 = new NHANVIEN();
             isEdit = false;
             closeCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -32,6 +34,7 @@ namespace QuanLyXeKhach.ViewModel
             });
             editCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
+                New.Luong = Decimal.Parse(Luong);
                 isEdit = true;
                 p.Close();
             });

@@ -51,7 +51,7 @@
                                 Width="300"
                                 VerticalAlignment="Center"
                                 materialDesign:HintAssist.Hint="Mã Tuyến Xe"
-                                MaxLength="12"
+                                MaxLength="6"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>    
                         </Grid>
                         <Grid Grid.Row="1">
@@ -83,7 +83,7 @@
                                 <materialDesign:TimePicker
                                   SelectedTime="{Binding GioDD}"
                                   BorderBrush="Green"
-                                  materialDesign:HintAssist.Hint="Giờ Đến ĐÍch"
+                                  materialDesign:HintAssist.Hint="Thời gian dự kiến"
                                   Is24Hours="True"
                                   Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
                             </Grid>

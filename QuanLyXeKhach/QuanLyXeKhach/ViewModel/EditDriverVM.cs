@@ -15,6 +15,8 @@ namespace QuanLyXeKhach.ViewModel
         private TAIXE _new;
         private TAIXE _new2;
         private List<string> _BangLai;
+        private string _Luong;
+        public string Luong { get => _Luong; set { _Luong = value; OnPropertyChanged(); } }
         public List<string> BangLai { get => _BangLai; set { _BangLai = value; OnPropertyChanged(); } }
         public TAIXE New { get => _new; set { _new = value; OnPropertyChanged(); } }
         public TAIXE New2 { get => _new2; set { _new2 = value; OnPropertyChanged(); } }
@@ -33,6 +35,7 @@ namespace QuanLyXeKhach.ViewModel
             });
             editCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
+                New.Luong = Decimal.Parse(Luong);
                 isEdit = true;
                 p.Close();
             });

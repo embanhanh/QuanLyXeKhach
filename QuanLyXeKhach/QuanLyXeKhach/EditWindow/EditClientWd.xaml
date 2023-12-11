@@ -33,6 +33,7 @@
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <TextBlock HorizontalAlignment="Center" FontSize="18"
@@ -49,14 +50,13 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
                                 <TextBox BorderBrush="#0883ff" Text="{Binding New.IDHanhKhach}"
                                     materialDesign:HintAssist.Foreground="#0883ff"
                                     VerticalAlignment="Center"
                                     materialDesign:HintAssist.Hint="ID"
-                                    MaxLength="6"
+                                    IsReadOnly="True"
                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
@@ -73,19 +73,12 @@
                                     Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>
                             </Grid>
-                            <Grid Grid.Row="3" Margin="20">
-                                <ComboBox BorderBrush="#0883ff" SelectedValue="{Binding New.SoHieuGhe}"  
-                                    materialDesign:HintAssist.Foreground="#0883ff" ItemsSource="{Binding SohG}"
-                                    materialDesign:HintAssist.Hint="Số Hiệu ghế"
-                                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                                </ComboBox>
-                            </Grid>
+                            
                         </Grid>
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition ></RowDefinition>
-                                <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
@@ -109,16 +102,16 @@
                                     materialDesign:HintAssist.Hint="Tuổi"
                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
-                            <Grid Grid.Row="3" Margin="20">
-                                <TextBox BorderBrush="#0883ff" Text="{Binding New.DiaChiHK}"
-                                    materialDesign:HintAssist.Foreground="#0883ff"
-                                    VerticalAlignment="Center"
-                                    materialDesign:HintAssist.Hint="Địa chỉ"
-                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
-                            </Grid>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Row="2">
+                    <Grid Grid.Row="2" Margin="20">
+                        <TextBox BorderBrush="#0883ff" Text="{Binding New.DiaChiHK}"
+                        materialDesign:HintAssist.Foreground="#0883ff"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Địa chỉ"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition ></ColumnDefinition>
                             <ColumnDefinition ></ColumnDefinition>

@@ -1,0 +1,156 @@
+﻿<Window x:Class="QuanLyXeKhach.EditWindow.EditReceiptWd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyXeKhach.EditWindow"
+                WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        DataContext="{StaticResource editReceiptVM}"
+        Name="editRecriptWd"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="EditReceiptWd" Height="550" Width="800"   Background="{x:Null}" AllowsTransparency="True">
+    <Border Background="#44b0f1" CornerRadius="35" BorderThickness="1" BorderBrush="Gray">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="#0883ff" CornerRadius="10"  BorderThickness="1" Grid.Row="0"
+                VerticalAlignment="Center" Background="#08a2e1" HorizontalAlignment="Center">
+                <Grid>
+                    <TextBlock Text="SỬA ĐỔI" Foreground="White" VerticalAlignment="Center" Padding="20 10"
+                    HorizontalAlignment="Center" FontSize="18"></TextBlock>
+                </Grid>
+            </Border>
+            <Border Margin="30 10 30 30" CornerRadius="40" Grid.Row="1" Background="White" BorderBrush="Gray" BorderThickness="1" >
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock HorizontalAlignment="Center" FontSize="18"
+                        Text="Thông Tin Biên Lai" Foreground="Gray" Margin="0 20 0 0">
+                        </TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="0 20 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Margin="20 0 20 20">
+                                <TextBox BorderBrush="#44b0f1" Text="{Binding New.IDBienLai,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                materialDesign:HintAssist.Foreground="#44b0f1"
+                                VerticalAlignment="Center"
+                                materialDesign:HintAssist.Hint="Mã Biên Lai"
+                                IsReadOnly="True"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            </Grid>
+                            <Grid Grid.Column="2" Margin="20 0 20 20">
+                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding IDLichTrinh, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  
+                                materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding LLichTrinh,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                materialDesign:HintAssist.Hint="ID Lịch Trình" x:Name="LichTrinh"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction CommandParameter="{Binding ElementName=LichTrinh}" Command="{Binding Show}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Margin="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="38*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding HanhKhach}"  
+                            materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding LHanhKhach}"
+                            materialDesign:HintAssist.Hint="Hành Khách"
+                            Style="{StaticResource MaterialDesignOutlinedComboBox}" Grid.ColumnSpan="2">
+                                </ComboBox>
+                            </Grid>
+                            <Grid Grid.Column="1" Margin="20">
+                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding New.IDGhe,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding LGhe,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                materialDesign:HintAssist.Hint="Ghế"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Margin="20">
+                                <DatePicker  SelectedDate="{Binding New.NgayMua}" BorderBrush="#44b0f1"
+                        materialDesign:HintAssist.Foreground="#44b0f1" 
+                        materialDesign:HintAssist.Hint="Ngày Mua" 
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}">
+                                </DatePicker>
+                            </Grid>
+                            <Grid Grid.Column="1" Margin="20">
+                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding ThuNgan}"  
+                                    materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding LThuNgan}"
+                                    materialDesign:HintAssist.Hint="Thu Ngân"
+                                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Margin="20 0 20 0">
+                                <TextBox BorderBrush="#44b0f1" Text="{Binding GiaVe,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                    materialDesign:HintAssist.Foreground="#44b0f1"
+                                    VerticalAlignment="Center" IsReadOnly="True"
+                                    materialDesign:HintAssist.Hint="Giá Vé"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            </Grid>
+                            <Grid Grid.Column="1" Margin="20">
+                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding New.GiamGia}"  
+                                    materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding LGiamGia}"
+                                    materialDesign:HintAssist.Hint="Giảm Giá"
+                                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Width="120" Command="{Binding editCommand}" CommandParameter="{Binding ElementName=editRecriptWd}"
+                            Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
+                            ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                        <Button Grid.Column="1" Width="120" Margin="20 0" Command="{Binding closeCommand}" CommandParameter="{Binding ElementName=editRecriptWd}"
+                        Content="Thoát" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
+                        ToolTip="Resource name: MaterialDesignRaisedLightButton">
+
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

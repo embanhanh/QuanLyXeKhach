@@ -17,15 +17,15 @@ namespace QuanLyXeKhach.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public GHE()
         {
-            this.HANHKHACHes = new HashSet<HANHKHACH>();
+            this.BIENLAIs = new HashSet<BIENLAI>();
         }
     
         public string IDGhe { get; set; }
         public string IDLICHTRINH { get; set; }
         public Nullable<bool> TINHTRANG { get; set; }
     
-        public virtual LICHTRINH LICHTRINH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HANHKHACH> HANHKHACHes { get; set; }
+        public virtual ICollection<BIENLAI> BIENLAIs { get; set; }
+        public virtual LICHTRINH LICHTRINH { get; set; }
     }
 }

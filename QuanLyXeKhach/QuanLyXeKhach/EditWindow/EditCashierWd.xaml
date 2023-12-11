@@ -1,0 +1,133 @@
+﻿<Window x:Class="QuanLyXeKhach.EditWindow.EditCashierWd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyXeKhach.EditWindow"
+            WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        DataContext="{StaticResource editCashierVM}"
+        Name="editCashierWd"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="EditDriverWd" Height="550" Width="800" Background="{x:Null}" AllowsTransparency="True">
+    <Border Background="#44b0f1" CornerRadius="35" BorderThickness="1" BorderBrush="Gray">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="#0883ff" CornerRadius="10"  BorderThickness="1" Grid.Row="0"
+            VerticalAlignment="Center" Background="#08a2e1" HorizontalAlignment="Center">
+                <Grid>
+                    <TextBlock Text="SỬA ĐỔI" Foreground="White" VerticalAlignment="Center" Padding="20 10"
+        HorizontalAlignment="Center" FontSize="18"></TextBlock>
+                </Grid>
+            </Border>
+            <Border Background="White" Margin="30 10 30 30" CornerRadius="35" Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock HorizontalAlignment="Center" FontSize="18"
+                        Text="Thông tin thu ngân" Foreground="Gray" Margin="0 20 0 0">
+                        </TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Margin="20">
+                                <TextBox BorderBrush="#44b0f1" Text="{Binding New.CCCDTN,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                materialDesign:HintAssist.Foreground="#44b0f1"
+                                VerticalAlignment="Center"
+                                materialDesign:HintAssist.Hint="CCCD"
+                                MaxLength="12" 
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="20">
+                                <TextBox BorderBrush="#44b0f1" Text="{Binding New.HoTen, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                materialDesign:HintAssist.Foreground="#44b0f1"
+                VerticalAlignment="Center" 
+                materialDesign:HintAssist.Hint="Họ tên"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            </Grid>
+                            <Grid Grid.Row="2" Margin="20">
+                                <ComboBox BorderBrush="#44b0f1" SelectedValue="{Binding New.GioiTinh}"  
+                materialDesign:HintAssist.Foreground="#44b0f1" ItemsSource="{Binding GioiTinh}"
+                materialDesign:HintAssist.Hint="Giới tính"
+                Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition ></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Margin="20">
+                                <TextBox BorderBrush="#44b0f1" Text="{Binding New.SoDienThoai}"
+                materialDesign:HintAssist.Foreground="#44b0f1"
+                VerticalAlignment="Center" MaxLength="10"
+                materialDesign:HintAssist.Hint="Số điện thoại"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="20">
+                                <DatePicker BorderBrush="#44b0f1" SelectedDate="{Binding New.NgaySinh}"
+                materialDesign:HintAssist.Foreground="#44b0f1" 
+                materialDesign:HintAssist.Hint="Ngày sinh"
+                Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                            </Grid>
+                            <Grid Grid.Row="2" Margin="20">
+                                <TextBox BorderBrush="#44b0f1" Text="{Binding Luong}"
+                            materialDesign:HintAssist.Foreground="#44b0f1"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.Hint="Lương"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="2" Margin="20">
+                        <TextBox BorderBrush="#44b0f1" Text="{Binding New.DiaChi}"
+                    materialDesign:HintAssist.Foreground="#44b0f1"
+                    VerticalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Địa chỉ"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <!--Button Edit-->
+                        <Grid Grid.Column="0">
+                            <Button Width="120" Command="{Binding editCommand}" CommandParameter="{Binding ElementName=editCashierWd}"
+                Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
+                ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                        </Grid>
+                        <!--Button Exit-->
+                        <Grid Grid.Column="1">
+                            <Button Width="120" Margin="20 0" Command="{Binding closeCommand}" CommandParameter="{Binding ElementName=editCashierWd}"
+                 Content="Thoát" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
+                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

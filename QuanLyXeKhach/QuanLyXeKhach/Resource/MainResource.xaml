@@ -16,4 +16,10 @@
     <viewmodel:EditBusStationVM x:Key="editBusStationVM"></viewmodel:EditBusStationVM>
     <viewmodel:AddRouteVM x:Key="addRouteVM"></viewmodel:AddRouteVM>
     <viewmodel:EditRouteVM x:Key="editRouteVM"></viewmodel:EditRouteVM>
+    <viewmodel:AddScheduleVM x:Key="addScheduleVM"></viewmodel:AddScheduleVM>
+    <viewmodel:EditScheduleVM x:Key="editScheduleVM"></viewmodel:EditScheduleVM>
+    <viewmodel:AddCashierVM x:Key="addCashierVM"></viewmodel:AddCashierVM>
+    <viewmodel:EditCashierVM x:Key="editCashierVM"></viewmodel:EditCashierVM>
+    <viewmodel:AddReceiptVM x:Key="addReceiptVM"></viewmodel:AddReceiptVM>
+    <viewmodel:EditReceiptVM x:Key="editReceiptVM"></viewmodel:EditReceiptVM>
 </ResourceDictionary>

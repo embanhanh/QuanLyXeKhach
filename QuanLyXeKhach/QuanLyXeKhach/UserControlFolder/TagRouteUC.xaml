@@ -71,7 +71,7 @@
                 materialDesign:HintAssist.Foreground="GreenYellow"
                 VerticalAlignment="Center"  
                  materialDesign:HintAssist.Background="GreenYellow"
-                 materialDesign:HintAssist.Hint="Giờ Đến ĐÍch"
+                 materialDesign:HintAssist.Hint="Thời Gian Dự Kiến"
                  x:Name="GioDD" BorderThickness="1.5"
                  IsReadOnly="True" TextAlignment="Center"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
