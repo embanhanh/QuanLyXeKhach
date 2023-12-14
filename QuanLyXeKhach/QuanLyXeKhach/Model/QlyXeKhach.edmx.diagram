@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e971e64644184e02b3d2fd05b6cc41a0" Name="Diagram1" ZoomLevel="86">
+      <Diagram DiagramId="58f945f4401546f8b99bd4e5e5278881" Name="Diagram1">
         <EntityTypeShape EntityType="QLXEKHACHModel.BENXE" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLXEKHACHModel.BIENLAI" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="QLXEKHACHModel.GHE" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QLXEKHACHModel.HANHKHACH" Width="1.5" PointX="7.5" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QLXEKHACHModel.LICHTRINH" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="QLXEKHACHModel.NHANVIEN" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLXEKHACHModel.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLXEKHACHModel.TAIXE" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLXEKHACHModel.THUNGAN" Width="1.5" PointX="7.5" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="QLXEKHACHModel.TUYENXE" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLXEKHACHModel.UserInfo" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLXEKHACHModel.XEKHACH" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="QLXEKHACHModel.FK__TUYENXE__IDBenKe__2D27B809" ManuallyRouted="false" />
         <AssociationConnector Association="QLXEKHACHModel.FK__TUYENXE__IDBenXe__2C3393D0" ManuallyRouted="false" />

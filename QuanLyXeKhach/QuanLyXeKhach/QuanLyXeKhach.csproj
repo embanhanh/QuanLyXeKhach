@@ -139,53 +139,53 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\BENXE.cs">
-      <DependentUpon>QlyXe.tt</DependentUpon>
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\BIENLAI.cs">
-      <DependentUpon>QlyXe.tt</DependentUpon>
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\GHE.cs">
-      <DependentUpon>QlyXe.tt</DependentUpon>
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\HANHKHACH.cs">
-      <DependentUpon>QlyXe.tt</DependentUpon>
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LICHTRINH.cs">
-      <DependentUpon>QlyXe.tt</DependentUpon>
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\NHANVIEN.cs">
-      <DependentUpon>QlyXe.tt</DependentUpon>
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\QlyXe.Context.cs">
+    <Compile Include="Model\QlyXeKhach.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QlyXe.Context.tt</DependentUpon>
+      <DependentUpon>QlyXeKhach.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\QlyXe.cs">
+    <Compile Include="Model\QlyXeKhach.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QlyXe.tt</DependentUpon>
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\QlyXe.Designer.cs">
+    <Compile Include="Model\QlyXeKhach.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QlyXe.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\sysdiagram.cs">
-      <DependentUpon>QlyXe.tt</DependentUpon>
+      <DependentUpon>QlyXeKhach.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\TAIXE.cs">
-      <DependentUpon>QlyXe.tt</DependentUpon>
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\THUNGAN.cs">
-      <DependentUpon>QlyXe.tt</DependentUpon>
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TUYENXE.cs">
-      <DependentUpon>QlyXe.tt</DependentUpon>
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserInfo.cs">
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\XEKHACH.cs">
-      <DependentUpon>QlyXe.tt</DependentUpon>
+      <DependentUpon>QlyXeKhach.tt</DependentUpon>
     </Compile>
     <Compile Include="UserControlFolder\ControlBarUC.xaml.cs">
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
@@ -390,12 +390,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\QlyXe.edmx">
+    <EntityDeploy Include="Model\QlyXeKhach.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QlyXe.Designer.cs</LastGenOutput>
+      <LastGenOutput>QlyXeKhach.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\QlyXe.edmx.diagram">
-      <DependentUpon>QlyXe.edmx</DependentUpon>
+    <None Include="Model\QlyXeKhach.edmx.diagram">
+      <DependentUpon>QlyXeKhach.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -410,15 +410,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\QlyXe.Context.tt">
+    <Content Include="Model\QlyXeKhach.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QlyXe.edmx</DependentUpon>
-      <LastGenOutput>QlyXe.Context.cs</LastGenOutput>
+      <DependentUpon>QlyXeKhach.edmx</DependentUpon>
+      <LastGenOutput>QlyXeKhach.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\QlyXe.tt">
+    <Content Include="Model\QlyXeKhach.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QlyXe.edmx</DependentUpon>
-      <LastGenOutput>QlyXe.cs</LastGenOutput>
+      <DependentUpon>QlyXeKhach.edmx</DependentUpon>
+      <LastGenOutput>QlyXeKhach.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

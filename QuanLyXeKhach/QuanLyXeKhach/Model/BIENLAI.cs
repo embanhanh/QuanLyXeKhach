@@ -18,7 +18,7 @@ namespace QuanLyXeKhach.Model
         public string IDGhe { get; set; }
         public string IDHanhKhach { get; set; }
         public Nullable<System.DateTime> NgayMua { get; set; }
-        public Nullable<byte> GiamGia { get; set; }
+        public string GiamGia { get; set; }
         public string ThuNgan { get; set; }
     
         public virtual GHE GHE { get; set; }

@@ -18,7 +18,7 @@
             <i:InvokeCommandAction CommandParameter="{Binding ElementName=ucTag}" Command="{Binding SelectTagCashier}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Border  Background="CadetBlue"  CornerRadius="15" BorderThickness="1" BorderBrush="Gray">
+    <Border  Background="#FFB534"  CornerRadius="15" BorderThickness="1" BorderBrush="Gray">
         <Grid>
 
             <Grid.ColumnDefinitions>
@@ -42,16 +42,18 @@
                 x:Name="HoTen" TextAlignment="Center"
                 IsReadOnly="true" BorderThickness="1.5"
                 materialDesign:HintAssist.Hint="Họ và tên"
-                materialDesign:HintAssist.Background="#eeeeee"
+                materialDesign:HintAssist.Background="#FFB534"
                 VerticalAlignment="Center" 
+                materialDesign:HintAssist.Foreground="Black"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Padding="8" />
                 </Grid>
                 <Grid Grid.Row="1">
                     <TextBox Margin="2" BorderBrush="Black" 
                 VerticalAlignment="Center"  x:Name="CCCD" TextAlignment="Center"
-                materialDesign:HintAssist.Background="#eeeeee" BorderThickness="1.5"
+                materialDesign:HintAssist.Background="#FFB534" BorderThickness="1.5"
                 materialDesign:HintAssist.Hint="CCCD" IsReadOnly="true"
+                materialDesign:HintAssist.Foreground="Black"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Padding="8" />
                 </Grid>
@@ -65,16 +67,18 @@
                     <TextBox Margin="2" BorderBrush="Black" 
                 x:Name="NgaySinh" TextAlignment="Center"
                 materialDesign:HintAssist.Hint="Ngày sinh" IsReadOnly="true"
-                materialDesign:HintAssist.Background="#eeeeee"
+                materialDesign:HintAssist.Background="#FFB534"
                 VerticalAlignment="Center" MaxWidth="200" BorderThickness="1.5"
+                materialDesign:HintAssist.Foreground="Black"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Padding="8" />
                 </Grid>
                 <Grid Grid.Row="1">
                     <TextBox Margin="2" BorderBrush="Black" MaxWidth="200"
                 VerticalAlignment="Center"  x:Name="GioiTinh" IsReadOnly="true"
-                materialDesign:HintAssist.Background="#eeeeee" BorderThickness="1.5"
+                materialDesign:HintAssist.Background="#FFB534" BorderThickness="1.5"
                 materialDesign:HintAssist.Hint="Giới tính" TextAlignment="Center"
+                materialDesign:HintAssist.Foreground="Black"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Padding="8" />
                 </Grid>
@@ -88,7 +92,8 @@
                     <TextBox Margin="2" BorderBrush="Black" BorderThickness="1.5"
                 VerticalAlignment="Center" x:Name="SDT" TextAlignment="Center"
                 materialDesign:HintAssist.Hint="SDT" IsReadOnly="true"
-                materialDesign:HintAssist.Background="#eeeeee"
+                materialDesign:HintAssist.Background="#FFB534" 
+                materialDesign:HintAssist.Foreground="Black"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Padding="8" />
                 </Grid>
@@ -96,7 +101,8 @@
                     <TextBox Margin="2" BorderBrush="Black" BorderThickness="1.5"
                 VerticalAlignment="Center" x:Name="DiaChi" TextAlignment="Center"
                 materialDesign:HintAssist.Hint="Dia chi" IsReadOnly="true"
-                materialDesign:HintAssist.Background="#eeeeee"
+                materialDesign:HintAssist.Background="#FFB534"
+                materialDesign:HintAssist.Foreground="Black"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Padding="8" />
                 </Grid>
@@ -105,8 +111,9 @@
                 <TextBox BorderBrush="Black" BorderThickness="1.5"
             x:Name="Luong" IsReadOnly="true"
             VerticalAlignment="Center" HorizontalAlignment="Center"
-            materialDesign:HintAssist.Background="#eeeeee"
+            materialDesign:HintAssist.Background="#FFB534"
             materialDesign:HintAssist.Hint="Lương" TextAlignment="Center"
+                materialDesign:HintAssist.Foreground="Black"
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
              Padding="10" />
             </Grid>

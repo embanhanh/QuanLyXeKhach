@@ -108,12 +108,13 @@ namespace QuanLyXeKhach.ViewModel
             });
             Show = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
             {
-                foreach(var lt in listLT)
-                    if(lt.IDLICHTRINH == IDLichTrinh)
-                        GiaVe = lt.GiaVe.ToString();
+                LGhe.Clear();
                 foreach (var gh in listG)
                     if (gh.IDLICHTRINH == IDLichTrinh && gh.TINHTRANG == false)
                         LGhe.Add(gh.IDGhe);
+                foreach(var lt in listLT)
+                    if(lt.IDLICHTRINH == IDLichTrinh)
+                        GiaVe = lt.GiaVe.ToString();
             });
         }
     }

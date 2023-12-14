@@ -12,12 +12,13 @@ namespace QuanLyXeKhach.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class UserInfo
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int Id { get; set; }
+        public string UserName { get; set; }
+        public string UserPassword { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string Roles { get; set; }
     }
 }

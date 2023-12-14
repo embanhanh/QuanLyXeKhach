@@ -1,7 +1,9 @@
-﻿using System;
+﻿using QuanLyXeKhach.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -55,7 +57,9 @@ namespace QuanLyXeKhach.ViewModel
                 }
                 else
                 {
-                    if (Username == Password)
+
+                    string pw = MD5Hash(Base64Encode(Password));
+                    if (DataProvider.Ins.db.UserInfoes.Where(x=> x.UserName==Username && x.UserPassword == pw).Count() > 0)
                     {
                         isLogin = true;
                         p.Close();
@@ -87,6 +91,23 @@ namespace QuanLyXeKhach.ViewModel
                 ErrorMessage2 = "";
                 ColorHint2 = "Green";
             });
-        } 
+        }
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+        public static string MD5Hash(string input)
+        {
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hash.Append(bytes[i].ToString("x2"));
+            }
+            return hash.ToString();
+        }
     }
 }

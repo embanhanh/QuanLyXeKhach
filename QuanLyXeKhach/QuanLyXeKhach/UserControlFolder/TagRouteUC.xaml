@@ -8,7 +8,7 @@
             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
             mc:Ignorable="d" Margin="5" DataContext="{StaticResource MainVM}"
-            d:DesignHeight="80" d:DesignWidth="700" Opacity="0.7">
+            d:DesignHeight="80" d:DesignWidth="700" Opacity="0.8">
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseDown">
@@ -18,7 +18,7 @@
             <i:InvokeCommandAction CommandParameter="{Binding ElementName=ucTagRoute}" Command="{Binding SelectTagRoute}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Border  Background="GreenYellow"  CornerRadius="15" BorderThickness="1" BorderBrush="Gray">
+    <Border  Background="#FFB534"  CornerRadius="15" BorderThickness="1" BorderBrush="Gray">
         <Grid>
 
             <Grid.ColumnDefinitions>
@@ -27,16 +27,17 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition Width="0.65*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <materialDesign:PackIcon Kind="BusSide" Height="80" Width="80" HorizontalAlignment="Center"/>
+                <materialDesign:PackIcon Kind="BusSide" 
+                    Height="80" Width="80" HorizontalAlignment="Center"/>
             </Grid>
             <Grid Grid.Column="1">
                 <TextBox Margin="2" BorderBrush="Black" TextAlignment="Center"
-                materialDesign:HintAssist.Foreground="GreenYellow"
+                materialDesign:HintAssist.Foreground="Black"
                 VerticalAlignment="Center"  x:Name="BenXeXP"
-                    materialDesign:HintAssist.Background="GreenYellow"
+                    materialDesign:HintAssist.Background="#FFB534"
                     materialDesign:HintAssist.Hint="Bến Xe Xuất Phát"
                     IsReadOnly="True" BorderThickness="1.5" 
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -44,10 +45,10 @@
             </Grid>
             <Grid Grid.Column="2">
                 <TextBox Margin="2" BorderBrush="Black" 
-                materialDesign:HintAssist.Foreground="GreenYellow"
+                materialDesign:HintAssist.Foreground="Black"
                 VerticalAlignment="Center"  
                  IsReadOnly="True" BorderThickness="1.5"
-                 materialDesign:HintAssist.Background="GreenYellow"
+                 materialDesign:HintAssist.Background="#FFB534"
                  materialDesign:HintAssist.Hint="Bến Xe Đích Đến"
                  x:Name="BenXeDD" TextAlignment="Center"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -56,9 +57,9 @@
             <Grid Grid.Column="3" >
                 <TextBox Margin="2" BorderBrush="Black" 
                 BorderThickness="1.5"
-                materialDesign:HintAssist.Foreground="GreenYellow"
+                materialDesign:HintAssist.Foreground="Black"
                 materialDesign:HintAssist.Hint="Giờ Xuất Phát"
-                materialDesign:HintAssist.Background="GreenYellow"
+                materialDesign:HintAssist.Background="#FFB534"
                 x:Name="GioXP" TextAlignment="Center"
                 IsReadOnly="True"
                 VerticalAlignment="Center" 
@@ -68,9 +69,9 @@
             </Grid>
             <Grid Grid.Column="4">
                 <TextBox Margin="2" BorderBrush="Black"
-                materialDesign:HintAssist.Foreground="GreenYellow"
+                materialDesign:HintAssist.Foreground="Black"
                 VerticalAlignment="Center"  
-                 materialDesign:HintAssist.Background="GreenYellow"
+                 materialDesign:HintAssist.Background="#FFB534"
                  materialDesign:HintAssist.Hint="Thời Gian Dự Kiến"
                  x:Name="GioDD" BorderThickness="1.5"
                  IsReadOnly="True" TextAlignment="Center"
@@ -80,9 +81,9 @@
             <Grid Grid.Column="5" >
                     <TextBox Margin="10" BorderBrush="Black" 
                      BorderThickness="1.5" 
-                     materialDesign:HintAssist.Foreground="GreenYellow"
+                     materialDesign:HintAssist.Foreground="Black"
                      materialDesign:HintAssist.Hint="ID"
-                     materialDesign:HintAssist.Background="GreenYellow"
+                     materialDesign:HintAssist.Background="#FFB534"
                      x:Name="IDTuyenXe" TextAlignment="Center"
                     IsReadOnly="True" MaxWidth="80"
                     VerticalAlignment="Center" 

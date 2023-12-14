@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEEntities">
+  <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEKHACHEntities">
     <EntitySetMapping Name="BENXEs">
       <EntityTypeMapping TypeName="QLXEKHACHModel.BENXE">
         <MappingFragment StoreEntitySet="BENXE">
@@ -15,11 +15,10 @@
       <EntityTypeMapping TypeName="QLXEKHACHModel.BIENLAI">
         <MappingFragment StoreEntitySet="BIENLAI">
           <ScalarProperty Name="IDBienLai" ColumnName="IDBienLai" />
+          <ScalarProperty Name="IDGhe" ColumnName="IDGhe" />
           <ScalarProperty Name="IDHanhKhach" ColumnName="IDHanhKhach" />
-          <ScalarProperty Name="IDGiaVe" ColumnName="IDGiaVe" />
           <ScalarProperty Name="NgayMua" ColumnName="NgayMua" />
-          <ScalarProperty Name="DATHANHTOAN" ColumnName="DATHANHTOAN" />
-          <ScalarProperty Name="HinhThucThanhToan" ColumnName="HinhThucThanhToan" />
+          <ScalarProperty Name="GiamGia" ColumnName="GiamGia" />
           <ScalarProperty Name="ThuNgan" ColumnName="ThuNgan" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -28,20 +27,8 @@
       <EntityTypeMapping TypeName="QLXEKHACHModel.GHE">
         <MappingFragment StoreEntitySet="GHE">
           <ScalarProperty Name="IDGhe" ColumnName="IDGhe" />
-          <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
+          <ScalarProperty Name="IDLICHTRINH" ColumnName="IDLICHTRINH" />
           <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="GIAVEs">
-      <EntityTypeMapping TypeName="QLXEKHACHModel.GIAVE">
-        <MappingFragment StoreEntitySet="GIAVE">
-          <ScalarProperty Name="IDLichSu" ColumnName="IDLichSu" />
-          <ScalarProperty Name="IDBenXe" ColumnName="IDBenXe" />
-          <ScalarProperty Name="GiaVe1" ColumnName="GiaVe" />
-          <ScalarProperty Name="BienDong" ColumnName="BienDong" />
-          <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
-          <ScalarProperty Name="LiDoBienDong" ColumnName="LiDoBienDong" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -49,7 +36,6 @@
       <EntityTypeMapping TypeName="QLXEKHACHModel.HANHKHACH">
         <MappingFragment StoreEntitySet="HANHKHACH">
           <ScalarProperty Name="IDHanhKhach" ColumnName="IDHanhKhach" />
-          <ScalarProperty Name="SoHieuGhe" ColumnName="SoHieuGhe" />
           <ScalarProperty Name="TenHanhKhach" ColumnName="TenHanhKhach" />
           <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
           <ScalarProperty Name="Tuoi" ColumnName="Tuoi" />
@@ -59,17 +45,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="LUUTHONGs">
-      <EntityTypeMapping TypeName="QLXEKHACHModel.LUUTHONG">
-        <MappingFragment StoreEntitySet="LUUTHONG">
+    <EntitySetMapping Name="LICHTRINHs">
+      <EntityTypeMapping TypeName="QLXEKHACHModel.LICHTRINH">
+        <MappingFragment StoreEntitySet="LICHTRINH">
+          <ScalarProperty Name="IDLICHTRINH" ColumnName="IDLICHTRINH" />
           <ScalarProperty Name="IDTuyenXe" ColumnName="IDTuyenXe" />
           <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
-          <ScalarProperty Name="TongKhach" ColumnName="TongKhach" />
-          <ScalarProperty Name="IDBenDau" ColumnName="IDBenDau" />
-          <ScalarProperty Name="IDBenCuoi" ColumnName="IDBenCuoi" />
-          <ScalarProperty Name="ThoiGianXuatPhat" ColumnName="ThoiGianXuatPhat" />
-          <ScalarProperty Name="ThoiGianKetThuc" ColumnName="ThoiGianKetThuc" />
-          <ScalarProperty Name="ChiTietTram" ColumnName="ChiTietTram" />
+          <ScalarProperty Name="NgayXuatPhat" ColumnName="NgayXuatPhat" />
+          <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -82,17 +65,7 @@
           <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
           <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="QLXEKHACHModel.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="Luong" ColumnName="Luong" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -105,6 +78,20 @@
           <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
           <ScalarProperty Name="BangLai" ColumnName="BangLai" />
+          <ScalarProperty Name="Luong" ColumnName="Luong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THUNGANs">
+      <EntityTypeMapping TypeName="QLXEKHACHModel.THUNGAN">
+        <MappingFragment StoreEntitySet="THUNGAN">
+          <ScalarProperty Name="CCCDTN" ColumnName="CCCDTN" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="Luong" ColumnName="Luong" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -114,8 +101,20 @@
           <ScalarProperty Name="IDTuyenXe" ColumnName="IDTuyenXe" />
           <ScalarProperty Name="IDBenXeXuatPhat" ColumnName="IDBenXeXuatPhat" />
           <ScalarProperty Name="IDBenKetThuc" ColumnName="IDBenKetThuc" />
-          <ScalarProperty Name="ThoiGianXuatPhat" ColumnName="ThoiGianXuatPhat" />
-          <ScalarProperty Name="ThoiGianKetThuc" ColumnName="ThoiGianKetThuc" />
+          <ScalarProperty Name="GioXuatPhat" ColumnName="GioXuatPhat" />
+          <ScalarProperty Name="ThoiGianDuKien" ColumnName="ThoiGianDuKien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfoes">
+      <EntityTypeMapping TypeName="QLXEKHACHModel.UserInfo">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Roles" ColumnName="Roles" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -22,7 +22,7 @@
           <Property Name="IDGhe" Type="char" MaxLength="6" />
           <Property Name="IDHanhKhach" Type="char" MaxLength="6" />
           <Property Name="NgayMua" Type="smalldatetime" />
-          <Property Name="GiamGia" Type="tinyint" />
+          <Property Name="GiamGia" Type="nvarchar" MaxLength="20" />
           <Property Name="ThuNgan" Type="char" MaxLength="12" />
         </EntityType>
         <EntityType Name="GHE">
@@ -67,16 +67,6 @@
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
           <Property Name="Luong" Type="money" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TAIXE">
           <Key>
             <PropertyRef Name="CCCDTX" />
@@ -110,6 +100,17 @@
           <Property Name="IDBenKetThuc" Type="char" MaxLength="6" />
           <Property Name="GioXuatPhat" Type="time" Precision="7" />
           <Property Name="ThoiGianDuKien" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserPassword" Type="nvarchar(max)" />
+          <Property Name="FullName" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="Roles" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="XEKHACH">
           <Key>
@@ -249,10 +250,10 @@
           <EntitySet Name="HANHKHACH" EntityType="Self.HANHKHACH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LICHTRINH" EntityType="Self.LICHTRINH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TAIXE" EntityType="Self.TAIXE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THUNGAN" EntityType="Self.THUNGAN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TUYENXE" EntityType="Self.TUYENXE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="XEKHACH" EntityType="Self.XEKHACH" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__BIENLAI__IDGhe__3C69FB99" Association="Self.FK__BIENLAI__IDGhe__3C69FB99">
             <End Role="GHE" EntitySet="GHE" />
@@ -319,7 +320,7 @@
           <Property Name="IDGhe" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
           <Property Name="IDHanhKhach" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
           <Property Name="NgayMua" Type="DateTime" Precision="0" />
-          <Property Name="GiamGia" Type="Byte" />
+          <Property Name="GiamGia" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ThuNgan" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="GHE" Relationship="Self.FK__BIENLAI__IDGhe__3C69FB99" FromRole="BIENLAI" ToRole="GHE" />
           <NavigationProperty Name="HANHKHACH" Relationship="Self.FK__BIENLAI__IDHanhK__3D5E1FD2" FromRole="BIENLAI" ToRole="HANHKHACH" />
@@ -374,16 +375,6 @@
           <Property Name="Luong" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="XEKHACHes" Relationship="Self.FK__XEKHACH__CCCDNV__30F848ED" FromRole="NHANVIEN" ToRole="XEKHACH" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="TAIXE">
           <Key>
             <PropertyRef Name="CCCDTX" />
@@ -422,6 +413,17 @@
           <NavigationProperty Name="BENXE" Relationship="Self.FK__TUYENXE__IDBenKe__2D27B809" FromRole="TUYENXE" ToRole="BENXE" />
           <NavigationProperty Name="BENXE1" Relationship="Self.FK__TUYENXE__IDBenXe__2C3393D0" FromRole="TUYENXE" ToRole="BENXE" />
           <NavigationProperty Name="LICHTRINHs" Relationship="Self.FK__LICHTRINH__IDTuy__33D4B598" FromRole="TUYENXE" ToRole="LICHTRINH" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Roles" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="XEKHACH">
           <Key>
@@ -557,17 +559,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QLXEKHACHEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="QLXEKHACHEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BENXEs" EntityType="Self.BENXE" />
           <EntitySet Name="BIENLAIs" EntityType="Self.BIENLAI" />
           <EntitySet Name="GHEs" EntityType="Self.GHE" />
           <EntitySet Name="HANHKHACHes" EntityType="Self.HANHKHACH" />
           <EntitySet Name="LICHTRINHs" EntityType="Self.LICHTRINH" />
           <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TAIXEs" EntityType="Self.TAIXE" />
           <EntitySet Name="THUNGANs" EntityType="Self.THUNGAN" />
           <EntitySet Name="TUYENXEs" EntityType="Self.TUYENXE" />
+          <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
           <EntitySet Name="XEKHACHes" EntityType="Self.XEKHACH" />
           <AssociationSet Name="FK__TUYENXE__IDBenKe__2D27B809" Association="Self.FK__TUYENXE__IDBenKe__2D27B809">
             <End Role="BENXE" EntitySet="BENXEs" />
@@ -615,7 +617,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEKHACHEntities1">
+        <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEKHACHEntities">
           <EntitySetMapping Name="BENXEs">
             <EntityTypeMapping TypeName="QLXEKHACHModel.BENXE">
               <MappingFragment StoreEntitySet="BENXE">
@@ -684,17 +686,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="QLXEKHACHModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TAIXEs">
             <EntityTypeMapping TypeName="QLXEKHACHModel.TAIXE">
               <MappingFragment StoreEntitySet="TAIXE">
@@ -729,6 +720,18 @@
                 <ScalarProperty Name="IDBenKetThuc" ColumnName="IDBenKetThuc" />
                 <ScalarProperty Name="GioXuatPhat" ColumnName="GioXuatPhat" />
                 <ScalarProperty Name="ThoiGianDuKien" ColumnName="ThoiGianDuKien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfoes">
+            <EntityTypeMapping TypeName="QLXEKHACHModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -89,8 +89,8 @@
                                 </ComboBox>
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.IDGhe}"  
-                                    materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding LGhe,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.IDGhe,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  
+                                    materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding LGhe,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                     materialDesign:HintAssist.Hint="Ghế"
                                     Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>

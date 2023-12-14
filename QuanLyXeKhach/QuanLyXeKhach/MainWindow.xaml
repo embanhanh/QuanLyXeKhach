@@ -116,8 +116,8 @@
                             </StackPanel>
                         </Grid>
                         <!--List-->
-                        <Border Grid.Row="1" Margin="20,20,20,20" CornerRadius="10" 
-                            BorderBrush="#eee" BorderThickness="1" Background="White" >
+                        <Border Grid.Row="1" Margin="20,20,20,20" CornerRadius="10"  
+                            BorderBrush="Black" BorderThickness="1" Background="White" >
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
                             </Border.Effect>
@@ -212,7 +212,7 @@
                         </Grid>
                         <!--List-->
                         <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                            BorderBrush="#eee" BorderThickness="1" Background="White">
+                            BorderBrush="Black" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
                             </Border.Effect>
@@ -306,7 +306,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         </Grid>
                         <!--List-->
                         <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                            BorderBrush="#eee" BorderThickness="1" Background="White">
+                            BorderBrush="Black" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
                             </Border.Effect>
@@ -399,7 +399,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         </Grid>
                         <!--List-->
                         <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                            BorderBrush="#eee" BorderThickness="1" Background="White">
+                            BorderBrush="Black" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
                             </Border.Effect>
@@ -482,7 +482,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         </Grid>
                         <!--List-->
                         <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                             BorderBrush="#eee" BorderThickness="1" Background="White">
+                             BorderBrush="Black" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
                             </Border.Effect>
@@ -580,7 +580,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         </Grid>
                         <!--List-->
                         <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                        BorderBrush="#eee" BorderThickness="1" Background="White">
+                        BorderBrush="Black" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
                             </Border.Effect>
@@ -660,7 +660,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         </Grid>
                         <!--List-->
                         <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                            BorderBrush="#eee" BorderThickness="1" Background="White">
+                            BorderBrush="Black" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
                             </Border.Effect>
@@ -710,7 +710,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="120" >
                             <materialDesign:PackIcon Kind="RoadVariant" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
-                            <TextBlock Foreground="White" Text="Lưu Thông" VerticalAlignment="Bottom"></TextBlock>
+                            <TextBlock Foreground="White" Text="Lịch trình" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>
                     <Grid>
@@ -745,7 +745,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         </Grid>
                         <!--List-->
                         <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                            BorderBrush="#eee" BorderThickness="1" Background="White">
+                            BorderBrush="Black" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
                             </Border.Effect>
@@ -756,7 +756,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách lưu thông trên các tuyến đường" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <TextBlock Grid.Row="0" Text="Danh sách lịch trình xe lưu thông trên các tuyến" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <!--ListView-->
                                 <!--<ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
@@ -836,7 +836,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         </Grid>
                         <!--List-->
                         <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                        BorderBrush="#eee" BorderThickness="1" Background="White">
+                        BorderBrush="Black" BorderThickness="1" Background="White">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
                             </Border.Effect>

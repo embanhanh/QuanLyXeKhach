@@ -152,22 +152,20 @@ namespace QuanLyXeKhach.ViewModel
             //Load MainWindow
             LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => 
             {
-                if(p == null)
+                if (p == null)
                     return;
-                //p.Hide();
-                //LoginWindow lg = new LoginWindow();
-                //lg.ShowDialog();
-                //var lgVM = lg.DataContext as LoginViewModel;
-                //if (lgVM == null)
-                //    return;
-                //if (lgVM.isLogin)
-                //{
-                //    p.Show();
-                //}
-                //else
-                //    p.Close();
-                
-                //Load Tag 
+                p.Hide();
+                LoginWindow lg = new LoginWindow();
+                lg.ShowDialog();
+                var lgVM = lg.DataContext as LoginViewModel;
+                if (lgVM == null)
+                    return;
+                if (lgVM.isLogin)
+                {
+                    p.Show();
+                }
+                else
+                    p.Close();
                 var mainWd = p as MainWindow;
                 LoadDataClient(mainWd.ucContainerClient);
                 LoadDataStaff(mainWd.ucContainerStaff);

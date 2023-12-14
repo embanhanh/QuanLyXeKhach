@@ -5,114 +5,100 @@
       <PropertyRef Name="IDBenXe" />
     </Key>
     <Property Name="IDBenXe" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="TenBenXe" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DiaChi" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="TenBenXe" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SoDienThoaiBen" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <NavigationProperty Name="GIAVEs" Relationship="Self.FK__GIAVE__IDBenXe__38996AB5" FromRole="BENXE" ToRole="GIAVE" />
-    <NavigationProperty Name="TUYENXEs" Relationship="Self.FK__TUYENXE__IDBenKe__2B3F6F97" FromRole="BENXE" ToRole="TUYENXE" />
-    <NavigationProperty Name="TUYENXEs1" Relationship="Self.FK__TUYENXE__IDBenXe__2A4B4B5E" FromRole="BENXE" ToRole="TUYENXE" />
+    <NavigationProperty Name="TUYENXEs" Relationship="Self.FK__TUYENXE__IDBenKe__2D27B809" FromRole="BENXE" ToRole="TUYENXE" />
+    <NavigationProperty Name="TUYENXEs1" Relationship="Self.FK__TUYENXE__IDBenXe__2C3393D0" FromRole="BENXE" ToRole="TUYENXE" />
   </EntityType>
   <EntityType Name="BIENLAI">
     <Key>
       <PropertyRef Name="IDBienLai" />
     </Key>
     <Property Name="IDBienLai" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="IDHanhKhach" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="IDGiaVe" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="IDGhe" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="IDHanhKhach" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
     <Property Name="NgayMua" Type="DateTime" Precision="0" />
-    <Property Name="DATHANHTOAN" Type="Boolean" />
-    <Property Name="HinhThucThanhToan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="ThuNgan" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="GIAVE" Relationship="Self.FK__BIENLAI__IDGiaVe__3F466844" FromRole="BIENLAI" ToRole="GIAVE" />
-    <NavigationProperty Name="HANHKHACH" Relationship="Self.FK__BIENLAI__IDHanhK__3E52440B" FromRole="BIENLAI" ToRole="HANHKHACH" />
+    <Property Name="GiamGia" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ThuNgan" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="GHE" Relationship="Self.FK__BIENLAI__IDGhe__3C69FB99" FromRole="BIENLAI" ToRole="GHE" />
+    <NavigationProperty Name="HANHKHACH" Relationship="Self.FK__BIENLAI__IDHanhK__3D5E1FD2" FromRole="BIENLAI" ToRole="HANHKHACH" />
+    <NavigationProperty Name="THUNGAN1" Relationship="Self.FK__BIENLAI__ThuNgan__3E52440B" FromRole="BIENLAI" ToRole="THUNGAN" />
   </EntityType>
   <EntityType Name="GHE">
     <Key>
       <PropertyRef Name="IDGhe" />
     </Key>
-    <Property Name="IDGhe" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="BienSoXe" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="IDGhe" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IDLICHTRINH" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
     <Property Name="TINHTRANG" Type="Boolean" />
-    <NavigationProperty Name="XEKHACH" Relationship="Self.FK__GHE__BienSoXe__35BCFE0A" FromRole="GHE" ToRole="XEKHACH" />
-    <NavigationProperty Name="HANHKHACHes" Relationship="Self.FK__HANHKHACH__SoHie__3B75D760" FromRole="GHE" ToRole="HANHKHACH" />
-  </EntityType>
-  <EntityType Name="GIAVE">
-    <Key>
-      <PropertyRef Name="IDLichSu" />
-    </Key>
-    <Property Name="IDLichSu" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="IDBenXe" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
-    <Property Name="GiaVe1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="BienDong" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
-    <Property Name="LiDoBienDong" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="BENXE" Relationship="Self.FK__GIAVE__IDBenXe__38996AB5" FromRole="GIAVE" ToRole="BENXE" />
-    <NavigationProperty Name="BIENLAIs" Relationship="Self.FK__BIENLAI__IDGiaVe__3F466844" FromRole="GIAVE" ToRole="BIENLAI" />
+    <NavigationProperty Name="BIENLAIs" Relationship="Self.FK__BIENLAI__IDGhe__3C69FB99" FromRole="GHE" ToRole="BIENLAI" />
+    <NavigationProperty Name="LICHTRINH" Relationship="Self.FK__GHE__IDLICHTRINH__37A5467C" FromRole="GHE" ToRole="LICHTRINH" />
   </EntityType>
   <EntityType Name="HANHKHACH">
     <Key>
       <PropertyRef Name="IDHanhKhach" />
     </Key>
-    <Property Name="IDHanhKhach" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="SoHieuGhe" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
-    <Property Name="TenHanhKhach" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="GioiTinh" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="IDHanhKhach" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TenHanhKhach" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GioiTinh" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
     <Property Name="Tuoi" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
     <Property Name="CCCD" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
     <Property Name="SDTHK" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="DiaChiHK" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="BIENLAIs" Relationship="Self.FK__BIENLAI__IDHanhK__3E52440B" FromRole="HANHKHACH" ToRole="BIENLAI" />
-    <NavigationProperty Name="GHE" Relationship="Self.FK__HANHKHACH__SoHie__3B75D760" FromRole="HANHKHACH" ToRole="GHE" />
+    <Property Name="DiaChiHK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BIENLAIs" Relationship="Self.FK__BIENLAI__IDHanhK__3D5E1FD2" FromRole="HANHKHACH" ToRole="BIENLAI" />
   </EntityType>
-  <EntityType Name="LUUTHONG">
+  <EntityType Name="LICHTRINH">
     <Key>
-      <PropertyRef Name="IDTuyenXe" />
-      <PropertyRef Name="BienSoXe" />
+      <PropertyRef Name="IDLICHTRINH" />
     </Key>
-    <Property Name="IDTuyenXe" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="BienSoXe" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="TongKhach" Type="Byte" />
-    <Property Name="IDBenDau" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
-    <Property Name="IDBenCuoi" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
-    <Property Name="ThoiGianXuatPhat" Type="DateTime" Precision="0" />
-    <Property Name="ThoiGianKetThuc" Type="DateTime" Precision="0" />
-    <Property Name="ChiTietTram" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="XEKHACH" Relationship="Self.FK__LUUTHONG__BienSo__32E0915F" FromRole="LUUTHONG" ToRole="XEKHACH" />
-    <NavigationProperty Name="TUYENXE" Relationship="Self.FK__LUUTHONG__IDTuye__31EC6D26" FromRole="LUUTHONG" ToRole="TUYENXE" />
+    <Property Name="IDLICHTRINH" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IDTuyenXe" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="BienSoXe" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="NgayXuatPhat" Type="DateTime" Precision="0" />
+    <Property Name="GiaVe" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="GHEs" Relationship="Self.FK__GHE__IDLICHTRINH__37A5467C" FromRole="LICHTRINH" ToRole="GHE" />
+    <NavigationProperty Name="XEKHACH" Relationship="Self.FK__LICHTRINH__BienS__34C8D9D1" FromRole="LICHTRINH" ToRole="XEKHACH" />
+    <NavigationProperty Name="TUYENXE" Relationship="Self.FK__LICHTRINH__IDTuy__33D4B598" FromRole="LICHTRINH" ToRole="TUYENXE" />
   </EntityType>
   <EntityType Name="NHANVIEN">
     <Key>
       <PropertyRef Name="CCCDNV" />
     </Key>
     <Property Name="CCCDNV" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="HoTenNhanVien" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="HoTenNhanVien" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="NgaySinh" Type="DateTime" Precision="0" />
     <Property Name="SoDienThoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="DiaChi" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="XEKHACHes" Relationship="Self.FK__XEKHACH__CCCDNV__2F10007B" FromRole="NHANVIEN" ToRole="XEKHACH" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Luong" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="XEKHACHes" Relationship="Self.FK__XEKHACH__CCCDNV__30F848ED" FromRole="NHANVIEN" ToRole="XEKHACH" />
   </EntityType>
   <EntityType Name="TAIXE">
     <Key>
       <PropertyRef Name="CCCDTX" />
     </Key>
     <Property Name="CCCDTX" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="TenTaiXe" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenTaiXe" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="NgaySinh" Type="DateTime" Precision="0" />
     <Property Name="SoDienThoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="DiaChi" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="BangLai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="XEKHACHes" Relationship="Self.FK__XEKHACH__CCCDTX__2E1BDC42" FromRole="TAIXE" ToRole="XEKHACH" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BangLai" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Luong" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="XEKHACHes" Relationship="Self.FK__XEKHACH__CCCDTX__300424B4" FromRole="TAIXE" ToRole="XEKHACH" />
+  </EntityType>
+  <EntityType Name="THUNGAN">
+    <Key>
+      <PropertyRef Name="CCCDTN" />
+    </Key>
+    <Property Name="CCCDTN" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="HoTen" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Luong" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="BIENLAIs" Relationship="Self.FK__BIENLAI__ThuNgan__3E52440B" FromRole="THUNGAN" ToRole="BIENLAI" />
   </EntityType>
   <EntityType Name="TUYENXE">
     <Key>
@@ -121,11 +107,22 @@
     <Property Name="IDTuyenXe" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="IDBenXeXuatPhat" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
     <Property Name="IDBenKetThuc" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
-    <Property Name="ThoiGianXuatPhat" Type="DateTime" Precision="0" />
-    <Property Name="ThoiGianKetThuc" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="BENXE" Relationship="Self.FK__TUYENXE__IDBenKe__2B3F6F97" FromRole="TUYENXE" ToRole="BENXE" />
-    <NavigationProperty Name="BENXE1" Relationship="Self.FK__TUYENXE__IDBenXe__2A4B4B5E" FromRole="TUYENXE" ToRole="BENXE" />
-    <NavigationProperty Name="LUUTHONGs" Relationship="Self.FK__LUUTHONG__IDTuye__31EC6D26" FromRole="TUYENXE" ToRole="LUUTHONG" />
+    <Property Name="GioXuatPhat" Type="Time" Precision="7" />
+    <Property Name="ThoiGianDuKien" Type="Time" Precision="7" />
+    <NavigationProperty Name="BENXE" Relationship="Self.FK__TUYENXE__IDBenKe__2D27B809" FromRole="TUYENXE" ToRole="BENXE" />
+    <NavigationProperty Name="BENXE1" Relationship="Self.FK__TUYENXE__IDBenXe__2C3393D0" FromRole="TUYENXE" ToRole="BENXE" />
+    <NavigationProperty Name="LICHTRINHs" Relationship="Self.FK__LICHTRINH__IDTuy__33D4B598" FromRole="TUYENXE" ToRole="LICHTRINH" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Roles" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="XEKHACH">
     <Key>
@@ -134,27 +131,14 @@
     <Property Name="BienSoXe" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CCCDTX" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
     <Property Name="CCCDNV" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
-    <Property Name="LoaiXe" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="TinhTrang" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="LoaiXe" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="TinhTrang" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="SoGhe" Type="Byte" />
-    <NavigationProperty Name="GHEs" Relationship="Self.FK__GHE__BienSoXe__35BCFE0A" FromRole="XEKHACH" ToRole="GHE" />
-    <NavigationProperty Name="LUUTHONGs" Relationship="Self.FK__LUUTHONG__BienSo__32E0915F" FromRole="XEKHACH" ToRole="LUUTHONG" />
-    <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__XEKHACH__CCCDNV__2F10007B" FromRole="XEKHACH" ToRole="NHANVIEN" />
-    <NavigationProperty Name="TAIXE" Relationship="Self.FK__XEKHACH__CCCDTX__2E1BDC42" FromRole="XEKHACH" ToRole="TAIXE" />
+    <NavigationProperty Name="LICHTRINHs" Relationship="Self.FK__LICHTRINH__BienS__34C8D9D1" FromRole="XEKHACH" ToRole="LICHTRINH" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__XEKHACH__CCCDNV__30F848ED" FromRole="XEKHACH" ToRole="NHANVIEN" />
+    <NavigationProperty Name="TAIXE" Relationship="Self.FK__XEKHACH__CCCDTX__300424B4" FromRole="XEKHACH" ToRole="TAIXE" />
   </EntityType>
-  <Association Name="FK__GIAVE__IDBenXe__38996AB5">
-    <End Role="BENXE" Type="Self.BENXE" Multiplicity="0..1" />
-    <End Role="GIAVE" Type="Self.GIAVE" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="BENXE">
-        <PropertyRef Name="IDBenXe" />
-      </Principal>
-      <Dependent Role="GIAVE">
-        <PropertyRef Name="IDBenXe" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TUYENXE__IDBenKe__2B3F6F97">
+  <Association Name="FK__TUYENXE__IDBenKe__2D27B809">
     <End Role="BENXE" Type="Self.BENXE" Multiplicity="0..1" />
     <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -166,7 +150,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TUYENXE__IDBenXe__2A4B4B5E">
+  <Association Name="FK__TUYENXE__IDBenXe__2C3393D0">
     <End Role="BENXE" Type="Self.BENXE" Multiplicity="0..1" />
     <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -178,19 +162,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BIENLAI__IDGiaVe__3F466844">
-    <End Role="GIAVE" Type="Self.GIAVE" Multiplicity="0..1" />
+  <Association Name="FK__BIENLAI__IDGhe__3C69FB99">
+    <End Role="GHE" Type="Self.GHE" Multiplicity="0..1" />
     <End Role="BIENLAI" Type="Self.BIENLAI" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="GIAVE">
-        <PropertyRef Name="IDLichSu" />
+      <Principal Role="GHE">
+        <PropertyRef Name="IDGhe" />
       </Principal>
       <Dependent Role="BIENLAI">
-        <PropertyRef Name="IDGiaVe" />
+        <PropertyRef Name="IDGhe" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BIENLAI__IDHanhK__3E52440B">
+  <Association Name="FK__BIENLAI__IDHanhK__3D5E1FD2">
     <End Role="HANHKHACH" Type="Self.HANHKHACH" Multiplicity="0..1" />
     <End Role="BIENLAI" Type="Self.BIENLAI" Multiplicity="*" />
     <ReferentialConstraint>
@@ -202,55 +186,55 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__GHE__BienSoXe__35BCFE0A">
-    <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="0..1" />
+  <Association Name="FK__BIENLAI__ThuNgan__3E52440B">
+    <End Role="THUNGAN" Type="Self.THUNGAN" Multiplicity="0..1" />
+    <End Role="BIENLAI" Type="Self.BIENLAI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THUNGAN">
+        <PropertyRef Name="CCCDTN" />
+      </Principal>
+      <Dependent Role="BIENLAI">
+        <PropertyRef Name="ThuNgan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GHE__IDLICHTRINH__37A5467C">
+    <End Role="LICHTRINH" Type="Self.LICHTRINH" Multiplicity="0..1" />
     <End Role="GHE" Type="Self.GHE" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="XEKHACH">
-        <PropertyRef Name="BienSoXe" />
+      <Principal Role="LICHTRINH">
+        <PropertyRef Name="IDLICHTRINH" />
       </Principal>
       <Dependent Role="GHE">
-        <PropertyRef Name="BienSoXe" />
+        <PropertyRef Name="IDLICHTRINH" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HANHKHACH__SoHie__3B75D760">
-    <End Role="GHE" Type="Self.GHE" Multiplicity="0..1" />
-    <End Role="HANHKHACH" Type="Self.HANHKHACH" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="GHE">
-        <PropertyRef Name="IDGhe" />
-      </Principal>
-      <Dependent Role="HANHKHACH">
-        <PropertyRef Name="SoHieuGhe" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__LUUTHONG__BienSo__32E0915F">
-    <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="1" />
-    <End Role="LUUTHONG" Type="Self.LUUTHONG" Multiplicity="*" />
+  <Association Name="FK__LICHTRINH__BienS__34C8D9D1">
+    <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="0..1" />
+    <End Role="LICHTRINH" Type="Self.LICHTRINH" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="XEKHACH">
         <PropertyRef Name="BienSoXe" />
       </Principal>
-      <Dependent Role="LUUTHONG">
+      <Dependent Role="LICHTRINH">
         <PropertyRef Name="BienSoXe" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__LUUTHONG__IDTuye__31EC6D26">
-    <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="1" />
-    <End Role="LUUTHONG" Type="Self.LUUTHONG" Multiplicity="*" />
+  <Association Name="FK__LICHTRINH__IDTuy__33D4B598">
+    <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="0..1" />
+    <End Role="LICHTRINH" Type="Self.LICHTRINH" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TUYENXE">
         <PropertyRef Name="IDTuyenXe" />
       </Principal>
-      <Dependent Role="LUUTHONG">
+      <Dependent Role="LICHTRINH">
         <PropertyRef Name="IDTuyenXe" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__XEKHACH__CCCDNV__2F10007B">
+  <Association Name="FK__XEKHACH__CCCDNV__30F848ED">
     <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
     <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -262,7 +246,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__XEKHACH__CCCDTX__2E1BDC42">
+  <Association Name="FK__XEKHACH__CCCDTX__300424B4">
     <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="0..1" />
     <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -274,59 +258,55 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QLXEEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="QLXEKHACHEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="BENXEs" EntityType="Self.BENXE" />
     <EntitySet Name="BIENLAIs" EntityType="Self.BIENLAI" />
     <EntitySet Name="GHEs" EntityType="Self.GHE" />
-    <EntitySet Name="GIAVEs" EntityType="Self.GIAVE" />
     <EntitySet Name="HANHKHACHes" EntityType="Self.HANHKHACH" />
-    <EntitySet Name="LUUTHONGs" EntityType="Self.LUUTHONG" />
+    <EntitySet Name="LICHTRINHs" EntityType="Self.LICHTRINH" />
     <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="TAIXEs" EntityType="Self.TAIXE" />
+    <EntitySet Name="THUNGANs" EntityType="Self.THUNGAN" />
     <EntitySet Name="TUYENXEs" EntityType="Self.TUYENXE" />
+    <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
     <EntitySet Name="XEKHACHes" EntityType="Self.XEKHACH" />
-    <AssociationSet Name="FK__GIAVE__IDBenXe__38996AB5" Association="Self.FK__GIAVE__IDBenXe__38996AB5">
-      <End Role="BENXE" EntitySet="BENXEs" />
-      <End Role="GIAVE" EntitySet="GIAVEs" />
-    </AssociationSet>
-    <AssociationSet Name="FK__TUYENXE__IDBenKe__2B3F6F97" Association="Self.FK__TUYENXE__IDBenKe__2B3F6F97">
+    <AssociationSet Name="FK__TUYENXE__IDBenKe__2D27B809" Association="Self.FK__TUYENXE__IDBenKe__2D27B809">
       <End Role="BENXE" EntitySet="BENXEs" />
       <End Role="TUYENXE" EntitySet="TUYENXEs" />
     </AssociationSet>
-    <AssociationSet Name="FK__TUYENXE__IDBenXe__2A4B4B5E" Association="Self.FK__TUYENXE__IDBenXe__2A4B4B5E">
+    <AssociationSet Name="FK__TUYENXE__IDBenXe__2C3393D0" Association="Self.FK__TUYENXE__IDBenXe__2C3393D0">
       <End Role="BENXE" EntitySet="BENXEs" />
       <End Role="TUYENXE" EntitySet="TUYENXEs" />
     </AssociationSet>
-    <AssociationSet Name="FK__BIENLAI__IDGiaVe__3F466844" Association="Self.FK__BIENLAI__IDGiaVe__3F466844">
-      <End Role="GIAVE" EntitySet="GIAVEs" />
+    <AssociationSet Name="FK__BIENLAI__IDGhe__3C69FB99" Association="Self.FK__BIENLAI__IDGhe__3C69FB99">
+      <End Role="GHE" EntitySet="GHEs" />
       <End Role="BIENLAI" EntitySet="BIENLAIs" />
     </AssociationSet>
-    <AssociationSet Name="FK__BIENLAI__IDHanhK__3E52440B" Association="Self.FK__BIENLAI__IDHanhK__3E52440B">
+    <AssociationSet Name="FK__BIENLAI__IDHanhK__3D5E1FD2" Association="Self.FK__BIENLAI__IDHanhK__3D5E1FD2">
       <End Role="HANHKHACH" EntitySet="HANHKHACHes" />
       <End Role="BIENLAI" EntitySet="BIENLAIs" />
     </AssociationSet>
-    <AssociationSet Name="FK__GHE__BienSoXe__35BCFE0A" Association="Self.FK__GHE__BienSoXe__35BCFE0A">
-      <End Role="XEKHACH" EntitySet="XEKHACHes" />
+    <AssociationSet Name="FK__BIENLAI__ThuNgan__3E52440B" Association="Self.FK__BIENLAI__ThuNgan__3E52440B">
+      <End Role="THUNGAN" EntitySet="THUNGANs" />
+      <End Role="BIENLAI" EntitySet="BIENLAIs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GHE__IDLICHTRINH__37A5467C" Association="Self.FK__GHE__IDLICHTRINH__37A5467C">
+      <End Role="LICHTRINH" EntitySet="LICHTRINHs" />
       <End Role="GHE" EntitySet="GHEs" />
     </AssociationSet>
-    <AssociationSet Name="FK__HANHKHACH__SoHie__3B75D760" Association="Self.FK__HANHKHACH__SoHie__3B75D760">
-      <End Role="GHE" EntitySet="GHEs" />
-      <End Role="HANHKHACH" EntitySet="HANHKHACHes" />
-    </AssociationSet>
-    <AssociationSet Name="FK__LUUTHONG__BienSo__32E0915F" Association="Self.FK__LUUTHONG__BienSo__32E0915F">
+    <AssociationSet Name="FK__LICHTRINH__BienS__34C8D9D1" Association="Self.FK__LICHTRINH__BienS__34C8D9D1">
       <End Role="XEKHACH" EntitySet="XEKHACHes" />
-      <End Role="LUUTHONG" EntitySet="LUUTHONGs" />
+      <End Role="LICHTRINH" EntitySet="LICHTRINHs" />
     </AssociationSet>
-    <AssociationSet Name="FK__LUUTHONG__IDTuye__31EC6D26" Association="Self.FK__LUUTHONG__IDTuye__31EC6D26">
+    <AssociationSet Name="FK__LICHTRINH__IDTuy__33D4B598" Association="Self.FK__LICHTRINH__IDTuy__33D4B598">
       <End Role="TUYENXE" EntitySet="TUYENXEs" />
-      <End Role="LUUTHONG" EntitySet="LUUTHONGs" />
+      <End Role="LICHTRINH" EntitySet="LICHTRINHs" />
     </AssociationSet>
-    <AssociationSet Name="FK__XEKHACH__CCCDNV__2F10007B" Association="Self.FK__XEKHACH__CCCDNV__2F10007B">
+    <AssociationSet Name="FK__XEKHACH__CCCDNV__30F848ED" Association="Self.FK__XEKHACH__CCCDNV__30F848ED">
       <End Role="NHANVIEN" EntitySet="NHANVIENs" />
       <End Role="XEKHACH" EntitySet="XEKHACHes" />
     </AssociationSet>
-    <AssociationSet Name="FK__XEKHACH__CCCDTX__2E1BDC42" Association="Self.FK__XEKHACH__CCCDTX__2E1BDC42">
+    <AssociationSet Name="FK__XEKHACH__CCCDTX__300424B4" Association="Self.FK__XEKHACH__CCCDTX__300424B4">
       <End Role="TAIXE" EntitySet="TAIXEs" />
       <End Role="XEKHACH" EntitySet="XEKHACHes" />
     </AssociationSet>
