@@ -104,7 +104,7 @@
     <Property Name="UserName" Type="nvarchar" MaxLength="100" />
     <Property Name="UserPassword" Type="nvarchar(max)" />
     <Property Name="FullName" Type="nvarchar(max)" />
-    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="SDT" Type="char" MaxLength="10" />
     <Property Name="Roles" Type="nvarchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="XEKHACH">

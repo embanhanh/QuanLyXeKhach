@@ -60,7 +60,7 @@
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Column="2" Margin="20 0 20 20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding IDLichTrinh}"  
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding IDLichTrinh,UpdateSourceTrigger=PropertyChanged}"  
                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding LLichTrinh}"
                                 materialDesign:HintAssist.Hint="Lịch Trình" x:Name="LichTrinh"
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}">
@@ -82,7 +82,7 @@
                                     <ColumnDefinition Width="38*"/>
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding HanhKhach}"  
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding HanhKhach,UpdateSourceTrigger=PropertyChanged}"  
                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding LHanhKhach}"
                                 materialDesign:HintAssist.Hint="Hành Khách"
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" Grid.ColumnSpan="2">
@@ -102,14 +102,14 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="20">
-                                <DatePicker  SelectedDate="{Binding New.NgayMua}" BorderBrush="Green"
+                                <DatePicker  SelectedDate="{Binding New.NgayMua,UpdateSourceTrigger=PropertyChanged}" BorderBrush="Green"
                                 materialDesign:HintAssist.Foreground="Green" 
                                 materialDesign:HintAssist.Hint="Ngày Mua" 
                                 Style="{StaticResource MaterialDesignOutlinedDatePicker}">
                                 </DatePicker>
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding ThuNgan}"  
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding ThuNgan,UpdateSourceTrigger=PropertyChanged}"  
                                     materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding LThuNgan}"
                                     materialDesign:HintAssist.Hint="Thu Ngân"
                                     Style="{StaticResource MaterialDesignOutlinedComboBox}">
@@ -129,10 +129,15 @@
                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.GiamGia}"  
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.GiamGia,UpdateSourceTrigger=PropertyChanged}"  
                                     materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding LGiamGia}"
-                                    materialDesign:HintAssist.Hint="Giảm Giá"
-                                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                    materialDesign:HintAssist.Hint="Giảm Giá" Name="GGiamGia"
+                                    Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="ComboBox_SelectionChanged">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction CommandParameter="{Binding ElementName=GGiamGia}" Command="{Binding GGia}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                 </ComboBox>
                             </Grid>
                         </Grid>

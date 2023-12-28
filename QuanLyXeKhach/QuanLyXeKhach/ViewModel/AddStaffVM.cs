@@ -12,7 +12,7 @@ namespace QuanLyXeKhach.ViewModel
 {
     public class AddStaffVM : BaseViewModel
     {
-        public int index;
+        //public int index;
         public bool isAdd;
         private NHANVIEN _new;
         private List<string> _GioiTinh;
@@ -26,8 +26,8 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand addCommand { get; set; }
         public AddStaffVM()
         {
-            ListNew = new ObservableCollection<NHANVIEN>();
-            index = 0;
+            //ListNew = new ObservableCollection<NHANVIEN>();
+            //index = 0;
             GioiTinh = new List<string>() { "Nam", "Nữ", "Khác" };
             New = new NHANVIEN();
             isAdd = false;
@@ -37,11 +37,17 @@ namespace QuanLyXeKhach.ViewModel
                 isAdd = false;
                 p.Close();
             });
-            addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            addCommand = new RelayCommand<Window>((p) => {
+                if (string.IsNullOrEmpty(New.HoTenNhanVien) || string.IsNullOrEmpty(New.CCCDNV) || string.IsNullOrEmpty(New.GioiTinh) || string.IsNullOrEmpty(New.DiaChi) || string.IsNullOrEmpty(New.SoDienThoai) || string.IsNullOrEmpty(Luong) || New.NgaySinh == null)
+                    return false;
+                return true;
+            }, (p) =>
             {
                 New.Luong = Decimal.Parse(Luong);
                 ListNew.Add(New);
-                index++;
+                DataProvider.Ins.db.NHANVIENs.Add(New);
+                DataProvider.Ins.db.SaveChanges();
+                //index++;
                 Luong = "";
                 New = new NHANVIEN();
                 isAdd = true;

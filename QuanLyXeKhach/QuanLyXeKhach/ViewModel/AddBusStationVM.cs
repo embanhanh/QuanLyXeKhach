@@ -12,7 +12,7 @@ namespace QuanLyXeKhach.ViewModel
 {
     public class AddBusStationVM:BaseViewModel
     {
-        public int index;
+        //public int index;
         public bool isAdd;
         private BENXE _new;
         public BENXE New { get => _new; set { _new = value; OnPropertyChanged(); } }
@@ -22,8 +22,8 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand addCommand { get; set; }
         public AddBusStationVM()
         {
-            index = 0;
-            ListNew = new ObservableCollection<BENXE>();
+            //index = 0;
+            //ListNew = new ObservableCollection<BENXE>();
             New = new BENXE();
             isAdd = false;
             closeCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -32,11 +32,17 @@ namespace QuanLyXeKhach.ViewModel
                 isAdd = false;
                 p.Close();
             });
-            addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            addCommand = new RelayCommand<Window>((p) => {
+                if (string.IsNullOrEmpty(New.IDBenXe) || string.IsNullOrEmpty(New.TenBenXe) || string.IsNullOrEmpty(New.DiaChi) || string.IsNullOrEmpty(New.SoDienThoaiBen))
+                    return false;
+                return true;
+            }, (p) =>
             {
                 ListNew.Add(New);
+                DataProvider.Ins.db.BENXEs.Add(New);
+                DataProvider.Ins.db.SaveChanges();
                 New = new BENXE();
-                index++;
+                //index++;
                 isAdd = true;
                 p.Close();
             });

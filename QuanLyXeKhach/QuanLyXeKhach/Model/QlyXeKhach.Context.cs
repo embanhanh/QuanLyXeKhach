@@ -13,10 +13,10 @@ namespace QuanLyXeKhach.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QLXEKHACHEntities : DbContext
+    public partial class QLXEKHACHEntities1 : DbContext
     {
-        public QLXEKHACHEntities()
-            : base("name=QLXEKHACHEntities")
+        public QLXEKHACHEntities1()
+            : base("name=QLXEKHACHEntities1")
         {
         }
     

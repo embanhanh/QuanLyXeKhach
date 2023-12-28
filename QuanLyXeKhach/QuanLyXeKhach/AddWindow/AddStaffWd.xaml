@@ -52,7 +52,7 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.CCCDNV}"
+                                <TextBox BorderBrush="Green" Text="{Binding New.CCCDNV,UpdateSourceTrigger=PropertyChanged}"
                             materialDesign:HintAssist.Foreground="Green"
                             VerticalAlignment="Center"
                             materialDesign:HintAssist.Hint="CCCD"
@@ -60,14 +60,14 @@
                             Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.HoTenNhanVien}"
+                                <TextBox BorderBrush="Green" Text="{Binding New.HoTenNhanVien,UpdateSourceTrigger=PropertyChanged}"
                             materialDesign:HintAssist.Foreground="Green"
                             VerticalAlignment="Center" 
                             materialDesign:HintAssist.Hint="Họ tên"
                             Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="2" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.GioiTinh}"  
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.GioiTinh,UpdateSourceTrigger=PropertyChanged}"  
                             materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding GioiTinh}"
                             materialDesign:HintAssist.Hint="Giới tính"
                             Style="{StaticResource MaterialDesignOutlinedComboBox}">
@@ -81,21 +81,21 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.SoDienThoai}"
+                                <TextBox BorderBrush="Green" Text="{Binding New.SoDienThoai,UpdateSourceTrigger=PropertyChanged}"
                             materialDesign:HintAssist.Foreground="Green"
                             VerticalAlignment="Center" MaxLength="10"
                             materialDesign:HintAssist.Hint="Số điện thoại"
                             Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
-                                <DatePicker  SelectedDate="{Binding New.NgaySinh}" BorderBrush="Green"
+                                <DatePicker  SelectedDate="{Binding New.NgaySinh,UpdateSourceTrigger=PropertyChanged}" BorderBrush="Green"
                             materialDesign:HintAssist.Foreground="Green" 
                             materialDesign:HintAssist.Hint="Ngày sinh" 
                             Style="{StaticResource MaterialDesignOutlinedDatePicker}">
                                 </DatePicker>
                             </Grid>
                             <Grid Grid.Row="2" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding Luong}"
+                                <TextBox BorderBrush="Green" Text="{Binding Luong,UpdateSourceTrigger=PropertyChanged}"
                                 materialDesign:HintAssist.Foreground="Green"
                                 VerticalAlignment="Center"
                                 materialDesign:HintAssist.Hint="Lương"
@@ -104,7 +104,7 @@
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="2" Margin="20">
-                        <TextBox BorderBrush="Green" Text="{Binding New.DiaChi}"
+                        <TextBox BorderBrush="Green" Text="{Binding New.DiaChi,UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Foreground="Green"
                         VerticalAlignment="Center"
                         materialDesign:HintAssist.Hint="Địa chỉ"

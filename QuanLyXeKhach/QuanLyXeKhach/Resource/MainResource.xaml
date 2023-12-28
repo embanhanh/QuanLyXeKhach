@@ -22,4 +22,5 @@
     <viewmodel:EditCashierVM x:Key="editCashierVM"></viewmodel:EditCashierVM>
     <viewmodel:AddReceiptVM x:Key="addReceiptVM"></viewmodel:AddReceiptVM>
     <viewmodel:EditReceiptVM x:Key="editReceiptVM"></viewmodel:EditReceiptVM>
+    <viewmodel:AddAccountVM x:Key="addAccountVM"></viewmodel:AddAccountVM>
 </ResourceDictionary>

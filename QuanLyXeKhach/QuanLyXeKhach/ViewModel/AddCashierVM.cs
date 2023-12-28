@@ -12,7 +12,7 @@ namespace QuanLyXeKhach.ViewModel
 {
     public class AddCashierVM:BaseViewModel
     {
-        public int index;
+        //public int index;
         public bool isAdd;
         private THUNGAN _new;
         private List<string> _GioiTinh;
@@ -26,8 +26,8 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand addCommand { get; set; }
         public AddCashierVM()
         {
-            ListNew = new ObservableCollection<THUNGAN>();
-            index = 0;
+            //ListNew = new ObservableCollection<THUNGAN>();
+            //index = 0;
             GioiTinh = new List<string>() { "Nam", "Nữ", "Khác" };
             New = new THUNGAN();
             isAdd = false;
@@ -37,11 +37,17 @@ namespace QuanLyXeKhach.ViewModel
                 isAdd = false;
                 p.Close();
             });
-            addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            addCommand = new RelayCommand<Window>((p) => {
+                if (string.IsNullOrEmpty(New.HoTen) || string.IsNullOrEmpty(New.SoDienThoai) || string.IsNullOrEmpty(New.CCCDTN) || string.IsNullOrEmpty(New.DiaChi) || string.IsNullOrEmpty(New.GioiTinh) || New.NgaySinh == null || string.IsNullOrEmpty(Luong))
+                    return false;
+                return true;
+            }, (p) =>
             {
                 New.Luong = Decimal.Parse(Luong);
                 ListNew.Add(New);
-                index++;
+                DataProvider.Ins.db.THUNGANs.Add(New);
+                DataProvider.Ins.db.SaveChanges();
+                //index++;
                 Luong = "";
                 New = new THUNGAN();
                 isAdd = true;

@@ -14,7 +14,7 @@ namespace QuanLyXeKhach.ViewModel
 {
     public class AddClientVM: BaseViewModel
     {
-        public int index;
+        //public int index;
         public bool isAdd;
         private HANHKHACH _new;
         private List<string> _Gtinh;
@@ -26,12 +26,17 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand addCommand { get; set; }
         public AddClientVM() 
         {
-            index = 0;
+            //index = 0;
             Gtinh = new List<string>() {"Nam","Nữ","Khác" };
             New = new HANHKHACH();
-            ListNew = new ObservableCollection<HANHKHACH>();
+            //ListNew = new ObservableCollection<HANHKHACH>();
             isAdd= false;
-            closeCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            closeCommand = new RelayCommand<Window>((p) => {
+                if (string.IsNullOrEmpty(New.SDTHK) || string.IsNullOrEmpty(New.IDHanhKhach) || string.IsNullOrEmpty(New.TenHanhKhach) || string.IsNullOrEmpty(New.CCCD) ||
+                string.IsNullOrEmpty(New.DiaChiHK) || string.IsNullOrEmpty(New.GioiTinh) || string.IsNullOrEmpty(New.Tuoi))
+                    return false;
+                return true;
+            }, (p) =>
             {
                 New = new HANHKHACH();
                 isAdd = false;
@@ -40,8 +45,10 @@ namespace QuanLyXeKhach.ViewModel
             addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 ListNew.Add(New);
+                DataProvider.Ins.db.HANHKHACHes.Add(New);
+                DataProvider.Ins.db.SaveChanges();
                 New = new HANHKHACH();
-                index++;
+                //index++;
                 isAdd = true;
                 p.Close();
             });

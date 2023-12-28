@@ -57,7 +57,6 @@ namespace QuanLyXeKhach.ViewModel
                 }
                 else
                 {
-
                     string pw = MD5Hash(Base64Encode(Password));
                     if (DataProvider.Ins.db.UserInfoes.Where(x=> x.UserName==Username && x.UserPassword == pw).Count() > 0)
                     {

@@ -51,7 +51,7 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.CCCDTN}"
+                                <TextBox BorderBrush="Green" Text="{Binding New.CCCDTN,UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Foreground="Green"
                         VerticalAlignment="Center"
                         materialDesign:HintAssist.Hint="CCCD"
@@ -59,7 +59,7 @@
                         Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.HoTen}"
+                                <TextBox BorderBrush="Green" Text="{Binding New.HoTen,UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Foreground="Green"
                         VerticalAlignment="Center" 
                         materialDesign:HintAssist.Hint="Họ tên"
@@ -80,7 +80,7 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.SoDienThoai}"
+                                <TextBox BorderBrush="Green" Text="{Binding New.SoDienThoai,UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Foreground="Green"
                         VerticalAlignment="Center" MaxLength="10"
                         materialDesign:HintAssist.Hint="Số điện thoại"
@@ -94,7 +94,7 @@
                                 </DatePicker>
                             </Grid>
                             <Grid Grid.Row="2" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding Luong}"
+                                <TextBox BorderBrush="Green" Text="{Binding Luong,UpdateSourceTrigger=PropertyChanged}"
                             materialDesign:HintAssist.Foreground="Green"
                             VerticalAlignment="Center"
                             materialDesign:HintAssist.Hint="Lương"
@@ -103,7 +103,7 @@
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="2" Margin="20">
-                        <TextBox BorderBrush="Green" Text="{Binding New.DiaChi}"
+                        <TextBox BorderBrush="Green" Text="{Binding New.DiaChi,UpdateSourceTrigger=PropertyChanged}"
                     materialDesign:HintAssist.Foreground="Green"
                     VerticalAlignment="Center"
                     materialDesign:HintAssist.Hint="Địa chỉ"

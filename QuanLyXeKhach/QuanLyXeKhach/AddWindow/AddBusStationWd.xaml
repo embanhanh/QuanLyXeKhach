@@ -50,14 +50,14 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe,UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Foreground="Green"
                         VerticalAlignment="Center" MaxLength="6"
                         materialDesign:HintAssist.Hint="ID"
                         Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.TenBenXe}"
+                                <TextBox BorderBrush="Green" Text="{Binding New.TenBenXe,UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Foreground="Green"
                         VerticalAlignment="Center" 
                         materialDesign:HintAssist.Hint="Tên Bến Xe"
@@ -70,14 +70,14 @@
                                 <RowDefinition ></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.SoDienThoaiBen}"
+                                <TextBox BorderBrush="Green" Text="{Binding New.SoDienThoaiBen,UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Foreground="Green"
                         VerticalAlignment="Center" MaxLength="10"
                         materialDesign:HintAssist.Hint="Số điện thoại"
                         Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.DiaChi}"
+                                <TextBox BorderBrush="Green" Text="{Binding New.DiaChi,UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Foreground="Green"
                         VerticalAlignment="Center"
                         materialDesign:HintAssist.Hint="Địa chỉ"

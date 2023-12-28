@@ -12,7 +12,7 @@ namespace QuanLyXeKhach.ViewModel
 {
     public class AddDriverVM: BaseViewModel
     {
-        public int index;
+        //public int index;
         public bool isAdd;
         private TAIXE _new;
         private List<string> _BangLai;
@@ -27,7 +27,7 @@ namespace QuanLyXeKhach.ViewModel
         public AddDriverVM()
         {
             BangLai = new List<string>() { "C", "D", "E" };
-            ListNew = new ObservableCollection<TAIXE>();
+            //ListNew = new ObservableCollection<TAIXE>();
             New = new TAIXE();
             isAdd = false;
             closeCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -36,13 +36,19 @@ namespace QuanLyXeKhach.ViewModel
                 isAdd = false;
                 p.Close();
             });
-            addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            addCommand = new RelayCommand<Window>((p) => {
+                if (string.IsNullOrEmpty(New.TenTaiXe) || string.IsNullOrEmpty(New.SoDienThoai) || string.IsNullOrEmpty(New.DiaChi) || string.IsNullOrEmpty(New.BangLai) || string.IsNullOrEmpty(New.CCCDTX) || string.IsNullOrEmpty(Luong) || New.NgaySinh == null)
+                    return false;
+                return true;
+            }, (p) =>
             {
                 New.Luong = Decimal.Parse(Luong);
                 ListNew.Add(New);
+                DataProvider.Ins.db.TAIXEs.Add(New);
+                DataProvider.Ins.db.SaveChanges();
                 Luong = "";
                 New = new TAIXE();
-                index++;
+                //index++;
                 isAdd = true;
                 p.Close();
             });

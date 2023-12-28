@@ -1,13 +1,19 @@
-﻿using QuanLyXeKhach.AddWindow;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using QuanLyXeKhach.AddWindow;
 using QuanLyXeKhach.EditWindow;
 using QuanLyXeKhach.Model;
 using QuanLyXeKhach.UserControlFolder;
+using Syncfusion.UI.Xaml.Charts;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Runtime.Serialization;
 using System.Security.AccessControl;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,7 +24,51 @@ using static System.Net.Mime.MediaTypeNames;
 namespace QuanLyXeKhach.ViewModel
 {
     public class MainViewModel : BaseViewModel
-    {   
+    {
+        //Chart
+        bool isSelect;
+        public ChartValues<double> _DoanhThu;
+        public ChartValues<double> _ChiPhi;
+        private List<string> _Lables;
+        private ObservableCollection<string> _Years;
+        private ObservableCollection<string> _Months;
+        private string _year;
+        private string _yearz;
+        private string _month;
+        public ICommand ChangeCharts { get; set; }
+        public ICommand ChangeTopMonth { get; set; }
+        public ICommand ChangeTopYear { get; set; }
+        public List<string> Lables { get => _Lables; set { _Lables = value; OnPropertyChanged(); } }
+        public ObservableCollection<string> Years { get => _Years; set { _Years = value; OnPropertyChanged(); } }
+        public ObservableCollection<string> Months { get => _Months; set { _Months = value; OnPropertyChanged(); } }
+        public string year { get => _year; set { _year = value; OnPropertyChanged(); } }
+        public string yearz { get => _yearz; set { _yearz = value; OnPropertyChanged(); } }
+        public string month { get => _month; set { _month = value; OnPropertyChanged(); } }
+        public ChartValues<double> DoanhThu { get => _DoanhThu; set { _DoanhThu = value; OnPropertyChanged(); } }
+        public ChartValues<double> ChiPhi { get => _ChiPhi; set { _ChiPhi = value; OnPropertyChanged(); } }
+        //Account
+        private string _ErrorMessageOldPassword;
+        private string _ErrorMessagePassword;
+        private string _pass1;
+        private string _pass2;
+        private string _oldpass;
+        private string _Pass;
+        private string _UserName;
+        private string _FullName;
+        private string _SDT;
+        private string _Role;
+        private string _HashPass;
+        public string Pass { get => _Pass; set { _Pass = value; OnPropertyChanged(); } }
+        public string HashPass { get => _HashPass; set { _HashPass = value; OnPropertyChanged(); } }
+        public string UserName { get => _UserName; set { _UserName = value; OnPropertyChanged(); } }
+        public string FullName { get => _FullName; set { _FullName = value; OnPropertyChanged(); } }
+        public string SDT { get => _SDT; set { _SDT = value; OnPropertyChanged(); } }
+        public string Role { get => _Role; set { _Role = value; OnPropertyChanged(); } }
+        public string ErrorMessageOldPassword { get => _ErrorMessageOldPassword; set { _ErrorMessageOldPassword = value; OnPropertyChanged(); } }
+        public string ErrorMessagePassword { get => _ErrorMessagePassword; set { _ErrorMessagePassword = value; OnPropertyChanged(); } }
+        public string Pass1 { get => _pass1; set { _pass1 = value; OnPropertyChanged(); } }
+        public string Pass2 { get => _pass2; set { _pass2 = value; OnPropertyChanged(); } }
+        public string OldPass { get => _oldpass; set { _oldpass = value; OnPropertyChanged(); } }
         //ItemSource ComboBox
         private List<string> _BenXe;
         private List<string> _BienSoXe;
@@ -55,6 +105,8 @@ namespace QuanLyXeKhach.ViewModel
         private ObservableCollection<XEKHACH> _ListBus;
         private ObservableCollection<BENXE> _ListBusStation;
         private ObservableCollection<TUYENXE> _ListRoute;
+        private ObservableCollection<TuyenXe> _TopListRoute;
+        private ObservableCollection<TuyenXe> _TopListRouteHK;
         private ObservableCollection<LICHTRINH> _ListSchedule;
         private ObservableCollection<THUNGAN> _ListCashier;
         private ObservableCollection<BIENLAI> _ListReceipt;
@@ -65,6 +117,8 @@ namespace QuanLyXeKhach.ViewModel
         public ObservableCollection<XEKHACH> ListBus { get => _ListBus; set { _ListBus = value; OnPropertyChanged(); } }
         public ObservableCollection<BENXE> ListBusStation { get => _ListBusStation; set { _ListBusStation = value; OnPropertyChanged(); } }
         public ObservableCollection<TUYENXE> ListRoute { get => _ListRoute; set { _ListRoute = value; OnPropertyChanged(); } }
+        public ObservableCollection<TuyenXe> TopListRoute { get => _TopListRoute; set { _TopListRoute = value; OnPropertyChanged(); } }
+        public ObservableCollection<TuyenXe> TopListRouteHK { get => _TopListRouteHK; set { _TopListRouteHK = value; OnPropertyChanged(); } }
         public ObservableCollection<LICHTRINH> ListSchedule { get => _ListSchedule; set { _ListSchedule = value; OnPropertyChanged(); } }
         public ObservableCollection<THUNGAN> ListCashier { get => _ListCashier; set { _ListCashier = value; OnPropertyChanged(); } }
         public ObservableCollection<BIENLAI> ListReceipt { get => _ListReceipt; set { _ListReceipt = value; OnPropertyChanged(); } }
@@ -90,6 +144,14 @@ namespace QuanLyXeKhach.ViewModel
         public BIENLAI SelectedItemReceipt { get => _SelectedItemReceipt; set { _SelectedItemReceipt = value; OnPropertyChanged(); } }
         //Command
         public ICommand LoadedWindowCommand { get; set; }
+        public ICommand OldPasswordChangedCommand { get; set; }
+        public ICommand OldPasswordEmpty { get; set; }
+        public ICommand Password1ChangedCommand { get; set; }
+        public ICommand Password2ChangedCommand { get; set; }
+        public ICommand PasswordEmpty { get; set; }
+        public ICommand ConfirmPass { get; set; }
+        public ICommand LogoutCommand { get; set; }
+        public ICommand AddAccountCommand { get; set; }
         public ICommand AddClientCommand { get; set; }
         public ICommand EditClientCommand { get; set; }
         public ICommand DeleteClientCommand { get; set; }
@@ -140,6 +202,13 @@ namespace QuanLyXeKhach.ViewModel
 
         public MainViewModel()
         {
+            TopListRoute = new ObservableCollection<TuyenXe>();
+            TopListRouteHK = new ObservableCollection<TuyenXe>();
+            Lables = new List<string> { "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" };
+            Months = new ObservableCollection<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", " 11", "12","Tất cả" };
+            DoanhThu = new ChartValues<double> ();
+            ChiPhi = new ChartValues<double> ();
+            Years = new ObservableCollection<string> ();
             BenXe = new List<string>();
             HoTenNV = new List<string>();
             HoTenTX = new List<string>();
@@ -162,6 +231,15 @@ namespace QuanLyXeKhach.ViewModel
                     return;
                 if (lgVM.isLogin)
                 {
+                    UserName = lgVM.Username;
+                    Pass = lgVM.Password;
+                    var tk = DataProvider.Ins.db.UserInfoes.Where(x => x.UserName == UserName).SingleOrDefault();
+                    FullName = tk.FullName;
+                    Role = tk.Roles;
+                    SDT = tk.SDT;
+                    for (int i = 0; i < UserName.Length; i++)
+                        HashPass += "*";
+                    //ShowChart(2023);
                     p.Show();
                 }
                 else
@@ -176,6 +254,32 @@ namespace QuanLyXeKhach.ViewModel
                 LoadDataSchedule(mainWd.ucContainerSchedule);
                 LoadDataCashier(mainWd.ucContainerCashier);
                 LoadDataReceipt(mainWd.ucContainerReceipt);
+            });
+            LogoutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                p.Hide();
+                LoginWindow lg = new LoginWindow();
+                var vm = lg.DataContext as LoginViewModel;
+                vm.isLogin = false;
+                lg.ShowDialog();
+                var lgVM = lg.DataContext as LoginViewModel;
+                if (lgVM == null)
+                    return;
+                if (lgVM.isLogin)
+                {
+                    UserName = lgVM.Username;
+                    Pass = lgVM.Password;
+                    var tk = DataProvider.Ins.db.UserInfoes.Where(x => x.UserName == UserName).SingleOrDefault();
+                    FullName = tk.FullName;
+                    Role = tk.Roles;
+                    SDT = tk.SDT;
+                    HashPass = "";
+                    for (int i = 0; i < UserName.Length; i++)
+                        HashPass += "*";
+                    p.Show();
+                }
+                else
+                    p.Close();
             });
             //Load Data
             ListClient = new ObservableCollection<HANHKHACH>(DataProvider.Ins.db.HANHKHACHes);
@@ -203,26 +307,165 @@ namespace QuanLyXeKhach.ViewModel
             foreach (var tn in ListCashier)
                 HoTenTN.Add(tn.HoTen);
             ListReceipt = new ObservableCollection<BIENLAI>(DataProvider.Ins.db.BIENLAIs);
+            foreach (var bl in ListReceipt)
+                if (!Years.Contains(bl.NgayMua.Value.Year.ToString()))
+                    Years.Add(bl.NgayMua.Value.Year.ToString());
             ListSeat = new ObservableCollection<GHE>(DataProvider.Ins.db.GHEs);
             //Command Button Add, Edit, Delete
+            //Charts
+            ChangeCharts = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            {
+                ShowChart(int.Parse(year));
+            });
+            ChangeTopMonth = new RelayCommand<Object>((p) => { if (isSelect) return true; return false; }, (p) =>
+            {
+                if(month != "Tất cả" && isSelect == true)
+                {
+                    int monthh = int.Parse(month);
+                    int yearr = int .Parse(yearz);
+                    TopListRoute.Clear();
+                    TopListRouteHK.Clear();
+                    try
+                    {
+                        var Groups = (from tuyenxe in DataProvider.Ins.db.LICHTRINHs where tuyenxe.NgayXuatPhat.Value.Month == monthh && tuyenxe.NgayXuatPhat.Value.Year == yearr group tuyenxe by tuyenxe.IDTuyenXe into grouped orderby grouped.Count() descending select new { IDTuyenXe = grouped.Key, CountID = grouped.Count(),}).Take(5);
+                        foreach (var gr in Groups)
+                            foreach( var tx in ListRoute)
+                                if(gr.IDTuyenXe == tx.IDTuyenXe)
+                                {
+                                    TuyenXe txe = new TuyenXe() { ID = tx.IDTuyenXe, BenDau = tx.BENXE1.TenBenXe,BenCuoi = tx.BENXE.TenBenXe,tgxp=tx.GioXuatPhat.Value.ToString(),tgdk = tx.ThoiGianDuKien.Value.ToString(),count = gr.CountID.ToString() };
+                                    TopListRoute.Add(txe);
+                                    break;
+                                }
+                        var GroupsJoin = (from lt in DataProvider.Ins.db.LICHTRINHs join gh in DataProvider.Ins.db.GHEs on lt.IDLICHTRINH equals gh.IDLICHTRINH
+                                          where lt.NgayXuatPhat.Value.Month == monthh && lt.NgayXuatPhat.Value.Year == yearr && gh.TINHTRANG == true group new { LICHTRINH = lt,GHE = gh } by lt.IDTuyenXe into grouped 
+                                          orderby grouped.Count() descending 
+                                          select new { IDTuyenXe = grouped.Key, Count = grouped.Count(),}).Take(5);
+                        foreach (var gr in GroupsJoin)
+                            foreach (var tx in ListRoute)
+                                if (gr.IDTuyenXe == tx.IDTuyenXe)
+                                {
+                                    TuyenXe txe = new TuyenXe() { ID = tx.IDTuyenXe, BenDau = tx.BENXE1.TenBenXe, BenCuoi = tx.BENXE.TenBenXe, tgxp = tx.GioXuatPhat.Value.ToString(), tgdk = tx.ThoiGianDuKien.Value.ToString(), countGhe = gr.Count.ToString() };
+                                    TopListRouteHK.Add(txe);
+                                    break;
+                                }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                else if (month == "Tất cả" && isSelect == true)
+                {
+                    int yearr = int.Parse(yearz);
+                    TopListRoute.Clear();
+                    TopListRouteHK.Clear();
+                    try
+                    {
+                        var Groups = (from tuyenxe in DataProvider.Ins.db.LICHTRINHs where tuyenxe.NgayXuatPhat.Value.Year == yearr group tuyenxe by tuyenxe.IDTuyenXe into grouped orderby grouped.Count() descending select new { IDTuyenXe = grouped.Key, CountID = grouped.Count(), }).Take(5);
+                        foreach (var gr in Groups)
+                            foreach (var tx in ListRoute)
+                                if (gr.IDTuyenXe == tx.IDTuyenXe)
+                                {
+                                    TuyenXe txe = new TuyenXe() { ID = tx.IDTuyenXe, BenDau = tx.BENXE1.TenBenXe, BenCuoi = tx.BENXE.TenBenXe, tgxp = tx.GioXuatPhat.Value.ToString(), tgdk = tx.ThoiGianDuKien.Value.ToString(), count = gr.CountID.ToString() };
+                                    TopListRoute.Add(txe);
+                                    break;
+                                }
+                        var GroupsJoin = (from lt in DataProvider.Ins.db.LICHTRINHs
+                                          join gh in DataProvider.Ins.db.GHEs on lt.IDLICHTRINH equals gh.IDLICHTRINH
+                                          where lt.NgayXuatPhat.Value.Year == yearr && gh.TINHTRANG == true
+                                          group new { LICHTRINH = lt, GHE = gh } by lt.IDTuyenXe into grouped
+                                          orderby grouped.Count() descending
+                                          select new { IDTuyenXe = grouped.Key, Count = grouped.Count(), }).Take(5);
+                        foreach (var gr in GroupsJoin)
+                            foreach (var tx in ListRoute)
+                                if (gr.IDTuyenXe == tx.IDTuyenXe)
+                                {
+                                    TuyenXe txe = new TuyenXe() { ID = tx.IDTuyenXe, BenDau = tx.BENXE1.TenBenXe, BenCuoi = tx.BENXE.TenBenXe, tgxp = tx.GioXuatPhat.Value.ToString(), tgdk = tx.ThoiGianDuKien.Value.ToString(), countGhe = gr.Count.ToString() };
+                                    TopListRouteHK.Add(txe);
+                                    break;
+                                }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            });
+            ChangeTopYear = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            {
+                isSelect = true;
+            });
+            //Account
+            AddAccountCommand = new RelayCommand<StackPanel>((p) => { 
+                if(Role=="Quản Lý")
+                    return true;
+                return false;
+            }, (p) => {
+                AddAccountWd wd = new AddAccountWd();
+                wd.ShowDialog();
+            });
+            Password1ChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
+            {
+                Pass1 = p.Password;
+            });
+            Password2ChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
+            {
+                Pass2 = p.Password;
+            });
+            OldPasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
+            {
+                OldPass = p.Password;
+            });
+            ConfirmPass = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                if (OldPass != Pass)
+                    ErrorMessageOldPassword = "Mật khẩu không chính xác, vui lòng nhập lại.";
+                if (Pass2 != Pass1)
+                    ErrorMessagePassword = "Mật khẩu nhập lại không khớp, vui lòng nhập lại.";
+                if(Pass1 == Pass2 && OldPass == Pass)
+                {
+                    MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    string pw = MD5Hash(Base64Encode(Pass1));
+                    var x = DataProvider.Ins.db.UserInfoes.Where(k=> k.UserName == UserName).SingleOrDefault();
+                    x.UserPassword = pw;
+                    DataProvider.Ins.db.SaveChanges();
+                    HashPass = pw;
+                    var wd = p as MainWindow;
+                    wd.OldPass.Password = "";
+                    wd.Pass1.Password = "";
+                    wd.Pass2.Password = "";
+                }
+            });
+            OldPasswordEmpty = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            {
+                ErrorMessageOldPassword = "";
+            });
+            PasswordEmpty = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            {
+                ErrorMessagePassword = "";
+            });
             //Client
             SelectedItemClient = new HANHKHACH();
-            AddClientCommand = new RelayCommand<StackPanel>((p) => { return true; }, (p) => { 
+            AddClientCommand = new RelayCommand<StackPanel>((p) => {
+                if (Role == "Quản Lý" || Role == "Thu Ngân")
+                    return true;
+                return false;
+            }, (p) => { 
                 AddClientWd wd = new AddClientWd(); 
                 var clientVM = wd.DataContext as AddClientVM;
-                
+                clientVM.ListNew = ListClient;
                 wd.ShowDialog();
                 if (clientVM.isAdd)
                 {
-                    ListClient.Add(clientVM.ListNew[clientVM.index-1]);
                     HoTenHK.Add(ListClient.Last().TenHanhKhach);
                     LoadDataClient(p);
+                    SelectedTagClient = null;
                 }
             });
-            EditClientCommand = new RelayCommand<ListView>((p) => {
-                if (SelectedTagClient == null)
-                    return false;
-                return true;
+            EditClientCommand = new RelayCommand<Window>((p) => {
+                if (SelectedTagClient != null && (Role == "Quản Lý" || Role == "Thu Ngân"))
+                    return true;
+                return false;
             }, (p) => { 
                 EditClientWd wd = new EditClientWd();
                 var editVM = wd.DataContext as EditClientVM;
@@ -248,32 +491,66 @@ namespace QuanLyXeKhach.ViewModel
                     SelectedItemClient.SDTHK = uc.SDT.Text = editVM.New.SDTHK;
                     SelectedItemClient.DiaChiHK = uc.DiaChi.Text = editVM.New.DiaChiHK;
                     SelectedItemClient.GioiTinh = uc.GioiTinh.Text = editVM.New.GioiTinh;
+                    DataProvider.Ins.db.SaveChanges();
+                    var wd2 = p as MainWindow;
+                    LoadDataClient(wd2.ucContainerClient);
+                    LoadDataReceipt(wd2.ucContainerReceipt);
                 }
             });
-            DeleteClientCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagClient == null)
-                    return false;
-                return true;
-            }, (p) => { 
-                
+            DeleteClientCommand = new RelayCommand<Window>((p) => {
+                if (SelectedTagClient != null && (Role == "Quản Lý" || Role == "Thu Ngân"))
+                    return true;
+                return false;
+            }, (p) => {
+                try
+                {
+                    int n = ListReceipt.Count;
+                    int i;
+                    for ( i = 0; i < n; i++)
+                        if (ListReceipt[i].IDHanhKhach == SelectedItemClient.IDHanhKhach)
+                        {
+                            DataProvider.Ins.db.BIENLAIs.Remove(ListReceipt[i]);
+                            ListReceipt.Remove(ListReceipt[i]);
+                            i--;
+                            n--;
+                        }
+                    DataProvider.Ins.db.HANHKHACHes.Remove(SelectedItemClient);
+                    DataProvider.Ins.db.SaveChanges();
+                    ListClient.Remove(SelectedItemClient);
+                    HoTenHK.Remove(SelectedItemClient.TenHanhKhach);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                var wd = p as MainWindow;
+                LoadDataClient(wd.ucContainerClient);
+                SelectedTagClient = null;
+                LoadDataReceipt(wd.ucContainerReceipt);
+                SelectedTagReceipt = null;
             });
             //Staff
             SelectedItemStaff = new NHANVIEN();
-            AddStaffCommand = new RelayCommand<StackPanel>((p) => { return true; }, (p) => {
+            AddStaffCommand = new RelayCommand<StackPanel>((p) => { 
+                if(Role == "Quản Lý")
+                    return true;
+                return false;
+            }, (p) => {
                 AddStaffWd wd = new AddStaffWd();
-                wd.ShowDialog();
                 var staffVM = wd.DataContext as AddStaffVM;
+                staffVM.ListNew = ListStaff;
+                wd.ShowDialog();
                 if (staffVM.isAdd)
                 {
-                    ListStaff.Add(staffVM.ListNew[staffVM.index - 1]);
                     HoTenNV.Add(ListStaff.Last().HoTenNhanVien);
                     LoadDataStaff(p);
+                    SelectedTagStaff = null;
                 }
             });
-            EditStaffCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagStaff == null)
-                    return false;
-                return true;
+            EditStaffCommand = new RelayCommand<Window>((p) => {
+                if (SelectedTagStaff != null && Role == "Quản Lý")
+                    return true;
+                return false;
             }, (p) => {
                 EditStaffWd wd = new EditStaffWd();
                 var editVM = wd.DataContext as EditStaffVM;
@@ -302,32 +579,63 @@ namespace QuanLyXeKhach.ViewModel
                     SelectedItemStaff.NgaySinh = editVM.New.NgaySinh;
                     uc.Luong.Text = editVM.Luong;
                     SelectedItemStaff.Luong = editVM.New.Luong;
+                    DataProvider.Ins.db.SaveChanges();
+                    var wd2 = p as MainWindow;
+                    LoadDataStaff(wd2.ucContainerStaff);
+                    LoadDataBus(wd2.ucContainerBus);
+                    LoadDataSchedule(wd2.ucContainerSchedule);
+                    LoadDataReceipt(wd2.ucContainerReceipt);
                 }
             });
-            DeleteStaffCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagStaff == null)
-                    return false;
-                return true;
+            DeleteStaffCommand = new RelayCommand<Window>((p) => {
+                if (SelectedTagStaff != null && Role == "Quản Lý")
+                    return true;
+                return false;
             }, (p) => {
+                int n = ListBus.Count;
+                for (int i = 0; i < n; i++)
+                    if (ListBus[i].CCCDNV == SelectedItemStaff.CCCDNV)
+                    {
+                        DeleteXeKhach(ListBus[i]);
+                        break;
+                    }
+                DataProvider.Ins.db.NHANVIENs.Remove(SelectedItemStaff);
+                DataProvider.Ins.db.SaveChanges();
                 ListStaff.Remove(SelectedItemStaff);
+                HoTenNV.Remove(SelectedItemStaff.HoTenNhanVien);
+                var wd = p as MainWindow;
+                LoadDataStaff(wd.ucContainerStaff);
+                SelectedTagStaff = null;
+                LoadDataBus(wd.ucContainerBus);
+                SelectedTagBus = null;
+                LoadDataSchedule(wd.ucContainerSchedule);
+                SelectedTagSchedule = null;
+                LoadDataReceipt(wd.ucContainerReceipt);
+                SelectedTagReceipt = null;
+
             });
             //Cashier
             SelectedItemCashier = new THUNGAN();
-            AddCashierCommand = new RelayCommand<StackPanel>((p) => { return true; }, (p) => {
+            AddCashierCommand = new RelayCommand<StackPanel>((p) => {
+                if (Role == "Quản Lý")
+                    return true;
+                return false;
+            }, (p) => {
                 AddCashierWd wd = new AddCashierWd();
-                wd.ShowDialog();
                 var addVM = wd.DataContext as AddCashierVM;
+                addVM.ListNew = ListCashier;
+                wd.ShowDialog();
                 if (addVM.isAdd)
                 {
-                    ListCashier.Add(addVM.ListNew[addVM.index - 1]);
                     HoTenTN.Add(ListCashier.Last().HoTen);
                     LoadDataCashier(p);
+                    SelectedTagCashier = null;
                 }
             });
             EditCashierCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagCashier == null)
-                    return false;
-                return true;
+                if (SelectedTagCashier != null && Role == "Quản Lý")
+                    return true;
+                return false;
             }, (p) => {
                 EditCashierWd wd = new EditCashierWd();
                 var editVM = wd.DataContext as EditCashierVM;
@@ -356,36 +664,68 @@ namespace QuanLyXeKhach.ViewModel
                     SelectedItemCashier.NgaySinh = editVM.New.NgaySinh;
                     uc.Luong.Text = editVM.Luong;
                     SelectedItemCashier.Luong = editVM.New.Luong;
+                    DataProvider.Ins.db.SaveChanges();
+                    var wd2 = p as MainWindow;
+                    LoadDataCashier(wd2.ucContainerCashier);
+                    LoadDataReceipt(wd2.ucContainerReceipt);
+
                 }
             });
-            DeleteCashierCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagCashier == null)
-                    return false;
-                return true;
+            DeleteCashierCommand = new RelayCommand<Window>((p) => {
+                if (SelectedTagCashier != null && Role == "Quản Lý")
+                    return true;
+                return false;
             }, (p) => {
+                try
+                {
+                    int n = ListReceipt.Count;
+                    for (int i = 0; i < n; i++)
+                        if (ListReceipt[i].ThuNgan == SelectedItemCashier.CCCDTN)
+                        {
+                            DataProvider.Ins.db.BIENLAIs.Remove(ListReceipt[i]);
+                            ListReceipt.RemoveAt(i);
+                            i--;
+                            n--;
+                        }
+                    DataProvider.Ins.db.THUNGANs.Remove(SelectedItemCashier);
+                    DataProvider.Ins.db.SaveChanges();
 
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+                ListCashier.Remove(SelectedItemCashier);
+                HoTenTN.Remove(SelectedItemCashier.HoTen);
+                var wd = p as MainWindow;
+                LoadDataCashier(wd.ucContainerCashier);
+                LoadDataReceipt(wd.ucContainerReceipt);
             });
             //Bus
             SelectedItemBus = new XEKHACH();
-            AddBusCommand = new RelayCommand<StackPanel>((p) => { return true; }, (p) => {
+            AddBusCommand = new RelayCommand<StackPanel>((p) => {
+                if (Role == "Quản Lý")
+                    return true;
+                return false;
+            }, (p) => {
                 AddBusWd wd = new AddBusWd();
                 var BusVM = wd.DataContext as AddBusVM;
                 BusVM.ListPhuXe = HoTenNV;
                 BusVM.ListTaiXe = HoTenTX;
                 BusVM.listTX = ListDriver;
                 BusVM.listPX = ListStaff;
+                BusVM.ListNew = ListBus;
                 wd.ShowDialog();
                 if (BusVM.isAdd)
                 {
-                    ListBus.Add(BusVM.ListNew[BusVM.index - 1]);
                     BienSoXe.Add(ListBus.Last().BienSoXe);
                     LoadDataBus(p);
+                    SelectedTagBus = null;
                 }
             });
             EditBusCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagBus == null)
-                    return false;
-                return true;
+                if (SelectedTagBus != null && Role == "Quản Lý")
+                    return true;
+                return false;
             }, (p) => {
                 EditBusWd wd = new EditBusWd();
                 var editVM = wd.DataContext as EditBusVM;
@@ -419,35 +759,52 @@ namespace QuanLyXeKhach.ViewModel
                     uc.PX.Text = editVM.New.NHANVIEN.HoTenNhanVien;
                     SelectedItemBus.NHANVIEN = editVM.New.NHANVIEN;
                     SelectedItemBus.TAIXE = editVM.New.TAIXE;
+                    DataProvider.Ins.db.SaveChanges();
+                    var wd2 = p as MainWindow;
+                    LoadDataBus(wd2.ucContainerBus);
+                    LoadDataSchedule(wd2.ucContainerSchedule);
+                    LoadDataReceipt(wd2.ucContainerReceipt);
                 }
             });
-            DeleteBusCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagBus == null)
-                    return false;
-                return true;
+            DeleteBusCommand = new RelayCommand<Window>((p) => {
+                if (SelectedTagBus != null && Role == "Quản Lý")
+                    return true;
+                return false;
             }, (p) => {
-                
+                DeleteXeKhach(SelectedItemBus);
+                var wd = p as MainWindow;
+                LoadDataBus(wd.ucContainerBus);
+                SelectedTagBus = null;
+                LoadDataSchedule(wd.ucContainerSchedule);
+                SelectedTagSchedule = null;
+                LoadDataReceipt(wd.ucContainerReceipt);
+                SelectedTagReceipt = null;
             });
             //Route
             SelectedItemRoute = new TUYENXE();
-            AddRouteCommand = new RelayCommand<StackPanel>((p) => { return true; }, (p) => 
+            AddRouteCommand = new RelayCommand<StackPanel>((p) => {
+                if (Role == "Quản Lý")
+                    return true;
+                return false;
+            }, (p) => 
             { 
                 AddRouteWd wd = new AddRouteWd(); 
                 var RouteVM = wd.DataContext as AddRouteVM;
                 RouteVM.BenXe = BenXe;
                 RouteVM.listBX = ListBusStation;
+                RouteVM.ListNew = ListRoute;
                 wd.ShowDialog();
                 if (RouteVM.isAdd)
                 {
-                    ListRoute.Add(RouteVM.ListNew[RouteVM.index - 1]);
                     IDTuyenXe.Add(ListRoute.Last().IDTuyenXe);
                     LoadDataRoute(p);
+                    SelectedTagRoute = null;
                 }
             });
             EditRouteCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagRoute == null)
-                    return false;
-                return true;
+                if (SelectedTagRoute != null && Role == "Quản Lý")
+                    return true;
+                return false;
             }, (p) => {
                 EditRouteWd wd = new EditRouteWd();
                 var editVM = wd.DataContext as EditRouteVM;
@@ -480,30 +837,51 @@ namespace QuanLyXeKhach.ViewModel
                     SelectedItemRoute.IDBenKetThuc = editVM.New.IDBenKetThuc;
                     SelectedItemRoute.GioXuatPhat = editVM.New.GioXuatPhat;
                     SelectedItemRoute.ThoiGianDuKien = editVM.New.ThoiGianDuKien;
+                    DataProvider.Ins.db.SaveChanges();
+                    var wd2 = p as MainWindow;
+                    LoadDataRoute(wd2.ucContainerRoute);
+                    LoadDataSchedule(wd2.ucContainerSchedule);
+                    LoadDataReceipt(wd2.ucContainerReceipt);
+
+
                 }
             });
-            DeleteRouteCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagRoute == null)
-                    return false;
-                return true;
-            }, (p) => { });
+            DeleteRouteCommand = new RelayCommand<Window>((p) => {
+                if (SelectedTagRoute != null && Role == "Quản Lý")
+                    return true;
+                return false;
+            }, (p) => {
+                DeleteTuyenXe(SelectedItemRoute);
+                var wd = p as MainWindow;
+                LoadDataRoute(wd.ucContainerRoute);
+                SelectedTagRoute = null;
+                LoadDataSchedule(wd.ucContainerSchedule);
+                SelectedTagSchedule = null;
+                LoadDataReceipt(wd.ucContainerReceipt);
+                SelectedTagReceipt = null;
+            });
             //Driver
             SelectedItemDriver = new TAIXE();
-            AddDriverCommand = new RelayCommand<StackPanel>((p) => { return true; }, (p) => { 
+            AddDriverCommand = new RelayCommand<StackPanel>((p) => {
+                if (Role == "Quản Lý")
+                    return true;
+                return false;
+            }, (p) => { 
                 AddDriverWd wd = new AddDriverWd(); 
-                wd.ShowDialog();
                 var driverVM = wd.DataContext as AddDriverVM;
+                driverVM.ListNew = ListDriver;
+                wd.ShowDialog();
                 if (driverVM.isAdd)
                 {
-                    ListDriver.Add(driverVM.ListNew[driverVM.index - 1]);
                     HoTenTX.Add(ListDriver.Last().TenTaiXe);
                     LoadDataDriver(p);
+                    SelectedTagDriver = null;
                 }
             });
             EditDriverCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagDriver == null)
-                    return false;
-                return true;
+                if (SelectedTagDriver != null && Role == "Quản Lý")
+                    return true;
+                return false;
             }, (p) => {
                 EditDriverWd wd = new EditDriverWd();
                 var editVM = wd.DataContext as EditDriverVM;
@@ -532,32 +910,63 @@ namespace QuanLyXeKhach.ViewModel
                     SelectedItemDriver.NgaySinh = editVM.New.NgaySinh;
                     uc.Luong.Text = editVM.New.Luong.ToString();
                     SelectedItemDriver.Luong = editVM.New.Luong;
+                    DataProvider.Ins.db.SaveChanges();
+                    var wd2 = p as MainWindow;
+                    LoadDataDriver(wd2.ucContainerDriver);
+                    LoadDataBus(wd2.ucContainerBus);
+                    LoadDataSchedule(wd2.ucContainerSchedule);
+                    LoadDataReceipt(wd2.ucContainerReceipt);
+
                 }
             });
-            DeleteDriverCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagDriver == null)
-                    return false;
-                return true;
+            DeleteDriverCommand = new RelayCommand<Window>((p) => {
+                if (SelectedTagDriver != null && Role == "Quản Lý")
+                    return true;
+                return false;
             }, (p) => { 
-               
+                int n = ListBus.Count;
+                for(int i = 0; i < n;i++)
+                    if (ListBus[i].CCCDTX == SelectedItemDriver.CCCDTX)
+                    {
+                        DeleteXeKhach(ListBus[i]);
+                        break;
+                    }
+                DataProvider.Ins.db.TAIXEs.Remove(SelectedItemDriver);
+                DataProvider.Ins.db.SaveChanges();
+                ListDriver.Remove(SelectedItemDriver);
+                HoTenTX.Remove(SelectedItemDriver.TenTaiXe);
+                var wd = p as MainWindow;
+                LoadDataDriver(wd.ucContainerDriver);
+                SelectedTagDriver = null;
+                LoadDataBus(wd.ucContainerBus);
+                SelectedTagBus = null;
+                LoadDataSchedule(wd.ucContainerSchedule);
+                SelectedTagSchedule = null;
+                LoadDataReceipt(wd.ucContainerReceipt);
+                SelectedTagReceipt = null;
             });
             //Bus Station
             SelectedItemBusStation = new BENXE();
-            AddBusStationCommand = new RelayCommand<StackPanel>((p) => { return true; }, (p) => {
+            AddBusStationCommand = new RelayCommand<StackPanel>((p) => {
+                if (Role == "Quản Lý")
+                    return true;
+                return false;
+            }, (p) => {
                 AddBusStationWd wd = new AddBusStationWd();
-                wd.ShowDialog();
                 var busstationVM = wd.DataContext as AddBusStationVM;
+                busstationVM.ListNew = ListBusStation;
+                wd.ShowDialog();
                 if (busstationVM.isAdd)
                 {
-                    ListBusStation.Add(busstationVM.ListNew[busstationVM.index - 1]);
                     BenXe.Add(ListBusStation.Last().TenBenXe);
                     LoadDataBusStation(p);
+                    SelectedTagBusStation = null;
                 }
             });
             EditBusStationCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagBusStation == null)
-                    return false;
-                return true;
+                if (SelectedTagBusStation != null && Role == "Quản Lý")
+                    return true;
+                return false;
             }, (p) => {
                 EditBusStationWd wd = new EditBusStationWd();
                 var editVM = wd.DataContext as EditBusStationVM;
@@ -577,36 +986,68 @@ namespace QuanLyXeKhach.ViewModel
                     SelectedItemBusStation.IDBenXe = uc.ID.Text = editVM.New.IDBenXe;
                     SelectedItemBusStation.DiaChi = uc.DiaChi.Text = editVM.New.DiaChi;
                     SelectedItemBusStation.SoDienThoaiBen = uc.SDT.Text = editVM.New.SoDienThoaiBen;
+                    DataProvider.Ins.db.SaveChanges();
+                    var wd2 = p as MainWindow;
+                    LoadDataBusStation(wd2.ucContainerBusStation);
+                    LoadDataRoute(wd2.ucContainerRoute);
+                    LoadDataSchedule(wd2.ucContainerSchedule);
+                    LoadDataReceipt(wd2.ucContainerReceipt);
                 }
             });
-            DeleteBusStationCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagBusStation == null)
-                    return false;
-                return true;
+            DeleteBusStationCommand = new RelayCommand<Window>((p) => {
+                if (SelectedTagBusStation != null && Role == "Quản Lý")
+                    return true;
+                return false;
             }, (p) => {
-                
+                int n = ListRoute.Count;
+                for(int i= 0; i < n; i++)
+                    if (ListRoute[i].IDBenXeXuatPhat == SelectedItemBusStation.IDBenXe || ListRoute[i].IDBenKetThuc == SelectedItemBusStation.IDBenXe)
+                    {
+                        DeleteTuyenXe(ListRoute[i]);
+                        n--;
+                        i--;
+                    }
+                DataProvider.Ins.db.BENXEs.Remove(SelectedItemBusStation);
+                DataProvider.Ins.db.SaveChanges();
+                ListBusStation.Remove(SelectedItemBusStation);
+                BenXe.Remove(SelectedItemBusStation.TenBenXe);
+                var wd = p as MainWindow;
+                LoadDataBusStation(wd.ucContainerBusStation);
+                SelectedTagBusStation = null;
+                LoadDataRoute(wd.ucContainerRoute);
+                SelectedTagRoute = null;
+                LoadDataSchedule(wd.ucContainerSchedule);
+                SelectedTagSchedule = null;
+                LoadDataReceipt(wd.ucContainerReceipt);
+                SelectedTagReceipt = null;
             });
             //Schedule
             SelectedItemSchedule = new LICHTRINH();
-            AddScheduleCommand = new RelayCommand<StackPanel>((p) => { return true; }, (p) => {
+            AddScheduleCommand = new RelayCommand<StackPanel>((p) => {
+                if (Role == "Quản Lý")
+                    return true;
+                return false;
+            }, (p) => {
                 AddScheduleWd wd = new AddScheduleWd();
                 var addVM = wd.DataContext as AddScheduleVM;
                 addVM.BienSoXe = BienSoXe;
                 addVM.IDTuyenXe = IDTuyenXe;
                 addVM.listXK = ListBus;
                 addVM.listTX = ListRoute;
+                addVM.listG = ListSeat;
+                addVM.ListNew = ListSchedule;
                 wd.ShowDialog();
                 if (addVM.isAdd)
                 {
-                    ListSchedule.Add(addVM.ListNew[addVM.index - 1]);
                     IDLichTrinh.Add(ListSchedule.Last().IDLICHTRINH);
                     LoadDataSchedule(p);
+                    SelectedTagSchedule = null;
                 }
             });
             EditScheduleCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagSchedule == null)
-                    return false;
-                return true;
+                if (SelectedTagSchedule != null && Role == "Quản Lý")
+                    return true;
+                return false;
             }, (p) => {
                 EditScheduleWd wd = new EditScheduleWd();
                 var editVM = wd.DataContext as EditScheduleVM;
@@ -641,10 +1082,28 @@ namespace QuanLyXeKhach.ViewModel
                     SelectedItemSchedule.NgayXuatPhat = editVM.New.NgayXuatPhat;
                     SelectedItemSchedule.TUYENXE = editVM.New.TUYENXE;
                     SelectedItemSchedule.XEKHACH = editVM.New.XEKHACH;
+                    DataProvider.Ins.db.SaveChanges();
+                    var wd2 = p as MainWindow;
+                    LoadDataSchedule(wd2.ucContainerSchedule);
+                    LoadDataReceipt(wd2.ucContainerReceipt);
                 }
             });
+            DeleteScheduleCommand = new RelayCommand<Window>((p) => {
+                if (SelectedTagSchedule != null && Role == "Quản Lý")
+                    return true;
+                return false;
+            }, (p) => {
+                DeleteLichTrinh(SelectedItemSchedule);
+                var wd = p as MainWindow;
+                LoadDataSchedule(wd.ucContainerSchedule);
+                LoadDataReceipt(wd.ucContainerReceipt);
+            });
             //Receipt
-            AddReceiptCommand = new RelayCommand<StackPanel>((p) => { return true; }, (p) => {
+            AddReceiptCommand = new RelayCommand<StackPanel>((p) => {
+                if (Role == "Quản Lý" || Role == "Thu Ngân")
+                    return true;
+                return false;
+            }, (p) => {
                 AddReceiptWd wd = new AddReceiptWd();
                 var addVM = wd.DataContext as AddReceiptVM;
                 addVM.LHanhKhach = HoTenHK;
@@ -654,17 +1113,22 @@ namespace QuanLyXeKhach.ViewModel
                 addVM.listHK = ListClient;
                 addVM.listTN = ListCashier;
                 addVM.listLT = ListSchedule;
+                addVM.ListNew = ListReceipt;
                 wd.ShowDialog();
                 if (addVM.isAdd)
                 {
-                    ListReceipt.Add(addVM.ListNew[addVM.index - 1]);
+                    if (!Years.Contains(ListReceipt.Last().NgayMua.Value.Year.ToString()))
+                        Years.Add(ListReceipt.Last().NgayMua.Value.Year.ToString());
+                    if(year!=null)
+                        ShowChart(int.Parse(year));
                     LoadDataReceipt(p);
+                    SelectedTagReceipt = null;
                 }
             });
             EditReceiptCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagReceipt == null)
-                    return false;
-                return true;
+                if (SelectedTagReceipt != null && (Role == "Quản Lý" || Role == "Thu Ngân"))
+                    return true;
+                return false;
             }, (p) => {
                 EditReceiptWd wd = new EditReceiptWd();
                 var editVM = wd.DataContext as EditReceiptVM;
@@ -714,7 +1178,27 @@ namespace QuanLyXeKhach.ViewModel
                     SelectedItemReceipt.GHE = editVM.New.GHE;
                     SelectedItemReceipt.THUNGAN1 = editVM.New.THUNGAN1;
                     SelectedItemReceipt.HANHKHACH = editVM.New.HANHKHACH;
+                    DataProvider.Ins.db.SaveChanges();
+                    var wd2 = p as MainWindow;
+                    LoadDataReceipt(wd2.ucContainerReceipt);
                 }
+            });
+            DeleteReceiptCommand = new RelayCommand<Window>((p) => {
+                if (SelectedTagReceipt != null && (Role == "Quản Lý" || Role == "Thu Ngân"))
+                    return true;
+                return false;
+            }, (p) => {
+                foreach (var gh in ListSeat)
+                    if (gh.IDGhe == SelectedItemReceipt.IDGhe)
+                        gh.TINHTRANG = false;
+                DataProvider.Ins.db.BIENLAIs.Remove(SelectedItemReceipt);
+                DataProvider.Ins.db.SaveChanges();
+                ListReceipt.Remove(SelectedItemReceipt);
+                if(year!=null)
+                    ShowChart(int.Parse(year));
+                var wd = p as MainWindow;
+                LoadDataReceipt(wd.ucContainerReceipt);
+                SelectedTagReceipt = null;
             });
             //UserControlCommand
             SelectTagClient = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
@@ -1089,6 +1573,7 @@ namespace QuanLyXeKhach.ViewModel
                 }
                 SelectedTagReceipt = null;
             });
+
         }
         private void LoadDataClient(StackPanel sp)
         {
@@ -1221,18 +1706,165 @@ namespace QuanLyXeKhach.ViewModel
             sp.Children.Clear();
             foreach (BIENLAI bl in ListReceipt)
             {
+                string GiaVe = "";
+                double GiaVee = (double)bl.GHE.LICHTRINH?.GiaVe;
+                string GiaGoc = bl.GHE.LICHTRINH?.GiaVe.ToString();
+                switch (bl.GiamGia)
+                {
+                    case "TREEM": GiaVe = (GiaVee * 0.5).ToString(); break;
+                    case "TET": GiaVe = (GiaVee * 0.85).ToString(); break;
+                    case "NGUOIGIA": GiaVe = (GiaVee * 0.6).ToString(); break;
+                    case "KHONG": GiaVe = GiaGoc; break;
+                    default: GiaVe = GiaGoc; break;
+                }
                 var uc = new TagReceiptUC();
                 uc.IDBienLai.Text = bl.IDBienLai;
                 uc.IDLichTrinh.Text = bl.GHE.IDLICHTRINH;
                 uc.TenHanhKhach.Text = bl.HANHKHACH.TenHanhKhach;
                 uc.IDGhe.Text = bl.IDGhe;
                 uc.NgayMua.Text = bl.NgayMua?.ToString("dd/MM/yyyy");
-                uc.ThuNgan.Text = bl.THUNGAN1.HoTen;
-                uc.GiaVe.Text = bl.GHE.LICHTRINH.GiaVe.ToString();
+                uc.ThuNgan.Text = bl.THUNGAN1?.HoTen;
+                uc.GiaVe.Text = GiaVe;
                 uc.MaGiamGia.Text = bl.GiamGia.ToString(); 
                 sp.Children.Add(uc);
             }
 
+        }
+        private void DeleteLichTrinh(LICHTRINH lt)
+        {
+            try
+            {
+                int n = ListReceipt.Count;
+                int m = ListSeat.Count;
+                for (int i = 0; i < m; i++)
+                    if (ListSeat[i].IDLICHTRINH == lt.IDLICHTRINH)
+                    {
+                        for (int j = 0; j < n; j++)
+                            if (ListReceipt[j].IDGhe == ListSeat[i].IDGhe)
+                            {
+                                DataProvider.Ins.db.BIENLAIs.Remove(ListReceipt[j]);
+                                ListReceipt.RemoveAt(j);
+                                n--;
+                                break;
+                            }
+                        DataProvider.Ins.db.GHEs.Remove(ListSeat[i]);
+                        ListSeat.RemoveAt(i);
+                        m--;
+                        i--;
+                    }
+                DataProvider.Ins.db.LICHTRINHs.Remove(lt);
+                DataProvider.Ins.db.SaveChanges();
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            ListSchedule.Remove(lt);
+            IDLichTrinh.Remove(lt.IDLICHTRINH);
+        }
+        private void DeleteXeKhach(XEKHACH xk)
+        {
+            try
+            {
+                int n = ListSchedule.Count;
+                for (int i = 0; i < n; i++)
+                    if (ListSchedule[i].BienSoXe == xk.BienSoXe)
+                    {
+                        DeleteLichTrinh(ListSchedule[i]);
+                        i--;
+                        n--;
+                    }
+                DataProvider.Ins.db.XEKHACHes.Remove(xk);
+                DataProvider.Ins.db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            ListBus.Remove(xk);
+            BienSoXe.Remove(xk.BienSoXe);
+        }
+        private void DeleteTuyenXe(TUYENXE tx)
+        {
+            try
+            {
+                int n = ListSchedule.Count;
+                for (int i = 0; i < n; i++)
+                    if (ListSchedule[i].IDTuyenXe == tx.IDTuyenXe)
+                    {
+                        DeleteLichTrinh(ListSchedule[i]);
+                        i--;
+                        n--;
+                    }
+                DataProvider.Ins.db.TUYENXEs.Remove(tx);
+                DataProvider.Ins.db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            ListRoute.Remove(tx);
+            IDTuyenXe.Remove(tx.IDTuyenXe);
+        }
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+        public static string MD5Hash(string input)
+        {
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hash.Append(bytes[i].ToString("x2"));
+            }
+            return hash.ToString();
+        }
+        private void ShowChart(int year)
+        {
+            ChiPhi.Clear();
+            DoanhThu.Clear();
+            double SumSalary = 0;
+            foreach(TAIXE tx in ListDriver)
+            {
+                SumSalary += (double)tx.Luong;
+            }
+            foreach (NHANVIEN tx in ListStaff)
+            {
+                SumSalary += (double)tx.Luong;
+            }
+            foreach (THUNGAN tx in ListCashier)
+            {
+                SumSalary += (double)tx.Luong;
+            }
+            for (int i = 1; i <= 12; i++)
+            {
+                if (year > DateTime.Now.Year) break;
+                if (year == DateTime.Now.Year && i > DateTime.Now.Month) break;
+                double sum = 0;
+                foreach (var rc in ListReceipt)
+                    if (rc.NgayMua.Value.Month == i && rc.NgayMua.Value.Year == year)
+                    {
+                        double GiaVee = (double)rc.GHE.LICHTRINH?.GiaVe;
+                        switch (rc.GiamGia)
+                        {
+                            case "TREEM": GiaVee = (GiaVee * 0.5); break;
+                            case "TET": GiaVee = (GiaVee * 0.85); break;
+                            case "NGUOIGIA": GiaVee = (GiaVee * 0.6); break;
+                            default:  break;
+                        }
+                        sum += GiaVee;
+                    }
+                DoanhThu.Add((double)sum);
+                if (year == 2023)
+                {
+                    if (i >= 9) ChiPhi.Add(SumSalary);
+                    else ChiPhi.Add(0.0);
+                }
+                else ChiPhi.Add(SumSalary);
+            }
         }
     }
 }

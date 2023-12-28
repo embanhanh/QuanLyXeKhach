@@ -121,7 +121,7 @@
     <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="UserPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="Roles" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="XEKHACH">
@@ -258,7 +258,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QLXEKHACHEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="QLXEKHACHEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="BENXEs" EntityType="Self.BENXE" />
     <EntitySet Name="BIENLAIs" EntityType="Self.BIENLAI" />
     <EntitySet Name="GHEs" EntityType="Self.GHE" />

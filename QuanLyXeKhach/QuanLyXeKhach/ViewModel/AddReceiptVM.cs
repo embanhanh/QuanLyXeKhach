@@ -9,12 +9,15 @@ using System.Windows.Input;
 using System.Windows;
 using System.CodeDom;
 using System.Windows.Controls;
+using System.Linq.Expressions;
 
 namespace QuanLyXeKhach.ViewModel
 {
     public class AddReceiptVM:BaseViewModel
     {
-        public int index;
+        //public int index;
+        private string GiaGoc;
+        private double GiaVee;
         public bool isAdd;
         private BIENLAI _new;
         private List<string> _LHanhKhach;
@@ -53,11 +56,12 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand closeCommand { get; set; }
         public ICommand addCommand { get; set; }
         public ICommand Show { get; set; }
+        public ICommand GGia { get; set; }
         public AddReceiptVM()
         {
             LGhe = new List<string>();
-            LGiamGia = new List<string>() { "TREEM", "NGUOIGIA","TET","NGUOILON" };
-            index = 0;
+            LGiamGia = new List<string>() { "TREEM", "NGUOIGIA","TET","KHONG" };
+            //index = 0;
             New = new BIENLAI();
             ListNew = new ObservableCollection<BIENLAI>();
             isAdd = false;
@@ -72,7 +76,11 @@ namespace QuanLyXeKhach.ViewModel
                 isAdd = false;
                 p.Close();
             });
-            addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            addCommand = new RelayCommand<Window>((p) => {
+                if (string.IsNullOrEmpty(New.IDGhe) || string.IsNullOrEmpty(New.GiamGia) || string.IsNullOrEmpty(ThuNgan) || string.IsNullOrEmpty(HanhKhach) || string.IsNullOrEmpty(IDLichTrinh) || New.NgayMua == null|| string.IsNullOrEmpty(New.IDBienLai))
+                    return false;
+                return true;
+            }, (p) =>
             {
                 foreach(var tn in listTN)
                     if(ThuNgan == tn.HoTen)
@@ -97,12 +105,14 @@ namespace QuanLyXeKhach.ViewModel
                     }
                 LGhe.Clear();
                 ListNew.Add(New);
+                DataProvider.Ins.db.BIENLAIs.Add(New);
+                DataProvider.Ins.db.SaveChanges();
                 GiaVe = "";
                 HanhKhach = "";
                 ThuNgan = "";
                 IDLichTrinh = "";
                 New = new BIENLAI();
-                index++;
+                //index++;
                 isAdd = true;
                 p.Close();
             });
@@ -114,7 +124,31 @@ namespace QuanLyXeKhach.ViewModel
                         LGhe.Add(gh.IDGhe);
                 foreach(var lt in listLT)
                     if(lt.IDLICHTRINH == IDLichTrinh)
+                    {
                         GiaVe = lt.GiaVe.ToString();
+                        GiaVee = (double)lt.GiaVe;
+                    }
+                GiaGoc = GiaVe;
+                switch (New.GiamGia)
+                {
+                    case "TREEM": GiaVe = (GiaVee*0.5).ToString(); break;
+                    case "TET": GiaVe = (GiaVee * 0.85).ToString(); break;
+                    case "NGUOIGIA": GiaVe = (GiaVee * 0.6).ToString(); break;
+                    case "KHONG": GiaVe = GiaGoc; break;
+                    default: GiaVe = GiaGoc; break;
+                }
+            });
+            GGia = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
+            {
+                if (GiaGoc == null || GiaGoc == "") return;
+                switch (New.GiamGia)
+                {
+                    case "TREEM": GiaVe = (GiaVee * 0.5).ToString(); break;
+                    case "TET": GiaVe = (GiaVee * 0.85).ToString(); break;
+                    case "NGUOIGIA": GiaVe = (GiaVee * 0.6).ToString(); break;
+                    case "KHONG": GiaVe = GiaGoc; break;
+                    default: GiaVe = GiaGoc; break;
+                }
             });
         }
     }

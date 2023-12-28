@@ -15,7 +15,7 @@ namespace QuanLyXeKhach.ViewModel
 {
     public class AddBusVM : BaseViewModel
     {
-        public int index = 0;
+        //public int index = 0;
         public bool isAdd = false;
         private ObservableCollection<XEKHACH> _listnew;
         private List<string> _ListTaiXe;
@@ -41,8 +41,12 @@ namespace QuanLyXeKhach.ViewModel
         public AddBusVM()
         {
             New = new XEKHACH();
-            ListNew= new ObservableCollection<XEKHACH>();
-            addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            //ListNew= new ObservableCollection<XEKHACH>();
+            addCommand = new RelayCommand<Window>((p) => {
+                if (string.IsNullOrEmpty(New.BienSoXe) || string.IsNullOrEmpty(New.LoaiXe)|| string.IsNullOrEmpty(New.TinhTrang)|| New.SoGhe == null|| string.IsNullOrEmpty(TaiXe) || string.IsNullOrEmpty(PhuXe))
+                    return false;
+                return true;
+            }, (p) =>
             {
                 foreach (var tx in listTX)
                     if(tx.TenTaiXe == TaiXe)
@@ -59,10 +63,12 @@ namespace QuanLyXeKhach.ViewModel
                         break;
                     }
                 ListNew.Add(New);
+                DataProvider.Ins.db.XEKHACHes.Add(New);
+                DataProvider.Ins.db.SaveChanges();
                 TaiXe = "";
                 PhuXe = "";
                 New = new XEKHACH();
-                index++;
+                //index++;
                 isAdd = true;
                 p.Close();
             });

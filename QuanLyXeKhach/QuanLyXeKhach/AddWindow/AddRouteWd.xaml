@@ -60,14 +60,14 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding BenXeXP}"  
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding BenXeXP,UpdateSourceTrigger=PropertyChanged}"  
                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXe}"
                                 materialDesign:HintAssist.Hint="Bến Xe Xuất Phát"
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}">    
                                 </ComboBox>
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding BenXeDD}"  
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding BenXeDD,UpdateSourceTrigger=PropertyChanged}"  
                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXe}"
                                 materialDesign:HintAssist.Hint="Bến Xe Đích Đến"
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}">
@@ -81,7 +81,7 @@
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="1" Margin="20">
                                 <materialDesign:TimePicker
-                                  SelectedTime="{Binding GioDD}"
+                                  SelectedTime="{Binding GioDD,UpdateSourceTrigger=PropertyChanged}"
                                   BorderBrush="Green"
                                   materialDesign:HintAssist.Hint="Thời gian dự kiến"
                                   Is24Hours="True"
@@ -89,7 +89,7 @@
                             </Grid>
                             <Grid Grid.Column="0" Margin="20">
                                 <materialDesign:TimePicker
-                                  SelectedTime="{Binding GioXP}"
+                                  SelectedTime="{Binding GioXP,UpdateSourceTrigger=PropertyChanged}"
                                   BorderBrush="Green"
                                   materialDesign:HintAssist.Hint="Giờ Xuất Phát"
                                   Is24Hours="True"
@@ -103,8 +103,8 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0" Width="120" Margin="20 0" Command="{Binding addCommand}" CommandParameter="{Binding ElementName=addRouteWd}"
-        Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
-        ToolTip="Resource name: MaterialDesignRaisedLightButton">
+            Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
+            ToolTip="Resource name: MaterialDesignRaisedLightButton">
 
                         </Button>
                         <Button Grid.Column="1" Width="120" Margin="20 0" Command="{Binding closeCommand}" CommandParameter="{Binding ElementName=addRouteWd}"

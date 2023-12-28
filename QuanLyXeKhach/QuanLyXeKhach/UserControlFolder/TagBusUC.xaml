@@ -18,7 +18,7 @@
             <i:InvokeCommandAction CommandParameter="{Binding ElementName=ucTagBus}" Command="{Binding SelectTagBus}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Border  Background="#FFB534"  CornerRadius="15" BorderThickness="1" BorderBrush="Gray">
+    <Border  Background="#C1F2B0"  CornerRadius="15" BorderThickness="1" BorderBrush="Gray">
         <Grid>
 
             <Grid.ColumnDefinitions>
@@ -39,7 +39,7 @@
                     <TextBox Margin="2" BorderBrush="Black" 
                     materialDesign:HintAssist.Foreground="Black"
                     VerticalAlignment="Center"  x:Name="BienSoXe"
-                     materialDesign:HintAssist.Background="#FFB534"
+                     materialDesign:HintAssist.Background="#C1F2B0"
                      materialDesign:HintAssist.Hint="Biển Số Xe" MaxWidth="300"
                      IsReadOnly="True" BorderThickness="1.5" TextAlignment="Center"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -50,7 +50,7 @@
                     materialDesign:HintAssist.Foreground="Black"
                     VerticalAlignment="Center"  MaxWidth="300"
                      IsReadOnly="True"  BorderThickness="1.5"
-                     materialDesign:HintAssist.Background="#FFB534"
+                     materialDesign:HintAssist.Background="#C1F2B0"
                      materialDesign:HintAssist.Hint="Loại Xe"
                      x:Name="LoaiXe" TextAlignment="Center"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -66,7 +66,7 @@
                     <TextBox Margin="2" BorderBrush="Black" 
                      materialDesign:HintAssist.Foreground="Black"
                      materialDesign:HintAssist.Hint="Số Ghế" MaxWidth="150"
-                     materialDesign:HintAssist.Background="#FFB534"
+                     materialDesign:HintAssist.Background="#C1F2B0"
                      x:Name="SoGhe" TextAlignment="Center"
                      IsReadOnly="True"  BorderThickness="1.5"
                     VerticalAlignment="Center" 
@@ -77,7 +77,7 @@
                     <TextBox Margin="2" BorderBrush="Black" 
                     materialDesign:HintAssist.Foreground="Black"
                     VerticalAlignment="Center"  MaxWidth="300"
-                     materialDesign:HintAssist.Background="#FFB534"
+                     materialDesign:HintAssist.Background="#C1F2B0"
                      materialDesign:HintAssist.Hint="Tình Trạng"
                      x:Name="TinhTrang" TextAlignment="Center"
                      IsReadOnly="True"  BorderThickness="1.5"
@@ -94,7 +94,7 @@
                     <TextBox Margin="2" BorderBrush="Black" 
                      materialDesign:HintAssist.Foreground="Black"
                      materialDesign:HintAssist.Hint="Tài Xế"
-                     materialDesign:HintAssist.Background="#FFB534"
+                     materialDesign:HintAssist.Background="#C1F2B0"
                      x:Name="TX"  BorderThickness="1.5"
                      IsReadOnly="True" TextAlignment="Center"
                     VerticalAlignment="Center" MaxWidth="300"
@@ -107,7 +107,7 @@
                     VerticalAlignment="Center"  MaxWidth="300"
                      IsReadOnly="True"  BorderThickness="1.5"
                       x:Name="PX" TextAlignment="Center"
-                     materialDesign:HintAssist.Background="#FFB534"
+                     materialDesign:HintAssist.Background="#C1F2B0"
                      materialDesign:HintAssist.Hint="Phụ Xe"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     Padding="8" />      

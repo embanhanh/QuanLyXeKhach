@@ -109,7 +109,7 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="100" />
           <Property Name="UserPassword" Type="nvarchar(max)" />
           <Property Name="FullName" Type="nvarchar(max)" />
-          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
           <Property Name="Roles" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="XEKHACH">
@@ -422,7 +422,7 @@
           <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UserPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="Roles" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="XEKHACH">
@@ -559,7 +559,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QLXEKHACHEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="QLXEKHACHEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BENXEs" EntityType="Self.BENXE" />
           <EntitySet Name="BIENLAIs" EntityType="Self.BIENLAI" />
           <EntitySet Name="GHEs" EntityType="Self.GHE" />
@@ -617,7 +617,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEKHACHEntities">
+        <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEKHACHEntities1">
           <EntitySetMapping Name="BENXEs">
             <EntityTypeMapping TypeName="QLXEKHACHModel.BENXE">
               <MappingFragment StoreEntitySet="BENXE">
@@ -730,7 +730,7 @@
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="Roles" ColumnName="Roles" />
               </MappingFragment>
             </EntityTypeMapping>

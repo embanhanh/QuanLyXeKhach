@@ -18,7 +18,7 @@
             <i:InvokeCommandAction CommandParameter="{Binding ElementName=ucTagRoute}" Command="{Binding SelectTagRoute}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Border  Background="#FFB534"  CornerRadius="15" BorderThickness="1" BorderBrush="Gray">
+    <Border  Background="#C1F2B0"  CornerRadius="15" BorderThickness="1" BorderBrush="Gray">
         <Grid>
 
             <Grid.ColumnDefinitions>
@@ -37,7 +37,7 @@
                 <TextBox Margin="2" BorderBrush="Black" TextAlignment="Center"
                 materialDesign:HintAssist.Foreground="Black"
                 VerticalAlignment="Center"  x:Name="BenXeXP"
-                    materialDesign:HintAssist.Background="#FFB534"
+                    materialDesign:HintAssist.Background="#C1F2B0"
                     materialDesign:HintAssist.Hint="Bến Xe Xuất Phát"
                     IsReadOnly="True" BorderThickness="1.5" 
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -48,7 +48,7 @@
                 materialDesign:HintAssist.Foreground="Black"
                 VerticalAlignment="Center"  
                  IsReadOnly="True" BorderThickness="1.5"
-                 materialDesign:HintAssist.Background="#FFB534"
+                 materialDesign:HintAssist.Background="#C1F2B0"
                  materialDesign:HintAssist.Hint="Bến Xe Đích Đến"
                  x:Name="BenXeDD" TextAlignment="Center"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -59,7 +59,7 @@
                 BorderThickness="1.5"
                 materialDesign:HintAssist.Foreground="Black"
                 materialDesign:HintAssist.Hint="Giờ Xuất Phát"
-                materialDesign:HintAssist.Background="#FFB534"
+                materialDesign:HintAssist.Background="#C1F2B0"
                 x:Name="GioXP" TextAlignment="Center"
                 IsReadOnly="True"
                 VerticalAlignment="Center" 
@@ -71,7 +71,7 @@
                 <TextBox Margin="2" BorderBrush="Black"
                 materialDesign:HintAssist.Foreground="Black"
                 VerticalAlignment="Center"  
-                 materialDesign:HintAssist.Background="#FFB534"
+                 materialDesign:HintAssist.Background="#C1F2B0"
                  materialDesign:HintAssist.Hint="Thời Gian Dự Kiến"
                  x:Name="GioDD" BorderThickness="1.5"
                  IsReadOnly="True" TextAlignment="Center"
@@ -83,7 +83,7 @@
                      BorderThickness="1.5" 
                      materialDesign:HintAssist.Foreground="Black"
                      materialDesign:HintAssist.Hint="ID"
-                     materialDesign:HintAssist.Background="#FFB534"
+                     materialDesign:HintAssist.Background="#C1F2B0"
                      x:Name="IDTuyenXe" TextAlignment="Center"
                     IsReadOnly="True" MaxWidth="80"
                     VerticalAlignment="Center" 

@@ -59,14 +59,14 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.BienSoXe}"  
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.BienSoXe,UpdateSourceTrigger=PropertyChanged}"  
                             materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BienSoXe}"
                             materialDesign:HintAssist.Hint="Biển số xe"
                             Style="{StaticResource MaterialDesignOutlinedComboBox}">
                                 </ComboBox>
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.IDTuyenXe}"  
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.IDTuyenXe,UpdateSourceTrigger=PropertyChanged}"  
                             materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding IDTuyenXe}"
                             materialDesign:HintAssist.Hint="ID tuyến xe"
                             Style="{StaticResource MaterialDesignOutlinedComboBox}">
@@ -87,7 +87,7 @@
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Column="0" Margin="20">
-                                <DatePicker BorderBrush="Green" SelectedDate="{Binding New.NgayXuatPhat}"
+                                <DatePicker BorderBrush="Green" SelectedDate="{Binding New.NgayXuatPhat,UpdateSourceTrigger=PropertyChanged}"
                                 materialDesign:HintAssist.Foreground="Green" 
                                 materialDesign:HintAssist.Hint="Ngày xuất phát"
                                 Style="{StaticResource MaterialDesignOutlinedDatePicker}" />

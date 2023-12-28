@@ -12,7 +12,7 @@ namespace QuanLyXeKhach.ViewModel
 {
     internal class AddRouteVM : BaseViewModel
     {
-        public int index = 0;
+        //public int index = 0;
         public bool isAdd = false;
         private string _BenXeXP;
         public string BenXeXP { get => _BenXeXP; set { _BenXeXP = value; OnPropertyChanged(); } }
@@ -37,7 +37,11 @@ namespace QuanLyXeKhach.ViewModel
         {
             ListNew= new ObservableCollection<TUYENXE>();
             New = new TUYENXE();    
-            addCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            addCommand = new RelayCommand<Window>((p) => {
+                if (string.IsNullOrEmpty(New.IDTuyenXe) || string.IsNullOrEmpty(BenXeXP) || string.IsNullOrEmpty(BenXeDD) || GioXP == null || GioDD == null)
+                    return false;
+                return true;
+            }, (p) =>
             {
                 foreach (BENXE bx in listBX)
                 {
@@ -60,12 +64,14 @@ namespace QuanLyXeKhach.ViewModel
                 New.GioXuatPhat = GioXP.TimeOfDay;
                 New.ThoiGianDuKien = GioDD.TimeOfDay;
                 ListNew.Add(New);
+                DataProvider.Ins.db.TUYENXEs.Add(New);
+                DataProvider.Ins.db.SaveChanges();
                 BenXeXP = "";
                 BenXeDD = "";
                 GioXP = DateTime.Today;
                 GioDD = DateTime.Today;
                 New = new TUYENXE();
-                index++;
+                //index++;
                 isAdd = true;
                 p.Close();
             });

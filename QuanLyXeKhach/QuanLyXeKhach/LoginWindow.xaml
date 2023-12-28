@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyXeKhach"
         mc:Ignorable="d"
-
+        
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:uccb="clr-namespace:QuanLyXeKhach.UserControlFolder"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -22,7 +22,7 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
 
-        Title="Login" Height="400" Width="600">
+        Title="" Height="400" Width="600">
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
