@@ -64,6 +64,9 @@
                             <i:EventTrigger EventName="GotFocus">
                                 <i:InvokeCommandAction Command="{Binding UsernameEmpty}"/>
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding UsernameEmpty}"/>
+                            </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </TextBox>
                     <TextBlock Text="{Binding ErrorMessage1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 

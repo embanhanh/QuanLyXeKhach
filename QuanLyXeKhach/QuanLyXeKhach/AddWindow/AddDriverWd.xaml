@@ -13,7 +13,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="AddDriverWd" Height="550" Width="800" Background="{x:Null}" AllowsTransparency="True">
+        Title="AddDriverWd" Height="570" Width="800" Background="{x:Null}" AllowsTransparency="True">
     <Border Background="#08c424" CornerRadius="40" BorderThickness="1" BorderBrush="Gray">
         <Grid >
             <Grid.RowDefinitions>
@@ -51,13 +51,22 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.CCCDTX,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                                materialDesign:HintAssist.Foreground="Green"
-                                VerticalAlignment="Center"
-                                materialDesign:HintAssist.Hint="CCCD"
-                                MaxLength="12"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            <Grid Grid.Row="0" Margin="20 20 20 0">
+                                <StackPanel>
+                                    <TextBox BorderBrush="Green" Text="{Binding New.CCCDTX,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                    materialDesign:HintAssist.Foreground="Green"
+                                    VerticalAlignment="Top"
+                                    materialDesign:HintAssist.Hint="CCCD"
+                                    MaxLength="12"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding Check}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+                                    <TextBlock VerticalAlignment="Bottom" Foreground="Red" Text="{Binding ErrorMessage}"></TextBlock>
+                                </StackPanel>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
                                 <TextBox BorderBrush="Green" Text="{Binding New.TenTaiXe, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"

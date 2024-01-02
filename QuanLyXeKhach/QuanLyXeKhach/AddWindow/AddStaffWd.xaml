@@ -51,13 +51,22 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.CCCDNV,UpdateSourceTrigger=PropertyChanged}"
-                            materialDesign:HintAssist.Foreground="Green"
-                            VerticalAlignment="Center"
-                            materialDesign:HintAssist.Hint="CCCD"
-                            MaxLength="12"
-                            Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            <Grid Grid.Row="0" Margin="20 20 20 0">
+                                <StackPanel>
+                                    <TextBox BorderBrush="Green" Text="{Binding New.CCCDNV,UpdateSourceTrigger=PropertyChanged}"
+                                    materialDesign:HintAssist.Foreground="Green"
+                                    VerticalAlignment="Top"
+                                    materialDesign:HintAssist.Hint="CCCD"
+                                    MaxLength="12"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding Check}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+                                    <TextBlock VerticalAlignment="Bottom" Foreground="red" Text="{Binding ErrorMessage}"> </TextBlock>
+                                </StackPanel>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
                                 <TextBox BorderBrush="Green" Text="{Binding New.HoTenNhanVien,UpdateSourceTrigger=PropertyChanged}"

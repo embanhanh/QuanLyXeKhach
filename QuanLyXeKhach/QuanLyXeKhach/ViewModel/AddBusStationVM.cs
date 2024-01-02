@@ -15,11 +15,14 @@ namespace QuanLyXeKhach.ViewModel
         //public int index;
         public bool isAdd;
         private BENXE _new;
+        private string _ErrorMessage;
+        public string ErrorMessage { get => _ErrorMessage; set { _ErrorMessage = value; OnPropertyChanged(); } }
         public BENXE New { get => _new; set { _new = value; OnPropertyChanged(); } }
         private ObservableCollection<BENXE> _listnew;
         public ObservableCollection<BENXE> ListNew { get => _listnew; set { _listnew = value; OnPropertyChanged(); } }
         public ICommand closeCommand { get; set; }
         public ICommand addCommand { get; set; }
+        public ICommand Check { get; set; }
         public AddBusStationVM()
         {
             //index = 0;
@@ -33,7 +36,7 @@ namespace QuanLyXeKhach.ViewModel
                 p.Close();
             });
             addCommand = new RelayCommand<Window>((p) => {
-                if (string.IsNullOrEmpty(New.IDBenXe) || string.IsNullOrEmpty(New.TenBenXe) || string.IsNullOrEmpty(New.DiaChi) || string.IsNullOrEmpty(New.SoDienThoaiBen))
+                if (string.IsNullOrEmpty(New.IDBenXe) || string.IsNullOrEmpty(New.TenBenXe) || string.IsNullOrEmpty(New.DiaChi) || string.IsNullOrEmpty(New.SoDienThoaiBen) || ErrorMessage != "")
                     return false;
                 return true;
             }, (p) =>
@@ -46,7 +49,21 @@ namespace QuanLyXeKhach.ViewModel
                 isAdd = true;
                 p.Close();
             });
-
+            Check = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                if (New.IDBenXe?.Length < 6)
+                {
+                    ErrorMessage = "";
+                    return;
+                }
+                foreach (var tx in ListNew)
+                    if (New.IDBenXe == tx.IDBenXe)
+                    {
+                        ErrorMessage = "Biển số xe đã tồn tại!";
+                        return;
+                    }
+                ErrorMessage = "";
+            });
         }
     }
 }

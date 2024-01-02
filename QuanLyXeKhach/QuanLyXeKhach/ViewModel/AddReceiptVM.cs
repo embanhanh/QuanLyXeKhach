@@ -31,6 +31,8 @@ namespace QuanLyXeKhach.ViewModel
         private string _GiaVe;
         private string _GiamGia;
         private string _IDLichTrinh;
+        private string _ErrorMessage;
+        public string ErrorMessage { get => _ErrorMessage; set { _ErrorMessage = value; OnPropertyChanged(); } }
         public string GiamGia { get { return _GiamGia; } set { _GiamGia = value; OnPropertyChanged(); } }
         public string HanhKhach { get { return _HanhKhach; } set { _HanhKhach = value; OnPropertyChanged(); } }
         public string ThuNgan { get { return _ThuNgan; } set { _ThuNgan = value; OnPropertyChanged(); } }
@@ -57,6 +59,7 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand addCommand { get; set; }
         public ICommand Show { get; set; }
         public ICommand GGia { get; set; }
+        public ICommand Check { get; set; }
         public AddReceiptVM()
         {
             LGhe = new List<string>();
@@ -77,7 +80,8 @@ namespace QuanLyXeKhach.ViewModel
                 p.Close();
             });
             addCommand = new RelayCommand<Window>((p) => {
-                if (string.IsNullOrEmpty(New.IDGhe) || string.IsNullOrEmpty(New.GiamGia) || string.IsNullOrEmpty(ThuNgan) || string.IsNullOrEmpty(HanhKhach) || string.IsNullOrEmpty(IDLichTrinh) || New.NgayMua == null|| string.IsNullOrEmpty(New.IDBienLai))
+                if (string.IsNullOrEmpty(New.IDGhe) || string.IsNullOrEmpty(New.GiamGia) || string.IsNullOrEmpty(ThuNgan) || string.IsNullOrEmpty(HanhKhach) 
+                || string.IsNullOrEmpty(IDLichTrinh) || New.NgayMua == null|| string.IsNullOrEmpty(New.IDBienLai) || ErrorMessage != "")
                     return false;
                 return true;
             }, (p) =>
@@ -149,6 +153,21 @@ namespace QuanLyXeKhach.ViewModel
                     case "KHONG": GiaVe = GiaGoc; break;
                     default: GiaVe = GiaGoc; break;
                 }
+            });
+            Check = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                if (New.IDBienLai?.Length < 6)
+                {
+                    ErrorMessage = "";
+                    return;
+                }
+                foreach (var tx in ListNew)
+                    if (New.IDBienLai == tx.IDBienLai)
+                    {
+                        ErrorMessage = "Mã Biên lai đã tồn tại!";
+                        return;
+                    }
+                ErrorMessage = "";
             });
         }
     }

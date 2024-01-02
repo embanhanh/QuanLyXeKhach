@@ -24,6 +24,8 @@ namespace QuanLyXeKhach.ViewModel
         private string _PhuXe;
         private ObservableCollection<TAIXE> _listTX;
         private ObservableCollection<NHANVIEN> _listPX;
+        private string _ErrorMessage;
+        public string ErrorMessage { get => _ErrorMessage; set { _ErrorMessage = value; OnPropertyChanged(); } }
         public ObservableCollection<TAIXE> listTX { get => _listTX; set { _listTX = value; OnPropertyChanged(); } }
         public ObservableCollection<NHANVIEN> listPX { get => _listPX; set { _listPX = value; OnPropertyChanged(); } }
         public string TaiXe { get => _TaiXe; set { _TaiXe = value; OnPropertyChanged(); } }
@@ -37,13 +39,14 @@ namespace QuanLyXeKhach.ViewModel
         public List<string> BenXeXuatPhat { get => _BenXeXuatPhat; set {_BenXeXuatPhat = value; OnPropertyChanged(); } }
         public ICommand addCommand { get; set; }
         public ICommand closeCommand { get; set; }
+        public ICommand Check { get; set; }
 
         public AddBusVM()
         {
             New = new XEKHACH();
             //ListNew= new ObservableCollection<XEKHACH>();
             addCommand = new RelayCommand<Window>((p) => {
-                if (string.IsNullOrEmpty(New.BienSoXe) || string.IsNullOrEmpty(New.LoaiXe)|| string.IsNullOrEmpty(New.TinhTrang)|| New.SoGhe == null|| string.IsNullOrEmpty(TaiXe) || string.IsNullOrEmpty(PhuXe))
+                if (string.IsNullOrEmpty(New.BienSoXe) || string.IsNullOrEmpty(New.LoaiXe)|| string.IsNullOrEmpty(New.TinhTrang)|| New.SoGhe == null|| string.IsNullOrEmpty(TaiXe) || string.IsNullOrEmpty(PhuXe) || ErrorMessage != "")
                     return false;
                 return true;
             }, (p) =>
@@ -77,6 +80,21 @@ namespace QuanLyXeKhach.ViewModel
                 New = new XEKHACH();
                 isAdd = false;
                 p.Close();
+            });
+            Check = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                if (New.BienSoXe?.Length < 9)
+                {
+                    ErrorMessage = "";
+                    return;
+                }
+                foreach (var tx in ListNew)
+                    if (New.BienSoXe == tx.BienSoXe)
+                    {
+                        ErrorMessage = "Biển số xe đã tồn tại!";
+                        return;
+                    }
+                ErrorMessage = "";
             });
         }
     }

@@ -75,6 +75,8 @@ namespace QuanLyXeKhach.ViewModel
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
             {
                 Password = p.Password;
+                ErrorMessage2 = "";
+                ColorHint2 = "Green";
             });
             CloseLgWdCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {

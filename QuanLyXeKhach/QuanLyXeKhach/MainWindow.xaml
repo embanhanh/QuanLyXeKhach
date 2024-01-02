@@ -19,7 +19,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         DataContext="{StaticResource MainVM}"
         ResizeMode="NoResize"
-        WindowStyle="None"
+        WindowStyle="None" WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         Name="MainWd"
  
@@ -243,7 +243,9 @@
                             <TextBlock Foreground="White" Text="Trang Chủ" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>
-                    <TextBlock Text="Home item" Foreground="Black"></TextBlock>
+                    <Grid>
+                        <Image></Image>
+                    </Grid>
                 </TabItem>
                 <!--Clients-->
                 <TabItem Height="65">
@@ -959,11 +961,11 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
                                 <!--Edit-->
-                                <Button Width="100" Margin="20 0" Command="{Binding EditReceiptCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                <!--<Button Width="100" Margin="20 0" Command="{Binding EditReceiptCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                  Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                  Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />-->
                                 <!--Delete-->
                                 <Button Width="100" Margin="20 0" Command="{Binding DeleteReceiptCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                  Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"

@@ -18,12 +18,15 @@ namespace QuanLyXeKhach.ViewModel
         private List<string> _GioiTinh;
         private ObservableCollection<THUNGAN> _ListNew;
         private string _Luong;
+        private string _ErrorMessage;
+        public string ErrorMessage { get => _ErrorMessage; set { _ErrorMessage = value; OnPropertyChanged(); } }
         public string Luong { get => _Luong; set { _Luong = value; OnPropertyChanged(); } }
         public ObservableCollection<THUNGAN> ListNew { get => _ListNew; set { _ListNew = value; OnPropertyChanged(); } }
         public List<string> GioiTinh { get => _GioiTinh; set { _GioiTinh = value; OnPropertyChanged(); } }
         public THUNGAN New { get => _new; set { _new = value; OnPropertyChanged(); } }
         public ICommand closeCommand { get; set; }
         public ICommand addCommand { get; set; }
+        public ICommand Check { get; set; }
         public AddCashierVM()
         {
             //ListNew = new ObservableCollection<THUNGAN>();
@@ -38,7 +41,8 @@ namespace QuanLyXeKhach.ViewModel
                 p.Close();
             });
             addCommand = new RelayCommand<Window>((p) => {
-                if (string.IsNullOrEmpty(New.HoTen) || string.IsNullOrEmpty(New.SoDienThoai) || string.IsNullOrEmpty(New.CCCDTN) || string.IsNullOrEmpty(New.DiaChi) || string.IsNullOrEmpty(New.GioiTinh) || New.NgaySinh == null || string.IsNullOrEmpty(Luong))
+                if (string.IsNullOrEmpty(New.HoTen) || string.IsNullOrEmpty(New.SoDienThoai) || string.IsNullOrEmpty(New.CCCDTN) || string.IsNullOrEmpty(New.DiaChi) || 
+                string.IsNullOrEmpty(New.GioiTinh) || New.NgaySinh == null || string.IsNullOrEmpty(Luong) || ErrorMessage != "")
                     return false;
                 return true;
             }, (p) =>
@@ -52,6 +56,21 @@ namespace QuanLyXeKhach.ViewModel
                 New = new THUNGAN();
                 isAdd = true;
                 p.Close();
+            });
+            Check = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                if (New.CCCDTN?.Length < 12)
+                {
+                    ErrorMessage = "";
+                    return;
+                }
+                foreach (var tx in ListNew)
+                    if (New.CCCDTN == tx.CCCDTN)
+                    {
+                        ErrorMessage = "Căn cước công dân đã tồn tại!";
+                        return;
+                    }
+                ErrorMessage = "";
             });
         }
     }

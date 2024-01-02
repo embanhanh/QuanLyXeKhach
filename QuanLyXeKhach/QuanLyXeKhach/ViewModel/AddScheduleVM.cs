@@ -17,6 +17,8 @@ namespace QuanLyXeKhach.ViewModel
         public bool isAdd = false;
         private List<string> _BienSoXe;
         private string _GiaVe;
+        private string _ErrorMessage;
+        public string ErrorMessage { get => _ErrorMessage; set { _ErrorMessage = value; OnPropertyChanged(); } }
         public List<string> BienSoXe { get => _BienSoXe; set { _BienSoXe = value; OnPropertyChanged(); } }
         public string GiaVe { get => _GiaVe; set { _GiaVe = value; OnPropertyChanged(); } }
         private List<string> _IDTuyenXe;
@@ -33,13 +35,14 @@ namespace QuanLyXeKhach.ViewModel
         public LICHTRINH New { get => _new; set { _new = value; OnPropertyChanged(); } }
         public ICommand addCommand { get; set; }
         public ICommand closeCommand { get; set; }
+        public ICommand Check { get; set; }
 
         public AddScheduleVM()
         {
             //ListNew = new ObservableCollection<LICHTRINH>();
             New = new LICHTRINH();
             addCommand = new RelayCommand<Window>((p) => {
-                if (string.IsNullOrEmpty(New.IDTuyenXe) || string.IsNullOrEmpty(New.BienSoXe) || string.IsNullOrEmpty(New.IDLICHTRINH) || string.IsNullOrEmpty(GiaVe) || New.NgayXuatPhat == null)
+                if (string.IsNullOrEmpty(New.IDTuyenXe) || string.IsNullOrEmpty(New.BienSoXe) || string.IsNullOrEmpty(New.IDLICHTRINH) || string.IsNullOrEmpty(GiaVe) || New.NgayXuatPhat == null || ErrorMessage !="")
                     return false;
                 return true;
             }, (p) =>
@@ -102,6 +105,21 @@ namespace QuanLyXeKhach.ViewModel
                 New = new LICHTRINH();
                 isAdd = false;
                 p.Close();
+            });
+            Check = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                if (New.IDLICHTRINH?.Length < 6)
+                {
+                    ErrorMessage = "";
+                    return;
+                }
+                foreach (var tx in ListNew)
+                    if (New.IDLICHTRINH == tx.IDLICHTRINH)
+                    {
+                        ErrorMessage = "Mã lịch trình đã tồn tại!";
+                        return;
+                    }
+                ErrorMessage = "";
             });
         }
     }

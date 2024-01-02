@@ -51,13 +51,22 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0" Margin="20 0 20 20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBienLai,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                                materialDesign:HintAssist.Foreground="Green"
-                                VerticalAlignment="Center"
-                                materialDesign:HintAssist.Hint="Mã Biên Lai"
-                                MaxLength="6"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            <Grid Grid.Column="0" Margin="20 0 20 0">
+                                <StackPanel>
+                                    <TextBox BorderBrush="Green" Text="{Binding New.IDBienLai,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                    materialDesign:HintAssist.Foreground="Green"
+                                    VerticalAlignment="Center"
+                                    materialDesign:HintAssist.Hint="Mã Biên Lai"
+                                    MaxLength="6"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding Check}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+                                    <TextBlock VerticalAlignment="Bottom" Foreground="red" Text="{Binding ErrorMessage}"></TextBlock>
+                                </StackPanel>
                             </Grid>
                             <Grid Grid.Column="2" Margin="20 0 20 20">
                                 <ComboBox BorderBrush="Green" SelectedValue="{Binding IDLichTrinh,UpdateSourceTrigger=PropertyChanged}"  

@@ -12,6 +12,8 @@ namespace QuanLyXeKhach.ViewModel
 {
     internal class AddRouteVM : BaseViewModel
     {
+        private string _ErrorMessage;
+        public string ErrorMessage { get => _ErrorMessage; set { _ErrorMessage = value; OnPropertyChanged(); } }
         //public int index = 0;
         public bool isAdd = false;
         private string _BenXeXP;
@@ -32,13 +34,14 @@ namespace QuanLyXeKhach.ViewModel
         public List<string> BenXe { get => _BenXe; set { _BenXe = value; OnPropertyChanged(); } }
         public ICommand addCommand { get; set; }
         public ICommand closeCommand { get; set; }
+        public ICommand Check { get; set; }
 
         public AddRouteVM()
         {
             ListNew= new ObservableCollection<TUYENXE>();
             New = new TUYENXE();    
             addCommand = new RelayCommand<Window>((p) => {
-                if (string.IsNullOrEmpty(New.IDTuyenXe) || string.IsNullOrEmpty(BenXeXP) || string.IsNullOrEmpty(BenXeDD) || GioXP == null || GioDD == null)
+                if (string.IsNullOrEmpty(New.IDTuyenXe) || string.IsNullOrEmpty(BenXeXP) || string.IsNullOrEmpty(BenXeDD) || GioXP == null || GioDD == null || ErrorMessage != "")
                     return false;
                 return true;
             }, (p) =>
@@ -80,6 +83,21 @@ namespace QuanLyXeKhach.ViewModel
                 New = new TUYENXE();
                 isAdd = false;
                 p.Close();
+            });
+            Check = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                if (New.IDTuyenXe?.Length < 6)
+                {
+                    ErrorMessage = "";
+                    return;
+                }
+                foreach (var tx in ListNew)
+                    if (New.IDTuyenXe == tx.IDTuyenXe)
+                    {
+                        ErrorMessage = "Mã tuyến xe đã tồn tại!";
+                        return;
+                    }
+                ErrorMessage = "";
             });
         }
     }

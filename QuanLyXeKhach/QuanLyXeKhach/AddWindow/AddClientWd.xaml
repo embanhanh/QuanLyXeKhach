@@ -53,13 +53,22 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDHanhKhach,UpdateSourceTrigger=PropertyChanged}"
-                                    materialDesign:HintAssist.Foreground="Green"
-                                    VerticalAlignment="Center"
-                                    materialDesign:HintAssist.Hint="ID"
-                                    MaxLength="6"
-                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            <Grid Grid.Row="0" Margin="20 20 20 0">
+                                <StackPanel>
+                                    <TextBox BorderBrush="Green" Text="{Binding New.IDHanhKhach,UpdateSourceTrigger=PropertyChanged}"
+                                        materialDesign:HintAssist.Foreground="Green"
+                                        VerticalAlignment="Top"
+                                        materialDesign:HintAssist.Hint="Mã hành khách"
+                                        MaxLength="6"
+                                        Style="{StaticResource MaterialDesignOutlinedTextBox}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding CheckHK}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+                                    <TextBlock VerticalAlignment="Bottom" Foreground="Red" Text="{Binding ErrorMessageHK}"></TextBlock>
+                                </StackPanel>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
                                 <TextBox BorderBrush="Green" Text="{Binding New.TenHanhKhach,UpdateSourceTrigger=PropertyChanged}"
@@ -83,12 +92,21 @@
                                 <RowDefinition></RowDefinition>
                                 
                             </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.CCCD,UpdateSourceTrigger=PropertyChanged}"
-                                    materialDesign:HintAssist.Foreground="Green"
-                                    VerticalAlignment="Center" MaxLength="12"
-                                    materialDesign:HintAssist.Hint="CCCD"
-                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            <Grid Grid.Row="0" Margin="20 20 20 0">
+                                <StackPanel>
+                                    <TextBox BorderBrush="Green" Text="{Binding New.CCCD,UpdateSourceTrigger=PropertyChanged}"
+                                        materialDesign:HintAssist.Foreground="Green"
+                                        VerticalAlignment="Top" MaxLength="12"
+                                        materialDesign:HintAssist.Hint="CCCD"
+                                        Style="{StaticResource MaterialDesignOutlinedTextBox}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding Check}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+                                    <TextBlock VerticalAlignment="Bottom" Text="{Binding ErrorMessage,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Foreground="Red"></TextBlock>
+                                </StackPanel>
                             </Grid>
                             <Grid Grid.Row="1" Margin="20">
                                 <TextBox BorderBrush="Green" Text="{Binding New.SDTHK,UpdateSourceTrigger=PropertyChanged}"
