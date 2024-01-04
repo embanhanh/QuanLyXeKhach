@@ -245,7 +245,7 @@ namespace QuanLyXeKhach.ViewModel
                 else
                     p.Close();
                 var mainWd = p as MainWindow;
-                LoadDataClient(mainWd.ucContainerClient);
+                //LoadDataClient(mainWd.ucContainerClient);
                 LoadDataStaff(mainWd.ucContainerStaff);
                 LoadDataDriver(mainWd.ucContainerDriver);
                 LoadDataBusStation(mainWd.ucContainerBusStation);
@@ -445,90 +445,90 @@ namespace QuanLyXeKhach.ViewModel
                 ErrorMessagePassword = "";
             });
             //Client
-            SelectedItemClient = new HANHKHACH();
-            AddClientCommand = new RelayCommand<StackPanel>((p) => {
-                if (Role == "Quản Lý" || Role == "Thu Ngân")
-                    return true;
-                return false;
-            }, (p) => { 
-                AddClientWd wd = new AddClientWd(); 
-                var clientVM = wd.DataContext as AddClientVM;
-                clientVM.ListNew = ListClient;
-                wd.ShowDialog();
-                if (clientVM.isAdd)
-                {
-                    HoTenHK.Add(ListClient.Last().TenHanhKhach);
-                    LoadDataClient(p);
-                    SelectedTagClient = null;
-                }
-            });
-            EditClientCommand = new RelayCommand<Window>((p) => {
-                if (SelectedTagClient != null && (Role == "Quản Lý" || Role == "Thu Ngân"))
-                    return true;
-                return false;
-            }, (p) => { 
-                EditClientWd wd = new EditClientWd();
-                var editVM = wd.DataContext as EditClientVM;
-                editVM.New2.Tuoi= SelectedItemClient.Tuoi;
-                editVM.New2.IDHanhKhach = SelectedItemClient.IDHanhKhach;
-                editVM.New2.CCCD = SelectedItemClient.CCCD;
-                editVM.New2.TenHanhKhach= SelectedItemClient.TenHanhKhach;
-                editVM.New2.DiaChiHK = SelectedItemClient.DiaChiHK;
-                editVM.New2.GioiTinh = SelectedItemClient.GioiTinh;
-                editVM.New2.SDTHK = SelectedItemClient.SDTHK;
-                editVM.New = editVM.New2;
-                wd.ShowDialog();
-                if(editVM.isEdit)
-                {
-                    int index = ListClient.IndexOf(SelectedItemClient);
-                    HoTenHK.RemoveAt(index);
-                    HoTenHK.Insert(index, editVM.New.TenHanhKhach);
-                    var uc = SelectedTagClient as TagClientUC;
-                    SelectedItemClient.TenHanhKhach = uc.TenHanhKhach.Text = editVM.New.TenHanhKhach;
-                    SelectedItemClient.IDHanhKhach = uc.IDHanhKhach.Text = editVM.New.IDHanhKhach;
-                    SelectedItemClient.Tuoi = uc.Tuoi.Text = editVM.New.Tuoi;
-                    SelectedItemClient.CCCD = uc.CCCD.Text = editVM.New.CCCD;
-                    SelectedItemClient.SDTHK = uc.SDT.Text = editVM.New.SDTHK;
-                    SelectedItemClient.DiaChiHK = uc.DiaChi.Text = editVM.New.DiaChiHK;
-                    SelectedItemClient.GioiTinh = uc.GioiTinh.Text = editVM.New.GioiTinh;
-                    DataProvider.Ins.db.SaveChanges();
-                    var wd2 = p as MainWindow;
-                    LoadDataClient(wd2.ucContainerClient);
-                    LoadDataReceipt(wd2.ucContainerReceipt);
-                }
-            });
-            DeleteClientCommand = new RelayCommand<Window>((p) => {
-                if (SelectedTagClient != null && (Role == "Quản Lý" || Role == "Thu Ngân"))
-                    return true;
-                return false;
-            }, (p) => {
-                try
-                {
-                    int n = ListReceipt.Count;
-                    int i;
-                    for ( i = 0; i < n; i++)
-                        if (ListReceipt[i].IDHanhKhach == SelectedItemClient.IDHanhKhach)
-                        {
-                            DataProvider.Ins.db.BIENLAIs.Remove(ListReceipt[i]);
-                            ListReceipt.Remove(ListReceipt[i]);
-                            i--;
-                            n--;
-                        }
-                    DataProvider.Ins.db.HANHKHACHes.Remove(SelectedItemClient);
-                    DataProvider.Ins.db.SaveChanges();
-                    ListClient.Remove(SelectedItemClient);
-                    HoTenHK.Remove(SelectedItemClient.TenHanhKhach);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                }
-                var wd = p as MainWindow;
-                LoadDataClient(wd.ucContainerClient);
-                SelectedTagClient = null;
-                LoadDataReceipt(wd.ucContainerReceipt);
-                SelectedTagReceipt = null;
-            });
+            //SelectedItemClient = new HANHKHACH();
+            //AddClientCommand = new RelayCommand<StackPanel>((p) => {
+            //    if (Role == "Quản Lý" || Role == "Thu Ngân")
+            //        return true;
+            //    return false;
+            //}, (p) => { 
+            //    AddClientWd wd = new AddClientWd(); 
+            //    var clientVM = wd.DataContext as AddClientVM;
+            //    clientVM.ListNew = ListClient;
+            //    wd.ShowDialog();
+            //    if (clientVM.isAdd)
+            //    {
+            //        HoTenHK.Add(ListClient.Last().TenHanhKhach);
+            //        LoadDataClient(p);
+            //        SelectedTagClient = null;
+            //    }
+            //});
+            //EditClientCommand = new RelayCommand<Window>((p) => {
+            //    if (SelectedTagClient != null && (Role == "Quản Lý" || Role == "Thu Ngân"))
+            //        return true;
+            //    return false;
+            //}, (p) => { 
+            //    EditClientWd wd = new EditClientWd();
+            //    var editVM = wd.DataContext as EditClientVM;
+            //    editVM.New2.Tuoi= SelectedItemClient.Tuoi;
+            //    editVM.New2.IDHanhKhach = SelectedItemClient.IDHanhKhach;
+            //    editVM.New2.CCCD = SelectedItemClient.CCCD;
+            //    editVM.New2.TenHanhKhach= SelectedItemClient.TenHanhKhach;
+            //    editVM.New2.DiaChiHK = SelectedItemClient.DiaChiHK;
+            //    editVM.New2.GioiTinh = SelectedItemClient.GioiTinh;
+            //    editVM.New2.SDTHK = SelectedItemClient.SDTHK;
+            //    editVM.New = editVM.New2;
+            //    wd.ShowDialog();
+            //    if(editVM.isEdit)
+            //    {
+            //        int index = ListClient.IndexOf(SelectedItemClient);
+            //        HoTenHK.RemoveAt(index);
+            //        HoTenHK.Insert(index, editVM.New.TenHanhKhach);
+            //        var uc = SelectedTagClient as TagClientUC;
+            //        SelectedItemClient.TenHanhKhach = uc.TenHanhKhach.Text = editVM.New.TenHanhKhach;
+            //        SelectedItemClient.IDHanhKhach = uc.IDHanhKhach.Text = editVM.New.IDHanhKhach;
+            //        SelectedItemClient.Tuoi = uc.Tuoi.Text = editVM.New.Tuoi;
+            //        SelectedItemClient.CCCD = uc.CCCD.Text = editVM.New.CCCD;
+            //        SelectedItemClient.SDTHK = uc.SDT.Text = editVM.New.SDTHK;
+            //        SelectedItemClient.DiaChiHK = uc.DiaChi.Text = editVM.New.DiaChiHK;
+            //        SelectedItemClient.GioiTinh = uc.GioiTinh.Text = editVM.New.GioiTinh;
+            //        DataProvider.Ins.db.SaveChanges();
+            //        var wd2 = p as MainWindow;
+            //        LoadDataClient(wd2.ucContainerClient);
+            //        LoadDataReceipt(wd2.ucContainerReceipt);
+            //    }
+            //});
+            //DeleteClientCommand = new RelayCommand<Window>((p) => {
+            //    if (SelectedTagClient != null && (Role == "Quản Lý" || Role == "Thu Ngân"))
+            //        return true;
+            //    return false;
+            //}, (p) => {
+            //    try
+            //    {
+            //        int n = ListReceipt.Count;
+            //        int i;
+            //        for ( i = 0; i < n; i++)
+            //            if (ListReceipt[i].IDHanhKhach == SelectedItemClient.IDHanhKhach)
+            //            {
+            //                DataProvider.Ins.db.BIENLAIs.Remove(ListReceipt[i]);
+            //                ListReceipt.Remove(ListReceipt[i]);
+            //                i--;
+            //                n--;
+            //            }
+            //        DataProvider.Ins.db.HANHKHACHes.Remove(SelectedItemClient);
+            //        DataProvider.Ins.db.SaveChanges();
+            //        ListClient.Remove(SelectedItemClient);
+            //        HoTenHK.Remove(SelectedItemClient.TenHanhKhach);
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        MessageBox.Show(e.Message);
+            //    }
+            //    var wd = p as MainWindow;
+            //    LoadDataClient(wd.ucContainerClient);
+            //    SelectedTagClient = null;
+            //    LoadDataReceipt(wd.ucContainerReceipt);
+            //    SelectedTagReceipt = null;
+            //});
             //Staff
             SelectedItemStaff = new NHANVIEN();
             AddStaffCommand = new RelayCommand<StackPanel>((p) => { 
@@ -1327,35 +1327,35 @@ namespace QuanLyXeKhach.ViewModel
                 SelectedTagReceipt = p;
             });
             //Search Command
-            SearchClient = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            {
-                MainWindow mw = p as MainWindow;
-                mw.ucContainerClient.Children.Clear();
-                string TenHK = mw.STenHK.Text;
-                string MaHK = mw.SMaHK.Text;
-                foreach (HANHKHACH hk in ListClient)
-                {
-                    int ok1 = 0, ok2 = 0, ok3 = 0;
-                    if ((TenHK == null || TenHK == "") && (MaHK == null && MaHK == "")) ok1 = 1;
-                    if ((TenHK == null || TenHK == null)) ok2 = -1;
-                    else if (hk.TenHanhKhach.Contains(TenHK)) ok2 = 1;
-                    if ((MaHK == null && MaHK == "")) ok3 = -1;
-                    else if (hk.IDHanhKhach.Contains(MaHK)) ok3 = 1;
-                    if (ok1 == 1 || (ok2 == 1 && ok3 == 1) || (ok2 == 1 && ok3 == -1) || (ok2 == -1 && ok3 == 1))
-                    {
-                        var uc = new TagClientUC();
-                        uc.TenHanhKhach.Text = hk.TenHanhKhach;
-                        uc.IDHanhKhach.Text = hk.IDHanhKhach;
-                        uc.GioiTinh.Text = hk.GioiTinh;
-                        uc.Tuoi.Text = hk.Tuoi;
-                        uc.SDT.Text = hk.SDTHK;
-                        uc.DiaChi.Text = hk.DiaChiHK;
-                        uc.CCCD.Text = hk.CCCD;
-                        mw.ucContainerClient.Children.Add(uc);
-                    }
-                }
-                SelectedTagClient = null;
-            });
+            //SearchClient = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            //{
+            //    MainWindow mw = p as MainWindow;
+            //    mw.ucContainerClient.Children.Clear();
+            //    string TenHK = mw.STenHK.Text;
+            //    string MaHK = mw.SMaHK.Text;
+            //    foreach (HANHKHACH hk in ListClient)
+            //    {
+            //        int ok1 = 0, ok2 = 0, ok3 = 0;
+            //        if ((TenHK == null || TenHK == "") && (MaHK == null && MaHK == "")) ok1 = 1;
+            //        if ((TenHK == null || TenHK == null)) ok2 = -1;
+            //        else if (hk.TenHanhKhach.Contains(TenHK)) ok2 = 1;
+            //        if ((MaHK == null && MaHK == "")) ok3 = -1;
+            //        else if (hk.IDHanhKhach.Contains(MaHK)) ok3 = 1;
+            //        if (ok1 == 1 || (ok2 == 1 && ok3 == 1) || (ok2 == 1 && ok3 == -1) || (ok2 == -1 && ok3 == 1))
+            //        {
+            //            var uc = new TagClientUC();
+            //            uc.TenHanhKhach.Text = hk.TenHanhKhach;
+            //            uc.IDHanhKhach.Text = hk.IDHanhKhach;
+            //            uc.GioiTinh.Text = hk.GioiTinh;
+            //            uc.Tuoi.Text = hk.Tuoi;
+            //            uc.SDT.Text = hk.SDTHK;
+            //            uc.DiaChi.Text = hk.DiaChiHK;
+            //            uc.CCCD.Text = hk.CCCD;
+            //            mw.ucContainerClient.Children.Add(uc);
+            //        }
+            //    }
+            //    SelectedTagClient = null;
+            //});
             SearchDriver = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 MainWindow mw = p as MainWindow;
@@ -1575,22 +1575,22 @@ namespace QuanLyXeKhach.ViewModel
             });
 
         }
-        private void LoadDataClient(StackPanel sp)
-        {
-            sp.Children.Clear();
-            foreach (HANHKHACH hk in ListClient)
-            {
-                var uc = new TagClientUC();
-                uc.TenHanhKhach.Text = hk.TenHanhKhach;
-                uc.IDHanhKhach.Text = hk.IDHanhKhach;
-                uc.GioiTinh.Text = hk.GioiTinh;
-                uc.Tuoi.Text = hk.Tuoi;
-                uc.SDT.Text = hk.SDTHK;
-                uc.DiaChi.Text = hk.DiaChiHK;
-                uc.CCCD.Text = hk.CCCD;
-                sp.Children.Add(uc);
-            }
-        }
+        //private void LoadDataClient(StackPanel sp)
+        //{
+        //    sp.Children.Clear();
+        //    foreach (HANHKHACH hk in ListClient)
+        //    {
+        //        var uc = new TagClientUC();
+        //        uc.TenHanhKhach.Text = hk.TenHanhKhach;
+        //        uc.IDHanhKhach.Text = hk.IDHanhKhach;
+        //        uc.GioiTinh.Text = hk.GioiTinh;
+        //        uc.Tuoi.Text = hk.Tuoi;
+        //        uc.SDT.Text = hk.SDTHK;
+        //        uc.DiaChi.Text = hk.DiaChiHK;
+        //        uc.CCCD.Text = hk.CCCD;
+        //        sp.Children.Add(uc);
+        //    }
+        //}
         private void LoadDataStaff(StackPanel sp)
         {
             sp.Children.Clear();

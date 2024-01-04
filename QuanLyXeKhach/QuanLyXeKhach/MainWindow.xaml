@@ -40,11 +40,11 @@
         <!--Tab Control-->
         <Grid Grid.Row="1" >
             <TabControl
-                    materialDesign:ColorZoneAssist.Background="#25b24a"
+                    materialDesign:ColorZoneAssist.Background="#258db2"
                     materialDesign:ColorZoneAssist.Foreground="White"
                     materialDesign:ColorZoneAssist.Mode="Custom"
                     Style="{StaticResource MaterialDesignFilledTabControl}"
-                    TabStripPlacement="Left" Background="#25b24a">
+                    TabStripPlacement="Left" Background="#258db2">
                 <!--Account-->
                 <TabItem Width="220" MinHeight="70">
                     <TabItem.Header>
@@ -238,16 +238,16 @@
                 <!--Home-->
                 <TabItem Height="65" IsSelected="True">
                     <TabItem.Header>
-                        <StackPanel Orientation="Horizontal" Width="120">
+                        <StackPanel Orientation="Horizontal" Width="150">
                             <materialDesign:PackIcon Kind="Home" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
-                            <TextBlock Foreground="White" Text="Trang Chủ" VerticalAlignment="Bottom"></TextBlock>
+                            <TextBlock Foreground="White" Text="Trang Chủ" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>
                     <Grid>
                         <Image Source="/Image/Home.jpg" Stretch="Uniform"></Image>
                     </Grid>
                 </TabItem>
-                <!--Clients-->
+                <!--Clients--><!--
                 <TabItem Height="65">
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="120" >
@@ -262,7 +262,7 @@
                             <RowDefinition Height="5*"></RowDefinition>
                             <RowDefinition Height="0.6*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <!--Search-->
+                        --><!--Search--><!--
                         <Grid Grid.Column="0" Background="#eeeeee">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
                                 VerticalAlignment="Bottom"  >
@@ -284,7 +284,7 @@
                                 </Button>
                             </StackPanel>
                         </Grid>
-                        <!--List-->
+                        --><!--List--><!--
                         <Border Grid.Row="1" Margin="20,20,20,20" CornerRadius="10"  
                             BorderBrush="Black" BorderThickness="1" Background="White" >
                             <Border.Effect>
@@ -296,7 +296,7 @@
                                     <RowDefinition Height="auto"></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <!--Title-->
+                                --><!--Title--><!--
                                 <TextBlock Grid.Row="0" Text="Danh sách hành khách" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
@@ -306,22 +306,22 @@
                                 </ScrollViewer>
                             </Grid>
                         </Border>
-                        <!--Buttons-->
+                        --><!--Buttons--><!--
                         <Grid Grid.Row="2" Margin="0,0,0,20">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <!--Add-->
+                                --><!--Add--><!--
                                 <Button Width="100" Margin="20 0" Command="{Binding AddClientCommand}" CommandParameter="{Binding ElementName=ucContainerClient}"
                                     Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Edit-->
+                                --><!--Edit--><!--
                                 <Button Width="100" Margin="20 0" Command="{Binding EditClientCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                      Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Delete-->
+                                --><!--Delete--><!--
                                 <Button Width="100" Margin="20 0" Command="{Binding DeleteClientCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                      Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
@@ -330,570 +330,587 @@
                             </StackPanel>
                         </Grid>
                     </Grid>
-                </TabItem >
-                <!--Driver-->
-                <TabItem Height="65">
+                </TabItem >-->
+                <TabItem Height="65" >
                     <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="120" >
-                            <materialDesign:PackIcon Kind="AccountTieHat" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
-                            <TextBlock Foreground="White" Text="Tài xế" VerticalAlignment="Bottom"></TextBlock>
+                        <StackPanel Orientation="Horizontal" Width="150" >
+                            <materialDesign:PackIcon Kind="ApplicationEdit" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Cập nhật thông tin" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
                     </TabItem.Header>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.8*"></RowDefinition>
-                            <RowDefinition Height="5*"></RowDefinition>
-                            <RowDefinition Height="0.6*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Search-->
-                        <Grid Grid.Column="0" Background="#eeeeee">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                    <TabControl 
+                        Padding="0 0 0 0"
+                        materialDesign:ColorZoneAssist.Background="#258db2"
+                        materialDesign:ColorZoneAssist.Foreground="White"
+                        materialDesign:ColorZoneAssist.Mode="Custom"
+                        Style="{StaticResource MaterialDesignFilledTabControl}"
+                        TabStripPlacement="Top" Background="#258db2">
+                        <!--Driver-->
+                        <TabItem Height="65" >
+                            <TabItem.Header >
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="AccountTieHat" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                                    <TextBlock Foreground="White" Text="Tài xế" VerticalAlignment="Bottom"></TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.8*"></RowDefinition>
+                                    <RowDefinition Height="5*"></RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Search-->
+                                <Grid Grid.Column="0" Background="#eeeeee">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
                                 VerticalAlignment="Bottom"  >
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                        <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
                                     materialDesign:HintAssist.Foreground="Green" Padding="12"
                                     VerticalAlignment="Center" Width="600" Background="White"
                                     materialDesign:HintAssist.Hint="Tên Tài Xế" Height="40"
                                     x:Name="STenTX"
                                     Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                        <Button Content="Tìm Kiếm" Margin="0 0 15 0"
                                 Command="{Binding SearchDriver}" CommandParameter="{Binding ElementName=MainWd}">
 
-                                </Button>
-                            </StackPanel>
-                        </Grid>
-                        <!--List-->
-                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                            BorderBrush="Black" BorderThickness="1" Background="White">
-                            <Border.Effect>
-                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
-                            </Border.Effect>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách tài xế" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
-                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
-                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-                                    <StackPanel x:Name="ucContainerDriver">
-
+                                        </Button>
                                     </StackPanel>
-                                </ScrollViewer>
-                            </Grid>
-                        </Border>
-                        <!--Buttons-->
-                        <Grid Grid.Row="2" Margin="0 0 0 20">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddDriverCommand}"
+                                </Grid>
+                                <!--List-->
+                                <Border Grid.Row="1" Margin="20" CornerRadius="10" 
+                            BorderBrush="Black" BorderThickness="1" Background="White">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                                    </Border.Effect>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <!--Title-->
+                                        <TextBlock Grid.Row="0" Text="Danh sách tài xế" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                            <StackPanel x:Name="ucContainerDriver">
+
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </Grid>
+                                </Border>
+                                <!--Buttons-->
+                                <Grid Grid.Row="2" Margin="0 0 0 20">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <!--Add-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding AddDriverCommand}"
                                 Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424" CommandParameter="{Binding ElementName=ucContainerDriver}"
                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Edit-->
-                                <Button Width="100" Margin="20 0" Command="{Binding EditDriverCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Edit-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding EditDriverCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                  Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                  Style="{StaticResource MaterialDesignRaisedLightButton}"
                                  ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Delete-->
-                                <Button Width="100" Margin="20 0" Command="{Binding DeleteDriverCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Delete-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding DeleteDriverCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                  Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                  Style="{StaticResource MaterialDesignRaisedLightButton}"
                                  ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
-                </TabItem>
-                <!--Staff-->
-                <TabItem Height="65">
-                    <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="120" >
-                            <materialDesign:PackIcon Kind="ClipboardAccount" Height="25" 
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <!--Staff-->
+                        <TabItem Height="65">
+                            <TabItem.Header >
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ClipboardAccount" Height="25" 
                                 Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
-                            <TextBlock Foreground="White" Text="Phụ xe" VerticalAlignment="Bottom"></TextBlock>
-                        </StackPanel>
-                    </TabItem.Header>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.8*"></RowDefinition>
-                            <RowDefinition Height="5*"></RowDefinition>
-                            <RowDefinition Height="0.6*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Search-->
-                        <Grid Grid.Column="0" Background="#eeeeee">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                                    <TextBlock Foreground="White" Text="Phụ xe" VerticalAlignment="Bottom"></TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.8*"></RowDefinition>
+                                    <RowDefinition Height="5*"></RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Search-->
+                                <Grid Grid.Column="0" Background="#eeeeee">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
                                 VerticalAlignment="Bottom"  >
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                        <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
                                 VerticalAlignment="Center" Width="600" Background="White"
                                 materialDesign:HintAssist.Hint="Tên Phụ Xe" Height="40" 
                                 x:Name="STenPX"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                        <Button Content="Tìm Kiếm" Margin="0 0 15 0"
 Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
 
-                                </Button>
-                            </StackPanel>
-                        </Grid>
-                        <!--List-->
-                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                            BorderBrush="Black" BorderThickness="1" Background="White">
-                            <Border.Effect>
-                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
-                            </Border.Effect>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách phụ xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
-                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
-                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-                                    <StackPanel x:Name="ucContainerStaff">
-
+                                        </Button>
                                     </StackPanel>
-                                </ScrollViewer>
-                            </Grid>
-                        </Border>
-                        <!--Buttons-->
-                        <Grid Grid.Row="2" Margin="0 0 0 20">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddStaffCommand}" CommandParameter="{Binding ElementName=ucContainerStaff}"
+                                </Grid>
+                                <!--List-->
+                                <Border Grid.Row="1" Margin="20" CornerRadius="10" 
+                            BorderBrush="Black" BorderThickness="1" Background="White">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                                    </Border.Effect>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <!--Title-->
+                                        <TextBlock Grid.Row="0" Text="Danh sách phụ xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                            <StackPanel x:Name="ucContainerStaff">
+
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </Grid>
+                                </Border>
+                                <!--Buttons-->
+                                <Grid Grid.Row="2" Margin="0 0 0 20">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <!--Add-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding AddStaffCommand}" CommandParameter="{Binding ElementName=ucContainerStaff}"
                                     Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Edit-->
-                                <Button Width="100" Margin="20 0" Command="{Binding EditStaffCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Edit-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding EditStaffCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                      Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Delete-->
-                                <Button Width="100" Margin="20 0" Command="{Binding DeleteStaffCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Delete-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding DeleteStaffCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                      Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
-                </TabItem >
-                <!--Cashier-->
-                <TabItem Height="65">
-                    <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="120" >
-                            <materialDesign:PackIcon Kind="AccountTieWoman" Height="25" 
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </TabItem >
+                        <!--Cashier-->
+                        <TabItem Height="65">
+                            <TabItem.Header >
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="AccountTieWoman" Height="25" 
                                 Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
-                            <TextBlock Foreground="White" Text="Thu ngân" VerticalAlignment="Bottom"></TextBlock>
-                        </StackPanel>
-                    </TabItem.Header>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.8*"></RowDefinition>
-                            <RowDefinition Height="5*"></RowDefinition>
-                            <RowDefinition Height="0.6*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Search-->
-                        <Grid Grid.Column="0" Background="#eeeeee">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                                    <TextBlock Foreground="White" Text="Nhân viên Thu ngân" VerticalAlignment="Bottom"></TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.8*"></RowDefinition>
+                                    <RowDefinition Height="5*"></RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Search-->
+                                <Grid Grid.Column="0" Background="#eeeeee">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
                                 VerticalAlignment="Bottom"  >
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                        <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
                                 VerticalAlignment="Center" Width="600" Background="White"
                                 materialDesign:HintAssist.Hint="Tên Thu Ngân" Height="40" 
                                 x:Name="STenTN"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                        <Button Content="Tìm Kiếm" Margin="0 0 15 0"
                                 Command="{Binding SearchCashier}" CommandParameter="{Binding ElementName=MainWd}">
-                                </Button>
-                            </StackPanel>
-                        </Grid>
-                        <!--List-->
-                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                            BorderBrush="Black" BorderThickness="1" Background="White">
-                            <Border.Effect>
-                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
-                            </Border.Effect>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách thu ngân" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
-                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
-                                <!--ListView-->
-                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-                                    <StackPanel x:Name="ucContainerCashier">
+                                        </Button>
                                     </StackPanel>
-                                </ScrollViewer>
-                            </Grid>
-                        </Border>
-                        <!--Buttons-->
-                        <Grid Grid.Row="2" Margin="0 0 0 20">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddCashierCommand}" CommandParameter="{Binding ElementName=ucContainerCashier}"
+                                </Grid>
+                                <!--List-->
+                                <Border Grid.Row="1" Margin="20" CornerRadius="10" 
+                            BorderBrush="Black" BorderThickness="1" Background="White">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                                    </Border.Effect>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <!--Title-->
+                                        <TextBlock Grid.Row="0" Text="Danh sách thu ngân" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                        <!--ListView-->
+                                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                            <StackPanel x:Name="ucContainerCashier">
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </Grid>
+                                </Border>
+                                <!--Buttons-->
+                                <Grid Grid.Row="2" Margin="0 0 0 20">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <!--Add-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding AddCashierCommand}" CommandParameter="{Binding ElementName=ucContainerCashier}"
                                     Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Edit-->
-                                <Button Width="100" Margin="20 0" Command="{Binding EditCashierCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Edit-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding EditCashierCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                      Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Delete-->
-                                <Button Width="100" Margin="20 0" Command="{Binding DeleteCashierCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Delete-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding DeleteCashierCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                      Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
-                </TabItem >
-                <!--Bus-->
-                <TabItem Height="65">
-                    <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="120" >
-                            <materialDesign:PackIcon Kind="Bus" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
-                            <TextBlock Foreground="White" Text="Xe Khách" VerticalAlignment="Bottom"></TextBlock>
-                        </StackPanel>
-                    </TabItem.Header>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.8*"></RowDefinition>
-                            <RowDefinition Height="5*"></RowDefinition>
-                            <RowDefinition Height="0.6*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Search-->
-                        <Grid Grid.Column="0" Background="#eeeeee">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </TabItem >
+                        <!--Bus-->
+                        <TabItem Height="65">
+                            <TabItem.Header >
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Bus" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                                    <TextBlock Foreground="White" Text="Xe Khách" VerticalAlignment="Bottom"></TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.8*"></RowDefinition>
+                                    <RowDefinition Height="5*"></RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Search-->
+                                <Grid Grid.Column="0" Background="#eeeeee">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
                                 VerticalAlignment="Bottom"  >
-                                <TextBox BorderBrush="Green" 
+                                        <TextBox BorderBrush="Green" 
                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
                                 VerticalAlignment="Center" Width="300" Background="White"
                                 materialDesign:HintAssist.Hint="Biển Số Xe" Height="40"
                                          x:Name="SBienSX"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <TextBox BorderBrush="Green" 
+                                        <TextBox BorderBrush="Green" 
                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
                                 VerticalAlignment="Center" Width="300" Background="White"
                                 materialDesign:HintAssist.Hint="Tên Tài Xế" Height="40"
                                 x:Name="STenTX_Bus"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                        <Button Content="Tìm Kiếm" Margin="0 0 15 0"
                                 Command="{Binding SearchBus}" CommandParameter="{Binding ElementName=MainWd}">
 
-                                </Button>
-                            </StackPanel>
-                        </Grid>
-                        <!--List-->
-                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                             BorderBrush="Black" BorderThickness="1" Background="White">
-                            <Border.Effect>
-                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
-                            </Border.Effect>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách xe khách" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
-                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
-                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-                                    <StackPanel x:Name="ucContainerBus">
-
+                                        </Button>
                                     </StackPanel>
-                                </ScrollViewer>
-                            </Grid>
-                        </Border>
-                        <!--Buttons-->
-                        <Grid Grid.Row="2" Margin="0 0 0 20">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddBusCommand}" CommandParameter="{Binding ElementName=ucContainerBus}"
+                                </Grid>
+                                <!--List-->
+                                <Border Grid.Row="1" Margin="20" CornerRadius="10" 
+                             BorderBrush="Black" BorderThickness="1" Background="White">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                                    </Border.Effect>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <!--Title-->
+                                        <TextBlock Grid.Row="0" Text="Danh sách xe khách" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                            <StackPanel x:Name="ucContainerBus">
+
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </Grid>
+                                </Border>
+                                <!--Buttons-->
+                                <Grid Grid.Row="2" Margin="0 0 0 20">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <!--Add-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding AddBusCommand}" CommandParameter="{Binding ElementName=ucContainerBus}"
                                     Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Edit-->
-                                <Button Width="100" Margin="20 0" Command="{Binding EditBusCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Edit-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding EditBusCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                      Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Delete-->
-                                <Button Width="100" Margin="20 0" Command="{Binding DeleteBusCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Delete-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding DeleteBusCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                      Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
-                </TabItem>
-                <!--Bus Station-->
-                <TabItem Height="65">
-                    <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="120" >
-                            <materialDesign:PackIcon Kind="BusMarker" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
-                            <TextBlock Foreground="White" Text="Bến xe" VerticalAlignment="Bottom"></TextBlock>
-                        </StackPanel>
-                    </TabItem.Header>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.8*"></RowDefinition>
-                            <RowDefinition Height="5*"></RowDefinition>
-                            <RowDefinition Height="0.6*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Search-->
-                        <Grid Grid.Column="0" Background="#eeeeee">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <!--Bus Station-->
+                        <TabItem Height="65" >
+                            <TabItem.Header >
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="BusMarker" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                                    <TextBlock Foreground="White" Text="Bến xe" VerticalAlignment="Bottom"></TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.8*"></RowDefinition>
+                                    <RowDefinition Height="5*"></RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Search-->
+                                <Grid Grid.Column="0" Background="#eeeeee">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
                             VerticalAlignment="Bottom"  >
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                        <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
                                 VerticalAlignment="Center" Width="300" Background="White"
                                 materialDesign:HintAssist.Hint="Tên Bến Xe" Height="40"
                                 x:Name="STenBX"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
+                                        <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
                                 VerticalAlignment="Center" Width="300" Background="White"
                                 materialDesign:HintAssist.Hint="Địa Chỉ" Height="40"
                                                          x:Name="SDiaChi"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                        <Button Content="Tìm Kiếm" Margin="0 0 15 0"
                                 Command="{Binding SearchBusStation}" CommandParameter="{Binding ElementName=MainWd}">
-                                </Button>
-                            </StackPanel>
-                        </Grid>
-                        <!--List-->
-                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                        BorderBrush="Black" BorderThickness="1" Background="White">
-                            <Border.Effect>
-                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
-                            </Border.Effect>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách bến xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
-                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
-                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-                                    <StackPanel x:Name="ucContainerBusStation">
-
+                                        </Button>
                                     </StackPanel>
-                                </ScrollViewer>
-                            </Grid>
-                        </Border>
-                        <!--Buttons-->
-                        <Grid Grid.Row="2" Margin="0 0 0 20">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddBusStationCommand}" CommandParameter="{Binding ElementName=ucContainerBusStation}"
+                                </Grid>
+                                <!--List-->
+                                <Border Grid.Row="1" Margin="20" CornerRadius="10" 
+                        BorderBrush="Black" BorderThickness="1" Background="White">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                                    </Border.Effect>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <!--Title-->
+                                        <TextBlock Grid.Row="0" Text="Danh sách bến xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                            <StackPanel x:Name="ucContainerBusStation">
+
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </Grid>
+                                </Border>
+                                <!--Buttons-->
+                                <Grid Grid.Row="2" Margin="0 0 0 20">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <!--Add-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding AddBusStationCommand}" CommandParameter="{Binding ElementName=ucContainerBusStation}"
                                 Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                 Style="{StaticResource MaterialDesignRaisedLightButton}" 
                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Edit-->
-                                <Button Width="100" Command="{Binding EditBusStationCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Edit-->
+                                        <Button Width="100" Command="{Binding EditBusStationCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                  Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
                                  Style="{StaticResource MaterialDesignRaisedLightButton}"
                                  ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Delete-->
-                                <Button Width="100" Margin="20 0" Command="{Binding DeleteBusStationCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Delete-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding DeleteBusStationCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                  Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                  Style="{StaticResource MaterialDesignRaisedLightButton}"
                                  ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
-                </TabItem>
-                <!--vehicle route-->
-                <TabItem Height="65">
-                    <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="120" >
-                            <materialDesign:PackIcon Kind="NavigationVariant" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
-                            <TextBlock Foreground="White" Text="Tuyến Xe" VerticalAlignment="Bottom"></TextBlock>
-                        </StackPanel>
-                    </TabItem.Header>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.8*"></RowDefinition>
-                            <RowDefinition Height="5*"></RowDefinition>
-                            <RowDefinition Height="0.6*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Search-->
-                        <Grid Grid.Column="0" Background="#eeeeee">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <!--vehicle route-->
+                        <TabItem Height="65">
+                            <TabItem.Header >
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="NavigationVariant" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                                    <TextBlock Foreground="White" Text="Tuyến Xe" VerticalAlignment="Bottom"></TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.8*"></RowDefinition>
+                                    <RowDefinition Height="5*"></RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Search-->
+                                <Grid Grid.Column="0" Background="#eeeeee">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
                             VerticalAlignment="Bottom"  >
-                                <ComboBox BorderBrush="Green" Padding="12" x:Name="SBenXP" IsEditable="True"
+                                        <ComboBox BorderBrush="Green" Padding="12" x:Name="SBenXP" IsEditable="True"
                                  materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXe}"
                                  materialDesign:HintAssist.Hint="Bến Xe Xuất Phát" Background="White" Margin="15"
                                  Style="{StaticResource MaterialDesignOutlinedComboBox}" Height="40">
-                                </ComboBox>
-                                <ComboBox BorderBrush="Green" Padding="12" x:Name="SBenDD" IsEditable="True"
+                                        </ComboBox>
+                                        <ComboBox BorderBrush="Green" Padding="12" x:Name="SBenDD" IsEditable="True"
                                  materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXe}"
                                  materialDesign:HintAssist.Hint="Bến Xe Đích Đến" Background="White" Margin="15"
                                  Style="{StaticResource MaterialDesignOutlinedComboBox}" Height="40">
-                                </ComboBox>
-                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                        </ComboBox>
+                                        <Button Content="Tìm Kiếm" Margin="0 0 15 0"
                                 Command="{Binding SearchRoute}" CommandParameter="{Binding ElementName=MainWd}">
-                                </Button>
-                            </StackPanel>
-                        </Grid>
-                        <!--List-->
-                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                            BorderBrush="Black" BorderThickness="1" Background="White">
-                            <Border.Effect>
-                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
-                            </Border.Effect>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách tuyến xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
-                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
-                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-                                    <StackPanel x:Name="ucContainerRoute">
-
+                                        </Button>
                                     </StackPanel>
-                                </ScrollViewer>
-                            </Grid>
-                        </Border>
-                        <!--Buttons-->
-                        <Grid Grid.Row="2" Margin="0 0 0 20">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddRouteCommand}" CommandParameter="{Binding ElementName=ucContainerRoute}"
+                                </Grid>
+                                <!--List-->
+                                <Border Grid.Row="1" Margin="20" CornerRadius="10" 
+                            BorderBrush="Black" BorderThickness="1" Background="White">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                                    </Border.Effect>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <!--Title-->
+                                        <TextBlock Grid.Row="0" Text="Danh sách tuyến xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                            <StackPanel x:Name="ucContainerRoute">
+
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </Grid>
+                                </Border>
+                                <!--Buttons-->
+                                <Grid Grid.Row="2" Margin="0 0 0 20">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <!--Add-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding AddRouteCommand}" CommandParameter="{Binding ElementName=ucContainerRoute}"
                                     Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Edit-->
-                                <Button Width="100" Margin="20 0" Command="{Binding EditRouteCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Edit-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding EditRouteCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                      Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Delete-->
-                                <Button Width="100" Margin="20 0" Command="{Binding DeleteRouteCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Delete-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding DeleteRouteCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                      Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
-                </TabItem>
-                <!--Schedule-->
-                <TabItem Height="65">
-                    <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="120" >
-                            <materialDesign:PackIcon Kind="RoadVariant" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
-                            <TextBlock Foreground="White" Text="Lịch trình" VerticalAlignment="Bottom"></TextBlock>
-                        </StackPanel>
-                    </TabItem.Header>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.8*"></RowDefinition>
-                            <RowDefinition Height="5*"></RowDefinition>
-                            <RowDefinition Height="0.6*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Search-->
-                        <Grid Grid.Column="0" Background="#eeeeee">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <!--Schedule-->
+                        <TabItem Height="65" >
+                            <TabItem.Header >
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="RoadVariant" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                                    <TextBlock Foreground="White" Text="Lịch trình" VerticalAlignment="Bottom"></TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.8*"></RowDefinition>
+                                    <RowDefinition Height="5*"></RowDefinition>
+                                    <RowDefinition Height="0.6*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Search-->
+                                <Grid Grid.Column="0" Background="#eeeeee">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
                             VerticalAlignment="Bottom"  >
-                                <ComboBox BorderBrush="Green" Padding="12" x:Name="SBenXp" IsEditable="True"
+                                        <ComboBox BorderBrush="Green" Padding="12" x:Name="SBenXp" IsEditable="True"
                                  materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXe}"
                                  materialDesign:HintAssist.Hint="Bến Xe Xuất Phát" Background="White" Margin="15"
                                  Style="{StaticResource MaterialDesignOutlinedComboBox}" Height="40">
-                                </ComboBox>
-                                <ComboBox BorderBrush="Green" Padding="12" x:Name="SBenKt" IsEditable="True"
+                                        </ComboBox>
+                                        <ComboBox BorderBrush="Green" Padding="12" x:Name="SBenKt" IsEditable="True"
                                  materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BenXe}"
                                  materialDesign:HintAssist.Hint="Bến Xe Đích Đến" Background="White" Margin="15"
                                  Style="{StaticResource MaterialDesignOutlinedComboBox}" Height="40">
-                                </ComboBox>
-                                <DatePicker  BorderBrush="Green" Background="White"
+                                        </ComboBox>
+                                        <DatePicker  BorderBrush="Green" Background="White"
                                 materialDesign:HintAssist.Foreground="Green" Padding="12" Margin="15"
                                 materialDesign:HintAssist.Hint="Ngày Xuất Phát" Height="40" x:Name="NgayXP"
                                 Style="{StaticResource MaterialDesignOutlinedDatePicker}">
-                                </DatePicker>
-                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                        </DatePicker>
+                                        <Button Content="Tìm Kiếm" Margin="0 0 15 0"
                                 Command="{Binding SearchSchedule}" CommandParameter="{Binding ElementName=MainWd}">
-                                </Button>
-                            </StackPanel>
-                        </Grid>
-                        <!--List-->
-                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
-                            BorderBrush="Black" BorderThickness="1" Background="White">
-                            <Border.Effect>
-                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
-                            </Border.Effect>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách lịch trình xe lưu thông trên các tuyến" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
-                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
-                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-                                    <StackPanel x:Name="ucContainerSchedule">
-
+                                        </Button>
                                     </StackPanel>
-                                </ScrollViewer>
-                            </Grid>
-                        </Border>
-                        <!--Buttons-->
-                        <Grid Grid.Row="2" Margin="0 0 0 20">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <!--Add-->
-                                <Button Width="100" Margin="20 0" Command="{Binding AddScheduleCommand}" CommandParameter="{Binding ElementName=ucContainerSchedule}"
+                                </Grid>
+                                <!--List-->
+                                <Border Grid.Row="1" Margin="20" CornerRadius="10" 
+                            BorderBrush="Black" BorderThickness="1" Background="White">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                                    </Border.Effect>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <!--Title-->
+                                        <TextBlock Grid.Row="0" Text="Danh sách lịch trình xe lưu thông trên các tuyến" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                            <StackPanel x:Name="ucContainerSchedule">
+
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </Grid>
+                                </Border>
+                                <!--Buttons-->
+                                <Grid Grid.Row="2" Margin="0 0 0 20">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <!--Add-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding AddScheduleCommand}" CommandParameter="{Binding ElementName=ucContainerSchedule}"
                                     Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedLightButton}" 
                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Edit-->
-                                <Button Width="100" Margin="20 0" Command="{Binding EditScheduleCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Edit-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding EditScheduleCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                      Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Delete-->
-                                <Button Width="100" Margin="20 0" Command="{Binding DeleteScheduleCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                        <!--Delete-->
+                                        <Button Width="100" Margin="20 0" Command="{Binding DeleteScheduleCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                      Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                      Style="{StaticResource MaterialDesignRaisedLightButton}"
                                      ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
                 </TabItem>
+                
                 <!--Receipt-->
                 <TabItem Height="65">
                     <TabItem.Header >

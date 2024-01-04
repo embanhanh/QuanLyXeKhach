@@ -17,7 +17,7 @@
     </i:Interaction.Triggers>
     <Grid>
         <materialDesign:ColorZone BorderBrush="Gray" BorderThickness="0 0 0 1">
-            <DockPanel  Background="#25b24a" Height="40">
+            <DockPanel  Background="#258db2" Height="40">
                 <TextBlock Text="{Binding Tag, ElementName=ucControlBar}" VerticalAlignment="Center" Foreground="White"
             Margin="10 0" FontSize="18"></TextBlock>
                 <StackPanel  DockPanel.Dock="Right" Orientation="Horizontal">
