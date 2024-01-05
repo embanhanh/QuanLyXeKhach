@@ -79,6 +79,7 @@ namespace QuanLyXeKhach.ViewModel
         private List<string> _HoTenHK;
         private List<string> _IDLichTrinh;
         private List<string> _IDGhe;
+        private List<string> _Li_TinhTrang;
         public List<string> BenXe { get => _BenXe; set { _BenXe = value; OnPropertyChanged(); } }
         public List<string> BienSoXe { get => _BienSoXe; set { _BienSoXe = value; OnPropertyChanged(); } }
         public List<string> IDTuyenXe { get => _IDTuyenXe; set { _IDTuyenXe = value; OnPropertyChanged(); } }
@@ -88,8 +89,8 @@ namespace QuanLyXeKhach.ViewModel
         public List<string> HoTenHK { get => _HoTenHK; set { _HoTenHK = value; OnPropertyChanged(); } }
         public List<string> IDLichTrinh { get => _IDLichTrinh; set { _IDLichTrinh = value; OnPropertyChanged(); } }
         public List<string> IDGhe { get => _IDGhe; set { _IDGhe = value; OnPropertyChanged(); } }
+        public List<string> Li_TinhTrang { get => _Li_TinhTrang; set { _Li_TinhTrang = value; OnPropertyChanged(); } }
         //UserControl
-        private UserControl SelectedTagClient = null;
         private UserControl SelectedTagStaff = null;
         private UserControl SelectedTagDriver = null;
         private UserControl SelectedTagBusStation = null;
@@ -98,6 +99,7 @@ namespace QuanLyXeKhach.ViewModel
         private UserControl SelectedTagSchedule = null;
         private UserControl SelectedTagCashier = null;
         private UserControl SelectedTagReceipt = null;
+        private UserControl SelectedTagTrouble = null;
         //List
         private ObservableCollection<TAIXE> _ListDriver;
         private ObservableCollection<NHANVIEN> _ListStaff;
@@ -110,6 +112,7 @@ namespace QuanLyXeKhach.ViewModel
         private ObservableCollection<THUNGAN> _ListCashier;
         private ObservableCollection<BIENLAI> _ListReceipt;
         private ObservableCollection<GHE> _ListSeat;
+        private ObservableCollection<SUCO> _ListTrouble;
         public ObservableCollection<TAIXE> ListDriver { get => _ListDriver; set { _ListDriver = value; OnPropertyChanged(); } }
         public ObservableCollection<NHANVIEN> ListStaff { get => _ListStaff; set { _ListStaff = value; OnPropertyChanged(); } }
         public ObservableCollection<XEKHACH> ListBus { get => _ListBus; set { _ListBus = value; OnPropertyChanged(); } }
@@ -121,6 +124,7 @@ namespace QuanLyXeKhach.ViewModel
         public ObservableCollection<THUNGAN> ListCashier { get => _ListCashier; set { _ListCashier = value; OnPropertyChanged(); } }
         public ObservableCollection<BIENLAI> ListReceipt { get => _ListReceipt; set { _ListReceipt = value; OnPropertyChanged(); } }
         public ObservableCollection<GHE> ListSeat { get => _ListSeat; set { _ListSeat = value; OnPropertyChanged(); } }
+        public ObservableCollection<SUCO> ListTrouble { get => _ListTrouble; set { _ListTrouble = value; OnPropertyChanged(); } }
         //SelectedItem
         private NHANVIEN _SelectedItemStaff;
         public NHANVIEN SelectedItemStaff { get => _SelectedItemStaff; set { _SelectedItemStaff = value; OnPropertyChanged(); } }
@@ -138,6 +142,8 @@ namespace QuanLyXeKhach.ViewModel
         public THUNGAN SelectedItemCashier { get => _SelectedItemCashier; set { _SelectedItemCashier = value; OnPropertyChanged(); } }
         private BIENLAI _SelectedItemReceipt;
         public BIENLAI SelectedItemReceipt { get => _SelectedItemReceipt; set { _SelectedItemReceipt = value; OnPropertyChanged(); } }
+        private SUCO _SelectedItemTrouble;
+        public SUCO SelectedItemTrouble { get => _SelectedItemTrouble; set { _SelectedItemTrouble = value; OnPropertyChanged(); } }
         //Command
         public ICommand LoadedWindowCommand { get; set; }
         public ICommand OldPasswordChangedCommand { get; set; }
@@ -171,6 +177,9 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand DeleteCashierCommand { get; set; }
         public ICommand AddReceiptCommand { get; set; }
         public ICommand DeleteReceiptCommand { get; set; }
+        public ICommand AddTroubleCommand { get; set; }
+        public ICommand EditTroubleCommand { get; set; }
+        public ICommand DeleteTroubleCommand { get; set; }
         //UserControlCommand
         public ICommand SelectTagClient { get; set; }
         public ICommand SelectTagStaff { get; set; }
@@ -181,6 +190,7 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand SelectTagSchedule { get; set; }
         public ICommand SelectTagCashier { get; set; }
         public ICommand SelectTagReceipt { get; set; }
+        public ICommand SelectTagTrouble { get; set; }
         //Search Command
         public ICommand SearchClient { get; set; }
         public ICommand SearchDriver { get; set; }
@@ -191,9 +201,11 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand SearchSchedule { get; set; }
         public ICommand SearchCashier { get; set; }
         public ICommand SearchReceipt { get; set; }
+        public ICommand SearchTrouble { get; set; }
 
         public MainViewModel()
         {
+            Li_TinhTrang = new List<string>() { "Đang sửa chữa", "Đã sửa chữa", "Đã hủy" };
             TopListRoute = new ObservableCollection<TuyenXe>();
             TopListRouteHK = new ObservableCollection<TuyenXe>();
             Lables = new List<string> { "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" };
@@ -246,6 +258,7 @@ namespace QuanLyXeKhach.ViewModel
                 LoadDataSchedule(mainWd.ucContainerSchedule);
                 LoadDataCashier(mainWd.ucContainerCashier);
                 LoadDataReceipt(mainWd.ucContainerReceipt);
+                LoadDataTrouble(mainWd.ucContainerTrouble);
             });
             LogoutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -300,6 +313,7 @@ namespace QuanLyXeKhach.ViewModel
                 if (!Years.Contains(bl.NgayMua.Value.Year.ToString()))
                     Years.Add(bl.NgayMua.Value.Year.ToString());
             ListSeat = new ObservableCollection<GHE>(DataProvider.Ins.db.GHEs);
+            ListTrouble = new ObservableCollection<SUCO>(DataProvider.Ins.db.SUCOes);
             //Command Button Add, Edit, Delete
             //Charts
             ChangeCharts = new RelayCommand<Object>((p) => { return true; }, (p) =>
@@ -490,9 +504,13 @@ namespace QuanLyXeKhach.ViewModel
                     DataProvider.Ins.db.SaveChanges();
                     var wd2 = p as MainWindow;
                     LoadDataStaff(wd2.ucContainerStaff);
+                    SelectedTagStaff = null;
                     LoadDataBus(wd2.ucContainerBus);
+                    SelectedTagBus = null;
                     LoadDataSchedule(wd2.ucContainerSchedule);
+                    SelectedTagSchedule = null;
                     LoadDataReceipt(wd2.ucContainerReceipt);
+                    SelectedTagReceipt = null;
                 }
             });
             DeleteStaffCommand = new RelayCommand<Window>((p) => {
@@ -575,8 +593,9 @@ namespace QuanLyXeKhach.ViewModel
                     DataProvider.Ins.db.SaveChanges();
                     var wd2 = p as MainWindow;
                     LoadDataCashier(wd2.ucContainerCashier);
+                    SelectedTagCashier = null;
                     LoadDataReceipt(wd2.ucContainerReceipt);
-
+                    SelectedTagReceipt = null;
                 }
             });
             DeleteCashierCommand = new RelayCommand<Window>((p) => {
@@ -670,8 +689,11 @@ namespace QuanLyXeKhach.ViewModel
                     DataProvider.Ins.db.SaveChanges();
                     var wd2 = p as MainWindow;
                     LoadDataBus(wd2.ucContainerBus);
+                    SelectedTagBus = null;
                     LoadDataSchedule(wd2.ucContainerSchedule);
+                    SelectedTagSchedule = null;
                     LoadDataReceipt(wd2.ucContainerReceipt);
+                    SelectedTagReceipt = null;
                 }
             });
             DeleteBusCommand = new RelayCommand<Window>((p) => {
@@ -748,9 +770,11 @@ namespace QuanLyXeKhach.ViewModel
                     DataProvider.Ins.db.SaveChanges();
                     var wd2 = p as MainWindow;
                     LoadDataRoute(wd2.ucContainerRoute);
+                    SelectedTagRoute = null;
                     LoadDataSchedule(wd2.ucContainerSchedule);
+                    SelectedTagSchedule = null;
                     LoadDataReceipt(wd2.ucContainerReceipt);
-
+                    SelectedTagReceipt = null;
 
                 }
             });
@@ -821,10 +845,13 @@ namespace QuanLyXeKhach.ViewModel
                     DataProvider.Ins.db.SaveChanges();
                     var wd2 = p as MainWindow;
                     LoadDataDriver(wd2.ucContainerDriver);
+                    SelectedTagDriver = null;
                     LoadDataBus(wd2.ucContainerBus);
+                    SelectedTagBus = null;
                     LoadDataSchedule(wd2.ucContainerSchedule);
+                    SelectedTagSchedule = null;
                     LoadDataReceipt(wd2.ucContainerReceipt);
-
+                    SelectedTagReceipt = null;
                 }
             });
             DeleteDriverCommand = new RelayCommand<Window>((p) => {
@@ -897,9 +924,13 @@ namespace QuanLyXeKhach.ViewModel
                     DataProvider.Ins.db.SaveChanges();
                     var wd2 = p as MainWindow;
                     LoadDataBusStation(wd2.ucContainerBusStation);
+                    SelectedTagBusStation = null;
                     LoadDataRoute(wd2.ucContainerRoute);
+                    SelectedTagRoute = null;
                     LoadDataSchedule(wd2.ucContainerSchedule);
+                    SelectedTagSchedule = null;
                     LoadDataReceipt(wd2.ucContainerReceipt);
+                    SelectedTagReceipt = null;
                 }
             });
             DeleteBusStationCommand = new RelayCommand<Window>((p) => {
@@ -993,7 +1024,9 @@ namespace QuanLyXeKhach.ViewModel
                     DataProvider.Ins.db.SaveChanges();
                     var wd2 = p as MainWindow;
                     LoadDataSchedule(wd2.ucContainerSchedule);
+                    SelectedTagSchedule = null;
                     LoadDataReceipt(wd2.ucContainerReceipt);
+                    SelectedTagReceipt = null;
                 }
             });
             DeleteScheduleCommand = new RelayCommand<Window>((p) => {
@@ -1047,6 +1080,75 @@ namespace QuanLyXeKhach.ViewModel
                 var wd = p as MainWindow;
                 LoadDataReceipt(wd.ucContainerReceipt);
                 SelectedTagReceipt = null;
+            });
+            //Trouble
+            SelectedItemTrouble = new SUCO();
+            AddTroubleCommand = new RelayCommand<Window>((p) => {
+                if (Role == "Quản Lý" || Role == "Thu Ngân")
+                    return true;
+                return false;
+            }, (p) => {
+                AddTroubleWd wd = new AddTroubleWd();
+                var addVM = wd.DataContext as AddTroubleVM;
+                addVM.ListNew = ListTrouble;
+                addVM.Li_BienSoXe = BienSoXe;
+                addVM.ListBus = ListBus;
+                wd.ShowDialog();
+                if (addVM.isAdd)
+                {
+                    var mwd = p as MainWindow;
+                    LoadDataTrouble(mwd.ucContainerTrouble);
+                    LoadDataBus(mwd.ucContainerBus);
+                    SelectedTagTrouble = null;
+                }
+            });
+            EditTroubleCommand = new RelayCommand<Object>((p) =>
+            {
+                if (SelectedTagTrouble != null && (Role == "Quản Lý" || Role == "Thu Ngân"))
+                    return true;
+                return false;
+            }, (p) =>
+            {
+                EditTroubleWd wd = new EditTroubleWd();
+                var editVM = wd.DataContext as EditTroubleVM;
+                editVM.New2.IDsuco = SelectedItemTrouble.IDsuco;
+                editVM.New2.TenSuCo = SelectedItemTrouble.TenSuCo;
+                editVM.New2.ChiPhi = SelectedItemTrouble.ChiPhi;
+                editVM.New2.TinhTrang = SelectedItemTrouble.TinhTrang;
+                editVM.New2.BienSoXe = SelectedItemTrouble.BienSoXe;
+                editVM.New2.NgayGapSuCo = SelectedItemTrouble.NgayGapSuCo;
+                editVM.New2.XEKHACH = SelectedItemTrouble.XEKHACH;
+                editVM.NgayXayRa = SelectedItemTrouble.NgayGapSuCo?.ToString("dd/MM/yyyy");
+                editVM.New = editVM.New2;
+                wd.ShowDialog();
+                if (editVM.isEdit)
+                {
+                    var uc = SelectedTagTrouble as TagTroubleUC;
+                    SelectedItemTrouble.TinhTrang = uc.SC_TinhTrang.Text = editVM.New.TinhTrang;
+                    var mwd = p as MainWindow;
+                    DataProvider.Ins.db.SaveChanges();
+                    LoadDataTrouble(mwd.ucContainerTrouble);
+                    SelectedTagTrouble = null;
+                }
+            });
+            DeleteTroubleCommand = new RelayCommand<Window>((p) => {
+                if (SelectedTagTrouble != null && (Role == "Quản Lý" || Role == "Thu Ngân"))
+                    return true;
+                return false;
+            }, (p) => {
+                foreach (var xk in ListBus)
+                    if (xk.BienSoXe == SelectedItemTrouble.BienSoXe)
+                        xk.TinhTrang = "Đang hoạt động";
+                DataProvider.Ins.db.SUCOes.Remove(SelectedItemTrouble);
+                DataProvider.Ins.db.SaveChanges();
+                ListTrouble.Remove(SelectedItemTrouble);
+                if (year != null)
+                    ShowChart(int.Parse(year));
+                var wd = p as MainWindow;
+                LoadDataTrouble(wd.ucContainerTrouble);
+                SelectedTagTrouble = null;
+                LoadDataBus(wd.ucContainerBus);
+                SelectedTagBus = null;
             });
             //UserControlCommand
             SelectTagStaff = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
@@ -1160,6 +1262,21 @@ namespace QuanLyXeKhach.ViewModel
                 }
                 p.Opacity = 1;
                 SelectedTagReceipt = p;
+            });
+            SelectTagTrouble = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
+            {
+                if (SelectedTagTrouble != null)
+                {
+                    SelectedTagTrouble.Opacity = 0.8;
+                }
+                var uc = p as TagTroubleUC;
+                foreach (SUCO sc in ListTrouble)
+                {
+                    if (sc.IDsuco == uc.SC_IDSuC.Text)
+                        SelectedItemTrouble = sc;
+                }
+                p.Opacity = 1;
+                SelectedTagTrouble = p;
             });
             SearchDriver = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -1359,7 +1476,7 @@ namespace QuanLyXeKhach.ViewModel
                 {
                     int null1 = 0; int null2 = 0;
                     if (TenHK == "" || TenHK == null) null1 = 1;
-                    if (IDLT == null) null2 = 1;
+                    if (IDLT == null || IDLT == "") null2 = 1;
                     if (bl.TenHanhKhach.Contains(TenHK)) null1 = 2;
                     if (IDLT == bl.GHE.IDLICHTRINH) null2 = 2;
                     if((null1 == 1 && null2 ==1) || (null1 == 2 && null2 == 1) || (null1 == 1 && null2 == 2)|| (null1 == 2 && null2 == 2))
@@ -1378,24 +1495,34 @@ namespace QuanLyXeKhach.ViewModel
                 }
                 SelectedTagReceipt = null;
             });
-
+            SearchTrouble = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                MainWindow mw = p as MainWindow;
+                mw.ucContainerTrouble.Children.Clear();
+                string BienSoXe = mw.SBSX_SC.SelectedValue?.ToString();
+                string TinhTrang = mw.STinhTrang_SC.SelectedValue?.ToString();
+                foreach (SUCO sc in ListTrouble)
+                {
+                    int null1 = 0; int null2 = 0;
+                    if (BienSoXe == "" || BienSoXe == null) null1 = 1;
+                    if (TinhTrang == null || TinhTrang == "") null2 = 1;
+                    if (sc.XEKHACH.BienSoXe == BienSoXe) null1 = 2;
+                    if (TinhTrang == sc.TinhTrang) null2 = 2;
+                    if ((null1 == 1 && null2 == 1) || (null1 == 2 && null2 == 1) || (null1 == 1 && null2 == 2) || (null1 == 2 && null2 == 2))
+                    {
+                        var uc = new TagTroubleUC();
+                        uc.SC_IDSuC.Text = sc.IDsuco;
+                        uc.SC_TenSuCo.Text = sc.TenSuCo;
+                        uc.SC_TinhTrang.Text = sc.TinhTrang;
+                        uc.SC_NgayapSuCo.Text = sc.NgayGapSuCo?.ToString("dd/MM/yyyy");
+                        uc.SC_ChiPhi.Text = sc.ChiPhi.ToString();
+                        uc.SC_BienSoXe.Text = sc.BienSoXe;
+                        mw.ucContainerTrouble.Children.Add(uc);
+                    }
+                }
+                SelectedTagTrouble = null;
+            });
         }
-        //private void LoadDataClient(StackPanel sp)
-        //{
-        //    sp.Children.Clear();
-        //    foreach (HANHKHACH hk in ListClient)
-        //    {
-        //        var uc = new TagClientUC();
-        //        uc.TenHanhKhach.Text = hk.TenHanhKhach;
-        //        uc.IDHanhKhach.Text = hk.IDHanhKhach;
-        //        uc.GioiTinh.Text = hk.GioiTinh;
-        //        uc.Tuoi.Text = hk.Tuoi;
-        //        uc.SDT.Text = hk.SDTHK;
-        //        uc.DiaChi.Text = hk.DiaChiHK;
-        //        uc.CCCD.Text = hk.CCCD;
-        //        sp.Children.Add(uc);
-        //    }
-        //}
         private void LoadDataStaff(StackPanel sp)
         {
             sp.Children.Clear();
@@ -1542,6 +1669,21 @@ namespace QuanLyXeKhach.ViewModel
                 sp.Children.Add(uc);
             }
 
+        }
+        private void LoadDataTrouble(StackPanel sp)
+        {
+            sp.Children.Clear();
+            foreach (SUCO sc in ListTrouble)
+            {
+                var uc = new TagTroubleUC();
+                uc.SC_IDSuC.Text = sc.IDsuco;
+                uc.SC_TenSuCo.Text = sc.TenSuCo;
+                uc.SC_TinhTrang.Text = sc.TinhTrang;
+                uc.SC_NgayapSuCo.Text = sc.NgayGapSuCo?.ToString("dd/MM/yyyy");
+                uc.SC_ChiPhi.Text = sc.ChiPhi.ToString();
+                uc.SC_BienSoXe.Text = sc.BienSoXe;
+                sp.Children.Add(uc);
+            }
         }
         private void DeleteLichTrinh(LICHTRINH lt)
         {

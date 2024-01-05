@@ -62,6 +62,18 @@
     <Property Name="NgayVaoLam" Type="DateTime" Precision="0" />
     <NavigationProperty Name="XEKHACHes" Relationship="Self.FK__XEKHACH__CCCDNV__30F848ED" FromRole="NHANVIEN" ToRole="XEKHACH" />
   </EntityType>
+  <EntityType Name="SUCO">
+    <Key>
+      <PropertyRef Name="IDsuco" />
+    </Key>
+    <Property Name="IDsuco" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="BienSoXe" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="TenSuCo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TinhTrang" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="NgayGapSuCo" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="XEKHACH" Relationship="Self.FK__SUCO__BienSoXe__403A8C7D" FromRole="SUCO" ToRole="XEKHACH" />
+  </EntityType>
   <EntityType Name="TAIXE">
     <Key>
       <PropertyRef Name="CCCDTX" />
@@ -126,6 +138,7 @@
     <Property Name="SoGhe" Type="Byte" />
     <NavigationProperty Name="LICHTRINHs" Relationship="Self.FK__LICHTRINH__BienS__34C8D9D1" FromRole="XEKHACH" ToRole="LICHTRINH" />
     <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__XEKHACH__CCCDNV__30F848ED" FromRole="XEKHACH" ToRole="NHANVIEN" />
+    <NavigationProperty Name="SUCOes" Relationship="Self.FK__SUCO__BienSoXe__403A8C7D" FromRole="XEKHACH" ToRole="SUCO" />
     <NavigationProperty Name="TAIXE" Relationship="Self.FK__XEKHACH__CCCDTX__300424B4" FromRole="XEKHACH" ToRole="TAIXE" />
   </EntityType>
   <Association Name="FK__TUYENXE__IDBenKe__2D27B809">
@@ -224,6 +237,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__SUCO__BienSoXe__403A8C7D">
+    <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="0..1" />
+    <End Role="SUCO" Type="Self.SUCO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XEKHACH">
+        <PropertyRef Name="BienSoXe" />
+      </Principal>
+      <Dependent Role="SUCO">
+        <PropertyRef Name="BienSoXe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__XEKHACH__CCCDTX__300424B4">
     <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="0..1" />
     <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="*" />
@@ -236,12 +261,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QLXEKHACHEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="QLXEKHACHEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="BENXEs" EntityType="Self.BENXE" />
     <EntitySet Name="BIENLAIs" EntityType="Self.BIENLAI" />
     <EntitySet Name="GHEs" EntityType="Self.GHE" />
     <EntitySet Name="LICHTRINHs" EntityType="Self.LICHTRINH" />
     <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="SUCOes" EntityType="Self.SUCO" />
     <EntitySet Name="TAIXEs" EntityType="Self.TAIXE" />
     <EntitySet Name="THUNGANs" EntityType="Self.THUNGAN" />
     <EntitySet Name="TUYENXEs" EntityType="Self.TUYENXE" />
@@ -278,6 +304,10 @@
     <AssociationSet Name="FK__XEKHACH__CCCDNV__30F848ED" Association="Self.FK__XEKHACH__CCCDNV__30F848ED">
       <End Role="NHANVIEN" EntitySet="NHANVIENs" />
       <End Role="XEKHACH" EntitySet="XEKHACHes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SUCO__BienSoXe__403A8C7D" Association="Self.FK__SUCO__BienSoXe__403A8C7D">
+      <End Role="XEKHACH" EntitySet="XEKHACHes" />
+      <End Role="SUCO" EntitySet="SUCOes" />
     </AssociationSet>
     <AssociationSet Name="FK__XEKHACH__CCCDTX__300424B4" Association="Self.FK__XEKHACH__CCCDTX__300424B4">
       <End Role="TAIXE" EntitySet="TAIXEs" />

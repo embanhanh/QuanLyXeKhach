@@ -77,7 +77,7 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <TextBox BorderBrush="Green"
-                             materialDesign:HintAssist.Foreground="Green" Padding="10"
+                             materialDesign:HintAssist.Foreground="Black" Padding="10"
                              VerticalAlignment="Center" Width="300" Background="White"
                              materialDesign:HintAssist.Hint="Họ Tên" Height="40"
                              IsReadOnly="true" Text="{Binding FullName}"
@@ -90,7 +90,7 @@
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <TextBox BorderBrush="Green" Text="{Binding UserName}"
-                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                 materialDesign:HintAssist.Foreground="Black" Padding="12"
                                  VerticalAlignment="Center" Width="300" Background="White"
                                  IsReadOnly="true"
                                  materialDesign:HintAssist.Hint="Tên Tài Khoản" Height="40"
@@ -98,7 +98,7 @@
                             </Grid>
                             <Grid Grid.Column="1">
                                 <TextBox BorderBrush="Green"
-                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                 materialDesign:HintAssist.Foreground="Black" Padding="12"
                                  VerticalAlignment="Center" Width="300" Background="White"
                                  IsReadOnly="true" Text="{Binding Role}"
                                  materialDesign:HintAssist.Hint="Chức vụ" Height="40"
@@ -112,7 +112,7 @@
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <TextBox BorderBrush="Green"
-                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                 materialDesign:HintAssist.Foreground="Black" Padding="12"
                                  VerticalAlignment="Center" Width="300" Background="White"
                                  IsReadOnly="true" Text="{Binding HashPass,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                  materialDesign:HintAssist.Hint="Mật khẩu" Height="40"
@@ -120,7 +120,7 @@
                             </Grid>
                             <Grid Grid.Column="1">
                                 <TextBox BorderBrush="Green" Text="{Binding SDT}"
-                                 materialDesign:HintAssist.Foreground="Green" Padding="12"
+                                 materialDesign:HintAssist.Foreground="Black" Padding="12"
                                  VerticalAlignment="Center" Width="300" Background="White"
                                  IsReadOnly="true"
                                  materialDesign:HintAssist.Hint="Số Điện Thoại" Height="40"
@@ -151,6 +151,7 @@
                                             <PasswordBox BorderBrush="Green" Margin="15 0"
                                                   VerticalAlignment="Top" x:Name="OldPass"
                                                   materialDesign:HintAssist.Hint="Nhập Mật Khẩu cũ"
+                                                  materialDesign:HintAssist.Foreground="Black"
                                                   Style="{StaticResource MaterialDesignOutlinedPasswordBox}">
                                                 <i:Interaction.Triggers>
                                                     <i:EventTrigger EventName="PasswordChanged">
@@ -168,6 +169,7 @@
                                     <Grid Grid.Row="2">
                                         <PasswordBox BorderBrush="Green" Margin="15 0"
                                             VerticalAlignment="Top" x:Name="Pass1"
+                                                materialDesign:HintAssist.Foreground="Black"
                                             materialDesign:HintAssist.Hint="Nhập Mật Khẩu mới"
                                             Style="{StaticResource MaterialDesignOutlinedPasswordBox}">
                                             <i:Interaction.Triggers>
@@ -180,6 +182,7 @@
                                     <Grid Grid.Row="3">
                                         <StackPanel>
                                             <PasswordBox BorderBrush="Green" Margin="15 0"
+                                                  materialDesign:HintAssist.Foreground="Black"
                                                   VerticalAlignment="Top" x:Name="Pass2"
                                                   materialDesign:HintAssist.Hint="Nhập Lại Mật Khẩu mới"
                                                   Style="{StaticResource MaterialDesignOutlinedPasswordBox}">
@@ -247,90 +250,7 @@
                         <Image Source="/Image/Home.jpg" Stretch="Uniform"></Image>
                     </Grid>
                 </TabItem>
-                <!--Clients--><!--
-                <TabItem Height="65">
-                    <TabItem.Header >
-                        <StackPanel Orientation="Horizontal" Width="120" >
-                            <materialDesign:PackIcon Kind="AccountMultiple" Height="25" 
-                                 Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
-                            <TextBlock Foreground="White" Text="Hành khách" VerticalAlignment="Bottom"></TextBlock>
-                        </StackPanel>
-                    </TabItem.Header>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.8*"></RowDefinition>
-                            <RowDefinition Height="5*"></RowDefinition>
-                            <RowDefinition Height="0.6*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        --><!--Search--><!--
-                        <Grid Grid.Column="0" Background="#eeeeee">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
-                                VerticalAlignment="Bottom"  >
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
-                                    materialDesign:HintAssist.Foreground="Green" Padding="12"
-                                    VerticalAlignment="Center" Width="300" Background="White"
-                                    materialDesign:HintAssist.Hint="Tên Hành Khách" Height="40"
-                                    x:Name="STenHK"
-                                    Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <TextBox BorderBrush="Green" Text="{Binding New.IDBenXe}"
-                                    materialDesign:HintAssist.Foreground="Green" Padding="12"
-                                    VerticalAlignment="Center" Width="300" Background="White"
-                                    materialDesign:HintAssist.Hint="Mã Hành Khách" Height="40"
-                                    x:Name="SMaHK"
-                                    Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
-                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
-                                        Command="{Binding SearchClient}" CommandParameter="{Binding ElementName=MainWd}">
-
-                                </Button>
-                            </StackPanel>
-                        </Grid>
-                        --><!--List--><!--
-                        <Border Grid.Row="1" Margin="20,20,20,20" CornerRadius="10"  
-                            BorderBrush="Black" BorderThickness="1" Background="White" >
-                            <Border.Effect>
-                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
-                            </Border.Effect>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                --><!--Title--><!--
-                                <TextBlock Grid.Row="0" Text="Danh sách hành khách" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
-                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
-                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-                                    <StackPanel x:Name="ucContainerClient">
-
-                                    </StackPanel>
-                                </ScrollViewer>
-                            </Grid>
-                        </Border>
-                        --><!--Buttons--><!--
-                        <Grid Grid.Row="2" Margin="0,0,0,20">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                --><!--Add--><!--
-                                <Button Width="100" Margin="20 0" Command="{Binding AddClientCommand}" CommandParameter="{Binding ElementName=ucContainerClient}"
-                                    Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                    ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                --><!--Edit--><!--
-                                <Button Width="100" Margin="20 0" Command="{Binding EditClientCommand}" CommandParameter="{Binding ElementName=MainWd}"
-                                     Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
-                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                --><!--Delete--><!--
-                                <Button Width="100" Margin="20 0" Command="{Binding DeleteClientCommand}" CommandParameter="{Binding ElementName=MainWd}"
-                                     Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
-                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                     Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                     ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
-                </TabItem >-->
+                <!--update information-->
                 <TabItem Height="65" >
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal" Width="150" >
@@ -388,7 +308,7 @@
                                             <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <!--Title-->
-                                        <TextBlock Grid.Row="0" Text="Danh sách tài xế" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <TextBlock Grid.Row="0" Text="Danh sách tài xế" Margin="10 10 0 0" FontSize="16" Foreground="Black"></TextBlock>
                                         <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
                                             <StackPanel x:Name="ucContainerDriver">
@@ -466,7 +386,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                             <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <!--Title-->
-                                        <TextBlock Grid.Row="0" Text="Danh sách phụ xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <TextBlock Grid.Row="0" Text="Danh sách phụ xe" Margin="10 10 0 0" FontSize="16" Foreground="Black"></TextBlock>
                                         <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
                                             <StackPanel x:Name="ucContainerStaff">
@@ -543,7 +463,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                             <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <!--Title-->
-                                        <TextBlock Grid.Row="0" Text="Danh sách thu ngân" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <TextBlock Grid.Row="0" Text="Danh sách thu ngân" Margin="10 10 0 0" FontSize="16" Foreground="Black"></TextBlock>
                                         <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                         <!--ListView-->
                                         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
@@ -626,7 +546,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                             <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <!--Title-->
-                                        <TextBlock Grid.Row="0" Text="Danh sách xe khách" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <TextBlock Grid.Row="0" Text="Danh sách xe khách" Margin="10 10 0 0" FontSize="16" Foreground="Black"></TextBlock>
                                         <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
                                             <StackPanel x:Name="ucContainerBus">
@@ -708,7 +628,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                             <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <!--Title-->
-                                        <TextBlock Grid.Row="0" Text="Danh sách bến xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <TextBlock Grid.Row="0" Text="Danh sách bến xe" Margin="10 10 0 0" FontSize="16" Foreground="Black"></TextBlock>
                                         <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
                                             <StackPanel x:Name="ucContainerBusStation">
@@ -789,7 +709,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                             <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <!--Title-->
-                                        <TextBlock Grid.Row="0" Text="Danh sách tuyến xe" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <TextBlock Grid.Row="0" Text="Danh sách tuyến xe" Margin="10 10 0 0" FontSize="16" Foreground="Black"></TextBlock>
                                         <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
                                             <StackPanel x:Name="ucContainerRoute">
@@ -874,7 +794,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                             <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <!--Title-->
-                                        <TextBlock Grid.Row="0" Text="Danh sách lịch trình xe lưu thông trên các tuyến" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                        <TextBlock Grid.Row="0" Text="Danh sách lịch trình xe lưu thông trên các tuyến" Margin="10 10 0 0" FontSize="16" Foreground="Black"></TextBlock>
                                         <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
                                             <StackPanel x:Name="ucContainerSchedule">
@@ -910,7 +830,87 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                         </TabItem>
                     </TabControl>
                 </TabItem>
-                
+                <!-- Trouble -->
+                <TabItem Height="65">
+                    <TabItem.Header >
+                        <StackPanel Orientation="Horizontal" Width="120" >
+                            <materialDesign:PackIcon Kind="Alert" Height="25" Width="25" VerticalAlignment="Center" Margin="0 0 7 0"/>
+                            <TextBlock Foreground="White" Text="Sự cố" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.8*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="0.6*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--Search-->
+                        <Grid Grid.Column="0" Background="#eeeeee">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  
+                                VerticalAlignment="Bottom"  >
+                                <ComboBox BorderBrush="Green" Padding="12" x:Name="STinhTrang_SC" IsEditable="True"
+                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding Li_TinhTrang}"
+                                 materialDesign:HintAssist.Hint="Tình Trạng" Background="White" Margin="15"
+                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" Height="40" Width="120">
+                                </ComboBox>
+                                <ComboBox BorderBrush="Green" Padding="12" x:Name="SBSX_SC" IsEditable="True"
+                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding BienSoXe}"
+                                 materialDesign:HintAssist.Hint="Biển Số Xe" Background="White" Margin="15"
+                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" Height="40">
+                                </ComboBox>
+                                <Button Content="Tìm Kiếm" Margin="0 0 15 0"
+                                Command="{Binding SearchTrouble}" CommandParameter="{Binding ElementName=MainWd}">
+
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                        <!--List-->
+                        <Border Grid.Row="1" Margin="20" CornerRadius="10" 
+                            BorderBrush="Black" BorderThickness="1" Background="White">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Title-->
+                                <TextBlock Grid.Row="0" Text="Danh sách sự cố" Margin="10 10 0 0" FontSize="16" Foreground="Black"></TextBlock>
+                                <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
+                                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel x:Name="ucContainerTrouble">
+
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                        <!--Buttons-->
+                        <Grid Grid.Row="2" Margin="0 0 0 20">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <!--Add-->
+                                <Button Width="100" Margin="20 0" Command="{Binding AddTroubleCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                Content="Thêm" Foreground="White" Background="#08c424" BorderBrush="#08c424"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Edit-->
+                                <Button Width="100" Margin="20 0" Command="{Binding EditTroubleCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                 Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
+                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                                <!--Delete-->
+                                <Button Width="100" Margin="20 0" Command="{Binding DeleteTroubleCommand}" CommandParameter="{Binding ElementName=MainWd}"
+                                 Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
+                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem>
                 <!--Receipt-->
                 <TabItem Height="65">
                     <TabItem.Header >
@@ -937,7 +937,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="15"/>
                                 <ComboBox BorderBrush="Green" Padding="12" x:Name="SMaLT" IsEditable="True"
                                  materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding IDLichTrinh}"
-                                 materialDesign:HintAssist.Hint="ID Lịch Trình" Background="White" Margin="15"
+                                 materialDesign:HintAssist.Hint="Mã Lịch Trình" Background="White" Margin="15"
                                  Style="{StaticResource MaterialDesignOutlinedComboBox}" Height="40">
                                 </ComboBox>
                                 <Button Content="Tìm Kiếm" Margin="0 0 15 0"
@@ -959,7 +959,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách biên lai 3 ngày gần đây" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <TextBlock Grid.Row="0" Text="Danh sách biên lai 3 ngày gần đây" Margin="10 10 0 0" FontSize="16" Foreground="Black"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
                                     <StackPanel x:Name="ucContainerReceipt">

@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="QuanLyXeKhach.UserControlFolder.TagTroubleUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyXeKhach.UserControlFolder"
+             Name="ucTagTrouble"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" Margin="5" DataContext="{StaticResource MainVM}"
+             d:DesignHeight="100" d:DesignWidth="700" Opacity="0.8">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDown">
+            <i:InvokeCommandAction CommandParameter="{Binding ElementName=ucTagTrouble}" Command="{Binding SelectTagTrouble}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="GotFocus">
+            <i:InvokeCommandAction CommandParameter="{Binding ElementName=ucTagTrouble}" Command="{Binding SelectTagTrouble}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Border  Background="#C1F2B0"  CornerRadius="15" BorderThickness="1" BorderBrush="Gray">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <materialDesign:PackIcon Kind="Alert" Height="100" Width="100" HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBox Margin="2" BorderBrush="Black" 
+                materialDesign:HintAssist.Foreground="Black"
+                VerticalAlignment="Center"  x:Name="SC_BienSoXe"
+                 materialDesign:HintAssist.Background="#C1F2B0"
+                 materialDesign:HintAssist.Hint="Biển Số Xe" MaxWidth="300"
+                 IsReadOnly="True" BorderThickness="1.5" TextAlignment="Center"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Padding="8" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBox Margin="2" BorderBrush="Black" 
+                materialDesign:HintAssist.Foreground="Black"
+                VerticalAlignment="Center"  MaxWidth="300"
+                IsReadOnly="True"  BorderThickness="1.5"
+                materialDesign:HintAssist.Background="#C1F2B0"
+                materialDesign:HintAssist.Hint="Tên Sự Cố"
+                x:Name="SC_TenSuCo" TextAlignment="Center"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Padding="8" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="3" >
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBox Margin="2" BorderBrush="Black" 
+                 materialDesign:HintAssist.Foreground="Black"
+                 materialDesign:HintAssist.Hint="Mã Sự Cố" MaxWidth="150"
+                 materialDesign:HintAssist.Background="#C1F2B0"
+                 x:Name="SC_IDSuC" TextAlignment="Center"
+                 IsReadOnly="True"  BorderThickness="1.5"
+                VerticalAlignment="Center" 
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Padding="8" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBox Margin="2" BorderBrush="Black" 
+                materialDesign:HintAssist.Foreground="Black"
+                VerticalAlignment="Center"  MaxWidth="300"
+                 materialDesign:HintAssist.Background="#C1F2B0"
+                 materialDesign:HintAssist.Hint="Ngày Gặp Sự Cố"
+                 x:Name="SC_NgayapSuCo" TextAlignment="Center"
+                 IsReadOnly="True"  BorderThickness="1.5"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Padding="8" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBox Margin="2" BorderBrush="Black" 
+                 materialDesign:HintAssist.Foreground="Black"
+                 materialDesign:HintAssist.Hint="Chi Phí"
+                 materialDesign:HintAssist.Background="#C1F2B0"
+                 x:Name="SC_ChiPhi"  BorderThickness="1.5"
+                 IsReadOnly="True" TextAlignment="Center"
+                VerticalAlignment="Center" MaxWidth="300"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Padding="8" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBox Margin="2" BorderBrush="Black" 
+                materialDesign:HintAssist.Foreground="Black"
+                VerticalAlignment="Center"  MaxWidth="300"
+                 IsReadOnly="True"  BorderThickness="1.5"
+                  x:Name="SC_TinhTrang" TextAlignment="Center"
+                 materialDesign:HintAssist.Background="#C1F2B0"
+                 materialDesign:HintAssist.Hint="Tình Trạng"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Padding="8" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

@@ -120,7 +120,7 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBox BorderBrush="Green" Text="{Binding New.SoDienThoaiHK,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
                                 materialDesign:HintAssist.Foreground="Green"
-                                VerticalAlignment="Center" 
+                                VerticalAlignment="Center"  MaxLength="10"
                                 materialDesign:HintAssist.Hint="Số Điện Thoại"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Grid.ColumnSpan="2"/>
                             </Grid>

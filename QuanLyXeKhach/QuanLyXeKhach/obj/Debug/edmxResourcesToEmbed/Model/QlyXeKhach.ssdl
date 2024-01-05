@@ -52,6 +52,17 @@
     <Property Name="Luong" Type="money" />
     <Property Name="NgayVaoLam" Type="smalldatetime" />
   </EntityType>
+  <EntityType Name="SUCO">
+    <Key>
+      <PropertyRef Name="IDsuco" />
+    </Key>
+    <Property Name="IDsuco" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="BienSoXe" Type="varchar" MaxLength="9" />
+    <Property Name="TenSuCo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ChiPhi" Type="money" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="30" />
+    <Property Name="NgayGapSuCo" Type="smalldatetime" />
+  </EntityType>
   <EntityType Name="TAIXE">
     <Key>
       <PropertyRef Name="CCCDTX" />
@@ -170,6 +181,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__SUCO__BienSoXe__403A8C7D">
+    <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="0..1" />
+    <End Role="SUCO" Type="Self.SUCO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XEKHACH">
+        <PropertyRef Name="BienSoXe" />
+      </Principal>
+      <Dependent Role="SUCO">
+        <PropertyRef Name="BienSoXe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__TUYENXE__IDBenKe__2D27B809">
     <End Role="BENXE" Type="Self.BENXE" Multiplicity="0..1" />
     <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="*" />
@@ -224,6 +247,7 @@
     <EntitySet Name="GHE" EntityType="Self.GHE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LICHTRINH" EntityType="Self.LICHTRINH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SUCO" EntityType="Self.SUCO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TAIXE" EntityType="Self.TAIXE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THUNGAN" EntityType="Self.THUNGAN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TUYENXE" EntityType="Self.TUYENXE" Schema="dbo" store:Type="Tables" />
@@ -248,6 +272,10 @@
     <AssociationSet Name="FK__LICHTRINH__IDTuy__33D4B598" Association="Self.FK__LICHTRINH__IDTuy__33D4B598">
       <End Role="TUYENXE" EntitySet="TUYENXE" />
       <End Role="LICHTRINH" EntitySet="LICHTRINH" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SUCO__BienSoXe__403A8C7D" Association="Self.FK__SUCO__BienSoXe__403A8C7D">
+      <End Role="XEKHACH" EntitySet="XEKHACH" />
+      <End Role="SUCO" EntitySet="SUCO" />
     </AssociationSet>
     <AssociationSet Name="FK__TUYENXE__IDBenKe__2D27B809" Association="Self.FK__TUYENXE__IDBenKe__2D27B809">
       <End Role="BENXE" EntitySet="BENXE" />

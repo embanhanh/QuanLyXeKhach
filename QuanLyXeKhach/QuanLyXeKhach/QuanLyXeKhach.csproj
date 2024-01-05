@@ -112,6 +112,9 @@
     <Compile Include="AddWindow\AddScheduleWd.xaml.cs">
       <DependentUpon>AddScheduleWd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddWindow\AddTroubleWd.xaml.cs">
+      <DependentUpon>AddTroubleWd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditWindow\EditBusStationWd.xaml.cs">
       <DependentUpon>EditBusStationWd.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,9 @@
     </Compile>
     <Compile Include="EditWindow\EditDriverWd.xaml.cs">
       <DependentUpon>EditDriverWd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditWindow\EditTroubleWd.xaml.cs">
+      <DependentUpon>EditTroubleWd.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -175,6 +181,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QLyXeKhach.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SUCO.cs">
+      <DependentUpon>QLyXeKhach.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TAIXE.cs">
       <DependentUpon>QLyXeKhach.tt</DependentUpon>
@@ -221,6 +230,10 @@
     <Compile Include="UserControlFolder\TagStaffUC.xaml.cs">
       <DependentUpon>TagStaffUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlFolder\TagTroubleUC.xaml.cs">
+      <DependentUpon>TagTroubleUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\AddTroubleVM.cs" />
     <Compile Include="ViewModel\EditCashierVM.cs" />
     <Compile Include="ViewModel\AddAccountVM.cs" />
     <Compile Include="ViewModel\AddBusStationVM.cs" />
@@ -239,6 +252,7 @@
     <Compile Include="ViewModel\EditRouteVM.cs" />
     <Compile Include="ViewModel\EditScheduleVM.cs" />
     <Compile Include="ViewModel\EditStaffVM.cs" />
+    <Compile Include="ViewModel\EditTroubleVM.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\TuyenXe.cs" />
@@ -263,6 +277,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddWindow\AddScheduleWd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddWindow\AddTroubleWd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -303,6 +321,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditWindow\EditDriverWd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditWindow\EditTroubleWd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -363,6 +385,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlFolder\TagStaffUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlFolder\TagTroubleUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

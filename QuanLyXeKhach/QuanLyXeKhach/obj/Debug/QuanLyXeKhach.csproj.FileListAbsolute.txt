@@ -217,3 +217,9 @@ C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\Q
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\bin\Debug\Syncfusion.Licensing.dll
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\bin\Debug\Syncfusion.SfChart.WPF.dll
 C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\bin\Debug\Syncfusion.SfChart.WPF.xml
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddTroubleWd.g.cs
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\AddWindow\AddTroubleWd.baml
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagTroubleUC.g.cs
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\UserControlFolder\TagTroubleUC.baml
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditTroubleWd.g.cs
+C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\obj\Debug\EditWindow\EditTroubleWd.baml

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEKHACHEntities">
+  <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEKHACHEntities1">
     <EntitySetMapping Name="BENXEs">
       <EntityTypeMapping TypeName="QLXEKHACHModel.BENXE">
         <MappingFragment StoreEntitySet="BENXE">
@@ -55,6 +55,18 @@
           <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
           <ScalarProperty Name="Luong" ColumnName="Luong" />
           <ScalarProperty Name="NgayVaoLam" ColumnName="NgayVaoLam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUCOes">
+      <EntityTypeMapping TypeName="QLXEKHACHModel.SUCO">
+        <MappingFragment StoreEntitySet="SUCO">
+          <ScalarProperty Name="IDsuco" ColumnName="IDsuco" />
+          <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
+          <ScalarProperty Name="TenSuCo" ColumnName="TenSuCo" />
+          <ScalarProperty Name="ChiPhi" ColumnName="ChiPhi" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="NgayGapSuCo" ColumnName="NgayGapSuCo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

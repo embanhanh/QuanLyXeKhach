@@ -18,6 +18,7 @@ namespace QuanLyXeKhach.Model
         public XEKHACH()
         {
             this.LICHTRINHs = new HashSet<LICHTRINH>();
+            this.SUCOes = new HashSet<SUCO>();
         }
     
         public string BienSoXe { get; set; }
@@ -30,6 +31,8 @@ namespace QuanLyXeKhach.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LICHTRINH> LICHTRINHs { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SUCO> SUCOes { get; set; }
         public virtual TAIXE TAIXE { get; set; }
     }
 }

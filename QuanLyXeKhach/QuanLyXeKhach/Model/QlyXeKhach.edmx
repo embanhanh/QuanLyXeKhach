@@ -57,6 +57,17 @@
           <Property Name="Luong" Type="money" />
           <Property Name="NgayVaoLam" Type="smalldatetime" />
         </EntityType>
+        <EntityType Name="SUCO">
+          <Key>
+            <PropertyRef Name="IDsuco" />
+          </Key>
+          <Property Name="IDsuco" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="BienSoXe" Type="varchar" MaxLength="9" />
+          <Property Name="TenSuCo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChiPhi" Type="money" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="30" />
+          <Property Name="NgayGapSuCo" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="TAIXE">
           <Key>
             <PropertyRef Name="CCCDTX" />
@@ -175,6 +186,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SUCO__BienSoXe__403A8C7D">
+          <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="0..1" />
+          <End Role="SUCO" Type="Self.SUCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XEKHACH">
+              <PropertyRef Name="BienSoXe" />
+            </Principal>
+            <Dependent Role="SUCO">
+              <PropertyRef Name="BienSoXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__TUYENXE__IDBenKe__2D27B809">
           <End Role="BENXE" Type="Self.BENXE" Multiplicity="0..1" />
           <End Role="TUYENXE" Type="Self.TUYENXE" Multiplicity="*" />
@@ -229,6 +252,7 @@
           <EntitySet Name="GHE" EntityType="Self.GHE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LICHTRINH" EntityType="Self.LICHTRINH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUCO" EntityType="Self.SUCO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TAIXE" EntityType="Self.TAIXE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THUNGAN" EntityType="Self.THUNGAN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TUYENXE" EntityType="Self.TUYENXE" Schema="dbo" store:Type="Tables" />
@@ -253,6 +277,10 @@
           <AssociationSet Name="FK__LICHTRINH__IDTuy__33D4B598" Association="Self.FK__LICHTRINH__IDTuy__33D4B598">
             <End Role="TUYENXE" EntitySet="TUYENXE" />
             <End Role="LICHTRINH" EntitySet="LICHTRINH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SUCO__BienSoXe__403A8C7D" Association="Self.FK__SUCO__BienSoXe__403A8C7D">
+            <End Role="XEKHACH" EntitySet="XEKHACH" />
+            <End Role="SUCO" EntitySet="SUCO" />
           </AssociationSet>
           <AssociationSet Name="FK__TUYENXE__IDBenKe__2D27B809" Association="Self.FK__TUYENXE__IDBenKe__2D27B809">
             <End Role="BENXE" EntitySet="BENXE" />
@@ -338,6 +366,18 @@
           <Property Name="NgayVaoLam" Type="DateTime" Precision="0" />
           <NavigationProperty Name="XEKHACHes" Relationship="Self.FK__XEKHACH__CCCDNV__30F848ED" FromRole="NHANVIEN" ToRole="XEKHACH" />
         </EntityType>
+        <EntityType Name="SUCO">
+          <Key>
+            <PropertyRef Name="IDsuco" />
+          </Key>
+          <Property Name="IDsuco" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="BienSoXe" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="TenSuCo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TinhTrang" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="NgayGapSuCo" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="XEKHACH" Relationship="Self.FK__SUCO__BienSoXe__403A8C7D" FromRole="SUCO" ToRole="XEKHACH" />
+        </EntityType>
         <EntityType Name="TAIXE">
           <Key>
             <PropertyRef Name="CCCDTX" />
@@ -402,6 +442,7 @@
           <Property Name="SoGhe" Type="Byte" />
           <NavigationProperty Name="LICHTRINHs" Relationship="Self.FK__LICHTRINH__BienS__34C8D9D1" FromRole="XEKHACH" ToRole="LICHTRINH" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__XEKHACH__CCCDNV__30F848ED" FromRole="XEKHACH" ToRole="NHANVIEN" />
+          <NavigationProperty Name="SUCOes" Relationship="Self.FK__SUCO__BienSoXe__403A8C7D" FromRole="XEKHACH" ToRole="SUCO" />
           <NavigationProperty Name="TAIXE" Relationship="Self.FK__XEKHACH__CCCDTX__300424B4" FromRole="XEKHACH" ToRole="TAIXE" />
         </EntityType>
         <Association Name="FK__TUYENXE__IDBenKe__2D27B809">
@@ -500,6 +541,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SUCO__BienSoXe__403A8C7D">
+          <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="0..1" />
+          <End Role="SUCO" Type="Self.SUCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XEKHACH">
+              <PropertyRef Name="BienSoXe" />
+            </Principal>
+            <Dependent Role="SUCO">
+              <PropertyRef Name="BienSoXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__XEKHACH__CCCDTX__300424B4">
           <End Role="TAIXE" Type="Self.TAIXE" Multiplicity="0..1" />
           <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="*" />
@@ -512,12 +565,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QLXEKHACHEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="QLXEKHACHEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BENXEs" EntityType="Self.BENXE" />
           <EntitySet Name="BIENLAIs" EntityType="Self.BIENLAI" />
           <EntitySet Name="GHEs" EntityType="Self.GHE" />
           <EntitySet Name="LICHTRINHs" EntityType="Self.LICHTRINH" />
           <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+          <EntitySet Name="SUCOes" EntityType="Self.SUCO" />
           <EntitySet Name="TAIXEs" EntityType="Self.TAIXE" />
           <EntitySet Name="THUNGANs" EntityType="Self.THUNGAN" />
           <EntitySet Name="TUYENXEs" EntityType="Self.TUYENXE" />
@@ -555,6 +609,10 @@
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="XEKHACH" EntitySet="XEKHACHes" />
           </AssociationSet>
+          <AssociationSet Name="FK__SUCO__BienSoXe__403A8C7D" Association="Self.FK__SUCO__BienSoXe__403A8C7D">
+            <End Role="XEKHACH" EntitySet="XEKHACHes" />
+            <End Role="SUCO" EntitySet="SUCOes" />
+          </AssociationSet>
           <AssociationSet Name="FK__XEKHACH__CCCDTX__300424B4" Association="Self.FK__XEKHACH__CCCDTX__300424B4">
             <End Role="TAIXE" EntitySet="TAIXEs" />
             <End Role="XEKHACH" EntitySet="XEKHACHes" />
@@ -565,7 +623,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEKHACHEntities">
+        <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEKHACHEntities1">
           <EntitySetMapping Name="BENXEs">
             <EntityTypeMapping TypeName="QLXEKHACHModel.BENXE">
               <MappingFragment StoreEntitySet="BENXE">
@@ -620,6 +678,18 @@
                 <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
                 <ScalarProperty Name="Luong" ColumnName="Luong" />
                 <ScalarProperty Name="NgayVaoLam" ColumnName="NgayVaoLam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUCOes">
+            <EntityTypeMapping TypeName="QLXEKHACHModel.SUCO">
+              <MappingFragment StoreEntitySet="SUCO">
+                <ScalarProperty Name="IDsuco" ColumnName="IDsuco" />
+                <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
+                <ScalarProperty Name="TenSuCo" ColumnName="TenSuCo" />
+                <ScalarProperty Name="ChiPhi" ColumnName="ChiPhi" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+                <ScalarProperty Name="NgayGapSuCo" ColumnName="NgayGapSuCo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
