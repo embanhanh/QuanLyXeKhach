@@ -105,34 +105,38 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.FullName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                                    materialDesign:HintAssist.Foreground="Green"
-                                    VerticalAlignment="Center"
-                                    materialDesign:HintAssist.Hint="Họ Và Tên"
-                                    MaxLength="50"
-                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
-
-                            </Grid>
                             <Grid Grid.Row="1" Margin="20">
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.FullName, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  
+                                    materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding ListHoten}"
+                                    materialDesign:HintAssist.Hint="Họ tên"
+                                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction  Command="{Binding SelectFullName}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ComboBox>
+                            </Grid>
+                            <Grid Grid.Row="0" Margin="20">
                                 <ComboBox BorderBrush="Green" SelectedValue="{Binding New.Roles, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  
                                     materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding ListChucVu}"
                                     materialDesign:HintAssist.Hint="Chức vụ"
                                     Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction  Command="{Binding SelectRole}" CommandParameter="{Binding ElementName=TextNumber}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                 </ComboBox>
                             </Grid>
                             <Grid Grid.Row="2" Margin="20">
-                                <TextBox BorderBrush="Green" Text="{Binding New.SDT,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                <TextBox BorderBrush="Green" Text="{Binding SDT,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
                                 materialDesign:HintAssist.Foreground="Green"
                                 VerticalAlignment="Center" x:Name="TextNumber"
                                 materialDesign:HintAssist.Hint="Số Điện Thoại"
-                                MaxLength="10"
+                                MaxLength="10" IsReadOnly="True"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="TextChanged">
-                                            <i:InvokeCommandAction  Command="{Binding TextNumber}" CommandParameter="{Binding ElementName=TextNumber}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                   
                                 </TextBox>
                             </Grid>
                         </Grid>

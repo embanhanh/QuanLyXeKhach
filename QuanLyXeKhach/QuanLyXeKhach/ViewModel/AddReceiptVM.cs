@@ -20,21 +20,24 @@ namespace QuanLyXeKhach.ViewModel
         private double GiaVee;
         public bool isAdd;
         private BIENLAI _new;
-        private List<string> _LHanhKhach;
         private List<string> _LThuNgan;
         private List<string> _LGiamGia;
         private List<string> _LGhe;
         private List<string> _LLichTrinh;
-        private string _HanhKhach;
         private string _ThuNgan;
         private string _Ghe;
         private string _GiaVe;
         private string _GiamGia;
         private string _IDLichTrinh;
         private string _ErrorMessage;
+        private string _BenDau;
+        private string _BenCuoi;
+        private string _ThoiGianXuatPhat;
         public string ErrorMessage { get => _ErrorMessage; set { _ErrorMessage = value; OnPropertyChanged(); } }
+        public string BenDau { get => _BenDau; set { _BenDau = value; OnPropertyChanged(); } }
+        public string BenCuoi { get => _BenCuoi; set { _BenCuoi = value; OnPropertyChanged(); } }
+        public string ThoiGianXuatPhat { get => _ThoiGianXuatPhat; set { _ThoiGianXuatPhat = value; OnPropertyChanged(); } }
         public string GiamGia { get { return _GiamGia; } set { _GiamGia = value; OnPropertyChanged(); } }
-        public string HanhKhach { get { return _HanhKhach; } set { _HanhKhach = value; OnPropertyChanged(); } }
         public string ThuNgan { get { return _ThuNgan; } set { _ThuNgan = value; OnPropertyChanged(); } }
         public string Ghe { get { return _Ghe; } set { _Ghe = value; OnPropertyChanged(); } }
         public string GiaVe { get { return _GiaVe; } set { _GiaVe = value; OnPropertyChanged(); } }
@@ -42,10 +45,8 @@ namespace QuanLyXeKhach.ViewModel
         private ObservableCollection<BIENLAI> _listnew;
         private ObservableCollection<LICHTRINH> _listLT;
         private ObservableCollection<GHE> _listG;
-        private ObservableCollection<HANHKHACH> _listHK;
         private ObservableCollection<THUNGAN> _listTN;
         public BIENLAI New { get => _new; set { _new = value; OnPropertyChanged(); } }
-        public List<string> LHanhKhach { get { return _LHanhKhach; } set { _LHanhKhach = value; OnPropertyChanged(); } }
         public List<string> LThuNgan { get { return _LThuNgan; } set { _LThuNgan = value; OnPropertyChanged(); } }
         public List<string> LGiamGia { get { return _LGiamGia; } set { _LGiamGia = value; OnPropertyChanged(); } }
         public List<string> LGhe { get { return _LGhe; } set { _LGhe = value; OnPropertyChanged(); } }
@@ -53,7 +54,6 @@ namespace QuanLyXeKhach.ViewModel
         public ObservableCollection<BIENLAI> ListNew { get => _listnew; set { _listnew = value; OnPropertyChanged(); } }
         public ObservableCollection<LICHTRINH> listLT { get => _listLT; set { _listLT = value; OnPropertyChanged(); } }
         public ObservableCollection<GHE> listG { get => _listG; set { _listG = value; OnPropertyChanged(); } }
-        public ObservableCollection<HANHKHACH> listHK { get => _listHK; set { _listHK = value; OnPropertyChanged(); } }
         public ObservableCollection<THUNGAN> listTN { get => _listTN; set { _listTN = value; OnPropertyChanged(); } }
         public ICommand closeCommand { get; set; }
         public ICommand addCommand { get; set; }
@@ -71,8 +71,10 @@ namespace QuanLyXeKhach.ViewModel
             closeCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 LGhe.Clear();
+                BenDau = "";
+                BenCuoi = "";
+                ThoiGianXuatPhat = "";
                 GiaVe = "";
-                HanhKhach = "";
                 ThuNgan = "";
                 IDLichTrinh = "";
                 New = new BIENLAI();
@@ -80,7 +82,7 @@ namespace QuanLyXeKhach.ViewModel
                 p.Close();
             });
             addCommand = new RelayCommand<Window>((p) => {
-                if (string.IsNullOrEmpty(New.IDGhe) || string.IsNullOrEmpty(New.GiamGia) || string.IsNullOrEmpty(ThuNgan) || string.IsNullOrEmpty(HanhKhach) 
+                if (string.IsNullOrEmpty(New.IDGhe) || string.IsNullOrEmpty(New.GiamGia) || string.IsNullOrEmpty(ThuNgan) || string.IsNullOrEmpty(New.TenHanhKhach) || string.IsNullOrEmpty(New.SoDienThoaiHK) 
                 || string.IsNullOrEmpty(IDLichTrinh) || New.NgayMua == null|| string.IsNullOrEmpty(New.IDBienLai) || ErrorMessage != "")
                     return false;
                 return true;
@@ -91,13 +93,6 @@ namespace QuanLyXeKhach.ViewModel
                     {
                         New.ThuNgan = tn.CCCDTN;
                         New.THUNGAN1 = tn;
-                        break;
-                    }
-                foreach(var hk in listHK)
-                    if(HanhKhach == hk.TenHanhKhach)
-                    {
-                        New.IDHanhKhach = hk.IDHanhKhach;
-                        New.HANHKHACH = hk;
                         break;
                     }
                 foreach (var gh in listG)
@@ -112,9 +107,11 @@ namespace QuanLyXeKhach.ViewModel
                 DataProvider.Ins.db.BIENLAIs.Add(New);
                 DataProvider.Ins.db.SaveChanges();
                 GiaVe = "";
-                HanhKhach = "";
                 ThuNgan = "";
                 IDLichTrinh = "";
+                BenDau = "";
+                BenCuoi = "";
+                ThoiGianXuatPhat = "";
                 New = new BIENLAI();
                 //index++;
                 isAdd = true;
@@ -129,6 +126,11 @@ namespace QuanLyXeKhach.ViewModel
                 foreach(var lt in listLT)
                     if(lt.IDLICHTRINH == IDLichTrinh)
                     {
+                        BenDau = lt.TUYENXE?.BENXE1.TenBenXe;
+                        BenCuoi = lt.TUYENXE?.BENXE.TenBenXe;
+                        DateTime ngay = (DateTime)lt.NgayXuatPhat;
+                        DateTime time = ngay.Add((TimeSpan)lt.TUYENXE?.GioXuatPhat);
+                        ThoiGianXuatPhat = time.ToString();
                         GiaVe = lt.GiaVe.ToString();
                         GiaVee = (double)lt.GiaVe;
                     }

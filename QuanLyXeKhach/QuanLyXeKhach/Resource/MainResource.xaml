@@ -4,8 +4,6 @@
     <!--xmlns:local="clr-namespace:QuanLyXeKhach.ResourceXAML"-->
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
-    <viewmodel:AddClientVM x:Key="addClientVM"></viewmodel:AddClientVM>
-    <viewmodel:EditClientVM x:Key="editClientVM"></viewmodel:EditClientVM>
     <viewmodel:AddDriverVM x:Key="addDriverVM"></viewmodel:AddDriverVM>
     <viewmodel:EditDriverVM x:Key="editDriverVM"></viewmodel:EditDriverVM>
     <viewmodel:AddStaffVM x:Key="addStaffVM"></viewmodel:AddStaffVM>
@@ -21,6 +19,5 @@
     <viewmodel:AddCashierVM x:Key="addCashierVM"></viewmodel:AddCashierVM>
     <viewmodel:EditCashierVM x:Key="editCashierVM"></viewmodel:EditCashierVM>
     <viewmodel:AddReceiptVM x:Key="addReceiptVM"></viewmodel:AddReceiptVM>
-    <viewmodel:EditReceiptVM x:Key="editReceiptVM"></viewmodel:EditReceiptVM>
     <viewmodel:AddAccountVM x:Key="addAccountVM"></viewmodel:AddAccountVM>
 </ResourceDictionary>

@@ -16,13 +16,13 @@ namespace QuanLyXeKhach.Model
     {
         public string IDBienLai { get; set; }
         public string IDGhe { get; set; }
-        public string IDHanhKhach { get; set; }
         public Nullable<System.DateTime> NgayMua { get; set; }
         public string GiamGia { get; set; }
         public string ThuNgan { get; set; }
+        public string TenHanhKhach { get; set; }
+        public string SoDienThoaiHK { get; set; }
     
         public virtual GHE GHE { get; set; }
-        public virtual HANHKHACH HANHKHACH { get; set; }
         public virtual THUNGAN THUNGAN1 { get; set; }
     }
 }

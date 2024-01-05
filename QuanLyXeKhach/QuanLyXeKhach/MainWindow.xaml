@@ -959,7 +959,7 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <!--Title-->
-                                <TextBlock Grid.Row="0" Text="Danh sách biên lai" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
+                                <TextBlock Grid.Row="0" Text="Danh sách biên lai 3 ngày gần đây" Margin="10 10 0 0" FontSize="16" Foreground="Gray"></TextBlock>
                                 <Border Grid.Row="1" Height="3" Margin="10" Background="#eeeeee"></Border>
                                 <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
                                     <StackPanel x:Name="ucContainerReceipt">
@@ -977,13 +977,6 @@ Command="{Binding SearchStaff}" CommandParameter="{Binding ElementName=MainWd}">
                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-                                <!--Edit-->
-                                <!--<Button Width="100" Margin="20 0" Command="{Binding EditReceiptCommand}" CommandParameter="{Binding ElementName=MainWd}"
-                                 Content="Sửa" Foreground="White" Background="#44b0f1" BorderBrush="#44b0f1"
-                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                 ToolTip="Resource name: MaterialDesignRaisedLightButton" />-->
-                                <!--Delete-->
                                 <Button Width="100" Margin="20 0" Command="{Binding DeleteReceiptCommand}" CommandParameter="{Binding ElementName=MainWd}"
                                  Content="Xóa" Foreground="White" Background="OrangeRed" BorderBrush="OrangeRed"
                                  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEKHACHEntities1">
+  <EntityContainerMapping StorageEntityContainer="QLXEKHACHModelStoreContainer" CdmEntityContainer="QLXEKHACHEntities">
     <EntitySetMapping Name="BENXEs">
       <EntityTypeMapping TypeName="QLXEKHACHModel.BENXE">
         <MappingFragment StoreEntitySet="BENXE">
@@ -16,10 +16,11 @@
         <MappingFragment StoreEntitySet="BIENLAI">
           <ScalarProperty Name="IDBienLai" ColumnName="IDBienLai" />
           <ScalarProperty Name="IDGhe" ColumnName="IDGhe" />
-          <ScalarProperty Name="IDHanhKhach" ColumnName="IDHanhKhach" />
           <ScalarProperty Name="NgayMua" ColumnName="NgayMua" />
           <ScalarProperty Name="GiamGia" ColumnName="GiamGia" />
           <ScalarProperty Name="ThuNgan" ColumnName="ThuNgan" />
+          <ScalarProperty Name="TenHanhKhach" ColumnName="TenHanhKhach" />
+          <ScalarProperty Name="SoDienThoaiHK" ColumnName="SoDienThoaiHK" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -29,19 +30,6 @@
           <ScalarProperty Name="IDGhe" ColumnName="IDGhe" />
           <ScalarProperty Name="IDLICHTRINH" ColumnName="IDLICHTRINH" />
           <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="HANHKHACHes">
-      <EntityTypeMapping TypeName="QLXEKHACHModel.HANHKHACH">
-        <MappingFragment StoreEntitySet="HANHKHACH">
-          <ScalarProperty Name="IDHanhKhach" ColumnName="IDHanhKhach" />
-          <ScalarProperty Name="TenHanhKhach" ColumnName="TenHanhKhach" />
-          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
-          <ScalarProperty Name="Tuoi" ColumnName="Tuoi" />
-          <ScalarProperty Name="CCCD" ColumnName="CCCD" />
-          <ScalarProperty Name="SDTHK" ColumnName="SDTHK" />
-          <ScalarProperty Name="DiaChiHK" ColumnName="DiaChiHK" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -66,6 +54,7 @@
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
           <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
           <ScalarProperty Name="Luong" ColumnName="Luong" />
+          <ScalarProperty Name="NgayVaoLam" ColumnName="NgayVaoLam" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -79,6 +68,7 @@
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
           <ScalarProperty Name="BangLai" ColumnName="BangLai" />
           <ScalarProperty Name="Luong" ColumnName="Luong" />
+          <ScalarProperty Name="NgayVaoLam" ColumnName="NgayVaoLam" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -92,6 +82,7 @@
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
           <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
           <ScalarProperty Name="Luong" ColumnName="Luong" />
+          <ScalarProperty Name="NgayVaoLam" ColumnName="NgayVaoLam" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

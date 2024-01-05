@@ -12,7 +12,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="AddReceiptWd" Height="550" Width="800" Background="{x:Null}" AllowsTransparency="True">
+        Title="AddReceiptWd" Height="730" Width="800" Background="{x:Null}" AllowsTransparency="True">
 
     <Border Background="#08c424" CornerRadius="40" BorderThickness="1" BorderBrush="Gray">
         <Grid >
@@ -41,6 +41,8 @@
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
@@ -91,18 +93,19 @@
                                     <ColumnDefinition Width="38*"/>
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding HanhKhach,UpdateSourceTrigger=PropertyChanged}"  
-                                materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding LHanhKhach}"
-                                materialDesign:HintAssist.Hint="Hành Khách"
-                                Style="{StaticResource MaterialDesignOutlinedComboBox}" Grid.ColumnSpan="2">
-                                </ComboBox>
+                                <TextBox BorderBrush="Green" Text="{Binding New.TenHanhKhach,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                materialDesign:HintAssist.Foreground="Green"
+                                VerticalAlignment="Center" 
+                                materialDesign:HintAssist.Hint="Tên Hành Khách"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Grid.ColumnSpan="2"/>
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">
-                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.IDGhe,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  
-                                    materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding LGhe,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                    materialDesign:HintAssist.Hint="Ghế"
-                                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                                </ComboBox>
+                                <TextBox BorderBrush="Green" Text="{Binding BenDau,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                materialDesign:HintAssist.Foreground="Green"
+                                VerticalAlignment="Center" IsReadOnly="True"
+                                materialDesign:HintAssist.Hint="Bến Xuất Phát"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                               
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="2">
@@ -111,11 +114,59 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="38*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox BorderBrush="Green" Text="{Binding New.SoDienThoaiHK,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                materialDesign:HintAssist.Foreground="Green"
+                                VerticalAlignment="Center" 
+                                materialDesign:HintAssist.Hint="Số Điện Thoại"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Grid.ColumnSpan="2"/>
+                            </Grid>
+                            <Grid Grid.Column="1" Margin="20">
+                                <TextBox BorderBrush="Green" Text="{Binding BenCuoi,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                materialDesign:HintAssist.Foreground="Green"
+                                VerticalAlignment="Center" IsReadOnly="True"
+                                materialDesign:HintAssist.Hint="Bến Đích Đến"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Margin="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="38*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
                                 <DatePicker  SelectedDate="{Binding New.NgayMua,UpdateSourceTrigger=PropertyChanged}" BorderBrush="Green"
                                 materialDesign:HintAssist.Foreground="Green" 
-                                materialDesign:HintAssist.Hint="Ngày Mua" 
-                                Style="{StaticResource MaterialDesignOutlinedDatePicker}">
+                                materialDesign:HintAssist.Hint="Ngày Mua"
+                                Style="{StaticResource MaterialDesignOutlinedDatePicker}" Grid.ColumnSpan="2">
                                 </DatePicker>
+                            </Grid>
+                            <Grid Grid.Column="1" Margin="20">
+                                <ComboBox BorderBrush="Green" SelectedValue="{Binding New.IDGhe,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  
+                                 materialDesign:HintAssist.Foreground="Green" ItemsSource="{Binding LGhe,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                 materialDesign:HintAssist.Hint="Ghế"
+                                 Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Margin="20">
+                                <TextBox BorderBrush="Green" Text="{Binding GiaVe,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                 materialDesign:HintAssist.Foreground="Green"
+                                 VerticalAlignment="Center" IsReadOnly="True"
+                                 materialDesign:HintAssist.Hint="Giá Vé"
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">
                                 <ComboBox BorderBrush="Green" SelectedValue="{Binding ThuNgan,UpdateSourceTrigger=PropertyChanged}"  
@@ -125,16 +176,16 @@
                                 </ComboBox>
                             </Grid>
                         </Grid>
-                        <Grid Grid.Row="3">
+                        <Grid Grid.Row="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="20 0 20 0">
-                                <TextBox BorderBrush="Green" Text="{Binding GiaVe,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                <TextBox BorderBrush="Green" Text="{Binding ThoiGianXuatPhat,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
                                     materialDesign:HintAssist.Foreground="Green"
                                     VerticalAlignment="Center" IsReadOnly="True"
-                                    materialDesign:HintAssist.Hint="Giá Vé"
+                                    materialDesign:HintAssist.Hint="Thời Gian Xuất Phát"
                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                             </Grid>
                             <Grid Grid.Column="1" Margin="20">

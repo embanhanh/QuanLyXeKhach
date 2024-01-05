@@ -15,10 +15,11 @@
     </Key>
     <Property Name="IDBienLai" Type="char" MaxLength="6" Nullable="false" />
     <Property Name="IDGhe" Type="char" MaxLength="6" />
-    <Property Name="IDHanhKhach" Type="char" MaxLength="6" />
     <Property Name="NgayMua" Type="smalldatetime" />
     <Property Name="GiamGia" Type="nvarchar" MaxLength="20" />
     <Property Name="ThuNgan" Type="char" MaxLength="12" />
+    <Property Name="TenHanhKhach" Type="nvarchar" MaxLength="50" />
+    <Property Name="SoDienThoaiHK" Type="char" MaxLength="10" />
   </EntityType>
   <EntityType Name="GHE">
     <Key>
@@ -27,18 +28,6 @@
     <Property Name="IDGhe" Type="char" MaxLength="6" Nullable="false" />
     <Property Name="IDLICHTRINH" Type="char" MaxLength="6" />
     <Property Name="TINHTRANG" Type="bit" />
-  </EntityType>
-  <EntityType Name="HANHKHACH">
-    <Key>
-      <PropertyRef Name="IDHanhKhach" />
-    </Key>
-    <Property Name="IDHanhKhach" Type="char" MaxLength="6" Nullable="false" />
-    <Property Name="TenHanhKhach" Type="nvarchar" MaxLength="40" Nullable="false" />
-    <Property Name="GioiTinh" Type="nvarchar" MaxLength="6" />
-    <Property Name="Tuoi" Type="char" MaxLength="2" />
-    <Property Name="CCCD" Type="char" MaxLength="12" />
-    <Property Name="SDTHK" Type="char" MaxLength="10" />
-    <Property Name="DiaChiHK" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="LICHTRINH">
     <Key>
@@ -61,6 +50,7 @@
     <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
     <Property Name="Luong" Type="money" />
+    <Property Name="NgayVaoLam" Type="smalldatetime" />
   </EntityType>
   <EntityType Name="TAIXE">
     <Key>
@@ -73,6 +63,7 @@
     <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
     <Property Name="BangLai" Type="nvarchar" MaxLength="10" />
     <Property Name="Luong" Type="money" />
+    <Property Name="NgayVaoLam" Type="smalldatetime" />
   </EntityType>
   <EntityType Name="THUNGAN">
     <Key>
@@ -85,6 +76,7 @@
     <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
     <Property Name="Luong" Type="money" />
+    <Property Name="NgayVaoLam" Type="smalldatetime" />
   </EntityType>
   <EntityType Name="TUYENXE">
     <Key>
@@ -118,7 +110,7 @@
     <Property Name="TinhTrang" Type="nvarchar" MaxLength="40" />
     <Property Name="SoGhe" Type="tinyint" />
   </EntityType>
-  <Association Name="FK__BIENLAI__IDGhe__3C69FB99">
+  <Association Name="FK__BIENLAI__IDGhe__3A81B327">
     <End Role="GHE" Type="Self.GHE" Multiplicity="0..1" />
     <End Role="BIENLAI" Type="Self.BIENLAI" Multiplicity="*" />
     <ReferentialConstraint>
@@ -130,19 +122,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BIENLAI__IDHanhK__3D5E1FD2">
-    <End Role="HANHKHACH" Type="Self.HANHKHACH" Multiplicity="0..1" />
-    <End Role="BIENLAI" Type="Self.BIENLAI" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="HANHKHACH">
-        <PropertyRef Name="IDHanhKhach" />
-      </Principal>
-      <Dependent Role="BIENLAI">
-        <PropertyRef Name="IDHanhKhach" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__BIENLAI__ThuNgan__3E52440B">
+  <Association Name="FK__BIENLAI__ThuNgan__3B75D760">
     <End Role="THUNGAN" Type="Self.THUNGAN" Multiplicity="0..1" />
     <End Role="BIENLAI" Type="Self.BIENLAI" Multiplicity="*" />
     <ReferentialConstraint>
@@ -242,7 +222,6 @@
     <EntitySet Name="BENXE" EntityType="Self.BENXE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BIENLAI" EntityType="Self.BIENLAI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GHE" EntityType="Self.GHE" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="HANHKHACH" EntityType="Self.HANHKHACH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LICHTRINH" EntityType="Self.LICHTRINH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TAIXE" EntityType="Self.TAIXE" Schema="dbo" store:Type="Tables" />
@@ -250,15 +229,11 @@
     <EntitySet Name="TUYENXE" EntityType="Self.TUYENXE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="XEKHACH" EntityType="Self.XEKHACH" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__BIENLAI__IDGhe__3C69FB99" Association="Self.FK__BIENLAI__IDGhe__3C69FB99">
+    <AssociationSet Name="FK__BIENLAI__IDGhe__3A81B327" Association="Self.FK__BIENLAI__IDGhe__3A81B327">
       <End Role="GHE" EntitySet="GHE" />
       <End Role="BIENLAI" EntitySet="BIENLAI" />
     </AssociationSet>
-    <AssociationSet Name="FK__BIENLAI__IDHanhK__3D5E1FD2" Association="Self.FK__BIENLAI__IDHanhK__3D5E1FD2">
-      <End Role="HANHKHACH" EntitySet="HANHKHACH" />
-      <End Role="BIENLAI" EntitySet="BIENLAI" />
-    </AssociationSet>
-    <AssociationSet Name="FK__BIENLAI__ThuNgan__3E52440B" Association="Self.FK__BIENLAI__ThuNgan__3E52440B">
+    <AssociationSet Name="FK__BIENLAI__ThuNgan__3B75D760" Association="Self.FK__BIENLAI__ThuNgan__3B75D760">
       <End Role="THUNGAN" EntitySet="THUNGAN" />
       <End Role="BIENLAI" EntitySet="BIENLAI" />
     </AssociationSet>

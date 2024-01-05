@@ -121,9 +121,6 @@
     <Compile Include="EditWindow\EditCashierWd.xaml.cs">
       <DependentUpon>EditCashierWd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditWindow\EditReceiptWd.xaml.cs">
-      <DependentUpon>EditReceiptWd.xaml</DependentUpon>
-    </Compile>
     <Compile Include="EditWindow\EditRouteWd.xaml.cs">
       <DependentUpon>EditRouteWd.xaml</DependentUpon>
     </Compile>
@@ -133,9 +130,6 @@
     <Compile Include="EditWindow\EditStaffWd.xaml.cs">
       <DependentUpon>EditStaffWd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddWindow\AddClientWd.xaml.cs">
-      <DependentUpon>AddClientWd.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AddWindow\AddRouteWd.xaml.cs">
       <DependentUpon>AddRouteWd.xaml</DependentUpon>
     </Compile>
@@ -144,9 +138,6 @@
     </Compile>
     <Compile Include="AddWindow\AddDriverWd.xaml.cs">
       <DependentUpon>AddDriverWd.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="EditWindow\EditClientWd.xaml.cs">
-      <DependentUpon>EditClientWd.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditWindow\EditDriverWd.xaml.cs">
       <DependentUpon>EditDriverWd.xaml</DependentUpon>
@@ -162,9 +153,6 @@
     </Compile>
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\GHE.cs">
-      <DependentUpon>QLyXeKhach.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\HANHKHACH.cs">
       <DependentUpon>QLyXeKhach.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LICHTRINH.cs">
@@ -233,11 +221,11 @@
     <Compile Include="UserControlFolder\TagStaffUC.xaml.cs">
       <DependentUpon>TagStaffUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\EditCashierVM.cs" />
     <Compile Include="ViewModel\AddAccountVM.cs" />
     <Compile Include="ViewModel\AddBusStationVM.cs" />
     <Compile Include="ViewModel\AddBusVM.cs" />
     <Compile Include="ViewModel\AddCashierVM.cs" />
-    <Compile Include="ViewModel\AddClientVM.cs" />
     <Compile Include="ViewModel\AddDriverVM.cs" />
     <Compile Include="ViewModel\AddReceiptVM.cs" />
     <Compile Include="ViewModel\AddRouteVM.cs" />
@@ -247,10 +235,7 @@
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
     <Compile Include="ViewModel\EditBusStationVM.cs" />
     <Compile Include="ViewModel\EditBusVM.cs" />
-    <Compile Include="ViewModel\EditCashierVM.cs" />
-    <Compile Include="ViewModel\EditClientVM.cs" />
     <Compile Include="ViewModel\EditDriverVM.cs" />
-    <Compile Include="ViewModel\EditReceiptVM.cs" />
     <Compile Include="ViewModel\EditRouteVM.cs" />
     <Compile Include="ViewModel\EditScheduleVM.cs" />
     <Compile Include="ViewModel\EditStaffVM.cs" />
@@ -293,10 +278,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditWindow\EditReceiptWd.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="EditWindow\EditRouteWd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -309,10 +290,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddWindow\AddClientWd.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="AddWindow\AddRouteWd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -322,10 +299,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddWindow\AddDriverWd.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="EditWindow\EditClientWd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -433,6 +406,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\Home.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\QLyXeKhach.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QLyXeKhach.edmx</DependentUpon>
@@ -444,7 +419,6 @@
       <LastGenOutput>QLyXeKhach.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

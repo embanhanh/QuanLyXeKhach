@@ -99,7 +99,6 @@ namespace QuanLyXeKhach.ViewModel
         private UserControl SelectedTagCashier = null;
         private UserControl SelectedTagReceipt = null;
         //List
-        private ObservableCollection<HANHKHACH> _ListClient;
         private ObservableCollection<TAIXE> _ListDriver;
         private ObservableCollection<NHANVIEN> _ListStaff;
         private ObservableCollection<XEKHACH> _ListBus;
@@ -111,7 +110,6 @@ namespace QuanLyXeKhach.ViewModel
         private ObservableCollection<THUNGAN> _ListCashier;
         private ObservableCollection<BIENLAI> _ListReceipt;
         private ObservableCollection<GHE> _ListSeat;
-        public ObservableCollection<HANHKHACH> ListClient { get =>_ListClient;set { _ListClient = value; OnPropertyChanged(); } }
         public ObservableCollection<TAIXE> ListDriver { get => _ListDriver; set { _ListDriver = value; OnPropertyChanged(); } }
         public ObservableCollection<NHANVIEN> ListStaff { get => _ListStaff; set { _ListStaff = value; OnPropertyChanged(); } }
         public ObservableCollection<XEKHACH> ListBus { get => _ListBus; set { _ListBus = value; OnPropertyChanged(); } }
@@ -124,8 +122,6 @@ namespace QuanLyXeKhach.ViewModel
         public ObservableCollection<BIENLAI> ListReceipt { get => _ListReceipt; set { _ListReceipt = value; OnPropertyChanged(); } }
         public ObservableCollection<GHE> ListSeat { get => _ListSeat; set { _ListSeat = value; OnPropertyChanged(); } }
         //SelectedItem
-        private HANHKHACH _SelectedItemClient;
-        public HANHKHACH SelectedItemClient { get => _SelectedItemClient; set { _SelectedItemClient = value; OnPropertyChanged(); } }
         private NHANVIEN _SelectedItemStaff;
         public NHANVIEN SelectedItemStaff { get => _SelectedItemStaff; set { _SelectedItemStaff = value; OnPropertyChanged(); } }
         private XEKHACH _SelectedItemBus;
@@ -152,9 +148,6 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand ConfirmPass { get; set; }
         public ICommand LogoutCommand { get; set; }
         public ICommand AddAccountCommand { get; set; }
-        public ICommand AddClientCommand { get; set; }
-        public ICommand EditClientCommand { get; set; }
-        public ICommand DeleteClientCommand { get; set; }
         public ICommand AddStaffCommand { get; set; }
         public ICommand EditStaffCommand { get; set; }
         public ICommand DeleteStaffCommand { get; set; }
@@ -177,7 +170,6 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand EditCashierCommand { get; set; }
         public ICommand DeleteCashierCommand { get; set; }
         public ICommand AddReceiptCommand { get; set; }
-        public ICommand EditReceiptCommand { get; set; }
         public ICommand DeleteReceiptCommand { get; set; }
         //UserControlCommand
         public ICommand SelectTagClient { get; set; }
@@ -282,9 +274,6 @@ namespace QuanLyXeKhach.ViewModel
                     p.Close();
             });
             //Load Data
-            ListClient = new ObservableCollection<HANHKHACH>(DataProvider.Ins.db.HANHKHACHes);
-            foreach (var hk in ListClient)
-                HoTenHK.Add(hk.TenHanhKhach);
             ListDriver = new ObservableCollection<TAIXE>(DataProvider.Ins.db.TAIXEs);
             foreach (var tx in ListDriver)
                 HoTenTX.Add(tx.TenTaiXe);
@@ -402,6 +391,10 @@ namespace QuanLyXeKhach.ViewModel
                 return false;
             }, (p) => {
                 AddAccountWd wd = new AddAccountWd();
+                var vm = wd.DataContext as AddAccountVM;
+                vm.ListPhuXe = HoTenNV;
+                vm.ListTaiXe = HoTenTX;
+                vm.ListThuNgan = HoTenTN;
                 wd.ShowDialog();
             });
             Password1ChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
@@ -444,91 +437,6 @@ namespace QuanLyXeKhach.ViewModel
             {
                 ErrorMessagePassword = "";
             });
-            //Client
-            //SelectedItemClient = new HANHKHACH();
-            //AddClientCommand = new RelayCommand<StackPanel>((p) => {
-            //    if (Role == "Quản Lý" || Role == "Thu Ngân")
-            //        return true;
-            //    return false;
-            //}, (p) => { 
-            //    AddClientWd wd = new AddClientWd(); 
-            //    var clientVM = wd.DataContext as AddClientVM;
-            //    clientVM.ListNew = ListClient;
-            //    wd.ShowDialog();
-            //    if (clientVM.isAdd)
-            //    {
-            //        HoTenHK.Add(ListClient.Last().TenHanhKhach);
-            //        LoadDataClient(p);
-            //        SelectedTagClient = null;
-            //    }
-            //});
-            //EditClientCommand = new RelayCommand<Window>((p) => {
-            //    if (SelectedTagClient != null && (Role == "Quản Lý" || Role == "Thu Ngân"))
-            //        return true;
-            //    return false;
-            //}, (p) => { 
-            //    EditClientWd wd = new EditClientWd();
-            //    var editVM = wd.DataContext as EditClientVM;
-            //    editVM.New2.Tuoi= SelectedItemClient.Tuoi;
-            //    editVM.New2.IDHanhKhach = SelectedItemClient.IDHanhKhach;
-            //    editVM.New2.CCCD = SelectedItemClient.CCCD;
-            //    editVM.New2.TenHanhKhach= SelectedItemClient.TenHanhKhach;
-            //    editVM.New2.DiaChiHK = SelectedItemClient.DiaChiHK;
-            //    editVM.New2.GioiTinh = SelectedItemClient.GioiTinh;
-            //    editVM.New2.SDTHK = SelectedItemClient.SDTHK;
-            //    editVM.New = editVM.New2;
-            //    wd.ShowDialog();
-            //    if(editVM.isEdit)
-            //    {
-            //        int index = ListClient.IndexOf(SelectedItemClient);
-            //        HoTenHK.RemoveAt(index);
-            //        HoTenHK.Insert(index, editVM.New.TenHanhKhach);
-            //        var uc = SelectedTagClient as TagClientUC;
-            //        SelectedItemClient.TenHanhKhach = uc.TenHanhKhach.Text = editVM.New.TenHanhKhach;
-            //        SelectedItemClient.IDHanhKhach = uc.IDHanhKhach.Text = editVM.New.IDHanhKhach;
-            //        SelectedItemClient.Tuoi = uc.Tuoi.Text = editVM.New.Tuoi;
-            //        SelectedItemClient.CCCD = uc.CCCD.Text = editVM.New.CCCD;
-            //        SelectedItemClient.SDTHK = uc.SDT.Text = editVM.New.SDTHK;
-            //        SelectedItemClient.DiaChiHK = uc.DiaChi.Text = editVM.New.DiaChiHK;
-            //        SelectedItemClient.GioiTinh = uc.GioiTinh.Text = editVM.New.GioiTinh;
-            //        DataProvider.Ins.db.SaveChanges();
-            //        var wd2 = p as MainWindow;
-            //        LoadDataClient(wd2.ucContainerClient);
-            //        LoadDataReceipt(wd2.ucContainerReceipt);
-            //    }
-            //});
-            //DeleteClientCommand = new RelayCommand<Window>((p) => {
-            //    if (SelectedTagClient != null && (Role == "Quản Lý" || Role == "Thu Ngân"))
-            //        return true;
-            //    return false;
-            //}, (p) => {
-            //    try
-            //    {
-            //        int n = ListReceipt.Count;
-            //        int i;
-            //        for ( i = 0; i < n; i++)
-            //            if (ListReceipt[i].IDHanhKhach == SelectedItemClient.IDHanhKhach)
-            //            {
-            //                DataProvider.Ins.db.BIENLAIs.Remove(ListReceipt[i]);
-            //                ListReceipt.Remove(ListReceipt[i]);
-            //                i--;
-            //                n--;
-            //            }
-            //        DataProvider.Ins.db.HANHKHACHes.Remove(SelectedItemClient);
-            //        DataProvider.Ins.db.SaveChanges();
-            //        ListClient.Remove(SelectedItemClient);
-            //        HoTenHK.Remove(SelectedItemClient.TenHanhKhach);
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        MessageBox.Show(e.Message);
-            //    }
-            //    var wd = p as MainWindow;
-            //    LoadDataClient(wd.ucContainerClient);
-            //    SelectedTagClient = null;
-            //    LoadDataReceipt(wd.ucContainerReceipt);
-            //    SelectedTagReceipt = null;
-            //});
             //Staff
             SelectedItemStaff = new NHANVIEN();
             AddStaffCommand = new RelayCommand<StackPanel>((p) => { 
@@ -1106,11 +1014,9 @@ namespace QuanLyXeKhach.ViewModel
             }, (p) => {
                 AddReceiptWd wd = new AddReceiptWd();
                 var addVM = wd.DataContext as AddReceiptVM;
-                addVM.LHanhKhach = HoTenHK;
                 addVM.LThuNgan = HoTenTN;
                 addVM.LLichTrinh = IDLichTrinh;
                 addVM.listG = ListSeat;
-                addVM.listHK = ListClient;
                 addVM.listTN = ListCashier;
                 addVM.listLT = ListSchedule;
                 addVM.ListNew = ListReceipt;
@@ -1123,64 +1029,6 @@ namespace QuanLyXeKhach.ViewModel
                         ShowChart(int.Parse(year));
                     LoadDataReceipt(p);
                     SelectedTagReceipt = null;
-                }
-            });
-            EditReceiptCommand = new RelayCommand<Object>((p) => {
-                if (SelectedTagReceipt != null && (Role == "Quản Lý" || Role == "Thu Ngân"))
-                    return true;
-                return false;
-            }, (p) => {
-                EditReceiptWd wd = new EditReceiptWd();
-                var editVM = wd.DataContext as EditReceiptVM;
-                editVM.LHanhKhach = HoTenHK;
-                editVM.LThuNgan = HoTenTN;
-                editVM.LLichTrinh = IDLichTrinh;
-                List<string> listG = new List<string>();
-                foreach (var gh in ListSeat)
-                    if (gh.TINHTRANG == false || gh.IDGhe == SelectedItemReceipt.IDGhe)
-                        listG.Add(gh.IDGhe);
-                editVM.LGhe = listG;
-                editVM.listG = ListSeat;
-                editVM.listHK = ListClient;
-                editVM.listTN = ListCashier;
-                editVM.listLT = ListSchedule;
-                editVM.New2.IDBienLai = SelectedItemReceipt.IDBienLai;
-                editVM.New2.IDGhe = SelectedItemReceipt.IDGhe;
-                editVM.New2.GiamGia = SelectedItemReceipt.GiamGia;
-                editVM.New2.NgayMua = SelectedItemReceipt.NgayMua;
-                editVM.New2.ThuNgan = SelectedItemReceipt.ThuNgan;
-                editVM.New2.IDHanhKhach = SelectedItemReceipt.IDHanhKhach;
-                editVM.New2.HANHKHACH = SelectedItemReceipt.HANHKHACH;
-                editVM.New2.GHE = SelectedItemReceipt.GHE;
-                editVM.New2.THUNGAN1 = SelectedItemReceipt.THUNGAN1;
-                editVM.GiaVe = SelectedItemReceipt.GHE.LICHTRINH.GiaVe.ToString();
-                editVM.IDLichTrinh = SelectedItemReceipt.GHE.IDLICHTRINH;
-                editVM.ThuNgan = SelectedItemReceipt.THUNGAN1.HoTen;
-                editVM.HanhKhach = SelectedItemReceipt.HANHKHACH.TenHanhKhach;
-                editVM.New = editVM.New2;
-                wd.ShowDialog();
-                if (editVM.isEdit)
-                {
-                    var uc = SelectedTagReceipt as TagReceiptUC;
-                    SelectedItemReceipt.IDBienLai = uc.IDBienLai.Text = editVM.New.IDBienLai;
-                    SelectedItemReceipt.IDHanhKhach = editVM.New.IDHanhKhach;
-                    uc.IDLichTrinh.Text = editVM.New.GHE.IDLICHTRINH;
-                    uc.TenHanhKhach.Text = editVM.New.HANHKHACH.TenHanhKhach;
-                    uc.IDGhe.Text = editVM.New.IDGhe;
-                    uc.NgayMua.Text = editVM.New.NgayMua?.ToString("dd/MM/yyyy");
-                    uc.ThuNgan.Text = editVM.New.THUNGAN1.HoTen;
-                    uc.GiaVe.Text = editVM.New.GHE.LICHTRINH.GiaVe.ToString();
-                    uc.MaGiamGia.Text = editVM.New.GiamGia.ToString();
-                    SelectedItemReceipt.IDGhe = editVM.New.IDGhe;
-                    SelectedItemReceipt.GiamGia = editVM.New.GiamGia;
-                    SelectedItemReceipt.NgayMua = editVM.New.NgayMua;
-                    SelectedItemReceipt.ThuNgan = editVM.New.ThuNgan;
-                    SelectedItemReceipt.GHE = editVM.New.GHE;
-                    SelectedItemReceipt.THUNGAN1 = editVM.New.THUNGAN1;
-                    SelectedItemReceipt.HANHKHACH = editVM.New.HANHKHACH;
-                    DataProvider.Ins.db.SaveChanges();
-                    var wd2 = p as MainWindow;
-                    LoadDataReceipt(wd2.ucContainerReceipt);
                 }
             });
             DeleteReceiptCommand = new RelayCommand<Window>((p) => {
@@ -1201,19 +1049,6 @@ namespace QuanLyXeKhach.ViewModel
                 SelectedTagReceipt = null;
             });
             //UserControlCommand
-            SelectTagClient = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
-            {
-                if (SelectedTagClient != null)
-                {
-                    SelectedTagClient.Opacity = 0.8;
-                }
-                var uc = p as TagClientUC;
-               foreach (var client in ListClient)
-                    if(uc.IDHanhKhach.Text == client.IDHanhKhach)
-                        SelectedItemClient = client;
-                p.Opacity = 1;
-                SelectedTagClient = p;
-            });
             SelectTagStaff = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
             {
                 if (SelectedTagStaff != null)
@@ -1326,36 +1161,6 @@ namespace QuanLyXeKhach.ViewModel
                 p.Opacity = 1;
                 SelectedTagReceipt = p;
             });
-            //Search Command
-            //SearchClient = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            //{
-            //    MainWindow mw = p as MainWindow;
-            //    mw.ucContainerClient.Children.Clear();
-            //    string TenHK = mw.STenHK.Text;
-            //    string MaHK = mw.SMaHK.Text;
-            //    foreach (HANHKHACH hk in ListClient)
-            //    {
-            //        int ok1 = 0, ok2 = 0, ok3 = 0;
-            //        if ((TenHK == null || TenHK == "") && (MaHK == null && MaHK == "")) ok1 = 1;
-            //        if ((TenHK == null || TenHK == null)) ok2 = -1;
-            //        else if (hk.TenHanhKhach.Contains(TenHK)) ok2 = 1;
-            //        if ((MaHK == null && MaHK == "")) ok3 = -1;
-            //        else if (hk.IDHanhKhach.Contains(MaHK)) ok3 = 1;
-            //        if (ok1 == 1 || (ok2 == 1 && ok3 == 1) || (ok2 == 1 && ok3 == -1) || (ok2 == -1 && ok3 == 1))
-            //        {
-            //            var uc = new TagClientUC();
-            //            uc.TenHanhKhach.Text = hk.TenHanhKhach;
-            //            uc.IDHanhKhach.Text = hk.IDHanhKhach;
-            //            uc.GioiTinh.Text = hk.GioiTinh;
-            //            uc.Tuoi.Text = hk.Tuoi;
-            //            uc.SDT.Text = hk.SDTHK;
-            //            uc.DiaChi.Text = hk.DiaChiHK;
-            //            uc.CCCD.Text = hk.CCCD;
-            //            mw.ucContainerClient.Children.Add(uc);
-            //        }
-            //    }
-            //    SelectedTagClient = null;
-            //});
             SearchDriver = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 MainWindow mw = p as MainWindow;
@@ -1555,14 +1360,14 @@ namespace QuanLyXeKhach.ViewModel
                     int null1 = 0; int null2 = 0;
                     if (TenHK == "" || TenHK == null) null1 = 1;
                     if (IDLT == null) null2 = 1;
-                    if (bl.HANHKHACH.TenHanhKhach.Contains(TenHK)) null1 = 2;
+                    if (bl.TenHanhKhach.Contains(TenHK)) null1 = 2;
                     if (IDLT == bl.GHE.IDLICHTRINH) null2 = 2;
                     if((null1 == 1 && null2 ==1) || (null1 == 2 && null2 == 1) || (null1 == 1 && null2 == 2)|| (null1 == 2 && null2 == 2))
                     {
                         var uc = new TagReceiptUC();
                         uc.IDBienLai.Text = bl.IDBienLai;
-                        uc.IDLichTrinh.Text = bl.GHE.IDLICHTRINH;
-                        uc.TenHanhKhach.Text = bl.HANHKHACH.TenHanhKhach;
+                        uc.SoDienThoai.Text = bl.GHE.IDLICHTRINH;
+                        uc.TenHanhKhach.Text = bl.TenHanhKhach;
                         uc.IDGhe.Text = bl.IDGhe;
                         uc.NgayMua.Text = bl.NgayMua?.ToString("dd/MM/yyyy");
                         uc.ThuNgan.Text = bl.THUNGAN1.HoTen;
@@ -1706,6 +1511,8 @@ namespace QuanLyXeKhach.ViewModel
             sp.Children.Clear();
             foreach (BIENLAI bl in ListReceipt)
             {
+                if (bl.NgayMua < DateTime.Now.AddDays(-3))
+                    continue;
                 string GiaVe = "";
                 double GiaVee = (double)bl.GHE.LICHTRINH?.GiaVe;
                 string GiaGoc = bl.GHE.LICHTRINH?.GiaVe.ToString();
@@ -1717,10 +1524,16 @@ namespace QuanLyXeKhach.ViewModel
                     case "KHONG": GiaVe = GiaGoc; break;
                     default: GiaVe = GiaGoc; break;
                 }
+                DateTime ngay = (DateTime)bl.GHE?.LICHTRINH?.NgayXuatPhat;
+                DateTime time = ngay.Add((TimeSpan)bl.GHE?.LICHTRINH?.TUYENXE?.GioXuatPhat);
                 var uc = new TagReceiptUC();
+                uc.ThoiGianXuatPhat.Text = time.ToString();
+                uc.BenDau.Text = bl.GHE.LICHTRINH?.TUYENXE?.BENXE1?.TenBenXe;
+                uc.BenCuoi.Text = bl.GHE.LICHTRINH?.TUYENXE?.BENXE?.TenBenXe;
+                uc.ThoiGianDuKien.Text = bl.GHE.LICHTRINH?.TUYENXE?.ThoiGianDuKien?.ToString();
                 uc.IDBienLai.Text = bl.IDBienLai;
-                uc.IDLichTrinh.Text = bl.GHE.IDLICHTRINH;
-                uc.TenHanhKhach.Text = bl.HANHKHACH.TenHanhKhach;
+                uc.SoDienThoai.Text = bl.SoDienThoaiHK;
+                uc.TenHanhKhach.Text = bl.TenHanhKhach;
                 uc.IDGhe.Text = bl.IDGhe;
                 uc.NgayMua.Text = bl.NgayMua?.ToString("dd/MM/yyyy");
                 uc.ThuNgan.Text = bl.THUNGAN1?.HoTen;

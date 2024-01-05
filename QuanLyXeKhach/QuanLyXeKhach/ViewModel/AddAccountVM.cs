@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Controls;
+using System.Net.Sockets;
 
 namespace QuanLyXeKhach.ViewModel
 {
@@ -19,24 +20,35 @@ namespace QuanLyXeKhach.ViewModel
         public ICommand addCommand { get; set; }
         public ICommand UsernameEmpty { get; set; }
         public ICommand PasswordEmpty { get; set; }
-        public ICommand TextNumber { get; set; }
+        public ICommand SelectRole { get; set; }
+        public ICommand SelectFullName { get; set; }
         private string _errormessageuser;
         private string _errormessagpassword;
         private string _pass1;
         private string _pass2;
+        private string _SDT;
         private List<string> _ListChucVu;
+        private List<string> _ListThuNgan;
+        private List<string> _ListPhuXe;
+        private List<string> _ListTaiXe;
+        private List<string> _ListHoten;
         private UserInfo _new;
         public UserInfo New { get => _new; set { _new = value; OnPropertyChanged(); } }
         public string ErrorMessageUser { get => _errormessageuser; set { _errormessageuser = value; OnPropertyChanged(); } }
         public string ErrorMessagePassword { get => _errormessagpassword; set { _errormessagpassword = value; OnPropertyChanged(); } }
         public List<string> ListChucVu { get => _ListChucVu; set { _ListChucVu = value; OnPropertyChanged(); } }
+        public List<string> ListThuNgan { get => _ListThuNgan; set { _ListThuNgan = value; OnPropertyChanged(); } }
+        public List<string> ListPhuXe { get => _ListPhuXe; set { _ListPhuXe = value; OnPropertyChanged(); } }
+        public List<string> ListTaiXe { get => _ListTaiXe; set { _ListTaiXe = value; OnPropertyChanged(); } }
+        public List<string> ListHoten { get => _ListHoten; set { _ListHoten = value; OnPropertyChanged(); } }
         public string Pass1 { get => _pass1; set { _pass1 = value; OnPropertyChanged(); } }
         public string Pass2 { get => _pass2; set { _pass2 = value; OnPropertyChanged(); } }
+        public string SDT { get => _SDT; set { _SDT = value; OnPropertyChanged(); } }
 
         public AddAccountVM()
         {
             New  = new UserInfo();
-            ListChucVu = new List<string>() { "Quản Lý", "Thu Ngân", "Tài Xế", "Phụ Xe" };
+            ListChucVu = new List<string>() {"Thu Ngân", "Tài Xế", "Phụ Xe" };
             closeCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 New = new UserInfo();
@@ -89,9 +101,56 @@ namespace QuanLyXeKhach.ViewModel
             {
                 ErrorMessagePassword = "";
             });
-            TextNumber = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
+            SelectRole = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
             {
-
+                if(New.Roles == "Thu Ngân")
+                {
+                    ListHoten = ListThuNgan;
+                }
+                else if(New.Roles == "Tài Xế")
+                {
+                    ListHoten = ListTaiXe;
+                }
+                else if (New.Roles == "Phụ Xe")
+                {
+                    ListHoten = ListPhuXe;
+                }
+            });
+            SelectFullName = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
+            {
+                if (New.Roles == "Thu Ngân")
+                {
+                    List<THUNGAN> tns = DataProvider.Ins.db.THUNGANs.ToList();
+                    foreach(var t in tns)
+                        if(t.HoTen == New.FullName)
+                        {
+                            SDT = t.SoDienThoai;
+                            New.SDT = t.SoDienThoai;
+                            break;
+                        }
+                }
+                else if (New.Roles == "Tài Xế")
+                {
+                    List<TAIXE> tns = DataProvider.Ins.db.TAIXEs.ToList();
+                    foreach (var t in tns)
+                        if (t.TenTaiXe == New.FullName)
+                        {
+                            SDT = t.SoDienThoai;
+                            New.SDT = t.SoDienThoai;
+                            break;
+                        }
+                }
+                else if (New.Roles == "Phụ Xe")
+                {
+                    List<NHANVIEN> tns = DataProvider.Ins.db.NHANVIENs.ToList();
+                    foreach (var t in tns)
+                        if (t.HoTenNhanVien == New.FullName)
+                        {
+                            SDT = t.SoDienThoai;
+                            New.SDT = t.SoDienThoai;
+                            break;
+                        }
+                }
             });
         }
         public static string Base64Encode(string plainText)
