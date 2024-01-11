@@ -10,10 +10,10 @@ namespace QuanLyXeKhach.Model
     {
         private static DataProvider _ins;
         public static DataProvider Ins { get { if (_ins == null) _ins = new DataProvider(); return _ins; } set { _ins = value; } }
-        public QLXEKHACHEntities1 db { get; set; }
+        public QLXEKHACHEntities db { get; set; }
         private DataProvider() 
         {    
-            db = new QLXEKHACHEntities1();
+            db = new QLXEKHACHEntities();
         }
     }
 }

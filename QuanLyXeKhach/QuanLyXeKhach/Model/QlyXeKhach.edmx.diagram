@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="21daf75d235d48d9a85b870d45386af7" Name="Diagram1">
+      <Diagram DiagramId="1ae1629a959245c89ce9e33916b24c95" Name="Diagram1">
         <EntityTypeShape EntityType="QLXEKHACHModel.BENXE" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="QLXEKHACHModel.BIENLAI" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLXEKHACHModel.GHE" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
@@ -18,13 +18,13 @@
         <EntityTypeShape EntityType="QLXEKHACHModel.XEKHACH" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
         <AssociationConnector Association="QLXEKHACHModel.FK__TUYENXE__IDBenKe__2D27B809" ManuallyRouted="false" />
         <AssociationConnector Association="QLXEKHACHModel.FK__TUYENXE__IDBenXe__2C3393D0" ManuallyRouted="false" />
-        <AssociationConnector Association="QLXEKHACHModel.FK__BIENLAI__IDGhe__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="QLXEKHACHModel.FK__BIENLAI__ThuNgan__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__BIENLAI__IDGhe__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__BIENLAI__ThuNgan__3E52440B" ManuallyRouted="false" />
         <AssociationConnector Association="QLXEKHACHModel.FK__GHE__IDLICHTRINH__37A5467C" ManuallyRouted="false" />
         <AssociationConnector Association="QLXEKHACHModel.FK__LICHTRINH__BienS__34C8D9D1" ManuallyRouted="false" />
         <AssociationConnector Association="QLXEKHACHModel.FK__LICHTRINH__IDTuy__33D4B598" ManuallyRouted="false" />
         <AssociationConnector Association="QLXEKHACHModel.FK__XEKHACH__CCCDNV__30F848ED" ManuallyRouted="false" />
-        <AssociationConnector Association="QLXEKHACHModel.FK__SUCO__BienSoXe__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="QLXEKHACHModel.FK__SUCO__BienSoXe__3A81B327" ManuallyRouted="false" />
         <AssociationConnector Association="QLXEKHACHModel.FK__XEKHACH__CCCDTX__300424B4" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

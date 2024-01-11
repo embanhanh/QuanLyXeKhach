@@ -121,7 +121,7 @@
     <Property Name="TinhTrang" Type="nvarchar" MaxLength="40" />
     <Property Name="SoGhe" Type="tinyint" />
   </EntityType>
-  <Association Name="FK__BIENLAI__IDGhe__3A81B327">
+  <Association Name="FK__BIENLAI__IDGhe__3D5E1FD2">
     <End Role="GHE" Type="Self.GHE" Multiplicity="0..1" />
     <End Role="BIENLAI" Type="Self.BIENLAI" Multiplicity="*" />
     <ReferentialConstraint>
@@ -133,7 +133,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BIENLAI__ThuNgan__3B75D760">
+  <Association Name="FK__BIENLAI__ThuNgan__3E52440B">
     <End Role="THUNGAN" Type="Self.THUNGAN" Multiplicity="0..1" />
     <End Role="BIENLAI" Type="Self.BIENLAI" Multiplicity="*" />
     <ReferentialConstraint>
@@ -181,7 +181,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SUCO__BienSoXe__403A8C7D">
+  <Association Name="FK__SUCO__BienSoXe__3A81B327">
     <End Role="XEKHACH" Type="Self.XEKHACH" Multiplicity="0..1" />
     <End Role="SUCO" Type="Self.SUCO" Multiplicity="*" />
     <ReferentialConstraint>
@@ -253,11 +253,11 @@
     <EntitySet Name="TUYENXE" EntityType="Self.TUYENXE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="XEKHACH" EntityType="Self.XEKHACH" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__BIENLAI__IDGhe__3A81B327" Association="Self.FK__BIENLAI__IDGhe__3A81B327">
+    <AssociationSet Name="FK__BIENLAI__IDGhe__3D5E1FD2" Association="Self.FK__BIENLAI__IDGhe__3D5E1FD2">
       <End Role="GHE" EntitySet="GHE" />
       <End Role="BIENLAI" EntitySet="BIENLAI" />
     </AssociationSet>
-    <AssociationSet Name="FK__BIENLAI__ThuNgan__3B75D760" Association="Self.FK__BIENLAI__ThuNgan__3B75D760">
+    <AssociationSet Name="FK__BIENLAI__ThuNgan__3E52440B" Association="Self.FK__BIENLAI__ThuNgan__3E52440B">
       <End Role="THUNGAN" EntitySet="THUNGAN" />
       <End Role="BIENLAI" EntitySet="BIENLAI" />
     </AssociationSet>
@@ -273,7 +273,7 @@
       <End Role="TUYENXE" EntitySet="TUYENXE" />
       <End Role="LICHTRINH" EntitySet="LICHTRINH" />
     </AssociationSet>
-    <AssociationSet Name="FK__SUCO__BienSoXe__403A8C7D" Association="Self.FK__SUCO__BienSoXe__403A8C7D">
+    <AssociationSet Name="FK__SUCO__BienSoXe__3A81B327" Association="Self.FK__SUCO__BienSoXe__3A81B327">
       <End Role="XEKHACH" EntitySet="XEKHACH" />
       <End Role="SUCO" EntitySet="SUCO" />
     </AssociationSet>

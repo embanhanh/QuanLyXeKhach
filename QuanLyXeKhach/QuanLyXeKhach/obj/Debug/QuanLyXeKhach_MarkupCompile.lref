@@ -6,6 +6,7 @@ FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\AddCashierWd.xaml;;
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\AddReceiptWd.xaml;;
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\AddScheduleWd.xaml;;
+FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\AddTroubleWd.xaml;;
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\EditWindow\EditBusStationWd.xaml;;
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\EditWindow\EditBusWd.xaml;;
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\EditWindow\EditCashierWd.xaml;;
@@ -16,6 +17,7 @@ FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\AddStaffWd.xaml;;
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\AddDriverWd.xaml;;
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\EditWindow\EditDriverWd.xaml;;
+FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\EditWindow\EditTroubleWd.xaml;;
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\LoginWindow.xaml;;
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\MainWindow.xaml;;
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\Resource\MainResource.xaml;;
@@ -29,7 +31,5 @@ FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\UserContro
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\UserControlFolder\TagRouteUC.xaml;;
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\UserControlFolder\TagScheduleUC.xaml;;
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\UserControlFolder\TagStaffUC.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\AddWindow\AddTroubleWd.xaml;;
 FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\UserControlFolder\TagTroubleUC.xaml;;
-FC:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\EditWindow\EditTroubleWd.xaml;;
 

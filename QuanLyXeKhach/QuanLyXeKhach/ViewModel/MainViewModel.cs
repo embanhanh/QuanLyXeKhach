@@ -26,7 +26,6 @@ namespace QuanLyXeKhach.ViewModel
     public class MainViewModel : BaseViewModel
     {
         //Chart
-        bool isSelect;
         public ChartValues<double> _DoanhThu;
         public ChartValues<double> _ChiPhi;
         private List<string> _Lables;
@@ -35,15 +34,20 @@ namespace QuanLyXeKhach.ViewModel
         private string _year;
         private string _yearz;
         private string _month;
+        private string _monthz;
+        private string _LoiNhuan;
+        private string _Title;
         public ICommand ChangeCharts { get; set; }
-        public ICommand ChangeTopMonth { get; set; }
-        public ICommand ChangeTopYear { get; set; }
+        public ICommand ChangeTop { get; set; }
         public List<string> Lables { get => _Lables; set { _Lables = value; OnPropertyChanged(); } }
         public ObservableCollection<string> Years { get => _Years; set { _Years = value; OnPropertyChanged(); } }
         public ObservableCollection<string> Months { get => _Months; set { _Months = value; OnPropertyChanged(); } }
         public string year { get => _year; set { _year = value; OnPropertyChanged(); } }
+        public string LoiNhuan { get => _LoiNhuan; set { _LoiNhuan = value; OnPropertyChanged(); } }
+        public string Title { get => _Title; set { _Title = value; OnPropertyChanged(); } }
         public string yearz { get => _yearz; set { _yearz = value; OnPropertyChanged(); } }
         public string month { get => _month; set { _month = value; OnPropertyChanged(); } }
+        public string monthz { get => _monthz; set { _monthz = value; OnPropertyChanged(); } }
         public ChartValues<double> DoanhThu { get => _DoanhThu; set { _DoanhThu = value; OnPropertyChanged(); } }
         public ChartValues<double> ChiPhi { get => _ChiPhi; set { _ChiPhi = value; OnPropertyChanged(); } }
         //Account
@@ -209,7 +213,7 @@ namespace QuanLyXeKhach.ViewModel
             TopListRoute = new ObservableCollection<TuyenXe>();
             TopListRouteHK = new ObservableCollection<TuyenXe>();
             Lables = new List<string> { "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" };
-            Months = new ObservableCollection<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", " 11", "12","Tất cả" };
+            Months = new ObservableCollection<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", " 11", "12", "Tất cả" };
             DoanhThu = new ChartValues<double> ();
             ChiPhi = new ChartValues<double> ();
             Years = new ObservableCollection<string> ();
@@ -318,85 +322,15 @@ namespace QuanLyXeKhach.ViewModel
             //Charts
             ChangeCharts = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
-                ShowChart(int.Parse(year));
+                if (year == null)
+                    return;
+                ShowChart(int.Parse(year), monthz);
             });
-            ChangeTopMonth = new RelayCommand<Object>((p) => { if (isSelect) return true; return false; }, (p) =>
+            ChangeTop = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
-                if(month != "Tất cả" && isSelect == true)
-                {
-                    int monthh = int.Parse(month);
-                    int yearr = int .Parse(yearz);
-                    TopListRoute.Clear();
-                    TopListRouteHK.Clear();
-                    try
-                    {
-                        var Groups = (from tuyenxe in DataProvider.Ins.db.LICHTRINHs where tuyenxe.NgayXuatPhat.Value.Month == monthh && tuyenxe.NgayXuatPhat.Value.Year == yearr group tuyenxe by tuyenxe.IDTuyenXe into grouped orderby grouped.Count() descending select new { IDTuyenXe = grouped.Key, CountID = grouped.Count(),}).Take(5);
-                        foreach (var gr in Groups)
-                            foreach( var tx in ListRoute)
-                                if(gr.IDTuyenXe == tx.IDTuyenXe)
-                                {
-                                    TuyenXe txe = new TuyenXe() { ID = tx.IDTuyenXe, BenDau = tx.BENXE1.TenBenXe,BenCuoi = tx.BENXE.TenBenXe,tgxp=tx.GioXuatPhat.Value.ToString(),tgdk = tx.ThoiGianDuKien.Value.ToString(),count = gr.CountID.ToString() };
-                                    TopListRoute.Add(txe);
-                                    break;
-                                }
-                        var GroupsJoin = (from lt in DataProvider.Ins.db.LICHTRINHs join gh in DataProvider.Ins.db.GHEs on lt.IDLICHTRINH equals gh.IDLICHTRINH
-                                          where lt.NgayXuatPhat.Value.Month == monthh && lt.NgayXuatPhat.Value.Year == yearr && gh.TINHTRANG == true group new { LICHTRINH = lt,GHE = gh } by lt.IDTuyenXe into grouped 
-                                          orderby grouped.Count() descending 
-                                          select new { IDTuyenXe = grouped.Key, Count = grouped.Count(),}).Take(5);
-                        foreach (var gr in GroupsJoin)
-                            foreach (var tx in ListRoute)
-                                if (gr.IDTuyenXe == tx.IDTuyenXe)
-                                {
-                                    TuyenXe txe = new TuyenXe() { ID = tx.IDTuyenXe, BenDau = tx.BENXE1.TenBenXe, BenCuoi = tx.BENXE.TenBenXe, tgxp = tx.GioXuatPhat.Value.ToString(), tgdk = tx.ThoiGianDuKien.Value.ToString(), countGhe = gr.Count.ToString() };
-                                    TopListRouteHK.Add(txe);
-                                    break;
-                                }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-                else if (month == "Tất cả" && isSelect == true)
-                {
-                    int yearr = int.Parse(yearz);
-                    TopListRoute.Clear();
-                    TopListRouteHK.Clear();
-                    try
-                    {
-                        var Groups = (from tuyenxe in DataProvider.Ins.db.LICHTRINHs where tuyenxe.NgayXuatPhat.Value.Year == yearr group tuyenxe by tuyenxe.IDTuyenXe into grouped orderby grouped.Count() descending select new { IDTuyenXe = grouped.Key, CountID = grouped.Count(), }).Take(5);
-                        foreach (var gr in Groups)
-                            foreach (var tx in ListRoute)
-                                if (gr.IDTuyenXe == tx.IDTuyenXe)
-                                {
-                                    TuyenXe txe = new TuyenXe() { ID = tx.IDTuyenXe, BenDau = tx.BENXE1.TenBenXe, BenCuoi = tx.BENXE.TenBenXe, tgxp = tx.GioXuatPhat.Value.ToString(), tgdk = tx.ThoiGianDuKien.Value.ToString(), count = gr.CountID.ToString() };
-                                    TopListRoute.Add(txe);
-                                    break;
-                                }
-                        var GroupsJoin = (from lt in DataProvider.Ins.db.LICHTRINHs
-                                          join gh in DataProvider.Ins.db.GHEs on lt.IDLICHTRINH equals gh.IDLICHTRINH
-                                          where lt.NgayXuatPhat.Value.Year == yearr && gh.TINHTRANG == true
-                                          group new { LICHTRINH = lt, GHE = gh } by lt.IDTuyenXe into grouped
-                                          orderby grouped.Count() descending
-                                          select new { IDTuyenXe = grouped.Key, Count = grouped.Count(), }).Take(5);
-                        foreach (var gr in GroupsJoin)
-                            foreach (var tx in ListRoute)
-                                if (gr.IDTuyenXe == tx.IDTuyenXe)
-                                {
-                                    TuyenXe txe = new TuyenXe() { ID = tx.IDTuyenXe, BenDau = tx.BENXE1.TenBenXe, BenCuoi = tx.BENXE.TenBenXe, tgxp = tx.GioXuatPhat.Value.ToString(), tgdk = tx.ThoiGianDuKien.Value.ToString(), countGhe = gr.Count.ToString() };
-                                    TopListRouteHK.Add(txe);
-                                    break;
-                                }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            });
-            ChangeTopYear = new RelayCommand<Object>((p) => { return true; }, (p) =>
-            {
-                isSelect = true;
+                if (yearz == null)
+                    return;
+                ShowTop(month,yearz);
             });
             //Account
             AddAccountCommand = new RelayCommand<StackPanel>((p) => { 
@@ -1059,7 +993,7 @@ namespace QuanLyXeKhach.ViewModel
                     if (!Years.Contains(ListReceipt.Last().NgayMua.Value.Year.ToString()))
                         Years.Add(ListReceipt.Last().NgayMua.Value.Year.ToString());
                     if(year!=null)
-                        ShowChart(int.Parse(year));
+                        ShowChart(int.Parse(year), "");
                     LoadDataReceipt(p);
                     SelectedTagReceipt = null;
                 }
@@ -1076,7 +1010,7 @@ namespace QuanLyXeKhach.ViewModel
                 DataProvider.Ins.db.SaveChanges();
                 ListReceipt.Remove(SelectedItemReceipt);
                 if(year!=null)
-                    ShowChart(int.Parse(year));
+                    ShowChart(int.Parse(year),"");
                 var wd = p as MainWindow;
                 LoadDataReceipt(wd.ucContainerReceipt);
                 SelectedTagReceipt = null;
@@ -1143,7 +1077,7 @@ namespace QuanLyXeKhach.ViewModel
                 DataProvider.Ins.db.SaveChanges();
                 ListTrouble.Remove(SelectedItemTrouble);
                 if (year != null)
-                    ShowChart(int.Parse(year));
+                    ShowChart(int.Parse(year),"");
                 var wd = p as MainWindow;
                 LoadDataTrouble(wd.ucContainerTrouble);
                 SelectedTagTrouble = null;
@@ -1777,48 +1711,238 @@ namespace QuanLyXeKhach.ViewModel
             }
             return hash.ToString();
         }
-        private void ShowChart(int year)
+        private void ShowChart(int year, string month)
         {
-            ChiPhi.Clear();
-            DoanhThu.Clear();
-            double SumSalary = 0;
-            foreach(TAIXE tx in ListDriver)
+            if(month == null || month == "" || month == "Tất cả") 
             {
-                SumSalary += (double)tx.Luong;
-            }
-            foreach (NHANVIEN tx in ListStaff)
-            {
-                SumSalary += (double)tx.Luong;
-            }
-            foreach (THUNGAN tx in ListCashier)
-            {
-                SumSalary += (double)tx.Luong;
-            }
-            for (int i = 1; i <= 12; i++)
-            {
-                if (year > DateTime.Now.Year) break;
-                if (year == DateTime.Now.Year && i > DateTime.Now.Month) break;
-                double sum = 0;
-                foreach (var rc in ListReceipt)
-                    if (rc.NgayMua.Value.Month == i && rc.NgayMua.Value.Year == year)
-                    {
-                        double GiaVee = (double)rc.GHE.LICHTRINH?.GiaVe;
-                        switch (rc.GiamGia)
-                        {
-                            case "TREEM": GiaVee = (GiaVee * 0.5); break;
-                            case "TET": GiaVee = (GiaVee * 0.85); break;
-                            case "NGUOIGIA": GiaVee = (GiaVee * 0.6); break;
-                            default:  break;
-                        }
-                        sum += GiaVee;
-                    }
-                DoanhThu.Add((double)sum);
-                if (year == 2023)
+                Title = "Tháng";
+                Lables = new List<string> { "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" };
+                ChiPhi.Clear();
+                DoanhThu.Clear();
+                //double SumSalary = 0;
+                //foreach(TAIXE tx in ListDriver)
+                //{
+                //    SumSalary += (double)tx.Luong;
+                //}
+                //foreach (NHANVIEN tx in ListStaff)
+                //{
+                //    SumSalary += (double)tx.Luong;
+                //}
+                //foreach (THUNGAN tx in ListCashier)
+                //{
+                //    SumSalary += (double)tx.Luong;
+                //}
+                for (int i = 1; i <= 12; i++)
                 {
-                    if (i >= 9) ChiPhi.Add(SumSalary);
-                    else ChiPhi.Add(0.0);
+                    if (year > DateTime.Now.Year) break;
+                    if (year == DateTime.Now.Year && i > DateTime.Now.Month) break;
+                    double sum = 0;
+                    double cp = 0;
+                    foreach (var rc in ListReceipt)
+                        if (rc.NgayMua.Value.Month == i && rc.NgayMua.Value.Year == year)
+                        {
+                            double GiaVee = (double)rc.GHE.LICHTRINH?.GiaVe;
+                            switch (rc.GiamGia)
+                            {
+                                case "TREEM": GiaVee = (GiaVee * 0.5); break;
+                                case "TET": GiaVee = (GiaVee * 0.85); break;
+                                case "NGUOIGIA": GiaVee = (GiaVee * 0.6); break;
+                                default:  break;
+                            }
+                            sum += GiaVee;
+                        }
+                    DoanhThu.Add((double)sum);
+                    foreach (var sc in ListTrouble)
+                        if (sc.NgayGapSuCo.Value.Month == i && sc.NgayGapSuCo.Value.Year == year)
+                            cp += (double)sc.ChiPhi;
+                    ChiPhi.Add(cp);
+                    //if (year == 2023)
+                    //{
+                    //    if (i >= 9) ChiPhi.Add(SumSalary);
+                    //    else ChiPhi.Add(0.0);
+                    //}
+                    //else ChiPhi.Add(SumSalary);
                 }
-                else ChiPhi.Add(SumSalary);
+                double loiNhuan = 0;
+                for (int i = 0; i < DoanhThu.Count; i++)
+                    loiNhuan += (DoanhThu[i] - ChiPhi[i]);
+                LoiNhuan ="Lợi nhuận: " + loiNhuan + " VNĐ";
+            }
+            else
+            {
+                Title = "Ngày";
+                ChiPhi.Clear();
+                DoanhThu.Clear();
+                int m = int.Parse(month);
+                if(m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12)
+                {
+                    Lables.Clear();
+                    Lables = new List<string>() {"1","2","3","4","5","6","7","8","9","10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30","31" };
+                    for(int i= 1; i <= 31; i++)
+                    {
+                        double sum = 0;
+                        foreach (var rc in ListReceipt)
+                            if (rc.NgayMua.Value.Month == m && rc.NgayMua.Value.Year == year && rc.NgayMua.Value.Day == i)
+                            {
+                                double GiaVee = (double)rc.GHE.LICHTRINH?.GiaVe;
+                                switch (rc.GiamGia)
+                                {
+                                    case "TREEM": GiaVee = (GiaVee * 0.5); break;
+                                    case "TET": GiaVee = (GiaVee * 0.85); break;
+                                    case "NGUOIGIA": GiaVee = (GiaVee * 0.6); break;
+                                    default: break;
+                                }
+                                sum += GiaVee;
+                            }
+                        DoanhThu.Add((double)sum);
+                        double cp = 0;
+                        foreach (var sc in ListTrouble)
+                            if (sc.NgayGapSuCo.Value.Month == m && sc.NgayGapSuCo.Value.Year == year && sc.NgayGapSuCo.Value.Day == i) 
+                                cp += (double)sc.ChiPhi;
+                        ChiPhi.Add(cp);
+                    }
+                }
+                else if(m == 2)
+                {
+                    int n = 29;
+                    if(year % 4 == 0 && year % 100 != 0)
+                    {
+                        n = 28;
+                    }
+                    Lables.Clear();
+                    Lables = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28" };
+                    for (int i = 1; i <= n; i++)
+                    {
+                        double sum = 0;
+                        foreach (var rc in ListReceipt)
+                            if (rc.NgayMua.Value.Month == m && rc.NgayMua.Value.Year == year && rc.NgayMua.Value.Day == i)
+                            {
+                                double GiaVee = (double)rc.GHE.LICHTRINH?.GiaVe;
+                                switch (rc.GiamGia)
+                                {
+                                    case "TREEM": GiaVee = (GiaVee * 0.5); break;
+                                    case "TET": GiaVee = (GiaVee * 0.85); break;
+                                    case "NGUOIGIA": GiaVee = (GiaVee * 0.6); break;
+                                    default: break;
+                                }
+                                sum += GiaVee;
+                            }
+                        DoanhThu.Add((double)sum);
+                        double cp = 0;
+                        foreach (var sc in ListTrouble)
+                            if (sc.NgayGapSuCo.Value.Month == m && sc.NgayGapSuCo.Value.Year == year && sc.NgayGapSuCo.Value.Day == i)
+                                cp += (double)sc.ChiPhi;
+                        ChiPhi.Add(cp);
+                    }
+                }
+                else if(m == 4 || m == 6 || m == 9 || m == 11)
+                {
+                    Lables.Clear();
+                    Lables = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" };
+                    for (int i = 1; i <= 30; i++)
+                    {
+                        double sum = 0;
+                        foreach (var rc in ListReceipt)
+                            if (rc.NgayMua.Value.Month == m && rc.NgayMua.Value.Year == year && rc.NgayMua.Value.Day == i)
+                            {
+                                double GiaVee = (double)rc.GHE.LICHTRINH?.GiaVe;
+                                switch (rc.GiamGia)
+                                {
+                                    case "TREEM": GiaVee = (GiaVee * 0.5); break;
+                                    case "TET": GiaVee = (GiaVee * 0.85); break;
+                                    case "NGUOIGIA": GiaVee = (GiaVee * 0.6); break;
+                                    default: break;
+                                }
+                                sum += GiaVee;
+                            }
+                        DoanhThu.Add((double)sum);
+                        double cp = 0;
+                        foreach (var sc in ListTrouble)
+                            if (sc.NgayGapSuCo.Value.Month == m && sc.NgayGapSuCo.Value.Year == year && sc.NgayGapSuCo.Value.Day == i)
+                                cp += (double)sc.ChiPhi;
+                        ChiPhi.Add(cp);
+                    }
+                }
+                double loiNhuan = 0;
+                for (int i = 0; i < DoanhThu.Count; i++)
+                    loiNhuan += (DoanhThu[i] - ChiPhi[i]);
+                LoiNhuan = "Lợi nhuận: " + loiNhuan + " VNĐ";
+            }
+        }
+        private void ShowTop(string month, string yearz)
+        {
+            if (month != "Tất cả" && month != null)
+            {
+                int monthh = int.Parse(month);
+                int yearr = int.Parse(yearz);
+                TopListRoute.Clear();
+                TopListRouteHK.Clear();
+                try
+                {
+                    var Groups = (from tuyenxe in DataProvider.Ins.db.LICHTRINHs where tuyenxe.NgayXuatPhat.Value.Month == monthh && tuyenxe.NgayXuatPhat.Value.Year == yearr group tuyenxe by tuyenxe.IDTuyenXe into grouped orderby grouped.Count() descending select new { IDTuyenXe = grouped.Key, CountID = grouped.Count(), }).Take(5);
+                    foreach (var gr in Groups)
+                        foreach (var tx in ListRoute)
+                            if (gr.IDTuyenXe == tx.IDTuyenXe)
+                            {
+                                TuyenXe txe = new TuyenXe() { ID = tx.IDTuyenXe, BenDau = tx.BENXE1.TenBenXe, BenCuoi = tx.BENXE.TenBenXe, tgxp = tx.GioXuatPhat.Value.ToString(), tgdk = tx.ThoiGianDuKien.Value.ToString(), count = gr.CountID.ToString() };
+                                TopListRoute.Add(txe);
+                                break;
+                            }
+                    var GroupsJoin = (from lt in DataProvider.Ins.db.LICHTRINHs
+                                      join gh in DataProvider.Ins.db.GHEs on lt.IDLICHTRINH equals gh.IDLICHTRINH
+                                      where lt.NgayXuatPhat.Value.Month == monthh && lt.NgayXuatPhat.Value.Year == yearr && gh.TINHTRANG == true
+                                      group new { LICHTRINH = lt, GHE = gh } by lt.IDTuyenXe into grouped
+                                      orderby grouped.Count() descending
+                                      select new { IDTuyenXe = grouped.Key, Count = grouped.Count(), }).Take(5);
+                    foreach (var gr in GroupsJoin)
+                        foreach (var tx in ListRoute)
+                            if (gr.IDTuyenXe == tx.IDTuyenXe)
+                            {
+                                TuyenXe txe = new TuyenXe() { ID = tx.IDTuyenXe, BenDau = tx.BENXE1.TenBenXe, BenCuoi = tx.BENXE.TenBenXe, tgxp = tx.GioXuatPhat.Value.ToString(), tgdk = tx.ThoiGianDuKien.Value.ToString(), countGhe = gr.Count.ToString() };
+                                TopListRouteHK.Add(txe);
+                                break;
+                            }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else 
+            {
+                int yearr = int.Parse(yearz);
+                TopListRoute.Clear();
+                TopListRouteHK.Clear();
+                try
+                {
+                    var Groups = (from tuyenxe in DataProvider.Ins.db.LICHTRINHs where tuyenxe.NgayXuatPhat.Value.Year == yearr group tuyenxe by tuyenxe.IDTuyenXe into grouped orderby grouped.Count() descending select new { IDTuyenXe = grouped.Key, CountID = grouped.Count(), }).Take(5);
+                    foreach (var gr in Groups)
+                        foreach (var tx in ListRoute)
+                            if (gr.IDTuyenXe == tx.IDTuyenXe)
+                            {
+                                TuyenXe txe = new TuyenXe() { ID = tx.IDTuyenXe, BenDau = tx.BENXE1.TenBenXe, BenCuoi = tx.BENXE.TenBenXe, tgxp = tx.GioXuatPhat.Value.ToString(), tgdk = tx.ThoiGianDuKien.Value.ToString(), count = gr.CountID.ToString() };
+                                TopListRoute.Add(txe);
+                                break;
+                            }
+                    var GroupsJoin = (from lt in DataProvider.Ins.db.LICHTRINHs
+                                      join gh in DataProvider.Ins.db.GHEs on lt.IDLICHTRINH equals gh.IDLICHTRINH
+                                      where lt.NgayXuatPhat.Value.Year == yearr && gh.TINHTRANG == true
+                                      group new { LICHTRINH = lt, GHE = gh } by lt.IDTuyenXe into grouped
+                                      orderby grouped.Count() descending
+                                      select new { IDTuyenXe = grouped.Key, Count = grouped.Count(), }).Take(5);
+                    foreach (var gr in GroupsJoin)
+                        foreach (var tx in ListRoute)
+                            if (gr.IDTuyenXe == tx.IDTuyenXe)
+                            {
+                                TuyenXe txe = new TuyenXe() { ID = tx.IDTuyenXe, BenDau = tx.BENXE1.TenBenXe, BenCuoi = tx.BENXE.TenBenXe, tgxp = tx.GioXuatPhat.Value.ToString(), tgdk = tx.ThoiGianDuKien.Value.ToString(), countGhe = gr.Count.ToString() };
+                                TopListRouteHK.Add(txe);
+                                break;
+                            }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }

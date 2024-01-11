@@ -16,5 +16,5 @@ C:\Users\user\source\repos\QuanLyXeKhach\QuanLyXeKhach\QuanLyXeKhach\App.xaml
 27566743592
 AddWindow\AddAccountWd.xaml;AddWindow\AddBusStationWd.xaml;AddWindow\AddBusWd.xaml;AddWindow\AddCashierWd.xaml;AddWindow\AddReceiptWd.xaml;AddWindow\AddScheduleWd.xaml;AddWindow\AddTroubleWd.xaml;EditWindow\EditBusStationWd.xaml;EditWindow\EditBusWd.xaml;EditWindow\EditCashierWd.xaml;EditWindow\EditRouteWd.xaml;EditWindow\EditScheduleWd.xaml;EditWindow\EditStaffWd.xaml;AddWindow\AddRouteWd.xaml;AddWindow\AddStaffWd.xaml;AddWindow\AddDriverWd.xaml;EditWindow\EditDriverWd.xaml;EditWindow\EditTroubleWd.xaml;LoginWindow.xaml;MainWindow.xaml;Resource\MainResource.xaml;UserControlFolder\ControlBarUC.xaml;UserControlFolder\TagBusStationUC.xaml;UserControlFolder\TagBusUC.xaml;UserControlFolder\TagCashierUC.xaml;UserControlFolder\TagClientUC.xaml;UserControlFolder\TagDriverUC.xaml;UserControlFolder\TagReceiptUC.xaml;UserControlFolder\TagRouteUC.xaml;UserControlFolder\TagScheduleUC.xaml;UserControlFolder\TagStaffUC.xaml;UserControlFolder\TagTroubleUC.xaml;
 
-True
+False
 
